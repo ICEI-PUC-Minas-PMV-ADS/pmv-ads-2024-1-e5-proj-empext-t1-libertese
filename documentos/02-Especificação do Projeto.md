@@ -74,7 +74,7 @@ Enumere as restrições à sua solução. Lembre-se de que as restrições geral
 
 ## Projeto da Base de Dados
 
-![Diagrama Base de Dados - MER](https://raw.githubusercontent.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/main/documentos/img/MER%20_LIbertese.jpg)
+![Diagrama Base de Dados - DER](https://raw.githubusercontent.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/main/documentos/img/DER%20_LIbertese.jpg)
 
 ## Diagrama de Classe
 
