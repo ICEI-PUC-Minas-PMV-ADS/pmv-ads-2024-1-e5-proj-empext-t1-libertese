@@ -4,22 +4,38 @@ Projeto Libertese: Uma Jornada para a Liberdade e Dignidade
 
 O Projeto Libertese nasce da convicção de que a transformação social é possível quando mulheres em situação de prisão são empoderadas através da educação, do trabalho e da conquista da autonomia. Acreditamos que a chave para a reinserção social e a construção de um futuro digno reside no desenvolvimento de habilidades, na criação de oportunidades e no reconhecimento da capacidade de cada mulher de reescrever sua história.
 
-A Realidade das Mulheres Encarceradas:
+As mulheres encarceradas enfrentam desafios singulares que exigem atenção especial. Muitas vezes, são vítimas de violência, pobreza e exclusão social, fatores que as colocam em maior risco de serem presas. No sistema prisional, elas podem ser submetidas a condições precárias, à falta de oportunidades de educação e trabalho, e à marginalização social. Por ventura, é missão do Projeto Libertese promover a vida e a dignidade de mulheres envolvidas com o sistema prisional, através de ações que visam facilitar a gestão do projeto através do nosso sistema.
 
-As mulheres encarceradas enfrentam desafios singulares que exigem atenção especial. Muitas vezes, são vítimas de violência, pobreza e exclusão social, fatores que as colocam em maior risco de serem presas. No sistema prisional, elas podem ser submetidas a condições precárias, à falta de oportunidades de educação e trabalho, e à marginalização social. Por ventura, é missão do Projeto Libertese promover a vida e a dignidade de mulheres envolvidas com o sistema prisional, através de ações que visam facilitar a gestão do projeto através da nossa ferramenta.
+O Projeto Libertese acredita em uma abordagem holística que reconhece a mulher em sua totalidade. Através de um trabalho individualizado e humanizado, buscamos atender às necessidades específicas da gestão e acompanhamento dessas mulheres, ajudando na sua reinserção social de forma integral e sustentável.
 
-O Projeto Libertese acredita em uma abordagem holística que reconhece a mulher em sua totalidade. Através de um trabalho individualizado e humanizado, buscamos atender às necessidades específicas de cada mulher, ajudando na sua reinserção social de forma integral e sustentável.
 ## Problema
-Nesse momento você deve apresentar o problema que a sua aplicação deve  resolver. No entanto, não é a hora de comentar sobre a aplicação.
+A Libertese é uma iniciativa inspiradora que visa promover a vida e a dignidade de mulheres em contato com o sistema prisional, oferecendo-lhes oportunidades de educação, trabalho e autonomia. Para otimizar e ampliar o impacto dessa missão, estamos desenvolvendo um software inovador que irá auxiliar na gestão da organização, agilizando processos, otimizando recursos e, acima de tudo, transformando a vida de mulheres em situação de vulnerabilidade.
 
-Descreva também o contexto em que essa aplicação será usada, se  houver: empresa, tecnologias, etc. Novamente, descreva apenas o que de  fato existir, pois ainda não é a hora de apresentar requisitos  detalhados ou projetos.
+Com o nosso software, a Libertese poderá:
 
-Nesse momento, o grupo pode optar por fazer uso  de ferramentas como Design Thinking, que permite um olhar de ponta a ponta para o problema.
+###Gerenciar dados de forma eficiente e centralizada
+Armazenar e organizar todas as informações em um único sistema, otimizando o acesso e a análise de dados.
+Automatizar tarefas repetitivas, liberando tempo para a equipe se concentrar em atividades estratégicas.
+Gerar relatórios personalizados para acompanhar o progresso das reeducandas e tomar decisões mais assertivas.
 
-> **Links Úteis**:
-> - [Objetivos, Problema de pesquisa e Justificativa](https://medium.com/@versioparole/objetivos-problema-de-pesquisa-e-justificativa-c98c8233b9c3)
-> - [Matriz Certezas, Suposições e Dúvidas](https://medium.com/educa%C3%A7%C3%A3o-fora-da-caixa/matriz-certezas-suposi%C3%A7%C3%B5es-e-d%C3%BAvidas-fa2263633655)
-> - [Brainstorming](https://www.euax.com.br/2018/09/brainstorming/)
+###Melhorar a comunicação interna e externa
+Criar canais de comunicação eficientes para facilitar a troca de informações entre equipe, reeducandas e parceiros.
+Oferecer um portal online para reeducandas acessarem informações relevantes e solicitarem suporte.
+
+###Oferecer acompanhamento individualizado e personalizado
+Criar perfis individualizados para cada reeducanda, com histórico de atividades, resultados e necessidades específicas.
+Monitorar o progresso individual e oferecer suporte personalizado de acordo com o perfil de cada mulher.
+Identificar pontos de atenção e desenvolver planos de ação individualizados para superar desafios e alcançar objetivos.
+
+
+###Ampliar a captação de recursos
+Criar um portal online para doações e automatizar o processo de captação de recursos.
+Otimizar o tempo e recursos da equipe, permitindo que se concentrem em atividades estratégicas de captação.
+
+###Aumentar a visibilidade e o impacto da iniciativa
+Medir o impacto dos programas e atividades da Libertese através de indicadores e métricas robustas.
+Demonstrar resultados concretos para stakeholders, como reeducandas, parceiros, governo e sociedade em geral
+
 
 ## Objetivos
 
