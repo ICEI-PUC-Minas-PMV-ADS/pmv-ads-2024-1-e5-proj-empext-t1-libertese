@@ -13,26 +13,26 @@ A Libertese é uma iniciativa inspiradora que visa promover a vida e a dignidade
 
 Com o nosso software, a Libertese poderá:
 
-###Gerenciar dados de forma eficiente e centralizada
+### Gerenciar dados de forma eficiente e centralizada
 Armazenar e organizar todas as informações em um único sistema, otimizando o acesso e a análise de dados.
 Automatizar tarefas repetitivas, liberando tempo para a equipe se concentrar em atividades estratégicas.
 Gerar relatórios personalizados para acompanhar o progresso das reeducandas e tomar decisões mais assertivas.
 
-###Melhorar a comunicação interna e externa
+### Melhorar a comunicação interna e externa
 Criar canais de comunicação eficientes para facilitar a troca de informações entre equipe, reeducandas e parceiros.
 Oferecer um portal online para reeducandas acessarem informações relevantes e solicitarem suporte.
 
-###Oferecer acompanhamento individualizado e personalizado
+### Oferecer acompanhamento individualizado e personalizado
 Criar perfis individualizados para cada reeducanda, com histórico de atividades, resultados e necessidades específicas.
 Monitorar o progresso individual e oferecer suporte personalizado de acordo com o perfil de cada mulher.
 Identificar pontos de atenção e desenvolver planos de ação individualizados para superar desafios e alcançar objetivos.
 
 
-###Ampliar a captação de recursos
+### Ampliar a captação de recursos
 Criar um portal online para doações e automatizar o processo de captação de recursos.
 Otimizar o tempo e recursos da equipe, permitindo que se concentrem em atividades estratégicas de captação.
 
-###Aumentar a visibilidade e o impacto da iniciativa
+### Aumentar a visibilidade e o impacto da iniciativa
 Medir o impacto dos programas e atividades da Libertese através de indicadores e métricas robustas.
 Demonstrar resultados concretos para stakeholders, como reeducandas, parceiros, governo e sociedade em geral
 
