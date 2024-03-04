@@ -79,4 +79,4 @@ Portanto, a implantação do sistema sociotécnico na Libertees não apenas solu
 
 ## Descrição do Parceiro
 
-Apresente uma descrição resumida sobre a organização onde o projeto será desenvolvido para que possa ser compreendido o cenário sistema sociotécnico.
+É uma organização dedicada à reinserção social e econômica de mulheres que estão ou já estiveram no sistema prisional, com uma missão de fomentar a vida, dignidade, educação, trabalho e autonomia dessas mulheres. Com uma visão voltada para a construção de um futuro inclusivo, busca ampliar o acesso a oportunidades para essas mulheres, tanto durante quanto após a privação de liberdade, e estender seu impacto a outras em situação de vulnerabilidade. Sua cultura é pautada em valores de paixão, responsabilidade, comprometimento, crescimento conjunto, inovação e diversidade, refletindo um compromisso profundo com a transformação social e o desenvolvimento de soluções inovadoras para desafios complexos, sempre com o foco no respeito e valorização das diferenças.
