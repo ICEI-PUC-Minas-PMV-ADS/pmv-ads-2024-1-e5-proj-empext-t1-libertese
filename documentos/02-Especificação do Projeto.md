@@ -82,4 +82,10 @@ A referência abaixo irá auxiliá-lo na geração do artefato “Modelo ER”.
 
 ![Diagrama Base de Dados - MER](https://raw.githubusercontent.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/main/documentos/img/MER%20_LIbertese.jpg)
 
+## Diagrama de Classe
+
+![libertese3](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225367/51c20fa7-9d13-47d2-821a-c04cc4fbfc4b)
+
+
+
 
