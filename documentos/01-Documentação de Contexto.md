@@ -1,7 +1,14 @@
 # Introdução
 
-Texto descritivo com a visão geral do projeto abordado. Inclui o contexto, o problema, os objetivos, a justificativa e o público-alvo do projeto.
+Projeto Libertese: Uma Jornada para a Liberdade e Dignidade
 
+O Projeto Libertese nasce da convicção de que a transformação social é possível quando mulheres em situação de prisão são empoderadas através da educação, do trabalho e da conquista da autonomia. Acreditamos que a chave para a reinserção social e a construção de um futuro digno reside no desenvolvimento de habilidades, na criação de oportunidades e no reconhecimento da capacidade de cada mulher de reescrever sua história.
+
+A Realidade das Mulheres Encarceradas:
+
+As mulheres encarceradas enfrentam desafios singulares que exigem atenção especial. Muitas vezes, são vítimas de violência, pobreza e exclusão social, fatores que as colocam em maior risco de serem presas. No sistema prisional, elas podem ser submetidas a condições precárias, à falta de oportunidades de educação e trabalho, e à marginalização social. Por ventura, é missão do Projeto Libertese promover a vida e a dignidade de mulheres envolvidas com o sistema prisional, através de ações que visam facilitar a gestão do projeto através da nossa ferramenta.
+
+O Projeto Libertese acredita em uma abordagem holística que reconhece a mulher em sua totalidade. Através de um trabalho individualizado e humanizado, buscamos atender às necessidades específicas de cada mulher, ajudando na sua reinserção social de forma integral e sustentável.
 ## Problema
 Nesse momento você deve apresentar o problema que a sua aplicação deve  resolver. No entanto, não é a hora de comentar sobre a aplicação.
 
