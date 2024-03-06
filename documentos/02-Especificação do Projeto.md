@@ -6,8 +6,7 @@ o	Descreva brevemente a arquitetura definida para o projeto e as tecnologias a s
 
 ## Project Model Canvas
 
-![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/60409021/1da3aaa0-a9d3-4aa2-bca3-c84358e421ae)
-
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/60409021/b274fdfd-8fdb-4b8e-84f1-e1d01c3a56ab)
 
 ## Requisitos
 
