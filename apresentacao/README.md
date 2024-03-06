@@ -1,6 +1,6 @@
 # Apresentação da Solução
 
-
+Projeto Libertese: Uma Jornada para a Liberdade e Dignidade
 
 Uma organização comprometida com a reinserção social e econômica de mulheres que estão ou estiveram no sistema prisional. Sua missão é fomentar a vida, dignidade, educação, trabalho e autonomia dessas mulheres, buscando criar um futuro inclusivo e ampliar o acesso a oportunidades durante e após a privação de liberdade. Guiada por valores de paixão, responsabilidade, comprometimento, crescimento conjunto, inovação e diversidade, a Liberte-se se compromete profundamente com a transformação social e o desenvolvimento de soluções inovadoras, com foco no respeito e valorização das diferenças.
 
