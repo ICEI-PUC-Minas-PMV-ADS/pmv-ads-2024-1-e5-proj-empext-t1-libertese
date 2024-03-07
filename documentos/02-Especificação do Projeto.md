@@ -17,7 +17,7 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 |ID    | Descrição do Requisito  | Prioridade |
 |------|-----------------------------------------|----|
 |RF-001| Permitir cadastro de usuário administrador  | ALTA | 
-|RF-002| Permitir cadastro de funcinários  | ALTA |
+|RF-002| Permitir cadastro de funcionários  | ALTA |
 |RF-003| Implementar controle de inclusão, deleção e edição de funcionários  | MÉDIA |
 |RF-004| Permitir cadastro de produtos, categorias e materiais  | ALTA |
 |RF-005| Permitir controle de inclusão, deleção e edição de produtos, categorias e materiais| ALTA |
