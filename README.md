@@ -1,5 +1,5 @@
 # Gestão Administrativa - LIBERTE-SE
-![Prancheta 17](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/60409021/c6344439-871c-4d6a-85a2-911eec1723b4)
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/60409021/7f5edefb-2384-4faa-b6b8-ad29b15a4a55)
 `CURSO: Análise e Desenvolvimento de Sistemas`
 
 `DISCIPLINA: Desenvolvimento de um Sistema Sociotécnico Inovador`
