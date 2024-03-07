@@ -1,10 +1,11 @@
 # Gestão Administrativa - LIBERTESE
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/60409021/7f5edefb-2384-4faa-b6b8-ad29b15a4a55)
+
 `CURSO: Análise e Desenvolvimento de Sistemas`
 
 `DISCIPLINA: Desenvolvimento de um Sistema Sociotécnico Inovador`
 
-`Eixo 5`
+`PERÍODO: Eixo 5`
 
 O projeto envolve o desenvolvimento do sistema de gerenciamento administrativo para a empresa Libertese. O mesmo visa apoiar uma iniciativa com impacto social, focada em promover a vida e a dignidade de mulheres envolvidas com o sistema prisional, através de educação, trabalho e autonomia. O sistema permitirá um acompanhamento preciso do desempenho financeiro, a otimização dos recursos disponíveis e a maximização do impacto social das atividades oferecidas e será fundamental para garantir a eficiência operacional da organização. Essa solução tecnológica não só facilitará a gestão da organização, mas também apoiará a missão de reconstruir vidas, fornecendo às mulheres as ferramentas necessárias para sua reintegração bem-sucedida e digna na sociedade.
 
