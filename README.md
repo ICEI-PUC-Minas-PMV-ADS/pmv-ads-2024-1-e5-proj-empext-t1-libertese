@@ -20,7 +20,7 @@ O projeto envolve o desenvolvimento do sistema de gerenciamento administrativo p
 ## Orientador
 
 [<img src="https://avatars.githubusercontent.com/u/80353812?v=4"  width=100><br><sub> Sandra Silveira </sub>](https://github.com/silveirasandra)
-* Sandra Maria Silveira
+
 
 ## Instruções de utilização
 
