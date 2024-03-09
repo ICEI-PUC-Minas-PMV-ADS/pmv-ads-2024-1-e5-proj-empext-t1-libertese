@@ -1,0 +1,12 @@
+C:\Users\Thaís\Documents\Meus Documentos 2024\puc_ads_5\e5-libertese\codigo-fonte\Libertese\Libertese.Domain\bin\Debug\net8.0\Libertese.Domain.deps.json
+C:\Users\Thaís\Documents\Meus Documentos 2024\puc_ads_5\e5-libertese\codigo-fonte\Libertese\Libertese.Domain\bin\Debug\net8.0\Libertese.Domain.dll
+C:\Users\Thaís\Documents\Meus Documentos 2024\puc_ads_5\e5-libertese\codigo-fonte\Libertese\Libertese.Domain\bin\Debug\net8.0\Libertese.Domain.pdb
+C:\Users\Thaís\Documents\Meus Documentos 2024\puc_ads_5\e5-libertese\codigo-fonte\Libertese\Libertese.Domain\obj\Debug\net8.0\Libertese.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Thaís\Documents\Meus Documentos 2024\puc_ads_5\e5-libertese\codigo-fonte\Libertese\Libertese.Domain\obj\Debug\net8.0\Libertese.Domain.AssemblyInfoInputs.cache
+C:\Users\Thaís\Documents\Meus Documentos 2024\puc_ads_5\e5-libertese\codigo-fonte\Libertese\Libertese.Domain\obj\Debug\net8.0\Libertese.Domain.AssemblyInfo.cs
+C:\Users\Thaís\Documents\Meus Documentos 2024\puc_ads_5\e5-libertese\codigo-fonte\Libertese\Libertese.Domain\obj\Debug\net8.0\Libertese.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Thaís\Documents\Meus Documentos 2024\puc_ads_5\e5-libertese\codigo-fonte\Libertese\Libertese.Domain\obj\Debug\net8.0\Libertese.Domain.sourcelink.json
+C:\Users\Thaís\Documents\Meus Documentos 2024\puc_ads_5\e5-libertese\codigo-fonte\Libertese\Libertese.Domain\obj\Debug\net8.0\Libertese.Domain.dll
+C:\Users\Thaís\Documents\Meus Documentos 2024\puc_ads_5\e5-libertese\codigo-fonte\Libertese\Libertese.Domain\obj\Debug\net8.0\refint\Libertese.Domain.dll
+C:\Users\Thaís\Documents\Meus Documentos 2024\puc_ads_5\e5-libertese\codigo-fonte\Libertese\Libertese.Domain\obj\Debug\net8.0\Libertese.Domain.pdb
+C:\Users\Thaís\Documents\Meus Documentos 2024\puc_ads_5\e5-libertese\codigo-fonte\Libertese\Libertese.Domain\obj\Debug\net8.0\ref\Libertese.Domain.dll

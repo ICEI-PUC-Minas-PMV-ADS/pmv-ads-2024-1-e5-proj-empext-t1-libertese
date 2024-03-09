@@ -1,0 +1,53 @@
+﻿@model Libertese.Domain.Entities.Precificacao.Preco
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Preco</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ProdutoId" class="control-label"></label>
+                <input asp-for="ProdutoId" class="form-control" />
+                <span asp-validation-for="ProdutoId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RateioId" class="control-label"></label>
+                <input asp-for="RateioId" class="form-control" />
+                <span asp-validation-for="RateioId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Vigencia" class="control-label"></label>
+                <input asp-for="Vigencia" class="form-control" />
+                <span asp-validation-for="Vigencia" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DataCriacao" class="control-label"></label>
+                <input asp-for="DataCriacao" class="form-control" />
+                <span asp-validation-for="DataCriacao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DataAtualizacao" class="control-label"></label>
+                <input asp-for="DataAtualizacao" class="form-control" />
+                <span asp-validation-for="DataAtualizacao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
