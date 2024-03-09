@@ -1,0 +1,415 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = Libertese.Web
+build_property.RootNamespace = Libertese.Web
+build_property.ProjectDir = C:\Users\Thaís\Documents\Meus Documentos 2024\puc_ads_5\e5-libertese\codigo-fonte\Libertese\Libertese.Web\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\Thaís\Documents\Meus Documentos 2024\puc_ads_5\e5-libertese\codigo-fonte\Libertese\Libertese.Web
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/CapacidadeProdutivas/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FwYWNpZGFkZVByb2R1dGl2YXNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/CapacidadeProdutivas/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FwYWNpZGFkZVByb2R1dGl2YXNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/CapacidadeProdutivas/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FwYWNpZGFkZVByb2R1dGl2YXNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/CapacidadeProdutivas/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FwYWNpZGFkZVByb2R1dGl2YXNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/CapacidadeProdutivas/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FwYWNpZGFkZVByb2R1dGl2YXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/Categorias/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmlhc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/Categorias/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmlhc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/Categorias/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmlhc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/Categorias/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmlhc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/Categorias/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmlhc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/Classificacoes/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xhc3NpZmljYWNvZXNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/Classificacoes/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xhc3NpZmljYWNvZXNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/Classificacoes/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xhc3NpZmljYWNvZXNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/Classificacoes/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xhc3NpZmljYWNvZXNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/Classificacoes/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xhc3NpZmljYWNvZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/Clientes/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50ZXNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/Clientes/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50ZXNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/Clientes/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50ZXNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/Clientes/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50ZXNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/Clientes/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50ZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/ContaBancarias/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udGFCYW5jYXJpYXNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/ContaBancarias/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udGFCYW5jYXJpYXNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/ContaBancarias/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udGFCYW5jYXJpYXNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/ContaBancarias/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udGFCYW5jYXJpYXNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/ContaBancarias/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udGFCYW5jYXJpYXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/Despesas/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVzcGVzYXNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/Despesas/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVzcGVzYXNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/Despesas/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVzcGVzYXNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/Despesas/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVzcGVzYXNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/Despesas/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVzcGVzYXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/EmpresaParceiras/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wcmVzYVBhcmNlaXJhc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/EmpresaParceiras/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wcmVzYVBhcmNlaXJhc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/EmpresaParceiras/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wcmVzYVBhcmNlaXJhc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/EmpresaParceiras/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wcmVzYVBhcmNlaXJhc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/EmpresaParceiras/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wcmVzYVBhcmNlaXJhc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/FormaPagamentos/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9ybWFQYWdhbWVudG9zXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/FormaPagamentos/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9ybWFQYWdhbWVudG9zXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/FormaPagamentos/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9ybWFQYWdhbWVudG9zXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/FormaPagamentos/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9ybWFQYWdhbWVudG9zXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/FormaPagamentos/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9ybWFQYWdhbWVudG9zXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/Fornecedores/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9ybmVjZWRvcmVzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/Fornecedores/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9ybmVjZWRvcmVzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/Fornecedores/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9ybmVjZWRvcmVzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/Fornecedores/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9ybmVjZWRvcmVzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/Fornecedores/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9ybmVjZWRvcmVzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/Funcionarios/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRnVuY2lvbmFyaW9zXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/Funcionarios/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRnVuY2lvbmFyaW9zXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/Funcionarios/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRnVuY2lvbmFyaW9zXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/Funcionarios/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRnVuY2lvbmFyaW9zXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/Funcionarios/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRnVuY2lvbmFyaW9zXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/Materiais/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWF0ZXJpYWlzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/Materiais/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWF0ZXJpYWlzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/Materiais/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWF0ZXJpYWlzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/Materiais/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWF0ZXJpYWlzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/Materiais/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWF0ZXJpYWlzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/Permissoes/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVybWlzc29lc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/Permissoes/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVybWlzc29lc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/Permissoes/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVybWlzc29lc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/Permissoes/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVybWlzc29lc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/Permissoes/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVybWlzc29lc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/Precos/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJlY29zXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/Precos/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJlY29zXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/Precos/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJlY29zXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/Precos/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJlY29zXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/Precos/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJlY29zXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/Produtos/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHV0b3NcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/Produtos/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHV0b3NcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/Produtos/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHV0b3NcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/Produtos/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHV0b3NcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/Produtos/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHV0b3NcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/Rateios/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmF0ZWlvc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/Rateios/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmF0ZWlvc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/Rateios/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmF0ZWlvc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/Rateios/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmF0ZWlvc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/Rateios/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmF0ZWlvc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/Receitas/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVjZWl0YXNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/Receitas/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVjZWl0YXNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/Receitas/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVjZWl0YXNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/Receitas/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVjZWl0YXNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/Receitas/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVjZWl0YXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/Usuarios/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb3NcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/Usuarios/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb3NcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/Usuarios/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb3NcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/Usuarios/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb3NcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/Usuarios/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb3NcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/Vendas/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmVuZGFzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/Vendas/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmVuZGFzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/Vendas/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmVuZGFzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/Vendas/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmVuZGFzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/Vendas/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmVuZGFzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Thaís/Documents/Meus Documentos 2024/puc_ads_5/e5-libertese/codigo-fonte/Libertese/Libertese.Web/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-q8bquocqsy
