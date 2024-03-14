@@ -1,1 +1,44 @@
+# Diretórios .vs
 .vs/
+
+# Arquivos de índice de conteúdo do arquivo
+.vs/Libertese/FileContentIndex/*.vsidx
+
+# Arquivos de usuário do Visual Studio (configurações locais)
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Pastas de saída de compilação
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+# Arquivos gerados durante a compilação
+*.dll
+*.exe
+*.pdb
+*.cache
+*.sourcelink.json
+*.genruntimeconfig.cache
+
+# Arquivos de configuração gerados pelo MSBuild
+*.csproj.AssemblyReference.cache
+*.AssemblyInfo.cs
+*.AssemblyInfoInputs.cache
+*.GeneratedMSBuildEditorConfig.editorconfig
+*.assets.cache
+*.csproj.FileListAbsolute.txt
+*.csproj.CoreCompileInputs.cache
+*.nuget.dgspec.json
+project.assets.json
+project.nuget.cache
+
+# Arquivos específicos do aplicativo web
+*.staticwebassets.runtime.json
+staticwebassets.build.json
+staticwebassets.development.json
+staticwebassets.pack.json
+apphost.exe
