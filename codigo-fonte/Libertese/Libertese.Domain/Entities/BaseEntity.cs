@@ -9,8 +9,10 @@ namespace Libertese.Domain.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
+        [Display(Name = "Criação")]
         public DateTimeOffset DataCriacao { get; set; }
 
+        [Display(Name = "Atualização")]
         public DateTimeOffset? DataAtualizacao { get; set; }
 
     }
