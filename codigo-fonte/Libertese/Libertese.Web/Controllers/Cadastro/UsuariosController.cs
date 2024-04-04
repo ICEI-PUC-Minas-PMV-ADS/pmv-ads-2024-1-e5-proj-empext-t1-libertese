@@ -116,6 +116,55 @@ namespace Libertese.Web.Controllers.Cadastro
             return View(usuario);
         }
 
+        [HttpGet]
+        public IActionResult ResetPassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ResetPassword(string Email, string novaSenha)
+        {
+            var usuario = await _context.Usuarios
+                .FirstOrDefaultAsync(m => m.Email == Email);
+            if (usuario == null)
+            {
+                return NotFound();
+            }
+
+            if (novaSenha == usuario.Senha)
+            {
+                ModelState.AddModelError("novaSenha", "Nova senha deve ser diferente da senha anterior.");
+                return View(usuario);
+            }
+
+            usuario.Senha = novaSenha;
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(usuario);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!UsuarioExists(usuario.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            return View(usuario);
+        }
+
+
         // GET: Usuarios/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
