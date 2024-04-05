@@ -136,6 +136,7 @@ namespace Libertese.Web.Controllers.Cadastro
             if (novaSenha == usuario.Senha)
             {
                 ModelState.AddModelError("novaSenha", "Nova senha deve ser diferente da senha anterior.");
+                TempData["ErrorMessage"] = "A senha nova deve ser diferente da senha atual.";
                 return View(usuario);
             }
 
