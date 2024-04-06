@@ -99,6 +99,7 @@ Ferramentas de Testes: Cypress
 Planilhas de Testes: Google Sheets, Excel.
 ____________________________________________
 
+
 # APAGAR DEPOIS
 # Planos de Testes de Software
 
