@@ -2,7 +2,10 @@
 
 ## Objetivo
 
-Garantir a funcionalidade, confiabilidade e segurança das telas de Primeiro Acesso, Esqueceu a Senha e Login do sistema.
+Garantir a funcionalidade, confiabilidade e segurança das telas de: 
+- Primeiro Acesso
+- Esqueceu a Senha
+- Login do sistema
 
 ## Foco
 
