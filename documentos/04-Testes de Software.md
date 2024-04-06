@@ -29,67 +29,67 @@ Conexões: Internet rápida, internet lenta.
 ## 2. Criação de Casos de Teste
 
 ## Tela - Primeiro Acesso
-Funcional:
+- Funcional
 Validar o registro de novas usuárias com dados válidos e inválidos.
 Verificar o envio de e-mail de confirmação de registro.
 Testar a ativação da conta através do link no e-mail.
 Validar o redirecionamento para a tela de login após a ativação.
 
-Usabilidade:
+- Usabilidade
 Avaliar a clareza e o tamanho das instruções.
 Testar a facilidade de navegação na tela.
 Verificar a acessibilidade para diferentes perfis de usuárias.
 
-Segurança:
+- Segurança
 Testar a proteção contra ataques de força bruta.
 Validar a criptografia de dados durante o registro.
 Verificar a segurança do envio de e-mail.
 
 ## Tela - Esqueceu a Senha
-Funcional:
+- Funcional
 Validar o processo de recuperação de senha com e-mail e telefone.
 Verificar o envio de e-mail com instruções para redefinição de senha.
 Testar a redefinição de senha com sucesso e com dados inválidos.
 Validar o redirecionamento para a tela de login após a redefinição.
 
-Usabilidade:
+- Usabilidade
 Avaliar a clareza das instruções e formulários.
 Testar a facilidade de recuperação de senha.
 Verificar a acessibilidade para diferentes perfis de usuárias.
 
-Segurança:
+- Segurança
 Testar a proteção contra ataques de força bruta.
 Validar a criptografia de dados durante a recuperação de senha.
 Verificar a segurança do envio de e-mail.
 
 ## Tela - Login
-Funcional:
+- Funcional
 Validar o login com dados válidos e inválidos.
 Testar o acesso ao sistema após o login.
 Validar o bloqueio de conta após tentativas inválidas.
 Verificar a persistência da autenticação após o login.
 
-Usabilidade:
+- Usabilidade
 Avaliar a clareza dos campos de login e senha.
 Testar a facilidade de login no sistema.
 Verificar a acessibilidade para diferentes perfis de usuárias.
 
-Segurança:
+- Segurança
 Testar a proteção contra ataques de força bruta.
 Validar a criptografia de dados durante o login.
 Verificar a segurança da autenticação e do armazenamento de cookies.
 
 ## 3. Execução dos Testes
 
-Execução manual dos casos de teste.
-Registro de resultados e falhas em planilha ou ferramenta de gestão de testes.
-Captura de screenshots e vídeos para evidenciar falhas.
+Execução manual e automatizada casos de testes;
+Registro de resultados e falhas em planilha ou ferramenta de gestão de testes;
+Captura de screenshots e vídeos para evidenciar falhas;
 
 ## 4. Análise dos Resultados
 
-Identificação de falhas e bugs.
-Priorização das correções de acordo com a severidade das falhas.
-Reteste dos casos de teste após as correções.
+Identificação de falhas e bugs;
+Priorização das correções de acordo com a severidade das falhas;
+Reteste dos casos de teste após as correções;
 
 ## 5. Documentação
 
