@@ -17,7 +17,7 @@ Casos de teste específicos para cada tela, considerando diferentes cenários de
 
 # Estrutura do Plano
 
-## 1. Definição do Ambiente de Testes:
+## 1. Definição do Ambiente de Testes
 
 Navegadores: Chrome, Firefox, Edge (últimas versões).
 Dispositivos: Desktop, tablet, smartphone.
@@ -66,12 +66,12 @@ Testar o acesso ao sistema após o login.
 Validar o bloqueio de conta após tentativas inválidas.
 Verificar a persistência da autenticação após o login.
 
-Usabilidade
+Usabilidade:
 Avaliar a clareza dos campos de login e senha.
 Testar a facilidade de login no sistema.
 Verificar a acessibilidade para diferentes perfis de usuárias.
 
-Segurança
+Segurança:
 Testar a proteção contra ataques de força bruta.
 Validar a criptografia de dados durante o login.
 Verificar a segurança da autenticação e do armazenamento de cookies.
