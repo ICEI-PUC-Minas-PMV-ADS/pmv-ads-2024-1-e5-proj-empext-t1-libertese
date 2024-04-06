@@ -16,19 +16,20 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 
 |ID    | Descrição do Requisito  | Prioridade |
 |------|-----------------------------------------|----|
-|RF-001| Permitir cadastro de usuário administrador  | ALTA | 
-|RF-002| Permitir cadastro de funcionários  | ALTA |
-|RF-003| Implementar controle de inclusão, deleção e edição de funcionários  | MÉDIA |
-|RF-004| Permitir cadastro de produtos, categorias e materiais  | ALTA |
-|RF-005| Permitir controle de inclusão, deleção e edição de produtos, categorias e materiais| ALTA |
-|RF-006| Implementar precificação de produtos e materiais | MÉDIA |
-|RF-007| Permitir cadastro de patrocinadores | MÉDIA |
-|RF-008| Permitir cadastro de fornecedores | MÉDIA |
-|RF-009| Cadastrar despesas | MÉDIA |
-|RF-010| Permitir cadastro de receita | MÉDIA |
-|RF-011| Implementar fluxo de caixa  | ALTA |
-|RF-012| Implementar calculadora de gestão financeira | BAIXA |
-|RF-013| Permitir gerar relatórios de venda |  BAIXA | 
+|RF-001| Login na plataforma  | ALTA | 
+|RF-002| Permitir cadastro de usuário administrador  | ALTA | 
+|RF-003| Permitir cadastro de funcionários  | ALTA |
+|RF-004| Implementar controle de inclusão, deleção e edição de funcionários  | MÉDIA |
+|RF-005| Permitir cadastro de produtos, categorias e materiais  | ALTA |
+|RF-006| Permitir controle de inclusão, deleção e edição de produtos, categorias e materiais| ALTA |
+|RF-007| Implementar precificação de produtos e materiais | MÉDIA |
+|RF-008| Permitir cadastro de patrocinadores | MÉDIA |
+|RF-009| Permitir cadastro de fornecedores | MÉDIA |
+|RF-010| Cadastrar despesas | MÉDIA |
+|RF-011| Permitir cadastro de receita | MÉDIA |
+|RF-012| Implementar fluxo de caixa  | ALTA |
+|RF-013| Implementar calculadora de gestão financeira | BAIXA |
+|RF-014| Permitir gerar relatórios de venda |  BAIXA | 
 
 ### Requisitos não Funcionais
 
