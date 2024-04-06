@@ -97,7 +97,7 @@ Relatório de testes detalhado com os resultados obtidos.
 Recomendações para melhorias na usabilidade e segurança das telas.
 Ferramentas de Testes: Cypress
 Planilhas de Testes: Google Sheets, Excel.
-____________________________________________________
+____________________________________________
 
 # APAGAR DEPOIS
 # Planos de Testes de Software
