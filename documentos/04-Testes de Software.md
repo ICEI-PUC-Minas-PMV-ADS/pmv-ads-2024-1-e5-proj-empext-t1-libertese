@@ -17,13 +17,13 @@ Casos de teste específicos para cada tela, considerando diferentes cenários de
 
 # Estrutura do Plano:
 
-# 1. Definição do Ambiente de Testes:
+## 1. Definição do Ambiente de Testes:
 
 Navegadores: Chrome, Firefox, Edge (últimas versões).
 Dispositivos: Desktop, tablet, smartphone.
 Conexões: Internet rápida, internet lenta.
 
-# 2. Criação de Casos de Teste:
+## 2. Criação de Casos de Teste:
 
 ## Tela - Primeiro Acesso:
 Funcional:
@@ -76,19 +76,19 @@ Testar a proteção contra ataques de força bruta.
 Validar a criptografia de dados durante o login.
 Verificar a segurança da autenticação e do armazenamento de cookies.
 
-# 3. Execução dos Testes:
+## 3. Execução dos Testes:
 
 Execução manual dos casos de teste.
 Registro de resultados e falhas em planilha ou ferramenta de gestão de testes.
 Captura de screenshots e vídeos para evidenciar falhas.
 
-# 4. Análise dos Resultados:
+## 4. Análise dos Resultados:
 
 Identificação de falhas e bugs.
 Priorização das correções de acordo com a severidade das falhas.
 Reteste dos casos de teste após as correções.
 
-# 5. Documentação:
+## 5. Documentação:
 
 Relatório de testes detalhado com os resultados obtidos.
 Recomendações para melhorias na usabilidade e segurança das telas.
