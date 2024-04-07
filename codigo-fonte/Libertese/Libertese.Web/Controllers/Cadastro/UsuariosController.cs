@@ -130,7 +130,9 @@ namespace Libertese.Web.Controllers.Cadastro
                 .FirstOrDefaultAsync(m => m.Email == Email);
             if (usuario == null)
             {
-                return NotFound();
+                ModelState.AddModelError("novaSenha", "Usuário nao existe");
+                TempData["ErrorMessage"] = "O e-mail não está associado à nenhuma conta. Verifique se o cadastro foi feito e tente novamente.";
+                return View(usuario);
             }
 
             if (novaSenha == usuario.Senha)
@@ -153,7 +155,9 @@ namespace Libertese.Web.Controllers.Cadastro
                 {
                     if (!UsuarioExists(usuario.Id))
                     {
-                        return NotFound();
+                        ModelState.AddModelError("novaSenha", "Usuário nao existe");
+                        TempData["ErrorMessage"] = "Não conseguimos encontrar o perfil de usuário. Verifique se o cadastro foi feito e tente novamente.";
+                        return View(usuario);
                     }
                     else
                     {
