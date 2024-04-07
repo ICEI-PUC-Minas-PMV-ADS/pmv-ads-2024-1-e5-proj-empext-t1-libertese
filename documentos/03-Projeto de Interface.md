@@ -60,6 +60,19 @@ Esta será a página principal do Libertese, é por aqui onde toda a usabilidade
 
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/37624930-ca08-463c-a028-52af56ffdb69)
 
+### TELA: Fluxo de caixa
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/ce72db1c-ffdd-4473-8a9a-e52efc2ffaca)
+
+### Tela: Despesas
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/53b51067-9a5b-43d5-949d-9078dfcd8bc3)
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/4a23e448-aa28-4574-8482-1df32e4ae1b2)
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/a683abdf-df0f-4d83-aa68-5bc8a924ce0b)
+
+
 
 
 
