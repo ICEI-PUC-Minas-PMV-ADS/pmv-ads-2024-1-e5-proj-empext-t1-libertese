@@ -1,0 +1,274 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>Libertese | Registre-se</title>
+    <style>
+        form {
+            padding: auto;
+            width: 300px;
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .logo img {
+            width: 100%;
+        }
+
+        label {
+            width: 100%;
+            display: block;
+            margin-bottom: 5px;
+            font-family: "Montserrat", sans-serif;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        button {
+            width: 100%;
+            padding: 12px;
+            box-sizing: border-box;
+            border-radius: 8px;
+            font-family: "Montserrat", sans-serif;
+            font-size: 14px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            padding-left: 45px;
+        }
+
+        input.invalid {
+            border-color: crimson;
+            box-shadow: 0px 0px 0px crimson;
+        }
+
+        span {
+            color: crimson;
+            display: block;
+            margin-top: 5px;
+            font-family: "Montserrat", sans-serif;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .icon {
+            display: inline-flex;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+            .icon.name {
+                position: absolute;
+                color: #000;
+            }
+
+            .icon.email {
+                position: absolute;
+                color: #000;
+            }
+
+            .icon.senha {
+                position: absolute;
+                color: #000;
+            }
+
+        .registrese {
+            font-family: "Montserrat", sans-serif;
+            font-weight: 500;
+            font-style: normal;
+            font-size: 20px;
+        }
+
+        button {
+            background-color: #000;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background-color 0.5s ease;
+        }
+
+            button:hover {
+                background-color: #4F4F4F;
+            }
+
+        .link {
+            text-align: center;
+            font-family: "Montserrat", sans-serif;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        a {
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+            a:hover {
+                color: #4F4F4F;
+            }
+    </style>
+</head>
+
+<body>
+
+
+
+    <form id="userForm">
+        <div class="logo">
+            <img src="~/img/Logo principal.png" alt="">
+        </div>
+
+        <div class="container">
+            <div class="registrese">
+                <h2>Registre-se</h2>
+            </div>
+
+            <div class="form-group">
+
+                <label for="nome"> Nome Completo </label>
+                <div class="icon name" style="
+                    display: inline-flex;
+                    align-items: center;
+                    width: 100%
+                    ">
+                    <i class="fa-solid fa-pen" style="
+                    position: absolute;
+                    padding-left: 15px;
+                    "></i>
+                    <input type="text" placeholder="Digite seu nome" id="nome" required />
+                </div>
+                <br />
+                <br />
+                <br />
+                <label for="email"> E-mail </label>
+                <div class="icon email" style="
+                    display: inline-flex;
+                    align-items: center;
+                    width: 100%
+                ">
+                    <i class="fa-regular fa-envelope" style="
+                    position: absolute;
+                    padding-left: 15px;
+                    "></i>
+                    <input type="email" oninput="validarEmail(this)" onfocus="redefinirMsg()"
+                           placeholder="Example@something.com" id="email" required />
+
+                </div>
+                <br />
+                <br />
+                <span id="error-email"></span>
+                <br />
+                <label for="senha"> Senha </label>
+                <div class="icon senha" style="
+                    display: inline-flex;
+                    align-items: center;
+                    width: 100%
+                ">
+
+                    <i class="fa-solid fa-lock" style="
+                    position: absolute;
+                    padding-left: 15px;
+                    "></i>
+                    <input type="password" placeholder="Digite sua senha" id="senha" required />
+                </div>
+                <br />
+                <br />
+                <br />
+                <br />
+
+                <button type="button" onclick="salvarUsuario()">Confirmar</button>
+                <br />
+                <br />
+                <div class="link">
+                    <a asp-controller="Home" asp-action="Login">Já possui cadastro? Clique aqui para fazer login</a>
+                </div>
+
+            </div>
+        </div>
+    </form>
+
+
+</body>
+
+</html>
+
+<script>
+
+    function salvarUsuario() {
+        var nome = document.getElementById("nome").value;
+        var email = document.getElementById("email").value;
+        var senha = document.getElementById("senha").value;
+
+        // Verifica se os campos estão vazios
+        if (!nome || !email || !senha) {
+            alert('Por favor, preencha todos os campos');
+            return; // Impede que o formulário seja enviado se os campos estiverem vazios
+        }
+
+
+        var emailInput = document.getElementById("email");
+        if (!emailInput.checkValidity()) {
+            alert('Por favor, insira um endereço de email válido');
+            return; // Impede que o formulário seja enviado se o email for inválido
+        }
+
+        var data = {
+            Nome: nome,
+            Email: email,
+            Senha: senha
+        };
+
+        fetch("/api/v1/user", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Erro ao salvar usuário');
+                }
+                alert('Usuário cadastrado com sucesso!');
+                document.getElementById("userForm").reset(); // Limpa o formulário após o envio bem-sucedido
+            })
+            .catch(error => {
+                console.error('Erro:', error);
+                alert('Erro ao salvar usuário');
+            });
+    }
+
+    function validarEmail(input) {
+        var email = input.value;
+        var error = document.querySelector('#error-email');
+        if (!input.checkValidity()) {
+            input.classList.add('invalid');
+            error.innerHTML = "Email inválido";
+        } else {
+            input.classList.remove('invalid');
+            error.innerHTML = ""; // Limpa a mensagem de erro quando o email for válido
+        }
+    }
+
+    function redefinirMsg() {
+        var error = document.querySelector('#error-email');
+        error.innerHTML = "";
+    }
+
+</script>

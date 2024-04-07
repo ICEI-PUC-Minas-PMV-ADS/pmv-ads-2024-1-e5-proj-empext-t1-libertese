@@ -23,6 +23,16 @@ namespace Libertese.Web.Controllers
             return View();
         }
 
+        public IActionResult Login()
+        {
+            return View("~/Views/Usuarios/Login.cshtml");
+        }
+
+        public IActionResult Registro()
+        {
+            return View("~/Views/Usuarios/Registro.cshtml");
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
