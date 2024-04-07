@@ -3,7 +3,7 @@
 
 A seguir será apresentado o protótipo das telas do Libertese, todo o protótipo foi desenvolvido utilizando a ferramenta Figma.
 
-# TELA: LOGIN
+## TELA: LOGIN
 
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/4d5c676b-f634-45cc-a162-e586d3173176)
 
@@ -14,3 +14,6 @@ A seguir será apresentado o protótipo das telas do Libertese, todo o protótip
 ## TELA: ESQUECEU A SENHA
 
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/4dd8fe8e-722e-4fc4-ae70-2b7969b46e1c)
+
+## TELA: HOME
+Esta será a página principal do Libertese, é por aqui onde toda a usabilidade do sistema se inicia.
