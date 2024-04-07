@@ -71,27 +71,16 @@
 
             .icon.name {
                 position: absolute;
-                padding-left: 15px;
                 color: #000;
             }
 
             .icon.email {
                 position: absolute;
-                left: 13%;
-                top: 48%;
-                width: 60px;
-                height: 100%;
-                display: flex;
                 color: #000;
             }
 
             .icon.senha {
                 position: absolute;
-                left: 13%;
-                top: 65%;
-                width: 60px;
-                height: 100%;
-                display: flex;
                 color: #000;
             }
 
@@ -146,35 +135,64 @@
             </div>
 
             <div class="form-group">
+                
                 <label for="nome"> Nome Completo </label>
-                <input type="text" placeholder="Digite seu nome" id="nome" required />
-                <div class="icon name">
+                <div class="icon name" style="
+                    display: inline-flex;
+                    align-items: center;
+                    width: 100%
+                    ">                                        
                     <i class="fa-solid fa-pen" style="
                     position: absolute;
                     padding-left: 15px;
-                    "></i>
+                    "></i>                
+                    <input type="text" placeholder="Digite seu nome" id="nome" required />
                 </div>
+                <br />
+                <br />
+                <br />
                 <br />
                 <br />
                 <label for="email"> E-mail </label>
-                <input type="email" oninput="validarEmail(this)" onfocus="redefinirMsg()"
-                       placeholder="Example@something.com" id="email" required />
-                <div class="icon email">
-                    <i class="fa-regular fa-envelope"></i>
+                <div class="icon email" style="
+                    display: inline-flex;
+                    align-items: center;
+                    width: 100%
+                ">
+                    <i class="fa-regular fa-envelope" style="
+                    position: absolute;
+                    padding-left: 15px;
+                    "></i>
+                    <input type="email" oninput="validarEmail(this)" onfocus="redefinirMsg()"
+                    placeholder="Example@something.com" id="email" required />
+                   
                 </div>
+                <br />
+                <br />
                 <br />
                 <span id="error-email"></span>
                 <br />
                 <label for="senha"> Senha </label>
-                <input type="password" placeholder="Digite sua senha" id="senha" required />
-                <div class="icon senha">
-                    <i class="fa-solid fa-lock"></i>
+                <div class="icon senha" style="
+                    display: inline-flex;
+                    align-items: center;
+                    width: 100%
+                ">
+                    
+                    <i class="fa-solid fa-lock" style="
+                    position: absolute;
+                    padding-left: 15px;
+                    "></i>
+                    <input type="password" placeholder="Digite sua senha" id="senha" required />
                 </div>
+                <br />
+                <br />
                 <br />
                 <br />
                 <br />
                 <br />
                 <button type="button" onclick="salvarUsuario()">Confirmar</button>
+                <br />
                 <div class="link">
                     <a asp-controller="Home" asp-action="Login">Já possui cadastro? Clique aqui para fazer login</a>
                 </div>
