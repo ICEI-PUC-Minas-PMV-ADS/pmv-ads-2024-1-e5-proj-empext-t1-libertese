@@ -116,6 +116,60 @@ namespace Libertese.Web.Controllers.Cadastro
             return View(usuario);
         }
 
+        [HttpGet]
+        public IActionResult ResetPassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ResetPassword(string Email, string novaSenha)
+        {
+            var usuario = await _context.Usuarios
+                .FirstOrDefaultAsync(m => m.Email == Email);
+            if (usuario == null)
+            {
+                ModelState.AddModelError("novaSenha", "Usuário nao existe");
+                TempData["ErrorMessage"] = "O e-mail não está associado à nenhuma conta. Verifique se o cadastro foi feito e tente novamente.";
+                return View(usuario);
+            }
+
+            if (novaSenha == usuario.Senha)
+            {
+                ModelState.AddModelError("novaSenha", "Nova senha deve ser diferente da senha anterior.");
+                TempData["ErrorMessage"] = "A senha nova deve ser diferente da senha atual.";
+                return View(usuario);
+            }
+
+            usuario.Senha = novaSenha;
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(usuario);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!UsuarioExists(usuario.Id))
+                    {
+                        ModelState.AddModelError("novaSenha", "Usuário nao existe");
+                        TempData["ErrorMessage"] = "Não conseguimos encontrar o perfil de usuário. Verifique se o cadastro foi feito e tente novamente.";
+                        return View(usuario);
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            return View(usuario);
+        }
+
+
         // GET: Usuarios/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
