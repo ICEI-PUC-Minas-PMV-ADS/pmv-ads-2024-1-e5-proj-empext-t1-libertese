@@ -35,7 +35,8 @@ Esta será a página principal do Libertese, é por aqui onde toda a usabilidade
 
 ### TELA: Receita
 
-![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/b32e02f5-77bd-4195-9798-249055cf76a0)
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/99cbd93f-7c3c-4e40-a9bd-bd17d69b6a93)
+
 
 ### TELA: Cadastro de Receita
 
