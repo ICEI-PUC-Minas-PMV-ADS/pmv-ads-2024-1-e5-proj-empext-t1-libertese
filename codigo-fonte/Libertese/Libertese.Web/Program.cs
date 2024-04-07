@@ -1,4 +1,6 @@
 using Libertese.Data;
+using Libertese.Infraestrutura;
+using Libertese.Model;
 using Microsoft.EntityFrameworkCore;
 using System.Configuration;
 
@@ -7,6 +9,20 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ApplicationDbContext>();
+
+builder.Services.AddTransient<IUserRepository, UserRepository>();
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAnyOrigin",
+        builder =>
+        {
+            builder
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader();
+        });
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -21,6 +37,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+app.UseCors("AllowAnyOrigin");
 
 app.UseAuthorization();
 
