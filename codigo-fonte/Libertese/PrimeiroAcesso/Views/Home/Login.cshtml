@@ -55,7 +55,7 @@
         input[type="text"],
         input[type="email"],
         input[type="password"] {
-            padding-left: 30px;
+            padding-left: 45px;
         }
 
         input.invalid {
@@ -112,6 +112,9 @@
 
         .link {
             text-align: center;
+            font-family: "Montserrat", sans-serif;
+            font-weight: 500;
+            font-size: 14px;
         }
 
         a {
@@ -133,6 +136,7 @@
 
         <div class="logo">
             <img src="~/img/Logo principal.png" alt="">
+            <br />
         </div>
 
         <div class="container">
@@ -176,6 +180,8 @@
                 <br />
                 <br />
                 <button type="button" onclick="autenticarUsuario()">Confirmar</button>
+                <br />
+                <br />
                 <div class="link">
                     <a asp-controller="Home" asp-action="Index">Não possui cadastro? Clique aqui</a>
                 </div>
