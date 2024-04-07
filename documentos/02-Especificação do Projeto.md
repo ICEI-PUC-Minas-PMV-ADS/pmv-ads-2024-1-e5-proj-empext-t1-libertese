@@ -4,7 +4,7 @@
 
 Descrição Detalhada das Tecnologias Utilizadas no Libertese
 
-1. JavaScript:
+### 1. JavaScript:
 Linguagem de programação de alto nível, versátil e interpretada, utilizada para adicionar interatividade e dinamismo às páginas web.
 Permite a criação de interfaces de usuário complexas e responsivas, animações, jogos e muito mais.
 No sistema, o JavaScript será usado para:
