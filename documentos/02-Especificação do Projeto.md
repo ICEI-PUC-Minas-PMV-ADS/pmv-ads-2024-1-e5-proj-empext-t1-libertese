@@ -53,7 +53,7 @@ O projeto está restrito pelos itens apresentados na tabela a seguir.
 
 
 ## Diagrama de Casos de Uso
-![Diagrama de Casos de Uso](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/86004024/b5e6ef21-0a40-49dd-ba49-d352116be874)
+![Diagrama de Casos de Uso](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/86004024/ada7e19e-022d-4f29-8a8d-9f2f00f456c1)
 
 ## Modelo ER (Projeto Conceitual)
 
