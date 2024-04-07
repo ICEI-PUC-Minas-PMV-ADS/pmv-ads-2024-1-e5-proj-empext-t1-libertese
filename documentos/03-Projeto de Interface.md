@@ -42,13 +42,26 @@ Esta será a página principal do Libertese, é por aqui onde toda a usabilidade
 
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/98e12b37-120c-482a-ad41-e1b68f813287)
 
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/3f0ac012-20a9-44fd-94d8-be2d9d9ace05)
+
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/566ba36c-99ce-43ce-963e-0022590e51fd)
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/38da9314-253f-47f1-8547-8d9e0f299ac0)
 
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/b3860baa-cfad-4968-81ea-e2ccdce65914)
 
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/d81dc70e-dc10-4550-a6cc-a268135e485e)
+
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/3b5f3697-cf7b-4b35-a5c2-01dcf3102227)
 
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/5b73d438-2f96-40ea-be8f-e718965b00fc)
+
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/48b506e5-4b4a-47ae-aaa9-2c468255de92)
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/37624930-ca08-463c-a028-52af56ffdb69)
+
+
+
 
 
 
