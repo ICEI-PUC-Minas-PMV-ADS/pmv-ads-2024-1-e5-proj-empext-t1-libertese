@@ -1,0 +1,49 @@
+﻿@model Libertese.Domain.Entities.Precificacao.Produto
+
+@{
+    ViewData["Title"] = "Editar";
+}
+
+<h1>Editar Produto</h1>
+
+<h4></h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Nome" class="control-label"></label>
+                <input asp-for="Nome" class="form-control" />
+                <span asp-validation-for="Nome" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TempoProducao" class="control-label"></label>
+                <input asp-for="TempoProducao" class="form-control" />
+                <span asp-validation-for="TempoProducao" class="text-danger"></span>
+            </div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="DataCriacao" class="control-label"></label>
+                <input asp-for="DataCriacao" class="form-control" />
+                <span asp-validation-for="DataCriacao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DataAtualizacao" class="control-label"></label>
+                <input asp-for="DataAtualizacao" class="form-control" />
+                <span asp-validation-for="DataAtualizacao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Salvar" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Voltar</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
