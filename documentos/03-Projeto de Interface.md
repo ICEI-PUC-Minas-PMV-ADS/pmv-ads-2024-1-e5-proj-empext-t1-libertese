@@ -72,6 +72,11 @@ Esta será a página principal do Libertese, é por aqui onde toda a usabilidade
 
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/a683abdf-df0f-4d83-aa68-5bc8a924ce0b)
 
+### Tela: Relatórios
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/e13feafc-a74b-4419-baa7-66b589adb87c)
+
+
 
 
 
