@@ -11,9 +11,7 @@
     <title>Libertese | Login</title>
     <style>
         form {
-            padding: 40px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+            padding: auto;
             width: 300px;
             display: flex;
             flex-direction: column;
@@ -46,7 +44,6 @@
         input[type="email"],
         input[type="password"],
         button {
-            margin-bottom: 10px;
             width: 100%;
             padding: 12px;
             box-sizing: border-box;
@@ -66,6 +63,23 @@
             box-shadow: 0px 0px 0px crimson;
         }
 
+        .icon {
+            display: inline-flex;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+            .icon.email {
+                position: absolute;
+                color: #000;
+            }
+
+            .icon.senha {
+                position: absolute;
+                color: #000;
+            }
+
         span {
             color: crimson;
             display: block;
@@ -74,6 +88,7 @@
             font-weight: 500;
             font-size: 14px;
         }
+
 
         .registrese {
             font-family: "Montserrat", sans-serif;
@@ -128,18 +143,33 @@
 
             <div class="form-group">
                 <label for="email"> E-mail </label>
-                <input type="email" oninput="validarEmail(this)" onfocus="redefinirMsg()"
-                       placeholder="Example@something.com" id="email" required />
-                <div class="icon email">
-                    <i class="fa-regular fa-envelope"></i>
+                <div class="icon email" style="
+                    display: inline-flex;
+                    align-items: center;
+                    width: 100%
+                ">               
+                    <i class="fa-regular fa-envelope" style="
+                    position: absolute;
+                    padding-left: 15px;
+                    "></i>
+                    <input type="email" oninput="validarEmail(this)" onfocus="redefinirMsg()"
+                           placeholder="Example@something.com" id="email" required />
                 </div>
+                <br />
                 <br />
                 <span id="error-email"></span>
                 <br />
                 <label for="senha"> Senha </label>
-                <input type="password" placeholder="Digite sua senha" id="senha" required />
-                <div class="icon senha">
-                    <i class="fa-solid fa-lock"></i>
+                <div class="icon senha" style="
+                     display: inline-flex;
+                     align-items: center;
+                     width: 100%">
+                
+                    <i class="fa-solid fa-lock" style="
+                    position: absolute;
+                    padding-left: 15px;
+                    "></i>
+                    <input type="password" placeholder="Digite sua senha" id="senha" required />
                 </div>
                 <br />
                 <br />
