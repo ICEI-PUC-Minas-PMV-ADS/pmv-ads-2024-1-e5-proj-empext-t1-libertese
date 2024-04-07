@@ -76,6 +76,14 @@ Esta será a página principal do Libertese, é por aqui onde toda a usabilidade
 
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/e13feafc-a74b-4419-baa7-66b589adb87c)
 
+### Tela: Patrocinadores
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/2c3ddf6f-cc70-4cec-8fc3-72902cc41dc0)
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/1e1c7864-842c-4799-8428-0917783882ec)
+
+
+
 
 
 
