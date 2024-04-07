@@ -2,7 +2,69 @@
 
 ## Arquitetura e Tecnologias
 
-o	Descreva brevemente a arquitetura definida para o projeto e as tecnologias a serem utilizadas. Sugere-se a criação de um diagrama de componentes da solução.
+Descrição Detalhada das Tecnologias Utilizadas no Libertese
+
+1. JavaScript:
+Linguagem de programação de alto nível, versátil e interpretada, utilizada para adicionar interatividade e dinamismo às páginas web.
+Permite a criação de interfaces de usuário complexas e responsivas, animações, jogos e muito mais.
+No sistema, o JavaScript será usado para:
+- Validar formulários e entradas de dados.
+- Manipular elementos da DOM (Document Object Model) dinamicamente.
+- Criar gráficos e visualizações interativas de dados.
+- Implementar funcionalidades complexas do sistema, como chat em tempo real, notificações e filtros de pesquisa.
+- Integrar com APIs externas para ampliar as funcionalidades do sistema.
+
+2. CSS:
+Linguagem de estilo que define a aparência das páginas web, como cores, fontes, layout e posicionamento de elementos.
+Permite criar interfaces de usuário bonitas, consistentes e acessíveis em diferentes dispositivos.
+No sistema, o CSS será usado para:
+Definir a identidade visual do sistema, como cores, tipografia e logotipo.
+Criar layouts responsivos que se adaptam a diferentes tamanhos de tela.
+Estilizar elementos da interface para melhorar a usabilidade e a experiência do usuário.
+Implementar animações e transições para tornar o sistema mais interativo e agradável.
+Criar diferentes temas visuais para personalizar a experiência do usuário.
+
+3. HTML:
+Linguagem de marcação que define a estrutura básica das páginas web, como cabeçalhos, parágrafos, imagens e links.
+É a base de toda página web e define o conteúdo que será exibido ao usuário.
+No sistema, o HTML será usado para:
+Definir a estrutura das páginas do sistema, como menus, seções e áreas de conteúdo.
+Inserir texto, imagens, vídeos e outros elementos multimídia.
+Criar links para outras páginas do sistema e para sites externos.
+Implementar formulários para coleta de dados do usuário.
+Organizar o conteúdo de forma clara e acessível para o usuário.
+
+4. Figma:
+Ferramenta de design de interface de usuário que permite criar protótipos interativos de alta qualidade.
+Facilita a visualização e o teste do sistema antes de sua implementação final.
+No sistema, o Figma será usado para:
+Criar protótipos das interfaces do sistema, incluindo telas, menus e funcionalidades.
+Testar a usabilidade e a interatividade do sistema com usuários reais.
+Colaborar com designers e desenvolvedores para aprimorar o design do sistema.
+Criar um sistema visual consistente e intuitivo para o usuário.
+Gerar assets de design para o desenvolvimento do sistema.
+
+5. PostgreSQL:
+Sistema de gerenciamento de banco de dados relacional open-source, robusto e escalável.
+Permite armazenar e gerenciar os dados do sistema de forma segura e eficiente.
+No sistema, o PostgreSQL será usado para:
+Armazenar todos os dados do sistema, como informações de usuários, produtos, pedidos e configurações.
+Gerenciar as transações de dados do sistema de forma segura e confiável.
+Implementar consultas complexas para recuperar e analisar dados do sistema.
+Garantir a integridade e a consistência dos dados do sistema.
+Escalar a capacidade de armazenamento e processamento de acordo com o crescimento do sistema.
+
+6. C#:
+Linguagem de programação de alto nível, moderna e versátil, utilizada para desenvolver aplicações web, desktop e mobile.
+Permite criar aplicações robustas, escaláveis e seguras.
+No sistema, o C# será usado para:
+Desenvolver a lógica de negócio do sistema, como regras de validação, cálculos e processamento de dados.
+Criar APIs para integração com outros sistemas e serviços.
+Implementar funcionalidades complexas do sistema, como relatórios e dashboards.
+Garantir a segurança e a confiabilidade do sistema.
+Facilitar a manutenção e o desenvolvimento futuro do sistema.
+
+
 
 ## Project Model Canvas
 
