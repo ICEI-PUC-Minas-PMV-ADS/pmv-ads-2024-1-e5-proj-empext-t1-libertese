@@ -95,6 +95,22 @@ Esta será a página principal do Libertese, é por aqui onde toda a usabilidade
 
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/1909e2b7-ea03-4b8c-933f-9eac9a270fe5)
 
+### Tela: Produtos e Calculadora
+
+Estas telas estão sendo desenvolvidas, mas ainda precisam de um refinamento melhor com o parceiro para entender melhor a sua necessidade. Nos próximos dias vamos ter uma reunião com o parceiro para alinharmos essas informações.
+
+As seguintes imagens são somente uma amostra das telas, não sendo ainda a vesão final:
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/91d179c1-f0f5-405f-a603-deec4afc9ea1)
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/9000516c-6bf4-4549-ab65-af216e15e890)
+
+
+
+
+
+
+
 
 
 
