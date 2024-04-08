@@ -1,15 +1,19 @@
 ﻿@model IEnumerable<Libertese.Domain.Entities.Precificacao.Produto>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Gerenciar Produtos";
 }
 
 <h1>Gerenciar Produtos</h1>
 
-<p>
-    <a asp-action="Create">Novo Produto</a>
-</p>
-<table class="table">
+<div class="card card-outline card-primary">
+    <div class="card-header">
+        <div class="form-group">
+            <a asp-action="Create" type="button" class="btn btn-success">Novo Produto</a>
+</div>
+</div>
+    <div class="card-body">
+<table class="table table-striped">
     <thead>
         <tr>
             <th>
@@ -17,12 +21,6 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.TempoProducao)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DataCriacao)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DataAtualizacao)
             </th>
             <th></th>
         </tr>
@@ -37,12 +35,6 @@
                 @Html.DisplayFor(modelItem => item.TempoProducao)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.DataCriacao)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DataAtualizacao)
-            </td>
-            <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Detalhes</a> |
                 <a asp-action="Delete" asp-route-id="@item.Id">Deletar</a>
@@ -51,3 +43,4 @@
 }
     </tbody>
 </table>
+</div>

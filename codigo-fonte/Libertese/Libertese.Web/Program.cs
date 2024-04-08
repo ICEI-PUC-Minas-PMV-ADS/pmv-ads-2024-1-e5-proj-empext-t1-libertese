@@ -1,6 +1,6 @@
 using Libertese.Data;
+using Libertese.Data.Interfaces;
 using Libertese.Infraestrutura;
-using Libertese.Model;
 using Microsoft.EntityFrameworkCore;
 using System.Configuration;
 
@@ -10,7 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ApplicationDbContext>();
 
-builder.Services.AddTransient<IUserRepository, UserRepository>();
+builder.Services.AddTransient<IUsuarioRepository, UsuarioRepository>();
 
 builder.Services.AddCors(options =>
 {

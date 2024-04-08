@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Libertese.Data;
 using Libertese.Domain.Entities.Precificacao;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Libertese.Web.Controllers.Precificacao
 {
@@ -56,8 +57,10 @@ namespace Libertese.Web.Controllers.Precificacao
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Nome,TempoProducao,Id,DataCriacao,DataAtualizacao")] Produto produto)
         {
+
             if (ModelState.IsValid)
             {
+
                 _context.Add(produto);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

@@ -58,8 +58,8 @@ namespace Libertese.Web.Controllers.Precificacao
         {
             if (ModelState.IsValid)
             {
-                categoria.DataCriacao = DateTimeOffset.UtcNow;
-                categoria.DataAtualizacao = DateTimeOffset.UtcNow;
+                categoria.DataCriacao = DateTime.Now;
+                categoria.DataAtualizacao = DateTime.Now;
                 _context.Add(categoria);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -102,7 +102,7 @@ namespace Libertese.Web.Controllers.Precificacao
             {
                 try
                 {
-                    model.DataAtualizacao = DateTimeOffset.UtcNow;
+                    model.DataAtualizacao = DateTime.Now;
                     model.Nome = categoria.Nome;
                     _context.Update(model);
                     await _context.SaveChangesAsync();

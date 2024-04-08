@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Libertese.Model;
 using Libertese.ViewModel;
+using Libertese.Data.Interfaces;
+using Libertese.Domain.Entities.Cadastro;
 
 namespace Libertese.Web.Controllers.Cadastro
 {
@@ -9,9 +10,9 @@ namespace Libertese.Web.Controllers.Cadastro
     public class CadastroController : ControllerBase
     {
 
-        private readonly IUserRepository _userRepository;
+        private readonly IUsuarioRepository _userRepository;
 
-        public CadastroController(IUserRepository userRepository)
+        public CadastroController(IUsuarioRepository userRepository)
         {
             _userRepository = userRepository ?? throw new ArgumentNullException(nameof(userRepository));
         }
@@ -24,7 +25,7 @@ namespace Libertese.Web.Controllers.Cadastro
                 return BadRequest("Dados de usuário inválidos. Certifique-se de fornecer um nome, um e-mail e uma senha.");
             }
 
-            var user = new User(userView.Nome, userView.Email, userView.Senha);
+            var user = new Usuario(userView.Nome, userView.Email, userView.Senha);
             _userRepository.Add(user);
             return Ok();
         }
