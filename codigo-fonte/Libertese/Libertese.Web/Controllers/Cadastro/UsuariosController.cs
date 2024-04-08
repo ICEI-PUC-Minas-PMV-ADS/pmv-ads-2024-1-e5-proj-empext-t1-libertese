@@ -164,7 +164,7 @@ namespace Libertese.Web.Controllers.Cadastro
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Login", "Home");
             }
             return View(usuario);
         }
