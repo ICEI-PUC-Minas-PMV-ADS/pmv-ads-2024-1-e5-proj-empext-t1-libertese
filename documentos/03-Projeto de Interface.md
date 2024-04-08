@@ -93,6 +93,9 @@ Esta será a página principal do Libertese, é por aqui onde toda a usabilidade
 
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/2bcbfbe5-5bda-4b3c-9d6f-55e2a68c8fbe)
 
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/1909e2b7-ea03-4b8c-933f-9eac9a270fe5)
+
+
 
 
 
