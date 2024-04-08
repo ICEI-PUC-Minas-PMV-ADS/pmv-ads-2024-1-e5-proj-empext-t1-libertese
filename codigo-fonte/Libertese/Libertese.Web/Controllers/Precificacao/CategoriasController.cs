@@ -7,158 +7,46 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Libertese.Data;
 using Libertese.Domain.Entities.Precificacao;
+using Libertese.Data.Repositories;
+using Microsoft.AspNetCore.Authorization;
+using Libertese.Data.Repositories.Interfaces;
+using Libertese.Data.Services.Interfaces;
+using System.Data.Entity;
 
 namespace Libertese.Web.Controllers.Precificacao
 {
     public class CategoriasController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly IProdutoService _service;
+        private readonly ICategoriaRepository<Categoria> _repository;
 
-        public CategoriasController(ApplicationDbContext context)
+        public CategoriasController(IProdutoService service, ICategoriaRepository<Categoria> repository)
         {
-            _context = context;
+            _service = service;
+            _repository = repository;
         }
 
-        // GET: Categorias
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index() => View(await _repository.GetAll());
+        public async Task<IActionResult> Details(int id) => HandleResult(await _service.BuscarCategoria(id));
+        public async Task<IActionResult> Deletar(int id) => HandleOperationResult(await _service.DeletarCategoria(id));
+        
+        private IActionResult HandleOperationResult(OperationResult result)
         {
-            return View(await _context.Categorias.ToListAsync());
+            if (result.Error) return BadRequest(new { Message = result.Message, Errors = result.Errors });
+            if (!result.Error) return Ok(new { Data = result.Data, Message = result.Message });
+            if (!result.Error && result.Data == null) return NotFound();
+
+            return StatusCode(422, new {Message = "Não foi possível processar a requisição." });
         }
 
-        // GET: Categorias/Details/5
-        public async Task<IActionResult> Details(int? id)
+        private IActionResult HandleResult(OperationResult result)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            if (result.Error && (result.Message.IndexOf("não encontrada.")) == -1) return NotFound();
+            if (result.Error) return BadRequest(new { Message = result.Message, Errors = result.Errors });
+            if (!result.Error) return View(result.Data); ;
+            if (!result.Error && result.Data == null) return NotFound();
 
-            var categoria = await _context.Categorias
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (categoria == null)
-            {
-                return NotFound();
-            }
-
-            return View(categoria);
-        }
-
-        // GET: Categorias/Create
-        public IActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Categorias/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Nome,Id,DataCriacao,DataAtualizacao")] Categoria categoria)
-        {
-            if (ModelState.IsValid)
-            {
-                categoria.DataCriacao = DateTime.Now;
-                categoria.DataAtualizacao = DateTime.Now;
-                _context.Add(categoria);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(categoria);
-        }
-
-        // GET: Categorias/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var categoria = await _context.Categorias.FindAsync(id);
-            if (categoria == null)
-            {
-                return NotFound();
-            }
-            return View(categoria);
-        }
-
-        // POST: Categorias/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Nome,Id,DataCriacao,DataAtualizacao")] Categoria categoria)
-        {
-
-            var model = await _context.Categorias.FirstOrDefaultAsync(m => m.Id == id);
-
-            if (id != categoria.Id)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid && model != null)
-            {
-                try
-                {
-                    model.DataAtualizacao = DateTime.Now;
-                    model.Nome = categoria.Nome;
-                    _context.Update(model);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!CategoriaExists(categoria.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(categoria);
-        }
-
-        // GET: Categorias/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var categoria = await _context.Categorias
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (categoria == null)
-            {
-                return NotFound();
-            }
-
-            return View(categoria);
-        }
-
-        // POST: Categorias/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var categoria = await _context.Categorias.FindAsync(id);
-            if (categoria != null)
-            {
-                _context.Categorias.Remove(categoria);
-            }
-
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-
-        private bool CategoriaExists(int id)
-        {
-            return _context.Categorias.Any(e => e.Id == id);
+            return StatusCode(422, new { Message = "Não foi possível processar a requisição." });
         }
     }
 }

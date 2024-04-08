@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Libertese.ViewModel;
-using Libertese.Data.Interfaces;
+using Libertese.ViewModels;
 using Libertese.Domain.Entities.Cadastro;
+using Libertese.Data.Repositories.Interfaces;
 
 namespace Libertese.Web.Controllers.Cadastro
 {
