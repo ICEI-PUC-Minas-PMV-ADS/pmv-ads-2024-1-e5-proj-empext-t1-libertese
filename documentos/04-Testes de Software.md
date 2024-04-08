@@ -36,14 +36,14 @@ Os testes funcionais a serem realizados no aplicativo são descritos a seguir:
  
 # Evidências de Testes de Software
 
-## RF-001 / RF-002
+## RF-001	 - Permitir cadastro de usuário administrador / RF-002	Permitir cadastro de funcionários 
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Cadastro1.jpeg)
 
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Cadastro2.jpeg)
 
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Cadastro3.jpeg)
 
-## RF-003
+## RF-003	 - Login na plataforma
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Login1.jpeg)
 
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Login2.jpeg)
