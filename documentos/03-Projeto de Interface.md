@@ -23,15 +23,22 @@ Esta será a página principal do Libertese, é por aqui onde toda a usabilidade
 
 ### TELA: Funcionários
 
-![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/5830e791-98a7-4b83-af4c-5d3abcf6d2ec)
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/8bd2ac2f-31e1-44d1-9879-c47d1f01d0d3)
+
 
 ### TELA: Cadastro de Funcionários
 
-![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/f2151429-d50f-4682-a8ff-1c83dabbafa7)
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/fc8486bc-2223-4c6f-8e95-45217937046d)
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/697cd4e1-1c3e-4ef7-b3a0-bc2df29f785c)
+
 
 ### TELA: Edição de Funcionários
 
-![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/d2b34c43-acf5-4d2f-8f59-a98205a43f6f)
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/a1bed2a6-b09d-4c4b-8d4f-6da29c0dff68)
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/9d555749-fbf2-43e7-98e0-5af435265700)
+
 
 ### TELA: Receita
 
