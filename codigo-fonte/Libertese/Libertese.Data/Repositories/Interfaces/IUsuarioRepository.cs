@@ -1,6 +1,6 @@
 ﻿using Libertese.Domain.Entities.Cadastro;
 
-namespace Libertese.Data.Interfaces
+namespace Libertese.Data.Repositories.Interfaces
 {
     public interface IUsuarioRepository
     {

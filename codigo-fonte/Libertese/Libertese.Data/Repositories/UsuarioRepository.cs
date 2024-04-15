@@ -1,8 +1,7 @@
-﻿using Libertese.Data;
-using Libertese.Data.Interfaces;
+﻿using Libertese.Data.Repositories.Interfaces;
 using Libertese.Domain.Entities.Cadastro;
 
-namespace Libertese.Infraestrutura
+namespace Libertese.Data.Repositories
 {
     public class UsuarioRepository : IUsuarioRepository
     {

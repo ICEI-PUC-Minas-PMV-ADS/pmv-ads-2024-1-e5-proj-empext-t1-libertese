@@ -1,4 +1,4 @@
-using Libertese.Web.Models;
+using Libertese.Web.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 

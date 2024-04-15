@@ -1,4 +1,4 @@
-namespace Libertese.Web.Models
+namespace Libertese.Web.ViewModels
 {
     public class ErrorViewModel
     {

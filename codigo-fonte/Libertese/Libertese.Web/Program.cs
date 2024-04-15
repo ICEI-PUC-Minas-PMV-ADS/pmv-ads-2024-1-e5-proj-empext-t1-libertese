@@ -1,8 +1,9 @@
 using Libertese.Data;
-using Libertese.Data.Interfaces;
-using Libertese.Infraestrutura;
-using Microsoft.EntityFrameworkCore;
-using System.Configuration;
+using Libertese.Data.Repositories.Interfaces;
+using Libertese.Domain.Entities.Precificacao;
+using Libertese.Data.Repositories;
+using Libertese.Data.Services;
+using Libertese.Data.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +12,11 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ApplicationDbContext>();
 
 builder.Services.AddTransient<IUsuarioRepository, UsuarioRepository>();
+builder.Services.AddScoped<IProdutoService, ProdutoService>();
+
+builder.Services.AddScoped<ICategoriaRepository<Categoria>, CategoriaRepository>();
+builder.Services.AddScoped<IMaterialRepository<Material>, MaterialRepository>();
+builder.Services.AddScoped<IProdutoRepository<Produto>, ProdutoRepository>();
 
 builder.Services.AddCors(options =>
 {

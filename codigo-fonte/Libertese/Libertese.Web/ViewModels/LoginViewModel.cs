@@ -1,4 +1,4 @@
-﻿namespace Libertese.ViewModel
+﻿namespace Libertese.ViewModels
 {
     public class LoginViewModel
     {
