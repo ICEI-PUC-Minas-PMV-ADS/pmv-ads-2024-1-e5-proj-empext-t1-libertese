@@ -21,11 +21,13 @@ namespace Libertese.Data.Services
             _categoriaRepository = categoriaRepository;
         }
 
-        public async Task<OperationResult> AtualizarCategoria(Categoria categoria)
+        public async Task<OperationResult> AtualizarCategoria(int id, Categoria categoria)
         {
             try
             {
-                Categoria data = await _categoriaRepository.Update(categoria);
+                Categoria model = await _categoriaRepository.GetById(id);
+                model.Nome = categoria.Nome;
+                Categoria data = await _categoriaRepository.Update(model);
                 return new OperationResult
                 {
                     Data = data,
@@ -44,7 +46,7 @@ namespace Libertese.Data.Services
             }
         }
 
-        public async Task<OperationResult> AtualizarMaterial(Material material)
+        public async Task<OperationResult> AtualizarMaterial(int id, Material material)
         {
             try
             {
@@ -67,7 +69,7 @@ namespace Libertese.Data.Services
             }
         }
 
-        public async Task<OperationResult> AtualizarProduto(Produto produto)
+        public async Task<OperationResult> AtualizarProduto(int id, Produto produto)
         {
             try
             {
@@ -76,6 +78,29 @@ namespace Libertese.Data.Services
                 {
                     Data = data,
                     Message = "Produto atualizado com sucesso!",
+                    Error = false
+                };
+            }
+            catch (Exception ex)
+            {
+                return new OperationResult
+                {
+                    Data = null,
+                    Message = ex.Message,
+                    Error = true
+                };
+            }
+        }
+
+        public async Task<OperationResult> BuscarCategoria()
+        {
+            try
+            {
+                List<Categoria> data = await _categoriaRepository.GetAll();
+                return new OperationResult
+                {
+                    Data = data,
+                    Message = "",
                     Error = false
                 };
             }
@@ -113,7 +138,17 @@ namespace Libertese.Data.Services
             }
         }
 
+        public Task<OperationResult> BuscarMaterial()
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<OperationResult> BuscarMaterial(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<OperationResult> BuscarProduto()
         {
             throw new NotImplementedException();
         }
@@ -123,9 +158,27 @@ namespace Libertese.Data.Services
             throw new NotImplementedException();
         }
 
-        public Task<OperationResult> CriarCategoria(Categoria categoria)
+        public async Task<OperationResult> CriarCategoria(Categoria categoria)
         {
-            throw new NotImplementedException();
+            try
+            {
+                Categoria data = await _categoriaRepository.Create(categoria);
+                return new OperationResult
+                {
+                    Data = data,
+                    Message = "Categoria inserida com sucesso!",
+                    Error = false
+                };
+            }
+            catch (Exception ex)
+            {
+                return new OperationResult
+                {
+                    Data = null,
+                    Message = ex.Message,
+                    Error = true
+                };
+            }
         }
 
         public Task<OperationResult> CriarMaterial(Material material)
