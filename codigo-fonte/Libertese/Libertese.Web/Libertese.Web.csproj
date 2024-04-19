@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\sidebar\assets\sass\styles.scss" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.2">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -16,6 +20,11 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Libertese.Data\Libertese.Data.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\sidebar\" />
+    <Folder Include="wwwroot\sidebar\assets\sass\" />
   </ItemGroup>
 
 </Project>
