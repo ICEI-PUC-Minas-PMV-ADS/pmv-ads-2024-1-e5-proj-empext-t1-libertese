@@ -1,6 +1,7 @@
 using Libertese.Web.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Libertese.Web.Controllers
 {
@@ -13,6 +14,7 @@ namespace Libertese.Web.Controllers
             _logger = logger;
         }
 
+        [Authorize]
         public IActionResult Index()
         {
             return View();
