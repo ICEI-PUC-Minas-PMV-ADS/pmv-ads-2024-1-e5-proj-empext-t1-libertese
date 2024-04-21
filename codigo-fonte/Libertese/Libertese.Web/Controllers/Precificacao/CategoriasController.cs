@@ -9,7 +9,13 @@ namespace Libertese.Web.Controllers.Precificacao
         public CategoriasController(IProdutoService service) : base(service) {}
 
         [HttpGet]
+        public async Task<IActionResult> Create() => View();
+
+        [HttpGet]
         public async Task<IActionResult> Index() => HandleOperationResult(await _service.BuscarCategoria(), false);
+
+        [HttpGet]
+        public async Task<IActionResult> Edit(int id) => HandleOperationResult(await _service.BuscarCategoria(id), false);
 
         [HttpGet, ValidateAntiForgeryToken]
         public async Task<IActionResult> Get(int id) => HandleOperationResult(await _service.BuscarCategoria(id));

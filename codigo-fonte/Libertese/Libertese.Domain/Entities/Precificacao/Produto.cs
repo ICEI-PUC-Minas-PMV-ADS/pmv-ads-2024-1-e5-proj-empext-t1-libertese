@@ -11,6 +11,10 @@ namespace Libertese.Domain.Entities.Precificacao
         public required string Nome { get; set; }
         [Display (Name = "Tempo Produção")]
         public int TempoProducao { get; set;}
+        //public int Empresa { get; set; }
+        //[Display (Name = "Preço")]
+        //public int Preco { get; set; }
+        
 
     }
 }

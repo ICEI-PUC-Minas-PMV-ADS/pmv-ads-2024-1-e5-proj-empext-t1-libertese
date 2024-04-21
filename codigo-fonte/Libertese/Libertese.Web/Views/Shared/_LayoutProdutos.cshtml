@@ -63,5 +63,15 @@
     <script src="./scaffold/js/vendors/alpinejs.min.js" defer></script>
     <script src="./scaffold/js/main.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
+
+
+    <script>
+    document.addEventListener('alpine:init', () => {
+        Alpine.config = {
+            delimiters: ['<%', '%>']
+        }
+    });
+</script>
+
 </body>
 </html>
