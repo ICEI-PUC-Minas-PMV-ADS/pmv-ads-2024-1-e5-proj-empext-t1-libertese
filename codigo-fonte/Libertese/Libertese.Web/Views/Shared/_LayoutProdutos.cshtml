@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Libertese</title>
+    <link rel="stylesheet" href="~/sidebar/assets/css/styles.css" asp-append-version="true" />
+    <link href="./scaffold/css/vendors/flatpickr.min.css" rel="stylesheet">
+    <link href="./scaffold/style.css" rel="stylesheet">
+</head>
+
+@{
+    string currentController = ViewContext.RouteData.Values["controller"].ToString();
+}
+
+<body id="body-pd" class="body-pd">
+    <div class="l-navbar expander" id="navbar">
+        <nav class="nav">
+            <div>
+                <div id="without-logo" class="nav__brand expander-logo">
+                    <ion-icon name="menu-outline" class="nav__toggle" id="nav-toggle"></ion-icon>
+                </div>
+                <div id="with-logo" class="nav__brand">
+                    <a id="logo-toggle" href="#" class="nav__logo"><img src="sidebar/assets/img/logo_libertese.svg" width="140" height="140"></a>
+                </div>
+                <div class="nav__list">
+                    <a class="@("nav__link " + (currentController == "Home" ? "active" : ""))" class="nav__link active">
+                        <ion-icon name="home-outline" class="nav__icon"></ion-icon>
+                        <span asp-controller="HomeController"  asp-action="Index" class="nav__name">Início</span>
+                    </a>
+                    <div class="@("nav__link collapse " + (currentController == "Categorias" || currentController == "Materiais" || currentController == "Produtos" ? "active" : ""))">
+                        <ion-icon name="file-tray-stacked-outline" class="nav__icon"></ion-icon>
+                        <span class="nav__name">Produtos</span>
+
+                        <ion-icon name="chevron-down-outline" class="collapse__link"></ion-icon>
+
+                        <ul class="collapse__menu">
+                            <a asp-controller="Categorias" asp-action="Index" class="collapse__sublink">Categoria</a>
+                            <a asp-controller="Materiais" asp-action="Index" class="collapse__sublink">Material</a>
+                            <a asp-controller="Produtos" asp-action="Index" class="collapse__sublink">Produto</a>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <a href="#" class="nav__logout-link">
+                <ion-icon name="log-out-outline" class="nav__icon"></ion-icon>
+                <span class="nav__name">Sair</span>
+            </a>
+        </nav>
+    </div>
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <script src="~/sidebar/assets/js/main.js"></script>
+    <script src="~/sidebar/assets/js/main.js"></script>
+    <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js" asp-append-version="true"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="./scaffold/js/vendors/alpinejs.min.js" defer></script>
+    <script src="./scaffold/js/main.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

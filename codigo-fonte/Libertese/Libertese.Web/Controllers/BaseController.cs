@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Libertese.Web.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class BaseController<T> : Controller
     {
         protected readonly T _service;

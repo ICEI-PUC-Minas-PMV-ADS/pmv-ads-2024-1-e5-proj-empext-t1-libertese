@@ -226,8 +226,9 @@
                 if (!response.ok) {
                     throw new Error('Credenciais inválidas');
                 }
-                alert('Login bem-sucedido!');
-                // Redirecionar para a página desejada após o login bem-sucedido
+                
+                const urlBase = window.location.protocol + "//" + window.location.host;
+                window.location.href = urlBase;
             })
             .catch(error => {
                 console.error('Erro:', error);

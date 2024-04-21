@@ -4,6 +4,7 @@ using Libertese.Domain.Entities.Precificacao;
 using Libertese.Data.Repositories;
 using Libertese.Data.Services;
 using Libertese.Data.Services.Interfaces;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +18,13 @@ builder.Services.AddScoped<IProdutoService, ProdutoService>();
 builder.Services.AddScoped<ICategoriaRepository<Categoria>, CategoriaRepository>();
 builder.Services.AddScoped<IMaterialRepository<Material>, MaterialRepository>();
 builder.Services.AddScoped<IProdutoRepository<Produto>, ProdutoRepository>();
+
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+		  .AddCookie(options =>
+		  {
+			  options.LoginPath = "/Home/Login"; 
+		  });
+
 
 builder.Services.AddCors(options =>
 {
@@ -45,6 +53,7 @@ app.UseStaticFiles();
 app.UseRouting();
 app.UseCors("AllowAnyOrigin");
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(

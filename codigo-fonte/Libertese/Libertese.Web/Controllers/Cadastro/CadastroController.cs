@@ -2,6 +2,9 @@
 using Libertese.ViewModels;
 using Libertese.Domain.Entities.Cadastro;
 using Libertese.Data.Repositories.Interfaces;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication;
+using System.Security.Claims;
 
 namespace Libertese.Web.Controllers.Cadastro
 {
@@ -31,7 +34,7 @@ namespace Libertese.Web.Controllers.Cadastro
         }
 
         [HttpPost("login")]
-        public IActionResult Login([FromBody] LoginViewModel loginView)
+        public async Task<IActionResult> Login([FromBody] LoginViewModel loginView)
         {
             if (loginView == null || string.IsNullOrWhiteSpace(loginView.Email) || string.IsNullOrWhiteSpace(loginView.Senha))
             {
@@ -43,10 +46,27 @@ namespace Libertese.Web.Controllers.Cadastro
             if (user == null || user.Senha != loginView.Senha)
             {
                 return Unauthorized("Credenciais inválidas. Verifique seu e-mail e senha.");
-            }
+            } 
+            
+            else 
+            {
+            
+                var claims = new List<Claim>
+			    {
+			    	new Claim(ClaimTypes.Name, user.Email),
+                };
 
-            // Se as credenciais forem válidas, você pode retornar algum token de autenticação ou simplesmente Ok() para indicar sucesso.
-            return Ok();
+				var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+				var authProperties = new AuthenticationProperties
+				{
+					IsPersistent = true,
+				};
+
+				await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
+					new ClaimsPrincipal(claimsIdentity), authProperties);
+
+				return Ok();
+			}
         }
 
         [HttpGet]
