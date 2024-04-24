@@ -13,5 +13,23 @@
 
         public required decimal Salario { get; set; }
 
+        public required string Cpf {  get; set; }
+
+        public required string Sexo { get; set; }
+
+        public required string Email { get; set; }
+
+        public required string Celular { get; set; }
+
+        public required string Function { get; set; }
+
+        public required string Pessoareclusa { get; set; }
+
+        public required string Penitenciaria { get; set; }
+
+        public required string CursoLibertese { get; set; }
+
+
+
     }
 }

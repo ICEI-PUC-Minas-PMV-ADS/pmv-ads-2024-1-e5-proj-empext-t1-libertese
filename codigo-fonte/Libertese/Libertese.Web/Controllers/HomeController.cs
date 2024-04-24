@@ -35,6 +35,11 @@ namespace Libertese.Web.Controllers
             return View("~/Views/Usuarios/Registro.cshtml");
         }
 
+        public IActionResult Funcionarios()
+        {
+            return View("~/Views/Usuarios/Funcionarios.cshtml");
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

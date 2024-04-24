@@ -27,12 +27,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.Salario)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DataCriacao)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DataAtualizacao)
-            </th>
             <th></th>
         </tr>
     </thead>
@@ -53,12 +47,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Salario)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DataCriacao)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DataAtualizacao)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
