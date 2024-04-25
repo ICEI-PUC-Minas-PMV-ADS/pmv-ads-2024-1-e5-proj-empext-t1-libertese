@@ -64,13 +64,13 @@
             </div>
             <div class="form-group">
                 <label asp-for="CursoLibertese" class="control-label"></label>
-                <input asp-for="CursoLibertese" class="form-control" />
+                <input type="checkbox" asp-for="CursoLibertese" />
                 <span asp-validation-for="CursoLibertese" class="text-danger"></span>
             </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="Remuneracao" /> @Html.DisplayNameFor(model => model.Remuneracao)
-                </label>
+            <div class="form-group">
+                <label asp-for="Remuneracao" class="control-label"></label>
+                <input type="checkbox" asp-for="Remuneracao" />
+                <span asp-validation-for="Remuneracao" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Salario" class="control-label"></label>
