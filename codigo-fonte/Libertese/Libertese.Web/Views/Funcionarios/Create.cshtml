@@ -34,7 +34,12 @@
             </div>
             <div class="form-group">
                 <label asp-for="Sexo" class="control-label"></label>
-                <input asp-for="Sexo" class="form-control" />
+                <select asp-for="Sexo" class="form-control">
+                    <option value="Feminino">Feminino</option>
+                    <option value="Masculino">Masculino</option>
+                    <option value="Não binário">Não binário</option>
+                    <option value="Prefiro não informar">Prefiro não informar</option>
+                </select>
                 <span asp-validation-for="Sexo" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -49,7 +54,13 @@
             </div>
             <div class="form-group">
                 <label asp-for="Function" class="control-label"></label>
-                <input asp-for="Function" class="form-control" />
+                <select asp-for="Function" class="form-control">
+                    <option value="Costureira Nível 1">Costureira Nível 1</option>
+                    <option value="Costureira Nível 3">Costureira Nível 3</option>
+                    <option value="Coordenadora">Coordenadora</option>
+                    <option value="Passadeira">Passadeira</option>
+                    <option value="Arrematadeira">Arrematadeira</option>
+                </select>
                 <span asp-validation-for="Function" class="text-danger"></span>
             </div>
             <div class="form-group">
