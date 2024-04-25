@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Libertese.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240425133313_Mudancabooleaninput")]
-    partial class Mudancabooleaninput
+    [Migration("20240425171211_Adicionandocamposboolean")]
+    partial class Adicionandocamposboolean
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

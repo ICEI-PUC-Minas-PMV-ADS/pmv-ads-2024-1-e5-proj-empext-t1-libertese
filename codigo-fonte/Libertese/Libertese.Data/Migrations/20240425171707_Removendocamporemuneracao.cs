@@ -5,12 +5,14 @@
 namespace Libertese.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class Mudancabooleaninput : Migration
+    public partial class Removendocamporemuneracao : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-
+            migrationBuilder.DropColumn(
+                name: "Remuneracao",
+                table: "Funcionarios");
         }
 
         /// <inheritdoc />

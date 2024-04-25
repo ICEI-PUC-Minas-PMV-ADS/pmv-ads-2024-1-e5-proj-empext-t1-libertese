@@ -1,4 +1,6 @@
-﻿namespace Libertese.Domain.Entities.Cadastro
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace Libertese.Domain.Entities.Cadastro
 {
     public class Funcionario : BaseEntity
     {
@@ -23,12 +25,11 @@
 
         public required string Function { get; set; }
 
-        public required Boolean Pessoareclusa { get; set; }
-
         public required string Penitenciaria { get; set; }
 
         public required Boolean CursoLibertese { get; set; }
 
+        public required Boolean Pessoareclusa { get; set; }
 
 
     }

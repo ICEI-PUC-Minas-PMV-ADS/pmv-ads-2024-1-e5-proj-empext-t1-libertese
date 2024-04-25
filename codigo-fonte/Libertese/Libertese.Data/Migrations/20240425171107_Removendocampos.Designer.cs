@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Libertese.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240425125703_Mudancatipoinput")]
-    partial class Mudancatipoinput
+    [Migration("20240425171107_Removendocampos")]
+    partial class Removendocampos
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -75,9 +75,6 @@ namespace Libertese.Data.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<bool>("CursoLibertese")
-                        .HasColumnType("boolean");
-
                     b.Property<DateTime?>("DataAtualizacao")
                         .HasColumnType("timestamp without time zone");
 
@@ -105,9 +102,6 @@ namespace Libertese.Data.Migrations
                     b.Property<string>("Penitenciaria")
                         .IsRequired()
                         .HasColumnType("text");
-
-                    b.Property<bool>("Pessoareclusa")
-                        .HasColumnType("boolean");
 
                     b.Property<bool>("Remuneracao")
                         .HasColumnType("boolean");
