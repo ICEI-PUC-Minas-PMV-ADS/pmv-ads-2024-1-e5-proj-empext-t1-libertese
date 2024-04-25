@@ -23,11 +23,11 @@
 
         public required string Function { get; set; }
 
-        public required string Pessoareclusa { get; set; }
+        public required Boolean Pessoareclusa { get; set; }
 
         public required string Penitenciaria { get; set; }
 
-        public required string CursoLibertese { get; set; }
+        public required Boolean CursoLibertese { get; set; }
 
 
 
