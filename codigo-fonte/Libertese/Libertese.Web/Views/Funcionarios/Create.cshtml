@@ -1,12 +1,10 @@
 ﻿@model Libertese.Domain.Entities.Cadastro.Funcionario
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Cadastro de Funcionários";
 }
 
-<h1>Create</h1>
-
-<h4>Funcionario</h4>
+<h4>Cadastro de funcionário</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -14,22 +12,22 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Nome" class="control-label">Nome completo *</label>
-                <input asp-for="Nome" class="form-control" />
+                <input asp-for="Nome" class="form-control" placeholder="Digite o nome"/>
                 <span asp-validation-for="Nome" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="HorasDia" class="control-label">Horas de trabalho por dia *</label>
-                <input asp-for="HorasDia" class="form-control" />
+                <input asp-for="HorasDia" class="form-control" placeholder="Horas de trabalho por dia"/>
                 <span asp-validation-for="HorasDia" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="DiasMes" class="control-label">Dias de trabalho por mês *</label>
-                <input asp-for="DiasMes" class="form-control" />
+                <input asp-for="DiasMes" class="form-control" placeholder="Dias de trabalho por mês"/>
                 <span asp-validation-for="DiasMes" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Cpf" class="control-label">CPF *</label>
-                <input asp-for="Cpf" class="form-control" />
+                <input asp-for="Cpf" class="form-control" placeholder="Digite o CPF"/>
                 <span asp-validation-for="Cpf" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -44,12 +42,12 @@
             </div>
             <div class="form-group">
                 <label asp-for="Email" class="control-label">E-mail *</label>
-                <input asp-for="Email" class="form-control" />
+                <input asp-for="Email" class="form-control" placeholder="Example@something.com" />
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Celular" class="control-label">Celular *</label>
-                <input asp-for="Celular" class="form-control" />
+                <input asp-for="Celular" class="form-control" placeholder="DDD + Número"/>
                 <span asp-validation-for="Celular" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -70,12 +68,12 @@
             </div>
             <div class="form-group">
                 <label asp-for="Penitenciaria" class="control-label">Penitenciária *</label>
-                <input asp-for="Penitenciaria" class="form-control" />
+                <input asp-for="Penitenciaria" class="form-control" placeholder="Digite o nome da penitenciária" />
                 <span asp-validation-for="Penitenciaria" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="CursoLibertese" class="control-label">Fez ou faz o curso da Libertese durante a reclusão?</label>
-                <input type="checkbox" asp-for="CursoLibertese" />
+                <input type="checkbox" asp-for="CursoLibertese"/>
                 <span asp-validation-for="CursoLibertese" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -85,7 +83,7 @@
             </div>
             <div class="form-group" id="salarioGroup">
                 <label asp-for="Salario" class="control-label">Salário *</label>
-                <input asp-for="Salario" class="form-control" id="salarioInput" />
+                <input asp-for="Salario" class="form-control" id="salarioInput" placeholder="Digite o salário"/>
                 <span asp-validation-for="Salario" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -122,9 +120,14 @@
         // Intercepta o envio do formulário
         document.querySelector('form').addEventListener('submit', function (event) {
             var salarioInput = document.getElementById('salarioInput');
+            var cursoLiberteseCheckbox = document.getElementById('CursoLibertese');
             // Se o checkbox de "Possui remuneração" não estiver marcado, define o valor do Salário como 0
             if (!document.getElementById('remuneracaoCheckbox').checked) {
                 salarioInput.value = 0;
+            }
+            // Verifica se o checkbox de "CursoLibertese" está marcado e define o valor como true se estiver
+            if (cursoLiberteseCheckbox.checked) {
+                cursoLiberteseCheckbox.value = true;
             }
             // Continua com o envio do formulário
             return true;
