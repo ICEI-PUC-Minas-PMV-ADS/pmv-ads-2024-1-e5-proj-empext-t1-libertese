@@ -54,7 +54,7 @@ namespace Libertese.Web.Controllers.Cadastro
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Nome,HorasDia,DiasMes,Remuneracao,Salario,Id,DataCriacao,DataAtualizacao")] Funcionario funcionario)
+        public async Task<IActionResult> Create([Bind("Nome,HorasDia,DiasMes,Cpf,Sexo,Email,Celular,Function,Pessoareclusa,Penitenciaria,Cursolibertese,Remuneracao,Salario,Id,DataCriacao,DataAtualizacao")] Funcionario funcionario)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace Libertese.Web.Controllers.Cadastro
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Nome,HorasDia,DiasMes,Remuneracao,Salario,Id,DataCriacao,DataAtualizacao")] Funcionario funcionario)
+        public async Task<IActionResult> Edit(int id, [Bind("Nome,HorasDia,DiasMes,Cpf,Sexo,Email,Celular,Function,Pessoareclusa,Penitenciaria,Cursolibertese,Remuneracao,Salario,Id,DataCriacao,DataAtualizacao")] Funcionario funcionario)
         {
             if (id != funcionario.Id)
             {
