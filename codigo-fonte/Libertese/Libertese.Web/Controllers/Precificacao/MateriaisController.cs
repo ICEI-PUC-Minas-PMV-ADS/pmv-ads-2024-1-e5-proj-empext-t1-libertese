@@ -86,8 +86,10 @@ namespace Libertese.Web.Controllers.Precificacao
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Nome,Preco,Id,DataCriacao,DataAtualizacao")] Material material)
+        public async Task<IActionResult> Edit(int id, Material material)
         {
+            var model = await _context.Materiais.FirstOrDefaultAsync(m => m.Id == id);
+
             if (id != material.Id)
             {
                 return NotFound();
@@ -97,7 +99,10 @@ namespace Libertese.Web.Controllers.Precificacao
             {
                 try
                 {
-                    _context.Update(material);
+                    model.DataAtualizacao = DateTime.Now;
+                    model.Nome = material.Nome;
+                    model.Preco = material.Preco;
+                    _context.Update(model);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
