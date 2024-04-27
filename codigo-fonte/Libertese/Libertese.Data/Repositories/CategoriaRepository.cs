@@ -49,7 +49,9 @@ namespace Libertese.Data.Repositories
                 throw new KeyNotFoundException("Categoria não encontrada.");
             } else
             {
-                _context.Entry(existingCategoria).CurrentValues.SetValues(categoria);
+                existingCategoria.DataAtualizacao = DateTime.Now;
+                existingCategoria.Nome = categoria.Nome;
+                _context.Update(existingCategoria);
                 await _context.SaveChangesAsync();
                 return existingCategoria;
             }
