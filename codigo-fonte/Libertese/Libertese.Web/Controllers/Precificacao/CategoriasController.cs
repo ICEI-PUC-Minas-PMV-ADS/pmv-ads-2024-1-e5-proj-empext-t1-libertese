@@ -59,7 +59,6 @@ namespace Libertese.Web.Controllers.Precificacao
             if (ModelState.IsValid)
             {
                 categoria.DataCriacao = DateTime.Now;
-                categoria.DataAtualizacao = DateTime.Now;
                 _context.Add(categoria);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -154,6 +153,22 @@ namespace Libertese.Web.Controllers.Precificacao
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
+        }
+
+        // POST: Categorias/Search
+        [HttpPost, ActionName("Search")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> SearchText(string nome)
+        {
+
+            if (!string.IsNullOrEmpty(nome))
+            {
+                return View("Index", await _context.Categorias.Where(c => EF.Functions.Like(c.Nome.ToLower(), "%" + nome.ToLower() + "%")).ToListAsync());
+            } 
+            else 
+            {
+                return RedirectToAction(nameof(Index));
+            }
         }
 
         private bool CategoriaExists(int id)

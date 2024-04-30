@@ -154,9 +154,28 @@ namespace Libertese.Web.Controllers.Precificacao
             return RedirectToAction(nameof(Index));
         }
 
+        // POST: Materiais/Search
+        [HttpPost, ActionName("Search")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> SearchText(string nome)
+        {
+
+            if (!string.IsNullOrEmpty(nome))
+            {
+                return View("Index", await _context.Materiais.Where(c => EF.Functions.Like(c.Nome.ToLower(), "%" + nome.ToLower() + "%")).ToListAsync());
+            } 
+            else 
+            {
+                return RedirectToAction(nameof(Index));
+            }
+        }
+
+
         private bool MaterialExists(int id)
         {
             return _context.Materiais.Any(e => e.Id == id);
         }
+
+        
     }
 }
