@@ -3208,12 +3208,14 @@ span.flatpickr-weekday{
 
 .bg-orange-800{
   --tw-bg-opacity: 1;
-  background-color: rgb(154 52 18 / var(--tw-bg-opacity));
+  /* background-color: rgb(154 52 18 / var(--tw-bg-opacity)); */
+  background-color: rgb(166 63 63 / var(--tw-bg-opacity));
 }
 
 .bg-orange-900{
   --tw-bg-opacity: 1;
-  background-color: rgb(67 20 7 / var(--tw-bg-opacity));
+  /* background-color: rgb(67 20 7 / var(--tw-bg-opacity)); */
+  background-color: rgb(165 42 42 / var(--tw-bg-opacity));
 }
 
 .bg-indigo-100{

@@ -28,18 +28,10 @@
                         <ion-icon name="home-outline" class="nav__icon"></ion-icon>
                         <span asp-controller="HomeController"  asp-action="Index" class="nav__name">Início</span>
                     </a>
-                    <div class="@("nav__link collapse " + (currentController == "Categorias" || currentController == "Materiais" || currentController == "Produtos" ? "active" : ""))">
+                    <a asp-controller="Produtos" class="@("nav__link " + (currentController == "Produtos" ? "active" : ""))" class="nav__link active">
                         <ion-icon name="file-tray-stacked-outline" class="nav__icon"></ion-icon>
-                        <span class="nav__name">Produtos</span>
-
-                        <ion-icon name="chevron-down-outline" class="collapse__link"></ion-icon>
-
-                        <ul class="collapse__menu">
-                            <a asp-controller="Categorias" asp-action="Index" class="collapse__sublink">Categoria</a>
-                            <a asp-controller="Materiais" asp-action="Index" class="collapse__sublink">Material</a>
-                            <a asp-controller="Produtos" asp-action="Index" class="collapse__sublink">Produto</a>
-                        </ul>
-                    </div>
+                        <span asp-action="Index" class="nav__name">Produtos</span>
+                    </a>
                 </div>
             </div>
             <a href="#" class="nav__logout-link">
