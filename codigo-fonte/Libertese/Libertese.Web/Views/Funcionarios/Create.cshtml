@@ -102,7 +102,15 @@
             align-items: center;
             justify-content: center;
             width: 300px;
-            color:#000
+            background-color:#000;
+            border-radius: .25rem;
+            
+        }
+
+        .botao-create:hover {
+            color: #fff;
+            background-color: #808080;
+            border-color: #808080;
         }
 
         input.form-sexo{
@@ -125,6 +133,8 @@
         .botao-back{
             font-color: #000;
         }
+
+        
     </style>
 </head>
 <body>
@@ -177,6 +187,7 @@
                     <input asp-for="Celular" class="form-control input-celular" placeholder="DDD + Número" />
                     <span asp-validation-for="Celular" class="text-danger"></span>
                 </div>
+                
                 <div class="form-function">
                     <label asp-for="Function" class="control-label">Função na Libertese</label>
                     <select asp-for="Function" class="form-control input-function">
