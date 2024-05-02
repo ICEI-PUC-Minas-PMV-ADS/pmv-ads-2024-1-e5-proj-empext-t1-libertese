@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Libertese.Data;
 using Libertese.Domain.Entities.Cadastro;
+using System.Data;
 
 namespace Libertese.Web.Controllers.Cadastro
 {
@@ -88,16 +89,31 @@ namespace Libertese.Web.Controllers.Cadastro
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Nome,HorasDia,DiasMes,Cpf,Sexo,Email,Celular,Function,Pessoareclusa,Penitenciaria,Cursolibertese,Remuneracao,Salario,Id,DataCriacao,DataAtualizacao")] Funcionario funcionario)
         {
+            
+            var model = await _context.Funcionarios.FirstOrDefaultAsync(m => m.Id == id);
+
             if (id != funcionario.Id)
             {
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && model != null)
             {
                 try
                 {
-                    _context.Update(funcionario);
+                    model.DataAtualizacao = DateTime.Now;
+                    model.Nome = funcionario.Nome;
+                    model.Cpf = funcionario.Cpf;
+                    model.Sexo = funcionario.Sexo;
+                    model.Email = funcionario.Email;
+                    model.Celular = funcionario.Celular;
+                    model.Function = funcionario.Function;
+                    model.Pessoareclusa = funcionario.Pessoareclusa;
+                    model.Penitenciaria = funcionario.Penitenciaria;
+                    model.CursoLibertese = funcionario.CursoLibertese;
+                    model.DiasMes = funcionario.DiasMes;
+                    model.HorasDia = funcionario.HorasDia;
+                    _context.Update(model);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)

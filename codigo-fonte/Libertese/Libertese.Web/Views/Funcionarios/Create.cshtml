@@ -15,7 +15,6 @@
         }
         .box-create{   
             padding: auto;
-            width: 300px;
             display: flex;
             flex-direction: column;
             position: absolute;
@@ -26,7 +25,7 @@
             justify-content: center;
             font-family: "Montserrat", sans-serif;
             font-weight: 500;
-            font-size: 12px;
+            font-size: 14px;
         }
         .input-nome{
             margin-bottom: 5px;
@@ -88,14 +87,16 @@
         input[type="select"]{
             font-family: "Montserrat", sans-serif;
             font-weight: 500;
-            font-size: 12px;
+            font-size: 14px;
             
         }
 
         .form-control{
             font-family: "Montserrat", sans-serif;
             font-weight: 500;
-            font-size: 12px;
+            font-size: 14px;
+            border: 1px solid #000;
+            background-color: rgba(220,220,220, 0.3);
         }
         .botao-create{
             align-items: center;
@@ -107,7 +108,7 @@
         input.form-sexo{
         font-family: "Montserrat", sans-serif;
         font-weight: 500;
-        font-size: 12px;
+        font-size: 14px;
         }
         .create-employee{
             width: 500px;
@@ -118,7 +119,7 @@
             font-optical-sizing: auto;
             font-weight: 600;
             font-style: normal;
-            font-size: 20px;
+            font-size: 30px;
         }
 
         .botao-back{
@@ -213,7 +214,7 @@
                     <span asp-validation-for="Salario" class="text-danger"></span>
                 </div>
                 <div class="botao-create">
-                    <input type="submit" value="Create" class="btn btn-primary" id="botao-create" />
+                    <input type="submit" value="Create" class="btn btn-primary botao-create" id="botao-create" />
                 </div>
             </form>
         </div>
