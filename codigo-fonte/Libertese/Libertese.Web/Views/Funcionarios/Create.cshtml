@@ -1,104 +1,191 @@
 ﻿@model Libertese.Domain.Entities.Cadastro.Funcionario
-
 @{
-    ViewData["Title"] = "Cadastro de Funcionários";
+    ViewData["Title"] = "Criar Funcionário";
+    Layout = "~/Views/Shared/_LayoutWithoutHeader.cshtml";
 }
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="./scaffold/css/vendors/flatpickr.min.css" rel="stylesheet">
+    <link href="./scaffold/style.css" rel="stylesheet">
+    <link href="./output.css" rel="stylesheet">
 
-<h4>Cadastro de funcionário</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Nome" class="control-label">Nome completo *</label>
-                <input asp-for="Nome" class="form-control" placeholder="Digite o nome"/>
-                <span asp-validation-for="Nome" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="HorasDia" class="control-label">Horas de trabalho por dia *</label>
-                <input asp-for="HorasDia" class="form-control" placeholder="Horas de trabalho por dia"/>
-                <span asp-validation-for="HorasDia" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DiasMes" class="control-label">Dias de trabalho por mês *</label>
-                <input asp-for="DiasMes" class="form-control" placeholder="Dias de trabalho por mês"/>
-                <span asp-validation-for="DiasMes" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Cpf" class="control-label">CPF *</label>
-                <input asp-for="Cpf" class="form-control" placeholder="Digite o CPF"/>
-                <span asp-validation-for="Cpf" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Sexo" class="control-label">Sexo *</label>
-                <select asp-for="Sexo" class="form-control">
-                    <option value="Feminino">Feminino</option>
-                    <option value="Masculino">Masculino</option>
-                    <option value="Não binário">Não binário</option>
-                    <option value="Prefiro não informar">Prefiro não informar</option>
-                </select>
-                <span asp-validation-for="Sexo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Email" class="control-label">E-mail *</label>
-                <input asp-for="Email" class="form-control" placeholder="Example@something.com" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Celular" class="control-label">Celular *</label>
-                <input asp-for="Celular" class="form-control" placeholder="DDD + Número"/>
-                <span asp-validation-for="Celular" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Function" class="control-label">Função na Libertese</label>
-                <select asp-for="Function" class="form-control">
-                    <option value="Costureira Nível 1">Costureira Nível 1</option>
-                    <option value="Costureira Nível 3">Costureira Nível 3</option>
-                    <option value="Coordenadora">Coordenadora</option>
-                    <option value="Passadeira">Passadeira</option>
-                    <option value="Arrematadeira">Arrematadeira</option>
-                </select>
-                <span asp-validation-for="Function" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Pessoareclusa" class="control-label">Pessoa reclusa ou regressa?</label>
-                <input type="checkbox" asp-for="Pessoareclusa" />
-                <span asp-validation-for="Pessoareclusa" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Penitenciaria" class="control-label">Penitenciária *</label>
-                <input asp-for="Penitenciaria" class="form-control" placeholder="Digite o nome da penitenciária" />
-                <span asp-validation-for="Penitenciaria" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CursoLibertese" class="control-label">Fez ou faz o curso da Libertese durante a reclusão?</label>
-                <input type="checkbox" asp-for="CursoLibertese"/>
-                <span asp-validation-for="CursoLibertese" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Remuneracao" class="control-label">Possui remuneração?</label>
-                <input type="checkbox" asp-for="Remuneracao" id="remuneracaoCheckbox" />
-                <span asp-validation-for="Remuneracao" class="text-danger"></span>
-            </div>
-            <div class="form-group" id="salarioGroup">
-                <label asp-for="Salario" class="control-label">Salário *</label>
-                <input asp-for="Salario" class="form-control" id="salarioInput" placeholder="Digite o salário"/>
-                <span asp-validation-for="Salario" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+    <style>
+        body{
+            
+        }
+        .box-create{   
+            padding: auto;
+            width: 300px;
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            align-items: center;
+            justify-content: center;
+            font-family: "Montserrat", sans-serif;
+            font-weight: 500;
+            font-size: 12px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"]
+        input[type="submit"]
+        input[type="select"]{
+            font-family: "Montserrat", sans-serif;
+            font-weight: 500;
+            font-size: 12px;
+        }
+
+        .form-control{
+            font-family: "Montserrat", sans-serif;
+            font-weight: 500;
+            font-size: 12px;
+        }
+        .botao-create{
+            align-items: center;
+            justify-content: center;
+            width: 300px;
+            color:#000
+        }
+
+        input.form-sexo{
+        font-family: "Montserrat", sans-serif;
+        font-weight: 500;
+        font-size: 12px;
+        }
+        .create-employee{
+            width: 500px;
+            
+        }   
+        .title-cadastro{
+            font-family: "Montserrat", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 600;
+            font-style: normal;
+            font-size: 20px;
+        }
+
+        .botao-back{
+            font-color: #000;
+        }
+    </style>
+</head>
+<body>
+    <div class="box-create">
+        <div class="title-cadastro">
+            <h>Cadastro de funcionário</h>
+            <br />
+            <br />
+        </div>
+        <div class="create-employee">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-nome">
+                    <label asp-for="Nome" class="control-label">Nome completo *</label>
+                    <input asp-for="Nome" class="form-control" placeholder="Digite o nome" />
+                    <span asp-validation-for="Nome" class="text-danger"></span>
+                </div>
+                <div class="form-horas">
+                    <label asp-for="HorasDia" class="control-label">Horas de trabalho por dia *</label>
+                    <input asp-for="HorasDia" class="form-control" placeholder="Horas de trabalho por dia" />
+                    <span asp-validation-for="HorasDia" class="text-danger"></span>
+                </div>
+                <div class="form-dias">
+                    <label asp-for="DiasMes" class="control-label">Dias de trabalho por mês *</label>
+                    <input asp-for="DiasMes" class="form-control" placeholder="Dias de trabalho por mês" />
+                    <span asp-validation-for="DiasMes" class="text-danger"></span>
+                </div>
+                <div class="form-cpf">
+                    <label asp-for="Cpf" class="control-label">CPF *</label>
+                    <input asp-for="Cpf" class="form-control" placeholder="Digite o CPF" />
+                    <span asp-validation-for="Cpf" class="text-danger"></span>
+                </div>
+                <div class="form-sexo">
+                    <label asp-for="Sexo" class="control-label">Sexo *</label>
+                    <select asp-for="Sexo" class="form-control">
+                        <option value="Feminino">Feminino</option>
+                        <option value="Masculino">Masculino</option>
+                        <option value="Não binário">Não binário</option>
+                        <option value="Prefiro não informar">Prefiro não informar</option>
+                    </select>
+                    <span asp-validation-for="Sexo" class="text-danger"></span>
+                </div>
+                <div class="form-email">
+                    <label asp-for="Email" class="control-label">E-mail *</label>
+                    <input asp-for="Email" class="form-control" placeholder="Example@something.com" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-celular">
+                    <label asp-for="Celular" class="control-label">Celular *</label>
+                    <input asp-for="Celular" class="form-control" placeholder="DDD + Número" />
+                    <span asp-validation-for="Celular" class="text-danger"></span>
+                </div>
+                <div class="form-function">
+                    <label asp-for="Function" class="control-label">Função na Libertese</label>
+                    <select asp-for="Function" class="form-control">
+                        <option value="Costureira Nível 1">Costureira Nível 1</option>
+                        <option value="Costureira Nível 3">Costureira Nível 3</option>
+                        <option value="Coordenadora">Coordenadora</option>
+                        <option value="Passadeira">Passadeira</option>
+                        <option value="Arrematadeira">Arrematadeira</option>
+                    </select>
+                    <span asp-validation-for="Function" class="text-danger"></span>
+                </div>
+                <div class="form-pessoareclusa">
+                    <label asp-for="Pessoareclusa" class="control-label">Pessoa reclusa ou regressa?</label>
+                    <input type="checkbox" asp-for="Pessoareclusa" />
+                    <span asp-validation-for="Pessoareclusa" class="text-danger"></span>
+                </div>
+                <div class="form-penitenciaria">
+                    <label asp-for="Penitenciaria" class="control-label">Penitenciária *</label>
+                    <input asp-for="Penitenciaria" class="form-control" placeholder="Digite o nome da penitenciária" />
+                    <span asp-validation-for="Penitenciaria" class="text-danger"></span>
+                </div>
+                <div class="form-curso">
+                    <label asp-for="CursoLibertese" class="control-label">Fez ou faz o curso da Libertese durante a reclusão?</label>
+                    <input type="checkbox" asp-for="CursoLibertese" />
+                    <span asp-validation-for="CursoLibertese" class="text-danger"></span>
+                </div>
+                <div class="form-remuneracao">
+                    <label asp-for="Remuneracao" class="control-label">Possui remuneração?</label>
+                    <input type="checkbox" asp-for="Remuneracao" id="remuneracaoCheckbox" />
+                    <span asp-validation-for="Remuneracao" class="text-danger"></span>
+                </div>
+                <div class="form-salario" id="salarioGroup">
+                    <label asp-for="Salario" class="control-label">Salário *</label>
+                    <input asp-for="Salario" class="form-control" id="salarioInput" placeholder="Digite o salário" />
+                    <span asp-validation-for="Salario" class="text-danger"></span>
+                </div>
+                <div class="botao-create">
+                    <input type="submit" value="Create" class="btn btn-primary" id="botao-create" />
+                </div>
+            </form>
+        </div>
     </div>
-</div>
+    <main class="h-screen flex justify-center items-center">
+        <a asp-action="Index" class="relative inline cursor-pointer text-xl font-medium before:bg-violet-600  before:absolute before:-bottom-1 before:block before:h-[2px] before:w-full before:origin-bottom-right before:scale-x-0 before:transition before:duration-300 before:ease-in-out hover:before:origin-bottom-left hover:before:scale-x-100">
+            Voltar
+        </a>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+    </main>
+    @* <div class="relative flex gap-10 min-h-screen flex-col justify-center items-center overflow-hidden bg-gray-50 py-6 sm:py-12">
+        <a asp-action="Index" class="btn overflow-hidden relative w-64 bg-blue-500 text-white py-4 px-4 rounded-xl font-bold uppercase -- before:block before:absolute before:h-full before:w-full before:bg-red-300 before:left-0 before:top-0 before:-translate-y-full hover:before:translate-y-0 before:transition-transform">
+            <span class="relative">Voltar</span>
+        </a>
+    </div> *@
+    @* <div class="botao-back">
+        <a asp-action="Index">Back to List</a>
+    </div> *@
+</body>
+
 
 @section Scripts {
     <script>
+       
+
         // Ocultar o campo de Salário inicialmente quando a página for carregada
         document.addEventListener('DOMContentLoaded', function () {
             var salarioGroup = document.getElementById('salarioGroup');
