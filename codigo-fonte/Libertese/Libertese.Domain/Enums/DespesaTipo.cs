@@ -2,7 +2,10 @@
 {
     public enum DespesaTipo
     {
-        Fixa = 0,
-        Variavel = 1,
+        Comprometido = 1,
+        GastoFixo = 2,
+        GastoVariavel = 3,
+        Previsao = 4,
+        Impostos = 5
     }
 }

@@ -2,7 +2,8 @@
 {
     public enum DespesaStatus
     {
-        Aberto = 0,
         Pago = 1,
+        APagar = 2,
+        Agendado = 3,
     }
 }

@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Libertese.Data;
 using Libertese.Domain.Entities.Financeiro;
+using Libertese.Domain.Enums;
+using System.Collections;
 
 namespace Libertese.Web.Controllers.Financeiro
 {
@@ -22,8 +24,116 @@ namespace Libertese.Web.Controllers.Financeiro
         // GET: Despesas
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Despesas.ToListAsync());
+            List<Despesa> listaDespesas = await _context.Despesas.ToListAsync();
+            List<Fornecedor> listaFornecedores = await _context.Fornecedores.ToListAsync();
+            List<Classificacao> listaClassificacoes = await _context.Classificacoes.Where(x => x.Tipo == (int)ClassificacaoTipo.Despesas).ToListAsync();
+            List<DespesaDTO> listaDespesaDTO = listaDespesas.Select(despesa => new DespesaDTO
+            {
+                Tipo = convertDespesaTipoToNome(despesa.Tipo),
+                Status = convertDespesaStatusToNome(despesa.Status),
+                FormaPagamentoName = convertFormaPagamentoToNome(despesa.FormaPagamentoId),
+                Descricao = despesa.Descricao,
+                DataVencimento = despesa.DataVencimento?.ToString("dd/MM/yyyy") ?? "Sem Data",
+                DataPagamento = despesa.DataPagamento?.ToString("dd/MM/yyyy") ?? "Sem Data",
+                Classificacao = listaClassificacoes.Find(x => x.Id == despesa.ClassificacaoId)?.Descricao ?? "Sem Classificação",
+                FornecedorName = listaFornecedores.Find(x => x.Id == despesa.FornecedorId)?.Nome ?? "Sem Fornecedor",
+
+            }).ToList();
+            return View(listaDespesaDTO);
         }
+
+        private string convertDespesaTipoToNome(DespesaTipo despesaTipo)
+        {
+            switch (despesaTipo)
+            {
+                case DespesaTipo.Comprometido:
+                    return DespesaTipoNomes.Comprometido;
+                case DespesaTipo.GastoFixo:
+                    return DespesaTipoNomes.GastoFixo;
+                case DespesaTipo.GastoVariavel:
+                    return DespesaTipoNomes.GastoVariavel;
+                case DespesaTipo.Previsao:
+                    return DespesaTipoNomes.Previsao;
+                case DespesaTipo.Impostos:
+                    return DespesaTipoNomes.Impostos;
+                default:
+                    return "Undefinded";
+            }
+        }
+        private string convertFormaPagamentoToNome(int formaPagamento)
+        {
+            switch ((FormaPagamentoEnum)formaPagamento)
+            {
+                case FormaPagamentoEnum.Boleto:
+                    return FormaDePagamentoNomes.Boleto;
+                case FormaPagamentoEnum.Cheque:
+                    return FormaDePagamentoNomes.Cheque;
+                case FormaPagamentoEnum.CreditoPrazo:
+                    return FormaDePagamentoNomes.CreditoPrazo;
+                case FormaPagamentoEnum.CreditoVista:
+                    return FormaDePagamentoNomes.CreditoVista;
+                case FormaPagamentoEnum.Debito:
+                    return FormaDePagamentoNomes.Debito;                
+                case FormaPagamentoEnum.Dinheiro:
+                    return FormaDePagamentoNomes.Dinheiro;                
+                case FormaPagamentoEnum.Pix:
+                    return FormaDePagamentoNomes.Pix;                
+                case FormaPagamentoEnum.Transferencia:
+                    return FormaDePagamentoNomes.Transferencia;                
+                default:
+                    return "Undefinded";
+            }
+        }
+
+        private string convertDespesaStatusToNome(DespesaStatus despesaStatus)
+        {
+            switch (despesaStatus)
+            {
+                case DespesaStatus.Pago:
+                    return DespesaStatusNomes.Pago;
+                case DespesaStatus.APagar:
+                    return DespesaStatusNomes.APagar;
+                case DespesaStatus.Agendado:
+                    return DespesaStatusNomes.Agendado;
+                default:
+                    return "Undefinded";
+            }
+        }
+
+        /*        // GET: Comprometido
+                public async Task<IActionResult> Comprometido()
+                {
+                    List<Despesa> despesasComprometido = await _context.Despesas.ToListAsync();
+                    return View(despesasComprometido.Where(x => x.Tipo == DespesaTipo.Comprometido));
+                }
+                // GET: Comprometido
+                public async Task<IActionResult> GastoFixo()
+                {
+                    List<Despesa> despesasComprometido = await _context.Despesas.ToListAsync();
+                    return View(despesasComprometido.Where(x => x.Tipo == DespesaTipo.GastoFixo));
+                }
+
+                // GET: Gasto Variavel
+                public async Task<IActionResult> GastoVariavel()
+                {
+                    List<Despesa> despesasComprometido = await _context.Despesas.ToListAsync();
+                    return View(despesasComprometido.Where(x => x.Tipo == DespesaTipo.GastoVariavel));
+                }
+
+                // GET: Previsao
+                public async Task<IActionResult> Previsao()
+                {
+                    List<Despesa> despesasComprometido = await _context.Despesas.ToListAsync();
+                    return View(despesasComprometido.Where(x => x.Tipo == DespesaTipo.Previsao));
+                }
+
+                // GET: Impostos
+                public async Task<IActionResult> Impostos()
+                {
+                    List<Despesa> despesasComprometido = await _context.Despesas.ToListAsync();
+                    return View(despesasComprometido.Where(x => x.Tipo == DespesaTipo.Impostos));
+                }*/
+
 
         // GET: Despesas/Details/5
         public async Task<IActionResult> Details(int? id)
