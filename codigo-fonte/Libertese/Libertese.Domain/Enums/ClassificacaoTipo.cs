@@ -2,5 +2,7 @@
 {
     public enum ClassificacaoTipo
     {
+        Despesas = 1,
+        Receitas = 2
     }
 }
