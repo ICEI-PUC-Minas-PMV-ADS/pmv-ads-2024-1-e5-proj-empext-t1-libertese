@@ -29,6 +29,8 @@ namespace Libertese.Web.Controllers.Financeiro
             List<Classificacao> listaClassificacoes = await _context.Classificacoes.Where(x => x.Tipo == (int)ClassificacaoTipo.Despesas).ToListAsync();
             List<DespesaDTO> listaDespesaDTO = listaDespesas.Select(despesa => new DespesaDTO
             {
+                Id = despesa.Id,
+                Valor = despesa.Valor,
                 Tipo = convertDespesaTipoToNome(despesa.Tipo),
                 Status = convertDespesaStatusToNome(despesa.Status),
                 FormaPagamentoName = convertFormaPagamentoToNome(despesa.FormaPagamentoId),

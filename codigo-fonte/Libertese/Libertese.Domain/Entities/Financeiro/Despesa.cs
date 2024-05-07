@@ -14,6 +14,7 @@ namespace Libertese.Domain.Entities.Financeiro
         public DateTimeOffset? DataPagamento { get; set; }
         public DateTimeOffset? DataVencimento { get; set; }
         public string? Observacao { get; set; }
+        public decimal Valor {  get; set; }
 
     }
 }
