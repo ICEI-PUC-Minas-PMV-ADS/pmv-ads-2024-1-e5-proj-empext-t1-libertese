@@ -32,6 +32,10 @@
                         <ion-icon name="file-tray-stacked-outline" class="nav__icon"></ion-icon>
                         <span asp-action="Index" class="nav__name">Produtos</span>
                     </a>
+                    <a asp-controller="EmpresaParceiras" class="@("nav__link " + (currentController == "EmpresaParceiras" ? "active" : ""))" class="nav__link active">
+                        <ion-icon name="wallet-outline"></ion-icon>
+                        <span asp-action="Index" class="nav__name">Empresas Parceiras</span>
+                    </a>
                 </div>
             </div>
             <a href="#" class="nav__logout-link">

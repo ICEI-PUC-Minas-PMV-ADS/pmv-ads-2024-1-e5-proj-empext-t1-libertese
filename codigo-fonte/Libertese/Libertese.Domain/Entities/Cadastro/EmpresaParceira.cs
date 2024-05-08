@@ -3,8 +3,8 @@
     public class EmpresaParceira : BaseEntity
     {
         public required string Nome { get; set; }
-        public string? Telefone { get; set; }
         public required string Cnpj { get; set; }
-        public required string Email { get; set; }
+        public required decimal ValorAporte { get; set; }
+        public required decimal ValorAdicional { get; set; }
     }
 }
