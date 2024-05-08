@@ -136,7 +136,6 @@ namespace Libertese.Web.Controllers.Cadastro
 
         // POST: EmpresaParceiras/Delete/5
         [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var empresaParceira = await _context.EmpresasParceiras.FindAsync(id);

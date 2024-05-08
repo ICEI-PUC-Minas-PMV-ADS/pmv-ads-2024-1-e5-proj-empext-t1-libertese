@@ -7,6 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="Views\EmpresaParceiras\Create - Cópia.cshtml" />
+    <Content Remove="Views\EmpresaParceiras\Edit - Cópia.cshtml" />
+    <Content Remove="Views\EmpresaParceiras\Index - Cópia.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.2">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

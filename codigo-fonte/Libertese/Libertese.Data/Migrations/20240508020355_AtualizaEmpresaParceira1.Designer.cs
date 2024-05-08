@@ -3,6 +3,7 @@ using System;
 using Libertese.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Libertese.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240508020355_AtualizaEmpresaParceira1")]
+    partial class AtualizaEmpresaParceira1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -44,11 +47,11 @@ namespace Libertese.Data.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<decimal>("ValorAdicional")
-                        .HasColumnType("numeric");
+                    b.Property<float>("ValorAdicional")
+                        .HasColumnType("real");
 
-                    b.Property<decimal>("ValorAporte")
-                        .HasColumnType("numeric");
+                    b.Property<float>("ValorAporte")
+                        .HasColumnType("real");
 
                     b.HasKey("Id");
 
