@@ -24,8 +24,7 @@ namespace Libertese.Domain.Entities.Cadastro
 
         public required string Email { get; set; }
 
-        [Required(ErrorMessage = "O número de celular é obrigatório.")]
-        [RegularExpression(@"^(\d{0,2})(\d{0,5})(\d{0,4})$", ErrorMessage = "Por favor, insira um número de celular válido no formato (XX) XXXXX-XXXX")]
+        
         public required string Celular { get; set; }
 
         public required string Function { get; set; }

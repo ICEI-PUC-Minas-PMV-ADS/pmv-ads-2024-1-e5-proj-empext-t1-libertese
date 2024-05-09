@@ -342,6 +342,23 @@
             // Atualiza o valor do campo com o número de celular formatado
             celularInput.value = formatted;
         });
+
+        // Intercepta o envio do formulário para validar o número de celular
+        document.querySelector('form').addEventListener('submit', function (event) {
+            var botaoSubmit = document.activeElement;
+            // Verifica se o botão clicado é o botão de criar (Confirmar)
+            if (botaoSubmit && botaoSubmit.id === 'botao-create') {
+                var celularInput = document.getElementById('Celular');
+                var celular = celularInput.value.replace(/\D/g, ''); // Remove todos os caracteres que não são dígitos
+                // Verifica se o número de celular possui 11 dígitos após a formatação
+                if (celular.length !== 11) {
+                    // Impede o envio do formulário
+                    event.preventDefault();
+                    // Exibe uma mensagem de erro
+                    alert('Por favor, insira um número de celular válido no formato (XX) XXXXX-XXXX');
+                }
+            }
+        });
     </script>
 }
     
