@@ -101,10 +101,30 @@
         .botao-create{
             align-items: center;
             justify-content: center;
-            width: 300px;
+            width: 200px;
             background-color:#000;
             border-radius: .25rem;
-            
+            display: inline-block;
+            text-align: center;
+        }
+        .botoes{
+            text-align: center;
+        }
+
+        .botao-voltar {
+            align-items: center;
+            justify-content: center;
+            width: 200px;
+            background-color: #D96704;
+            border-radius: .25rem;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .botao-voltar:hover {
+            color: #fff;
+            background-color: #808080;
+            border-color: #808080;
         }
 
         .botao-create:hover {
@@ -164,7 +184,7 @@
                 </div>
                 <div class="form-cpf">
                     <label asp-for="Cpf" class="control-label">CPF *</label>
-                    <input asp-for="Cpf" class="form-control input-cpf" placeholder="Digite o CPF" />
+                    <input asp-for="Cpf" class="form-control input-cpf" placeholder="Digite o CPF" id="cpfInput" />
                     <span asp-validation-for="Cpf" class="text-danger"></span>
                 </div>
                 <div class="form-sexo">
@@ -179,7 +199,7 @@
                 </div>
                 <div class="form-email">
                     <label asp-for="Email" class="control-label">E-mail *</label>
-                    <input asp-for="Email" class="form-control input-email" placeholder="Example@something.com" />
+                    <input asp-for="Email" class="form-control input-email" placeholder="Example@something.com" id="email" />
                     <span asp-validation-for="Email" class="text-danger"></span>
                 </div>
                 <div class="form-celular">
@@ -224,33 +244,22 @@
                     <input asp-for="Salario" class="form-control input-salario" id="salarioInput" placeholder="Digite o salário" />
                     <span asp-validation-for="Salario" class="text-danger"></span>
                 </div>
+                <div class="botoes">
                 <div class="botao-create">
-                    <input type="submit" value="Create" class="btn btn-primary botao-create" id="botao-create" />
+                    <input type="submit" value="Confirmar" class="btn btn-primary botao-create" id="botao-create" />
+                </div>
+                <div class="botao-voltar">
+                    <input asp-action="Index" type="submit" value="Voltar" class="btn btn-primary botao-voltar" id="botao-voltar" />
+                </div>
                 </div>
             </form>
         </div>
     </div>
-    <main class="h-screen flex justify-center items-center">
-        <a asp-action="Index" class="relative inline cursor-pointer text-xl font-medium before:bg-violet-600  before:absolute before:-bottom-1 before:block before:h-[2px] before:w-full before:origin-bottom-right before:scale-x-0 before:transition before:duration-300 before:ease-in-out hover:before:origin-bottom-left hover:before:scale-x-100">
-            Voltar
-        </a>
 
-    </main>
-    @* <div class="relative flex gap-10 min-h-screen flex-col justify-center items-center overflow-hidden bg-gray-50 py-6 sm:py-12">
-        <a asp-action="Index" class="btn overflow-hidden relative w-64 bg-blue-500 text-white py-4 px-4 rounded-xl font-bold uppercase -- before:block before:absolute before:h-full before:w-full before:bg-red-300 before:left-0 before:top-0 before:-translate-y-full hover:before:translate-y-0 before:transition-transform">
-            <span class="relative">Voltar</span>
-        </a>
-    </div> *@
-    @* <div class="botao-back">
-        <a asp-action="Index">Back to List</a>
-    </div> *@
 </body>
-
 
 @section Scripts {
     <script>
-       
-
         // Ocultar o campo de Salário inicialmente quando a página for carregada
         document.addEventListener('DOMContentLoaded', function () {
             var salarioGroup = document.getElementById('salarioGroup');
@@ -284,7 +293,59 @@
             // Continua com o envio do formulário
             return true;
         });
+        function formatarCPF(cpf) {
+            // Remove qualquer caracter que não seja número
+            cpf = cpf.replace(/\D/g, '');
+            // Adiciona a formatação
+            cpf = cpf.replace(/(\d{3})(\d)/, '$1.$2');
+            cpf = cpf.replace(/(\d{3})(\d)/, '$1.$2');
+            cpf = cpf.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+            return cpf;
+        }
+
+        // Adiciona o evento de digitação ao campo de CPF
+        document.getElementById('cpfInput').addEventListener('input', function (event) {
+            var input = event.target;
+            var cpf = input.value;
+            // Formata o CPF enquanto o usuário digita
+            input.value = formatarCPF(cpf);
+        });
+
+        document.querySelector('form').addEventListener('submit', function (event) {
+            var cpfInput = document.getElementById('cpfInput');
+            var cpf = cpfInput.value;
+            // Verifica se o CPF está no formato correto
+            if (!validarCPF(cpf)) {
+                alert('Por favor, insira um CPF válido no formato XXX.XXX.XXX-XX.');
+                // Impede o envio do formulário se o CPF não estiver no formato correto
+                event.preventDefault();
+            }
+        });
+
+        // Função para formatar o número de celular
+        function formatarCelular(celular) {
+            // Remove todos os caracteres que não são dígitos
+            var cleaned = celular.replace(/\D/g, '');
+            // Aplica a formatação (XX) XXXXX-XXXX
+            var match = cleaned.match(/^(\d{0,2})(\d{0,5})(\d{0,4})$/);
+            if (match) {
+                // Concatena os grupos capturados com os separadores
+                return (!match[2] ? match[1] : '(' + match[1] + ') ' + match[2]) + (match[3] ? '-' + match[3] : '');
+            }
+            return celular;
+        }
+
+        // Adiciona o evento de formatação ao campo de celular
+        document.getElementById('Celular').addEventListener('input', function (event) {
+            var celularInput = event.target;
+            var formatted = formatarCelular(celularInput.value);
+            // Atualiza o valor do campo com o número de celular formatado
+            celularInput.value = formatted;
+        });
     </script>
 }
+    
+
+
 
 
