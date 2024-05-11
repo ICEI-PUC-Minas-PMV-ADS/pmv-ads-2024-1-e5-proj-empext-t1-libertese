@@ -9,6 +9,9 @@ using Microsoft.Extensions.Options;
 using System.Data.Entity;
 using Libertese.Domain.Enums;
 using Libertese.Test.Context;
+using Microsoft.AspNetCore.Mvc;
+using System.Web.Mvc;
+using ViewResult = Microsoft.AspNetCore.Mvc.ViewResult;
 
 namespace Libertese.Test
 {
@@ -49,16 +52,70 @@ namespace Libertese.Test
         }
 
         [Test]
-        public void TestEditarClassificacao() => Assert.Pass();
+        public async Task TesteEditarClassificacao()
+        {
+            //// estudando triple A
+
+            /// A - Arrange: configurações necessárias para o teste rodar.
+            /// Inicializar variaveis , criar mocks ou spies.
+            var model = new Classificacao { Tipo = (int)ClassificacaoTipo.Despesas, Descricao = "Impostos" };
+            _context.Classificacoes.Add(model);    
+            _context.SaveChanges();
+            var classificacao = new Classificacao { Id = model.Id, Descricao = model.Descricao };
+
+            /// A - Act: chama-se o metodo ou função para provar o teste.
+            model.Descricao = "Salarios";
+            await _controller.Edit(model.Id, model);
+
+            /// A - Assert: onde verifica se a operação passou ou falhou.
+            var classificacaoEditada = _context.Classificacoes.Where(c => c.Id == model.Id).FirstOrDefault();
+            Assert.IsNotNull(classificacaoEditada, "classificação não foi criada corretamente");
+            Assert.That(classificacao.Descricao, Is.Not.EqualTo(classificacaoEditada.Descricao));
+
+        }
 
         [Test]
-        public void TestDeletarClassificacao() => Assert.Pass();
+        public async Task TestDeletarClassificacao()
+        {
+            //// estudando triple A
+
+            /// A - Arrange: configurações necessárias para o teste rodar.
+            /// Inicializar variaveis , criar mocks ou spies.
+            var model = new Classificacao { Tipo = (int)ClassificacaoTipo.Despesas, Descricao = "Plano de Saúde" };
+            _context.Classificacoes.Add(model);
+            _context.SaveChanges();
+
+            /// A - Act: chama-se o metodo ou função para provar o teste.
+            await _controller.Delete(model.Id);
+
+            /// A - Assert: onde verifica se a operação passou ou falhou.
+            var classificacaoDeletada = _context.Classificacoes.Where(c => c.Id == model.Id).FirstOrDefault();
+            Assert.IsNull(classificacaoDeletada, "classificação não foi deletada corretamente");
+        }
 
         [Test]
-        public void TestVisualizarClassificacao() => Assert.Pass();
+        public async Task TestVisualizarClassificacao()
+        {
+            //// estudando triple A
+            /// A - Arrange: configurações necessárias para o teste rodar.
+            /// Inicializar variaveis , criar mocks ou spies.
+            var model = new Classificacao { Tipo = (int)ClassificacaoTipo.Receitas, Descricao = "Venda" };
+            _context.Classificacoes.Add(model);
+            _context.SaveChanges();
+
+            /// A - Act: chama-se o metodo ou função para provar o teste.
+            var view =  await _controller.Details(model.Id) as ViewResult;
+
+            /// A - Assert: onde verifica se a operação passou ou falhou.
+            Assert.That(model, Is.EqualTo(view?.Model));
+
+        }
 
         [Test]
-        public void TestEditarClassificacaoAssociadaAUmaDespesa() => Assert.Pass();
+        public void TestEditarClassificacaoAssociadaAUmaDespesa()
+        {
+
+        }
 
         [Test]
         public void TestEditarClassificacaoAssociadaAUmaReceita() => Assert.Pass();

@@ -48,7 +48,27 @@ namespace Libertese.Test
         }
 
         [Test]
-        public void TestEditarFormaPagamento() => Assert.Pass();
+        public async Task TesteEditarFormaPagamento()
+        {
+            //// estudando triple A
+
+            /// A - Arrange: configurações necessárias para o teste rodar.
+            /// Inicializar variaveis , criar mocks ou spies.
+            var model = new FormaPagamento { Descricao = "Depósito em Conta" };
+            _context.FormaPagamentos.Add(model);
+            _context.SaveChanges();
+            var formaPagamento = new FormaPagamento { Id = model.Id, Descricao = model.Descricao };
+
+            /// A - Act: chama-se o metodo ou função para provar o teste.
+            model.Descricao = "Pix";
+            await _controller.Edit(model.Id, model);
+
+            /// A - Assert: onde verifica se a operação passou ou falhou.
+            var formaPagamentoEditada = _context.FormaPagamentos.Where(c => c.Id == model.Id).FirstOrDefault();
+            Assert.IsNotNull(formaPagamentoEditada, "forma pagamento não foi criada corretamente");
+            Assert.That(formaPagamento.Descricao, Is.Not.EqualTo(formaPagamentoEditada.Descricao));
+
+        }
 
         [Test]
         public void TestDeletarFormaPagamento() => Assert.Pass();
