@@ -1,6 +1,7 @@
 using Libertese.Data;
 using Libertese.Domain.Entities.Financeiro;
 using Libertese.Domain.Entities.Precificacao;
+using Libertese.Test.Context;
 using Libertese.Web.Controllers.Financeiro;
 using Libertese.Web.Controllers.Precificacao;
 using Microsoft.EntityFrameworkCore;

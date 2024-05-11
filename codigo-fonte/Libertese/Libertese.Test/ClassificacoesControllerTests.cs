@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.Extensions.Options;
 using System.Data.Entity;
 using Libertese.Domain.Enums;
+using Libertese.Test.Context;
 
 namespace Libertese.Test
 {
