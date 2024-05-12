@@ -1,16 +1,13 @@
 ﻿using Libertese.Data;
-using Microsoft.AspNetCore.Http;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
-using CsvHelper.Configuration;
-using System.Globalization;
+using Microsoft.EntityFrameworkCore;
 using CsvHelper;
 using CsvHelper.Configuration;
-using Libertese.Domain.Entities;
-using Libertese.Domain.Entities.Financeiro;
-using Libertese.Domain.Entities.Venda;
+using System.Globalization;
+using System.IO;
+using System.Threading.Tasks;
+using System.Linq;
 using Libertese.Web.ViewModels;
-
 
 namespace Libertese.Web.Controllers.Relatorios
 {
@@ -23,26 +20,42 @@ namespace Libertese.Web.Controllers.Relatorios
             _context = context;
         }
 
-        // Método genérico para baixar CSV
-        public async Task<IActionResult> DownloadCsv(string tipo)
+        public async Task<IActionResult> DownloadCsv(string tipo, DateTime dataSelecionada)
         {
-            IEnumerable<object> records = tipo.ToLower() switch
+            // Normalização da data para remover o tempo
+            dataSelecionada = dataSelecionada.Date;
+
+            IEnumerable<object> records = null;
+
+            switch (tipo.ToLower())
             {
-                "vendas" => await _context.Vendas.ToListAsync(),
-                "despesas" => await _context.Despesas.ToListAsync(),
-                "receita" => await _context.Receitas.ToListAsync(),
-                _ => null
-            };
+                case "vendas":
+                    records = await _context.Vendas
+                        //.Where(v => v.DataCriacao.HasValue && v.DataCriacao.Value.Date == dataSelecionada)
+                        .ToListAsync();
+                    break;
+                case "despesas":
+                    records = await _context.Despesas
+                        //.Where(d => d.DataCriacao.HasValue && d.DataCriacao.Value.Date == dataSelecionada)
+                        .ToListAsync();
+                    break;
+                case "receita":
+                    records = await _context.Receitas
+                        //.Where(r => r.DataCriacao.HasValue && r.DataCriacao.Value.Date == dataSelecionada)
+                        .ToListAsync();
+                    break;
+                default:
+                    return NotFound("Tipo de relatório desconhecido.");
+            }
 
             if (records == null || !records.Any())
             {
-                return Content("Nenhum registro encontrado.");
+                return Content("Nenhum registro encontrado para esta data.");
             }
 
-            string fileName = $"{tipo}_{DateTime.Now.ToString("yyyyMMdd")}.csv";
-            return await GenerateCsv(records, fileName);
+            // Gerar o CSV
+            return await GenerateCsv(records, $"{tipo}_{dataSelecionada.ToString("yyyyMMdd")}.csv");
         }
-
 
 
         private async Task<FileContentResult> GenerateCsv<T>(IEnumerable<T> records, string fileName)
@@ -57,7 +70,6 @@ namespace Libertese.Web.Controllers.Relatorios
 
             return File(memoryStream.ToArray(), "text/csv", fileName);
         }
-
 
         public async Task<IActionResult> Index()
         {
@@ -89,77 +101,6 @@ namespace Libertese.Web.Controllers.Relatorios
             };
 
             return View(viewModel); // Passe a ViewModel para a view
-        }
-
-
-
-        // GET: RelatoriosController/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: RelatoriosController/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: RelatoriosController/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: RelatoriosController/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: RelatoriosController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: RelatoriosController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: RelatoriosController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
         }
     }
 }

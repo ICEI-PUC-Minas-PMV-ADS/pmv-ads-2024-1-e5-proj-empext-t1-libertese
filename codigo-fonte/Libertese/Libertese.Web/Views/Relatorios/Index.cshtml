@@ -25,13 +25,15 @@
         <div>
             <div class="flex items-center justify-between">
                 <h4 class="text-lg font-medium" style="width: 200px;">Receita</h4>
-                    <select id="dataReceita" name="periodo" class="form-select rounded-md shadow-sm w-220">
+                    <select id="@($"data{"receitas"}")" name="dataSelecionada" class="form-select rounded-md shadow-sm">
                     @foreach (var data in Model.DatasCriacaoReceitas)
                     {
                         <option value="@data">@data?.ToString("dd/MM/yyyy HH:mm")</option>
                     }
                 </select>
-                    <a href="@Url.Action("DownloadCsv", "Relatorios", new { tipo = "receitas" })" class="inline-flex items-center justify-center bg-orange-800 hover:bg-orange-800 text-white px-4 py-2 rounded" style="width: 200px; height: 40px;">Download</a>
+                <button onclick="downloadCsv('receitas')" class="inline-flex items-center justify-center bg-orange-800 hover:bg-orange-800 text-white px-4 py-2 rounded" style="width: 200px; height: 40px;">
+                    Download
+                </button>
 
             </div>
             <div class="border-t border-slate-200 dark:border-slate-700 mt-4"></div>
@@ -40,13 +42,15 @@
         <div>
             <div class="flex items-center justify-between">
                 <h4 class="text-lg font-medium" style="width: 200px;">Despesas</h4>
-                    <select id="dataDespesas" name="periodo" class="form-select rounded-md shadow-sm w-220">
+                    <select id="@($"data{"despesas"}")" name="dataSelecionada" class="form-select rounded-md shadow-sm">
                     @foreach (var data in Model.DatasCriacaoDespesas)
                     {
                         <option value="@data">@data?.ToString("dd/MM/yyyy HH:mm")</option>
                     }
                 </select>
-                    <a href="@Url.Action("DownloadCsv", "Relatorios", new { tipo = "despesas" })" class="inline-flex items-center justify-center bg-orange-800 hover:bg-orange-800 text-white px-4 py-2 rounded" style="width: 200px; height: 40px;">Download</a>
+                <button onclick="downloadCsv('despesas')" class="inline-flex items-center justify-center bg-orange-800 hover:bg-orange-800 text-white px-4 py-2 rounded" style="width: 200px; height: 40px;">
+                    Download
+                </button>
             </div>
             <div class="border-t border-slate-200 dark:border-slate-700 mt-4"></div>
         </div>
@@ -54,13 +58,15 @@
         <div>
             <div class="flex items-center justify-between">
                 <h4 class="text-lg font-medium" style="width: 200px;">Vendas</h4>
-                    <select id="dataVendas" name="periodo" class="form-select rounded-md shadow-sm w-220">
+                    <select id="@($"data{"vendas"}")" name="dataSelecionada" class="form-select rounded-md shadow-sm">
                     @foreach (var data in Model.DatasCriacaoVendas)
                     {
                         <option value="@data">@data?.ToString("dd/MM/yyyy HH:mm")</option>
                     }
                 </select>
-                    <a href="@Url.Action("DownloadCsv", "Relatorios", new { tipo = "vendas" })" class="inline-flex items-center justify-center bg-orange-800 hover:bg-orange-800 text-white px-4 py-2 rounded" style="width: 200px; height: 40px;">Download</a>
+                <button onclick="downloadCsv('vendas')" class="inline-flex items-center justify-center bg-orange-800 hover:bg-orange-800 text-white px-4 py-2 rounded" style="width: 200px; height: 40px;">
+                    Download
+                </button>
             </div>
             <div class="border-t border-slate-200 dark:border-slate-700 mt-4"></div>
         </div>
@@ -96,19 +102,11 @@
         </div>
     </div>
 </div>
-    @* <script>
+    <script>
         function downloadCsv(tipo) {
-            // Construindo o ID diretamente com a primeira letra em maiúscula para corresponder ao que foi definido nos IDs dos <select>
-            var selectId = 'data' + tipo.charAt(0).toUpperCase() + tipo.slice(1);
-            var selectElement = document.getElementById(selectId);
-            if (!selectElement) {
-                console.error("Elemento select não encontrado:", selectId);
-                return;
-            }
-            var dataSelecionada = selectElement.value;
-            var url = '@Url.Action("DownloadCsv", "Relatorios")' + '?tipo=' + tipo.toLowerCase() + '&dataSelecionada=' + encodeURIComponent(dataSelecionada);
+            var dataSelecionada = document.getElementById('data' + tipo).value;
+            var url = '/Relatorios/DownloadCsv?tipo=' + tipo + '&dataSelecionada=' + dataSelecionada;
             window.location.href = url;
         }
-
-    </script> *@
+    </script>
 </body>
