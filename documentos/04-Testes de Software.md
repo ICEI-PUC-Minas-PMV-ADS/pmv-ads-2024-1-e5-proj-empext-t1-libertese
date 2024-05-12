@@ -52,6 +52,33 @@ Os testes funcionais a serem realizados no aplicativo são descritos a seguir:
 
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/NovaSenha2.jpeg)
 
+# Testes Automatizados
+
+Ferramenta de testes: xUnit.net (disponilizada para aplicações do .NET Framework)
+
+Foram implementados testes de unidade automatizados, que cobrem os principais métodos das entidades de Categorias e Materiais.
+
+| Caso de Teste           | CRUD de Materiais                                                                                           |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|Requisitos Associados    | RF-007	Permitir criar,visualizar,editar e deletar Materiais.          | 
+|Objetivo do Teste        | Verificar se as ações estão sendo realizadas corretamente.                                                            | 
+|Passos                   | Acessar a tela de Produtos e clicar em "+ Materiais".                                                                       |
+|Critérios de Êxito       | Inserir as informações nos padrões corretos.  |
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/59944150/dac92363-10b1-4480-aff2-c0c47e33f5af)
+
+| Caso de Teste           | CRUD de Categorias                                                                                         |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|Requisitos Associados    | RF-007	Permitir criar,visualizar,editar e deletar Categorias de Produtos.          | 
+|Objetivo do Teste        | Verificar se as ações estão sendo realizadas corretamente.                                                            | 
+|Passos                   | Acessar a tela de Produtos e clicar em "+ Categorias".                                                                       |
+|Critérios de Êxito       | Inserir as informações nos padrões corretos.  |
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/59944150/7d043237-ddfa-4d4f-8132-445d7b65340b)
+
+
+
+
 
 # Plano de Testes de Software (Em pares)
 
