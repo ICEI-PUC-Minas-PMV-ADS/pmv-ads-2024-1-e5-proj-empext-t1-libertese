@@ -1,92 +1,216 @@
 ﻿@model Libertese.Domain.Entities.Financeiro.Despesa
+@using Libertese.Domain.Enums
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Libertese</title>
+    <link rel="stylesheet" href="~/../sidebar/assets/css/styles.css" asp-append-version="true" />
+    <link href="../scaffold/css/vendors/flatpickr.min.css" rel="stylesheet">
+    <link href="../scaffold/style.css" rel="stylesheet">
+    <link href="../scaffold/css/vendors/flatpickr.min.css" />
+    <style>
+        input[type="radio"] {
+            color: #F2CAB3;
+            border-color: #D3D3D3;
+        }
+
+        input[type="radio"]:checked {
+            background-color: #F2CAB3;
+            border-color: #F2CAB3;
+        }
+
+        .confirmar {
+            background-color: #000;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background-color 0.5s ease;
+            width: 15%;
+            height: 3rem;
+        }
+    </style>
+</head>
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Cadastro despesas";
+    Layout = "~/Views/Shared/_LayoutProdutos.cshtml";
 }
 
-<h1>Create</h1>
+<body class="font-inter antialiased bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-400">
+    <div class="flex overflow-hidden">
+        <div class="relative flex flex-col flex-1 overflow-y-auto overflow-x-hidden">
+            <main class="grow" style="margin-left: 4rem">
+                <div class="grid grid-flow-col sm:auto-cols-max justify-start sm:justify-end gap-2">
+                    <a asp-action="Index" class="btn bg-orange-500 hover:bg-orange-600 text-white">
+                        <span class="hidden xs:block">Voltar</span>
+                    </a>
+                </div>
+                <div class="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto ">
+                    <div class="sm:flex sm:justify-between flex-col sm:items-center mb-5">
+                        <div class="mb-4 sm:mb-0">
+                            <h1 class="text-2xl md:text-3xl text-slate-800 dark:text-slate-100 font-bold mb-6">Cadastro despesas </h1>
+                        </div>
+                    </div>
+                </div>
 
-<h4>Despesa</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="FornecedorId" class="control-label"></label>
-                <input asp-for="FornecedorId" class="form-control" />
-                <span asp-validation-for="FornecedorId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="FormaPagamentoId" class="control-label"></label>
-                <input asp-for="FormaPagamentoId" class="form-control" />
-                <span asp-validation-for="FormaPagamentoId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ContaBancariaId" class="control-label"></label>
-                <input asp-for="ContaBancariaId" class="form-control" />
-                <span asp-validation-for="ContaBancariaId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ClassificacaoId" class="control-label"></label>
-                <input asp-for="ClassificacaoId" class="form-control" />
-                <span asp-validation-for="ClassificacaoId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Tipo" class="control-label"></label>
-                <input type="number" asp-for="Tipo" class="form-control"></input>
-                <span asp-validation-for="Tipo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Descricao" class="control-label"></label>
-                <input asp-for="Descricao" class="form-control" />
-                <span asp-validation-for="Descricao" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Status" class="control-label"></label>
-                <input type="number" asp-for="Status" class="form-control"></input>
-                <span asp-validation-for="Status" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Valor" class="control-label"></label>
-                <input type="number" asp-for="Valor" class="form-control"></input>
-                <span asp-validation-for="Valor" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DataPagamento" class="control-label"></label>
-                <input asp-for="DataPagamento" class="form-control" />
-                <span asp-validation-for="DataPagamento" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DataVencimento" class="control-label"></label>
-                <input asp-for="DataVencimento" class="form-control" />
-                <span asp-validation-for="DataVencimento" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Observacao" class="control-label"></label>
-                <input asp-for="Observacao" class="form-control" />
-                <span asp-validation-for="Observacao" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DataCriacao" class="control-label"></label>
-                <input asp-for="DataCriacao" class="form-control" />
-                <span asp-validation-for="DataCriacao" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DataAtualizacao" class="control-label"></label>
-                <input asp-for="DataAtualizacao" class="form-control" />
-                <span asp-validation-for="DataAtualizacao" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+                <form asp-action="Create" class="flex flex-col align-content-center">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="flex flex-col mb-6">
+                        <label asp-for="ClassificacaoId" class="control-label">Classificação da despesa *</label>
+                        <select class="form-input pl-6 bg-white dark:bg-slate-800" asp-for="ClassificacaoId" 
+                                asp-items="@(new SelectList(ViewBag.Classificacao, "Id", "Descricao"))">
+                            <option>Selecione a Classificação</option>
+                        </select>
+                        <span asp-validation-for="ClassificacaoId" class="text-danger"></span>
+                    </div>
+                    <div class="flex flex-col mb-6">
+                        <label asp-for="Tipo" class="control-label">Tipo de despesa *</label>
+
+                        <select class="form-input pl-6 bg-white dark:bg-slate-800" asp-for="Tipo">
+                            <option value="">Selecione o Tipo de despesa</option>
+                            @foreach (var despesaTipo in Enum.GetValues(typeof(DespesaTipo)))
+                            {
+                                string nome = convertDespesaTipoToNome((int)despesaTipo);
+                                <option value="@((int)despesaTipo)">@nome</option>
+                            }
+                        </select>
+                            @functions {
+                                    static string convertDespesaTipoToNome(int despesaTipo)
+                                    {
+                                        switch (despesaTipo)
+                                        {
+                                            case 1:
+                                                return DespesaTipoNomes.Comprometido;
+                                            case 2:
+                                                return DespesaTipoNomes.GastoFixo;
+                                            case 3:
+                                                return DespesaTipoNomes.GastoVariavel;
+                                            case 4:
+                                                return DespesaTipoNomes.Previsao;
+                                            case 5:
+                                                return DespesaTipoNomes.Impostos;
+                                            default:
+                                                return string.Empty;
+                                        } 
+                                    }}
+                        <span asp-validation-for="Tipo" class="text-danger"></span>
+                    </div>
+                    <div class="flex flex-col mb-6">
+                        <label asp-for="DataVencimento" class="control-label">Data de vencimento *</label>
+                        <input type="datetime-local" asp-for="DataVencimento" class="form-input pl-6 bg-white dark:bg-slate-800" />
+                        <span asp-validation-for="DataVencimento" class="text-danger"></span>
+                    </div>
+                    <div class="flex flex-row w-full justify-between mb-6">
+                    <div class="flex flex-col" style="width: 48%">
+                        <label asp-for="FormaPagamentoId" class="control-label">Forma de Pagamento *</label>
+                        <select class="form-input pl-6 bg-white dark:bg-slate-800" asp-for="FormaPagamentoId">
+                            <option value="">Selecione a forma de pagamento</option>
+                            @foreach (var formaDePagamento in Enum.GetValues(typeof(FormaPagamentoEnum)))
+                            {
+                                string nome = convertFormaPagamentoToNome((int)formaDePagamento);
+                                <option value="@((int)formaDePagamento)">@nome</option>
+                            }
+                        </select>
+                            @functions {
+                                    static string convertFormaPagamentoToNome(int formaPagamento)
+                                    {
+                                        switch ((FormaPagamentoEnum)formaPagamento)
+                                        {
+                                            case FormaPagamentoEnum.Boleto:
+                                                return FormaDePagamentoNomes.Boleto;
+                                            case FormaPagamentoEnum.Cheque:
+                                                return FormaDePagamentoNomes.Cheque;
+                                            case FormaPagamentoEnum.CreditoPrazo:
+                                                return FormaDePagamentoNomes.CreditoPrazo;
+                                            case FormaPagamentoEnum.CreditoVista:
+                                                return FormaDePagamentoNomes.CreditoVista;
+                                            case FormaPagamentoEnum.Debito:
+                                                return FormaDePagamentoNomes.Debito;                
+                                            case FormaPagamentoEnum.Dinheiro:
+                                                return FormaDePagamentoNomes.Dinheiro;                
+                                            case FormaPagamentoEnum.Pix:
+                                                return FormaDePagamentoNomes.Pix;                
+                                            case FormaPagamentoEnum.Transferencia:
+                                                return FormaDePagamentoNomes.Transferencia;                
+                                            default:
+                                                return string.Empty;
+                                        }
+                                    }
+                                }
+                        <span asp-validation-for="FormaPagamentoId" class="text-danger"></span>
+                    </div>
+                    <div class="flex flex-col" style="width: 48%">
+                        <label asp-for="Valor" class="control-label">Valor *</label>
+                        <input type="number" asp-for="Valor" class="form-input pl-6 bg-white dark:bg-slate-800">
+                        <span asp-validation-for="Valor" class="text-danger"></span>
+                    </div>
+                    </div>
+                    <div class="flex flex-col mb-6">
+                        <label asp-for="FornecedorId" class="control-label"></label>
+                        <input type="hidden" value="1" asp-for="FornecedorId" class="form-input pl-6 bg-white dark:bg-slate-800" />
+                        <span asp-validation-for="FornecedorId" class="text-danger"></span>
+                    </div>
+                    <div class="flex flex-col mb-6">
+                        <label asp-for="ContaBancariaId" class="control-label"></label>
+                        <input type="hidden" value="1" asp-for="ContaBancariaId" class="form-input pl-6 bg-white dark:bg-slate-800" />
+                        <span asp-validation-for="ContaBancariaId" class="text-danger"></span>
+                    </div>
+                    <div class="flex flex-col mb-6">
+                        <input type="hidden" asp-for="Descricao" class="form-input pl-6 bg-white dark:bg-slate-800" />
+                    </div>
+                    <div class="flex flex-row w-full justify-between mb-6">
+                        <div class="flex flex-col" style="width: 48%">
+                            <label asp-for="DataPagamento" class="control-label">Data do Pagamento</label>
+                            <input asp-for="DataPagamento" type="datetime-local" class="form-input pl-6 bg-white dark:bg-slate-800 mb-10" />
+                            <span asp-validation-for="DataPagamento" class="text-danger"></span>
+
+                            <label asp-for="Status" class="control-label">Status *</label>
+                            <div class="flex flex-col form-input pl-6 bg-white dark:bg-slate-800">
+                                <div class="flex flex-row">
+                                <input asp-for="Status" type="radio" class="mr-3" value=@DespesaStatus.APagar /> @DespesaStatusNomes.APagar
+                                </div>
+                                <div class="flex flex-row">
+                                <input asp-for="Status" type="radio" class="mr-3" value=@DespesaStatus.Pago /> @DespesaStatusNomes.Pago
+                                </div>
+                                <div class="flex flex-row">
+                                    <input asp-for="Status" type="radio" class="mr-3" value=@DespesaStatus.Agendado /> @DespesaStatusNomes.Agendado
+                                </div>
+                            </div>
+                            <span asp-validation-for="Status" class="text-danger"></span>
+                        </div>
+                        <div class="flex flex-col" style="width: 48%">
+                            <label asp-for="Observacao" class="control-label">Observações</label>
+                            <textarea asp-for="Observacao" class="form-input pl-6 bg-white dark:bg-slate-800 h-full" placeholder="Escreva..."></textarea>
+                            <span asp-validation-for="Observacao" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="flex flex-col mb-6">
+                        <input type="hidden" asp-for="DataCriacao" class="form-input pl-6 bg-white dark:bg-slate-800" />
+                    </div>
+                    <div class="flex flex-col">
+                        <input type="hidden" asp-for="DataAtualizacao" class="form-input pl-6 bg-white dark:bg-slate-800 border-dark" />
+                    </div>
+                    <div class="flex justify-center mt-12">
+                        <input type="submit" value="Confirmar" class="confirmar">
+                    </div>
+                </form>
+            </main>
+        </div>
     </div>
-</div>
+</body>
+</html>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+<script src="~/../sidebar/assets/js/main.js"></script>
+<script src="~/../sidebar/assets/js/main.js"></script>
+<script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js" asp-append-version="true"></script>
+<script src="~/../lib/jquery/dist/jquery.min.js"></script>
+<script src="~/../js/site.js" asp-append-version="true"></script>
+<script src="../scaffold/js/vendors/alpinejs.min.js" defer></script>
+<script src="../scaffold/js/main.js"></script>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
