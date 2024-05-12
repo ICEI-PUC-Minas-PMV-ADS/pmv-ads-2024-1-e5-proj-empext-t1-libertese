@@ -185,17 +185,17 @@ Garantir a funcionalidade, confiabilidade e segurança das telas de:
 Os testes funcionais a serem realizados no sistema Libertese são descritos a seguir:
 Funcionalidades desenvolvidas por: Vinicius Ponciano
  
-| Caso de Teste           | CT001 – Poder inserir uma nova classificação de Despesas - RF-XXXXX                                                           |
+| Caso de Teste           | CT001 – Poder inserir uma nova classificação de Despesas - RF-010                                                            |
 |-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 |Pre Condições            | Estar na tela de Despesas       | 
 |Procedimento             | 1. No menu selecione a opção “+Classificação”. |
 |                         | 2. Na tela Classificação de Despesas, insira o nome da Classificação e clique no botão "+". |
 |                         | 3. Clicar em voltar, o sistema deve retornar para a tela de Despesas |
 |Resultado Esperado       | A nova classificação deve ser inserida com sucesso, e o sistema deverá retornar para a página de Despesas                     |
-|Dados de Entrada         | Informações solicitadas no campo de cadastro.  |
+|Dados de Entrada         | Informações solicitadas no campo de Classificação.  |
 
 
-| Caso de Teste           | CT001 – Poder inserir uma nova Despesa - RF-XXXXX                                                                             |
+| Caso de Teste           | CT002 – Poder inserir uma nova Despesa - RF-010                                                                               |
 |-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 |Pre Condições            | Estar na tela de Despesas       | 
 |Procedimento             | 1. No menu selecione a opção “+Nova Despesa”. |
@@ -205,6 +205,18 @@ Funcionalidades desenvolvidas por: Vinicius Ponciano
 |                         | 5. Clicar em "Confirmar" |
 |Resultado Esperado       | Deverá ser inserido uma nova Despesa no sistema|
 |Dados de Entrada         | Informações solicitadas no campo de Despesas.  |
+
+
+| Caso de Teste           | CT003 – Permitir editar uma Despesa já cadastrada - RF-010                                                                   |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|Pre Condições            | Estar na tela de Despesas       | 
+|Procedimento             | 1. Identificar a Despesa a ser alterada |
+|                         | 2. Clicar no botão com o "lápis" para editar uma Despesa desejada|
+|                         | 3. A tela de Editar Despesas deverá ser mostrada |
+|                         | 4. Modificar as informações conforme desejado |
+|                         | 5. Clicar em "Confirmar" |
+|Resultado Esperado       | Deverá ser modificado uma Despesa no sistema|
+|Dados de Entrada         | Informações solicitadas no campo Editar Despesas.  |
 
 
 
