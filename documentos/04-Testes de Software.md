@@ -257,6 +257,17 @@ Funcionalidades desenvolvidas por: Vinicius Ponciano
 |Dados de Entrada         | Informações solicitadas na tela de Despesas |
 
 
+| Caso de Teste           | CT005 – Inserir informações de Despesas com campos em branco ou dados inválidos- RF-010                                      |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|Pre Condições            | Estar na tela de Despesas       | 
+|Procedimento             | 1. No menu selecione a opção “+Nova Despesa”. |
+|                         | 2. Na tela de Despesas, verificar as informações necessárias |
+|                         | 3. Uma tela de "Ecluir Despesa" deverá ser mostrada |
+|                         | 4. Clicar em "Confirmar" para salvar as alterações |
+|Resultado Esperado       | Deverá ser informado os campos que não podem ficar em branco ou campos inválidos |
+|Dados de Entrada         | Informações solicitadas na tela de Despesas |
+
+
 
 
 
