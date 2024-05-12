@@ -266,6 +266,53 @@ Os testes funcionais a serem realizados no sistema Libertese são descritos a se
 |Dados de Entrada         | Informações solicitadas na tela de Despesas |
 
 
+# Plano de Testes de Software (Em Pares)
+##	Objetivo
+Garantir a funcionalidade, confiabilidade e segurança nas telas de:
+•	Relatórios
+
+##	Ferramentas utilizadas para os testes
+•	Visual Studio
+•	Navegador Google Chrome
+
+##	Responsáveis pelos testes e pelas funcionalidades desenvolvidas
+Karinne Massensini, realizando testes nas funcionalidades desenvolvidas por: Pedro Ertal
+
+##	Testes Unitários realizados
+Os testes funcionais a serem realizados dentro do sistema Libertese são descritos a seguir:
+
+| Caso de Teste           |	Relatório |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+| Requisitos Associados |	RF-014 Permitir gerar relatórios de venda |
+| Objetivo do teste |	Verificar se as datas do campos na página de Relatório estão corretos |
+| Passos e Procedimento |	Acessar a tela de Relatórios |
+| Resultado esperado |	As datas estarem sincronizadas com os dados criados |
+
+| Caso de Teste           |	Relatório Download |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+| Requisitos Associados |	RF-014 Permitir gerar relatórios de venda |
+| Objetivo do teste |	Verificar se o arquivo com os dados do relatório desejado está sendo baixado |
+| Passos e Procedimento |	Acessar a tela de Relatórios |
+| Resultado esperado |	O arquivo será baixado com os dados esperados |
+
+## Evidências de Testes de Softwares
+RF-014 - Permitir gerar relatórios de venda
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/53317747/71e6b24b-56ba-4e6a-8708-1aef5489b084)
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/53317747/53546f8f-23f4-482d-b20c-c939f522b3f1)
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/53317747/00048b40-46aa-4c8c-af2b-96ea349691d2)
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/53317747/1a771d29-c1f7-4671-81f4-5ab9b1d34b2d)
+
+
+
+
+ 
+ 
+
+
 
 
 
