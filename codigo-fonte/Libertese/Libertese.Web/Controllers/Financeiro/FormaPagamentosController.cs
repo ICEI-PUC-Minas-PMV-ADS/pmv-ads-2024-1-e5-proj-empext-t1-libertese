@@ -19,10 +19,6 @@ namespace Libertese.Web.Controllers.Financeiro
             _context = context;
         }
 
-        public FormaPagamentosController()
-        {
-        }
-
         // GET: FormaPagamentos
         public async Task<IActionResult> Index()
         {

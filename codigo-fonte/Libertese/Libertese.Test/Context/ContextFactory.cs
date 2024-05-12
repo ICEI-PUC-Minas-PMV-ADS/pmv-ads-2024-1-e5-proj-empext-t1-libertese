@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Libertese.Data;
 
-namespace Libertese.Test
+namespace Libertese.Test.Context
 {
     public class ContextFactory : ApplicationDbContext
     {
@@ -15,5 +15,5 @@ namespace Libertese.Test
         {
             base.OnModelCreating(modelBuilder);
         }
-}
+    }
 }
