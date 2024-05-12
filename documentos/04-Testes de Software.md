@@ -176,24 +176,38 @@ Garantir a funcionalidade, confiabilidade e segurança das telas de:
 - Cypress
 
 ## Responsáveis pelos testes e pelas funcionalidades desenvolvidas
-- Responsável: Rafael de Oliveira
-- Telas desenvolvidas: CRUD Forma de Pagamento; CRUD Contas Bancárias; CRUD Classificação de Receita e Despesas;
-- Telas testadas: Despesas (Telas desenvolvidas por Vinicíus Ponciano)
+- Responsável pelos testes a seguir: Rafael de Oliveira
+- Telas desenvolvidas: CRUD Forma de Pagamento; CRUD Contas Bancárias; CRUD Classificação de Receita e Despesas - Testadas por: Thais
+- Funcionalidades testadas: Despesas (Telas desenvolvidas por Vinicíus Ponciano)
 
 ## Testes Funcionais Realizados
 
-Os testes funcionais a serem realizados no aplicativo são descritos a seguir:  
+Os testes funcionais a serem realizados no sistema Libertese são descritos a seguir:
+Funcionalidades desenvolvidas por: Vinicius Ponciano
  
-| Caso de Teste           | CT001 – Criar nova empresa parceira                                                                                             |
+| Caso de Teste           | CT001 – Poder inserir uma nova classificação de Despesas - RF-XXXXX                                                           |
 |-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
-|Pre Condições            | Estar na tela de Empresas Parceiras       | 
-|Procedimento             | 1. No menu selecione a opção “Empresas Parceiras”. |
-|                         | 2. Na tela Empresas Parceiras, clique no botão “Cadastrar Empresa Parceira”. |
-|                         | 3. Na tela de cadastro preencher todas as informações necessárias. |
-|                         | 4. Clica em “Confirmar”. |
-|Resultado Esperado       | A nova empresa parceira deve ser cadastrada com sucesso.                                                                       |
+|Pre Condições            | Estar na tela de Despesas       | 
+|Procedimento             | 1. No menu selecione a opção “+Classificação”. |
+|                         | 2. Na tela Classificação de Despesas, insira o nome da Classificação e clique no botão "+". |
+|                         | 3. Clicar em voltar, o sistema deve retornar para a tela de Despesas |
+
+|Resultado Esperado       | A nova classificação deve ser inserida com sucesso, e o sistema deverá retornar para a página de Despesas                     |
 |Dados de Entrada         | Informações solicitadas no campo de cadastro.  |
 
+
+| Caso de Teste           | CT001 – Poder inserir uma nova Despesa - RF-XXXXX                                                                             |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|Pre Condições            | Estar na tela de Despesas       | 
+|Procedimento             | 1. No menu selecione a opção “+Nova Despesa”. |
+|                         | 2. Na tela Cadastro de Despesas, insira o nome da Despesa, selecione a classificação |
+|                         | 3. Selecione o tipo de Despesas |
+|                         | 4. Preencha o restante dos campos a serem informados |
+|                         | 5. Clicar em "Confirmar" |
+
+
+|Resultado Esperado       | Deverá ser inserido uma nova Despesa no sistema|
+|Dados de Entrada         | Informações solicitadas no campo de Despesas.  |
 
 
 
