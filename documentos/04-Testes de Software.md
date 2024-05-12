@@ -310,6 +310,21 @@ Os testes funcionais a serem realizados no sistema Libertese são descritos a se
 - CT002 – Poder inserir uma nova Despesa - RF-010
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/321f2a3c-1877-451a-b99d-154ae3353cc5)
 
+- CT003 – Permitir editar uma Despesa já cadastrada - RF-010
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/73b1a4a1-73d6-4f6f-9dcb-49200e1c4969)
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/4f957f46-1075-4377-a36e-819c47eddafc)
+
+- CT004 – Permitir apagar uma Despesa já cadastrada - RF-010
+  ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/18bada74-1097-4f26-83bf-abd818a258d6)
+  ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/6d5e75a1-0248-4390-8d5c-daa6020b5a24)
+
+- CT005 – Inserir informações de Despesas com campos em branco ou dados inválidos- RF-010
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/38623fbe-9e7c-4092-8fd4-ef99d525d7ce)
+
+
+
+
+
 
 
 # Plano de Testes de Software (Em Pares)
