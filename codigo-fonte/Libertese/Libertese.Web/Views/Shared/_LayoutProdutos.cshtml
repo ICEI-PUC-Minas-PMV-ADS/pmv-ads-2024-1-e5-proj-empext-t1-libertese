@@ -28,12 +28,16 @@
                     <ion-icon name="home-outline" class="nav__icon"></ion-icon>
                     <span asp-controller="HomeController"  asp-action="Index" class="nav__name">Início</span>
                 </a>
+                    <a asp-controller="Despesas" class="@("nav__link " + (currentController == "Despesas" ? "active" : ""))" class="nav__link active">
+                        <ion-icon name="wallet-outline" class="nav__icon"></ion-icon>
+                        <span asp-action="Index" class="nav__name">Despesas</span>
+                </a>
                 <a asp-controller="Produtos" class="@("nav__link " + (currentController == "Produtos" ? "active" : ""))" class="nav__link active">
                     <ion-icon name="file-tray-stacked-outline" class="nav__icon"></ion-icon>
                     <span asp-action="Index" class="nav__name">Produtos</span>
                 </a>
                 <a asp-controller="EmpresaParceiras" class="@("nav__link " + (currentController == "EmpresaParceiras" ? "active" : ""))" class="nav__link active">
-                    <ion-icon name="wallet-outline"></ion-icon>
+                    <ion-icon name="business-outline"></ion-icon>
                     <span asp-action="Index" class="nav__name">Empresas Parceiras</span>
                 </a>
                     <a asp-controller="Relatorios" class="@("nav__link " + (currentController == "Relatorios" ? "active" : ""))" class="nav__link active">

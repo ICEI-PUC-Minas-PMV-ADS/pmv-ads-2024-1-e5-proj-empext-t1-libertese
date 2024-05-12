@@ -146,6 +146,8 @@ namespace Libertese.Web.Controllers.Financeiro
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            List<Classificacao> listaClassificacoes = await GetListaClassificacoesDespesas();
+            ViewBag.Classificacao = listaClassificacoes;
             return View(despesa);
         }
 
@@ -199,6 +201,8 @@ namespace Libertese.Web.Controllers.Financeiro
                 }
                 return RedirectToAction(nameof(Index));
             }
+            List<Classificacao> listaClassificacoes = await GetListaClassificacoesDespesas();
+            ViewBag.Classificacao = listaClassificacoes;
             return View(despesa);
         }
 
