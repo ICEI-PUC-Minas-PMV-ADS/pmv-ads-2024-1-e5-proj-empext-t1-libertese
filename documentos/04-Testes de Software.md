@@ -196,6 +196,7 @@ Os testes funcionais a serem realizados no aplicativo são descritos a seguir:
 
 Garantir a funcionalidade, confiabilidade e segurança das telas de: 
 - DESPESAS
+- CRUD de Materiais
 
 ## Ferramentas utilizadas para os testes
 - Visual studio 2021
@@ -264,6 +265,43 @@ Os testes funcionais a serem realizados no sistema Libertese são descritos a se
 |                         | 4. Clicar em "Confirmar" para salvar as alterações |
 |Resultado Esperado       | Deverá ser informado os campos que não podem ficar em branco ou campos inválidos |
 |Dados de Entrada         | Informações solicitadas na tela de Despesas |
+
+
+- CRUD Materais
+
+| Caso de Teste           | CT001 – Poder inserir uma novo Material - RF-005 / RF-006                                                                    |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|Pre Condições            | Estar na tela de Materiais        | 
+|Procedimento             | 1. No menu selecione a opção “+Criar Material”. |
+|                         | 2. Na tela de Novo Material, inserir as informações: Nome e preço|
+|                         | 3. Clicar em "Salvar" |
+|Resultado Esperado       | Deverá ser inserido uma novo Material no sistema|
+|Dados de Entrada         | Informações solicitadas no campo de Materiais.  |
+
+
+| Caso de Teste           | CT002 – Poder editar uma Material - RF-005 / RF-006                                                                         |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|Pre Condições            | Estar na tela de Materiais        | 
+|Procedimento             | 1. No menu Index de Materiais, localizar qual material a ser editado |
+|                         | 2. Clicar no botão "lápis" para editar um Material já existente|
+|                         | 3. A tela Editar Material deverá ser criada|
+|                         | 4. Clicar em "Salvar" para salvar as moficações no sistema |
+|Resultado Esperado       | Deverá ser salvo uma modificação de Materiais no sistema|
+|Dados de Entrada         | Informações solicitadas no campo de Materiais.  |
+
+
+| Caso de Teste           | CT003 – Poder excluir uma Material - RF-005 / RF-006                                                                         |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|Pre Condições            | Estar na tela de Materiais        | 
+|Procedimento             | 1. No menu Index de Materiais, localizar qual material a ser excluído |
+|                         | 2. Clicar no botão "lixeira" para excluir um Material já existente|
+|                         | 3. A tela de exclusão de Material deverá ser mostrada|
+|                         | 4. Clicar em "Cancelar" para retornar, ou em "Excluir" para confirmar a exclusão |
+|Resultado Esperado       | Deverá ser excluído um Material no sistema|
+|Dados de Entrada         | Informações solicitadas no campo de Materiais.  |
+
+
+
 
 
 # Plano de Testes de Software (Em Pares)
