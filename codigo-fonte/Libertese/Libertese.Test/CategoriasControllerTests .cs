@@ -1,19 +1,22 @@
 using Libertese.Data;
-using Libertese.Domain.Entities.Financeiro;
-using Libertese.Test.Context;
-using Libertese.Web.Controllers.Financeiro;
+using Libertese.Domain.Entities.Precificacao;
+using Libertese.Web.Controllers.Precificacao;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
+using Libertese.Domain.Enums;
+using Libertese.Test.Context;
 using ViewResult = Microsoft.AspNetCore.Mvc.ViewResult;
+
 
 namespace Libertese.Test
 {
     [TestFixture]
-    public class FormaPagamentosControllerTests
+    public class CategoriasControllerTests
+
     {
         private ApplicationDbContext _context;
         private IDbContextTransaction _transaction;
-        private FormaPagamentosController _controller;
+        private CategoriasController _controller;
 
         [SetUp]
         public void Setup()
@@ -22,88 +25,87 @@ namespace Libertese.Test
             _context.Database.EnsureCreated();
             _context.Database.Migrate();
             _transaction = _context.Database.BeginTransaction();
-            _controller = new FormaPagamentosController(_context);
+            _controller = new CategoriasController(_context);
         }
 
         [Test]
-        public async Task TestCriarFormaPagamento() 
+        public async Task TestCriarCategoria()
         {
             //// estudando triple A
 
             /// A - Arrange: configurações necessárias para o teste rodar.
             /// Inicializar variaveis , criar mocks ou spies.
-            var formaPagamento =  new FormaPagamento { Descricao = "Depósito em Conta"};
+            var categoria = new Categoria { Nome = "Camisas" };
 
             /// A - Act: chama-se o metodo ou função para provar o teste.
-            await _controller.Create(formaPagamento);
-            var formaPagamentoCriada = _context.FormaPagamentos.FirstOrDefault();
+            await _controller.Create(categoria);
+            var categoriaCriada = _context.Categorias.FirstOrDefault();
 
 
             /// A - Assert: onde verifica se a operação passou ou falhou.
-            Assert.IsNotNull(formaPagamentoCriada, "forma de pagamento não foi criada no banco de dados");    
-            Assert.That(formaPagamento.Descricao, Is.EqualTo(formaPagamentoCriada.Descricao));
+            Assert.IsNotNull(categoriaCriada, "categoria não foi criada no banco de dados");
+            Assert.That(categoria.Nome, Is.EqualTo(categoriaCriada.Nome));
         }
 
         [Test]
-        public async Task TesteEditarFormaPagamento()
+        public async Task TesteEditarCategoria()
         {
             //// estudando triple A
 
             /// A - Arrange: configurações necessárias para o teste rodar.
             /// Inicializar variaveis , criar mocks ou spies.
-            var model = new FormaPagamento { Descricao = "Depósito em Conta" };
-            _context.FormaPagamentos.Add(model);
+            var model = new Categoria { Nome = "Calças" };
+            _context.Categorias.Add(model);    
             _context.SaveChanges();
-            var formaPagamento = new FormaPagamento { Id = model.Id, Descricao = model.Descricao };
+            var categoria = new Categoria { Id = model.Id, Nome = model.Nome };
 
             /// A - Act: chama-se o metodo ou função para provar o teste.
-            model.Descricao = "Pix";
+            model.Nome = "Moletons";
             await _controller.Edit(model.Id, model);
 
             /// A - Assert: onde verifica se a operação passou ou falhou.
-            var formaPagamentoEditada = _context.FormaPagamentos.Where(c => c.Id == model.Id).FirstOrDefault();
-            Assert.IsNotNull(formaPagamentoEditada, "forma pagamento não foi criada corretamente");
-            Assert.That(formaPagamento.Descricao, Is.Not.EqualTo(formaPagamentoEditada.Descricao));
+            var categoriaEditada = _context.Categorias.Where(c => c.Id == model.Id).FirstOrDefault();
+            Assert.IsNotNull(categoriaEditada, "categoria não foi criada corretamente");
+            Assert.That(categoria.Nome, Is.Not.EqualTo(categoriaEditada.Nome));
 
         }
 
         [Test]
-        public async Task TestDeletarFormaPagamento()
+        public async Task TestDeletarCategoria()
         {
             //// estudando triple A
 
             /// A - Arrange: configurações necessárias para o teste rodar.
             /// Inicializar variaveis , criar mocks ou spies.
-            var model = new FormaPagamento { Descricao = "Pix" };
-            _context.FormaPagamentos.Add(model);
+            var model = new Categoria { Nome = "Bermudas" };
+            _context.Categorias.Add(model);
             _context.SaveChanges();
 
             /// A - Act: chama-se o metodo ou função para provar o teste.
             await _controller.DeleteConfirmed(model.Id);
 
             /// A - Assert: onde verifica se a operação passou ou falhou.
-            var classificacaoDeletada = _context.FormaPagamentos.Where(c => c.Id == model.Id).FirstOrDefault();
-            Assert.IsNull(classificacaoDeletada, "Forma de pagamento não foi deletada corretamente");
+            var categoriaDeletada = _context.Categorias.Where(c => c.Id == model.Id).FirstOrDefault();
+            Assert.IsNull(categoriaDeletada, "categoria não foi deletada corretamente");
         }
 
         [Test]
-        public async Task TestVisualizarFormaPagamento()
+        public async Task TestVisualizarCategoria()
         {
             //// estudando triple A
             /// A - Arrange: configurações necessárias para o teste rodar.
             /// Inicializar variaveis , criar mocks ou spies.
-            var model = new FormaPagamento { Descricao = "Cartão de crétido" };
-            _context.FormaPagamentos.Add(model);
+            var model = new Categoria { Nome = "Camisas" };
+            _context.Categorias.Add(model);
             _context.SaveChanges();
 
             /// A - Act: chama-se o metodo ou função para provar o teste.
-            var view = await _controller.Details(model.Id) as ViewResult;
+            var view =  await _controller.Details(model.Id) as ViewResult;
 
             /// A - Assert: onde verifica se a operação passou ou falhou.
             Assert.That(model, Is.EqualTo(view?.Model));
 
         }
-
 
         [TearDown]
         public void TearDown()

@@ -26,7 +26,7 @@ namespace Libertese.Web.Controllers.Financeiro
         {
             List<Despesa> listaDespesas = await _context.Despesas.ToListAsync();
             List<Fornecedor> listaFornecedores = await _context.Fornecedores.ToListAsync();
-            List<Classificacao> listaClassificacoes = await _context.Classificacoes.Where(x => x.Tipo == (int)ClassificacaoTipo.Despesas).ToListAsync();
+            List<Classificacao> listaClassificacoes = await GetListaClassificacoesDespesas();
             List<DespesaDTO> listaDespesaDTO = listaDespesas.Select(despesa => new DespesaDTO
             {
                 Id = despesa.Id,
@@ -42,6 +42,11 @@ namespace Libertese.Web.Controllers.Financeiro
 
             }).ToList();
             return View(listaDespesaDTO);
+        }
+
+        private async Task<List<Classificacao>> GetListaClassificacoesDespesas()
+        {
+            return await _context.Classificacoes.Where(x => x.Tipo == (int)ClassificacaoTipo.Despesas).ToListAsync();
         }
 
         private string convertDespesaTipoToNome(DespesaTipo despesaTipo)
@@ -102,41 +107,6 @@ namespace Libertese.Web.Controllers.Financeiro
             }
         }
 
-        /*        // GET: Comprometido
-                public async Task<IActionResult> Comprometido()
-                {
-                    List<Despesa> despesasComprometido = await _context.Despesas.ToListAsync();
-                    return View(despesasComprometido.Where(x => x.Tipo == DespesaTipo.Comprometido));
-                }
-                // GET: Comprometido
-                public async Task<IActionResult> GastoFixo()
-                {
-                    List<Despesa> despesasComprometido = await _context.Despesas.ToListAsync();
-                    return View(despesasComprometido.Where(x => x.Tipo == DespesaTipo.GastoFixo));
-                }
-
-                // GET: Gasto Variavel
-                public async Task<IActionResult> GastoVariavel()
-                {
-                    List<Despesa> despesasComprometido = await _context.Despesas.ToListAsync();
-                    return View(despesasComprometido.Where(x => x.Tipo == DespesaTipo.GastoVariavel));
-                }
-
-                // GET: Previsao
-                public async Task<IActionResult> Previsao()
-                {
-                    List<Despesa> despesasComprometido = await _context.Despesas.ToListAsync();
-                    return View(despesasComprometido.Where(x => x.Tipo == DespesaTipo.Previsao));
-                }
-
-                // GET: Impostos
-                public async Task<IActionResult> Impostos()
-                {
-                    List<Despesa> despesasComprometido = await _context.Despesas.ToListAsync();
-                    return View(despesasComprometido.Where(x => x.Tipo == DespesaTipo.Impostos));
-                }*/
-
-
         // GET: Despesas/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -156,8 +126,10 @@ namespace Libertese.Web.Controllers.Financeiro
         }
 
         // GET: Despesas/Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
+            List<Classificacao> listaClassificacoes = await GetListaClassificacoesDespesas();
+            ViewBag.Classificacao = listaClassificacoes;
             return View();
         }
 
@@ -166,7 +138,7 @@ namespace Libertese.Web.Controllers.Financeiro
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("FornecedorId,FormaPagamentoId,ContaBancariaId,ClassificacaoId,Tipo,Descricao,Status,DataPagamento,DataVencimento,Observacao,Id,DataCriacao,DataAtualizacao")] Despesa despesa)
+        public async Task<IActionResult> Create([Bind("FornecedorId,FormaPagamentoId,ContaBancariaId,ClassificacaoId,Tipo,Descricao,Status,DataPagamento,DataVencimento,Observacao,Id,DataCriacao,DataAtualizacao,Valor")] Despesa despesa)
         {
             if (ModelState.IsValid)
             {
@@ -174,12 +146,16 @@ namespace Libertese.Web.Controllers.Financeiro
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            List<Classificacao> listaClassificacoes = await GetListaClassificacoesDespesas();
+            ViewBag.Classificacao = listaClassificacoes;
             return View(despesa);
         }
 
         // GET: Despesas/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            List<Classificacao> listaClassificacoes = await GetListaClassificacoesDespesas();
+            ViewBag.Classificacao = listaClassificacoes;
             if (id == null)
             {
                 return NotFound();
@@ -198,7 +174,7 @@ namespace Libertese.Web.Controllers.Financeiro
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("FornecedorId,FormaPagamentoId,ContaBancariaId,ClassificacaoId,Tipo,Descricao,Status,DataPagamento,DataVencimento,Observacao,Id,DataCriacao,DataAtualizacao")] Despesa despesa)
+        public async Task<IActionResult> Edit(int id, [Bind("FornecedorId,FormaPagamentoId,ContaBancariaId,ClassificacaoId,Tipo,Descricao,Status,DataPagamento,DataVencimento,Observacao,Id,DataCriacao,DataAtualizacao,Valor")] Despesa despesa)
         {
             if (id != despesa.Id)
             {
@@ -225,6 +201,8 @@ namespace Libertese.Web.Controllers.Financeiro
                 }
                 return RedirectToAction(nameof(Index));
             }
+            List<Classificacao> listaClassificacoes = await GetListaClassificacoesDespesas();
+            ViewBag.Classificacao = listaClassificacoes;
             return View(despesa);
         }
 

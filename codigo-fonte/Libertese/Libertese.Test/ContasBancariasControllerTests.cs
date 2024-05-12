@@ -9,11 +9,11 @@ using ViewResult = Microsoft.AspNetCore.Mvc.ViewResult;
 namespace Libertese.Test
 {
     [TestFixture]
-    public class FormaPagamentosControllerTests
+    public class ContasBancariasControllerTests
     {
         private ApplicationDbContext _context;
         private IDbContextTransaction _transaction;
-        private FormaPagamentosController _controller;
+        private ContaBancariasController _controller;
 
         [SetUp]
         public void Setup()
@@ -22,78 +22,83 @@ namespace Libertese.Test
             _context.Database.EnsureCreated();
             _context.Database.Migrate();
             _transaction = _context.Database.BeginTransaction();
-            _controller = new FormaPagamentosController(_context);
+            _controller = new ContaBancariasController(_context);
         }
 
         [Test]
-        public async Task TestCriarFormaPagamento() 
+        public async Task TestCriarContaBancaria() 
         {
             //// estudando triple A
 
             /// A - Arrange: configurações necessárias para o teste rodar.
             /// Inicializar variaveis , criar mocks ou spies.
-            var formaPagamento =  new FormaPagamento { Descricao = "Depósito em Conta"};
+            var contaBancaria =  new ContaBancaria { Nome = "Itaú", Agencia = "120", Conta = "800-10"};
 
             /// A - Act: chama-se o metodo ou função para provar o teste.
-            await _controller.Create(formaPagamento);
-            var formaPagamentoCriada = _context.FormaPagamentos.FirstOrDefault();
+            await _controller.Create(contaBancaria);
+            var contaBancariaCriada = _context.ContasBancarias.FirstOrDefault();
 
 
             /// A - Assert: onde verifica se a operação passou ou falhou.
-            Assert.IsNotNull(formaPagamentoCriada, "forma de pagamento não foi criada no banco de dados");    
-            Assert.That(formaPagamento.Descricao, Is.EqualTo(formaPagamentoCriada.Descricao));
+            Assert.IsNotNull(contaBancariaCriada, "conta bancária não foi criada no banco de dados");    
+            Assert.That(contaBancaria.Agencia, Is.EqualTo(contaBancariaCriada.Agencia));
+            Assert.That(contaBancaria.Conta, Is.EqualTo(contaBancariaCriada.Conta));
+
         }
 
         [Test]
-        public async Task TesteEditarFormaPagamento()
+        public async Task TestEditarContaBancaria()
         {
             //// estudando triple A
 
             /// A - Arrange: configurações necessárias para o teste rodar.
             /// Inicializar variaveis , criar mocks ou spies.
-            var model = new FormaPagamento { Descricao = "Depósito em Conta" };
-            _context.FormaPagamentos.Add(model);
+            var model = new ContaBancaria { Nome = "Banco do Brasil", Agencia = "520", Conta = "785-00" };            
+            _context.ContasBancarias.Add(model);
             _context.SaveChanges();
-            var formaPagamento = new FormaPagamento { Id = model.Id, Descricao = model.Descricao };
+            var contaBancaria = new ContaBancaria { Id = model.Id, Nome = model.Nome, Agencia = model.Agencia, Conta = model.Conta };
 
             /// A - Act: chama-se o metodo ou função para provar o teste.
-            model.Descricao = "Pix";
+            model.Nome = "Santander";
+            model.Agencia = "521";
+            model.Conta = "985-80";
             await _controller.Edit(model.Id, model);
 
             /// A - Assert: onde verifica se a operação passou ou falhou.
-            var formaPagamentoEditada = _context.FormaPagamentos.Where(c => c.Id == model.Id).FirstOrDefault();
-            Assert.IsNotNull(formaPagamentoEditada, "forma pagamento não foi criada corretamente");
-            Assert.That(formaPagamento.Descricao, Is.Not.EqualTo(formaPagamentoEditada.Descricao));
-
+            var contaBancariaEditada = _context.ContasBancarias.Where(c => c.Id == model.Id).FirstOrDefault();
+            Assert.IsNotNull(contaBancariaEditada, "conta bancária não foi criada corretamente");
+            Assert.That(contaBancaria.Agencia, Is.Not.EqualTo(contaBancariaEditada.Agencia));
+            Assert.That(contaBancaria.Conta, Is.Not.EqualTo(contaBancariaEditada.Conta));
+            Assert.That(contaBancaria.Nome, Is.Not.EqualTo(contaBancariaEditada.Nome));
         }
 
         [Test]
-        public async Task TestDeletarFormaPagamento()
+        public async Task TestDeletarContaBancaria()
         {
             //// estudando triple A
 
             /// A - Arrange: configurações necessárias para o teste rodar.
             /// Inicializar variaveis , criar mocks ou spies.
-            var model = new FormaPagamento { Descricao = "Pix" };
-            _context.FormaPagamentos.Add(model);
+            var model = new ContaBancaria { Nome = "NU  Pagamentos S/A", Agencia = "554", Conta = "785-12" };
+            _context.ContasBancarias.Add(model);
             _context.SaveChanges();
 
             /// A - Act: chama-se o metodo ou função para provar o teste.
             await _controller.DeleteConfirmed(model.Id);
 
             /// A - Assert: onde verifica se a operação passou ou falhou.
-            var classificacaoDeletada = _context.FormaPagamentos.Where(c => c.Id == model.Id).FirstOrDefault();
-            Assert.IsNull(classificacaoDeletada, "Forma de pagamento não foi deletada corretamente");
+            var classificacaoDeletada = _context.ContasBancarias.Where(c => c.Id == model.Id).FirstOrDefault();
+            Assert.IsNull(classificacaoDeletada, "conta bancaria não foi deletada corretamente");
         }
 
         [Test]
-        public async Task TestVisualizarFormaPagamento()
+        public async Task TestVisualizarClassificacao()
         {
             //// estudando triple A
             /// A - Arrange: configurações necessárias para o teste rodar.
             /// Inicializar variaveis , criar mocks ou spies.
-            var model = new FormaPagamento { Descricao = "Cartão de crétido" };
-            _context.FormaPagamentos.Add(model);
+            var model = new ContaBancaria { Nome = "Banco do Nordeste", Agencia = "513", Conta = "125-12" };
+            _context.ContasBancarias.Add(model);
             _context.SaveChanges();
 
             /// A - Act: chama-se o metodo ou função para provar o teste.
