@@ -163,7 +163,36 @@ Os testes funcionais a serem realizados no aplicativo são descritos a seguir:
 ![Deletar Realizado](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225367/4c70f47e-7b8b-4b9a-a647-74279fc42cfd)
 
 
+# Plano de Testes de Software (Em pares)
 
+## Objetivo
+
+Garantir a funcionalidade, confiabilidade e segurança das telas de: 
+- DESPESAS
+
+## Ferramentas utilizadas para os testes
+- Visual studio 2021
+- Google Chrome
+- Cypress
+
+## Responsáveis pelos testes e pelas funcionalidades desenvolvidas
+- Responsável: Rafael de Oliveira
+- Telas desenvolvidas: CRUD Forma de Pagamento; CRUD Contas Bancárias; CRUD Classificação de Receita e Despesas;
+- Telas testadas: Despesas (Telas desenvolvidas por Vinicíus Ponciano)
+
+## Testes Funcionais Realizados
+
+Os testes funcionais a serem realizados no aplicativo são descritos a seguir:  
+ 
+| Caso de Teste           | CT001 – Criar nova empresa parceira                                                                                             |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|Pre Condições            | Estar na tela de Empresas Parceiras       | 
+|Procedimento             | 1. No menu selecione a opção “Empresas Parceiras”. |
+|                         | 2. Na tela Empresas Parceiras, clique no botão “Cadastrar Empresa Parceira”. |
+|                         | 3. Na tela de cadastro preencher todas as informações necessárias. |
+|                         | 4. Clica em “Confirmar”. |
+|Resultado Esperado       | A nova empresa parceira deve ser cadastrada com sucesso.                                                                       |
+|Dados de Entrada         | Informações solicitadas no campo de cadastro.  |
 
 
 
