@@ -200,7 +200,6 @@ Garantir a funcionalidade, confiabilidade e segurança das telas de:
 ## Ferramentas utilizadas para os testes
 - Visual studio 2021
 - Google Chrome
-- Cypress
 
 ## Responsáveis pelos testes e pelas funcionalidades desenvolvidas
 - Responsável pelos testes a seguir: Rafael de Oliveira
@@ -210,7 +209,7 @@ Garantir a funcionalidade, confiabilidade e segurança das telas de:
 ## Testes Funcionais Realizados
 
 Os testes funcionais a serem realizados no sistema Libertese são descritos a seguir:
-Funcionalidades desenvolvidas por: Vinicius Ponciano
+- Funcionalidades desenvolvidas por: Vinicius Ponciano
  
 | Caso de Teste           | CT001 – Poder inserir uma nova classificação de Despesas - RF-010                                                            |
 |-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
