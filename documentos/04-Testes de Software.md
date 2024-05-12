@@ -219,6 +219,17 @@ Funcionalidades desenvolvidas por: Vinicius Ponciano
 |Dados de Entrada         | Informações solicitadas no campo Editar Despesas.  |
 
 
+| Caso de Teste           | CT004 – Permitir apagar uma Despesa já cadastrada - RF-010                                                                   |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|Pre Condições            | Estar na tela de Despesas       | 
+|Procedimento             | 1. Identificar a Despesa a ser apagada |
+|                         | 2. Clicar no botão com uma "lixeira" para apagar uma Despesa desejada|
+|                         | 3. Uma tela de "Ecluir Despesa" deverá ser mostrada |
+|                         | 4. Clicar em "Cancelar" para retornar, ou em "Excluir" para confirmar a exclusão |
+|Resultado Esperado       | Deverá ser excluído uma Despesa no sistema |
+|Dados de Entrada         | Informações solicitadas na tela de Despesas |
+
+
 
 
 
