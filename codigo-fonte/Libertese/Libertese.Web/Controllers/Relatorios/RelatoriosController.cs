@@ -9,6 +9,7 @@ using CsvHelper.Configuration;
 using Libertese.Domain.Entities;
 using Libertese.Domain.Entities.Financeiro;
 using Libertese.Domain.Entities.Venda;
+using Libertese.Web.ViewModels;
 
 
 namespace Libertese.Web.Controllers.Relatorios
@@ -25,54 +26,71 @@ namespace Libertese.Web.Controllers.Relatorios
         // Método genérico para baixar CSV
         public async Task<IActionResult> DownloadCsv(string tipo)
         {
-            switch (tipo.ToLower())
+            IEnumerable<object> records = tipo.ToLower() switch
             {
-                case "vendas":
-                    var vendas = await _context.Vendas.ToListAsync();
-                    return await GenerateCsv(vendas, "vendas.csv");
+                "vendas" => await _context.Vendas.ToListAsync(),
+                "despesas" => await _context.Despesas.ToListAsync(),
+                "receita" => await _context.Receitas.ToListAsync(),
+                _ => null
+            };
 
-                case "despesas":
-                    var despesas = await _context.Despesas.ToListAsync();
-                    return await GenerateCsv(despesas, "despesas.csv");
-
-                case "receita":
-                    var receitas = await _context.Receitas.ToListAsync();
-                    return await GenerateCsv(receitas, "receitas.csv");
-
-                default:
-                    return NotFound();
+            if (records == null || !records.Any())
+            {
+                return Content("Nenhum registro encontrado.");
             }
+
+            string fileName = $"{tipo}_{DateTime.Now.ToString("yyyyMMdd")}.csv";
+            return await GenerateCsv(records, fileName);
         }
+
+
 
         private async Task<FileContentResult> GenerateCsv<T>(IEnumerable<T> records, string fileName)
         {
             using var memoryStream = new MemoryStream();
-            using var writer = new StreamWriter(memoryStream);
-            using var csvWriter = new CsvWriter(writer,
-                new CsvConfiguration(CultureInfo.InvariantCulture) { Delimiter = "," });
+            using var writer = new StreamWriter(memoryStream, leaveOpen: true);
+            using var csvWriter = new CsvWriter(writer, new CsvConfiguration(CultureInfo.InvariantCulture) { Delimiter = "," });
 
             csvWriter.WriteRecords(records);
             writer.Flush();
+            memoryStream.Position = 0; // Garanta que o stream está no começo antes de ler
+
             return File(memoryStream.ToArray(), "text/csv", fileName);
         }
 
+
         public async Task<IActionResult> Index()
         {
-            var datasCriacao = new List<DateTime?>();
+            var datasCriacaoVendas = await _context.Vendas
+                .Select(v => v.DataCriacao)
+                .Distinct()
+                .OrderBy(date => date)
+                .ToListAsync();
 
-            // Exemplo de como adicionar datas de várias entidades.
-            datasCriacao.AddRange(await _context.Set<Venda>().Select(v => v.DataCriacao).Distinct().ToListAsync());
-            datasCriacao.AddRange(await _context.Set<Despesa>().Select(d => d.DataCriacao).Distinct().ToListAsync());
-            datasCriacao.AddRange(await _context.Set<Receita>().Select(d => d.DataCriacao).Distinct().ToListAsync());
+            var datasCriacaoDespesas = await _context.Despesas
+                .Select(d => d.DataCriacao)
+                .Distinct()
+                .OrderBy(date => date)
+                .ToListAsync();
 
-            // Ordenação final das datas (pode ser feito no banco de dados ou na aplicação)
-            datasCriacao = datasCriacao.Distinct().OrderBy(d => d).ToList();
+            var datasCriacaoReceitas = await _context.Receitas
+                .Select(d => d.DataCriacao)
+                .Distinct()
+                .OrderBy(date => date)
+                .ToListAsync();
 
-            // Passando as datas como uma lista de DateTime? usando ViewBag (ou ViewData)
-            ViewBag.DatasCriacao = datasCriacao;
+            // Crie e preencha a ViewModel
+            var viewModel = new DatasCriacaoViewModel
+            {
+                DatasCriacaoVendas = datasCriacaoVendas,
+                DatasCriacaoDespesas = datasCriacaoDespesas,
+                DatasCriacaoReceitas = datasCriacaoReceitas
+                // Inicialize outras propriedades conforme necessário
+            };
 
-            return View();
+            return View(viewModel); // Passe a ViewModel para a view
         }
+
 
 
         // GET: RelatoriosController/Details/5
