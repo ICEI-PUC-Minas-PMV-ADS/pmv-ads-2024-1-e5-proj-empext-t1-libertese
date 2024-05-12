@@ -301,6 +301,14 @@ Os testes funcionais a serem realizados no sistema Libertese são descritos a se
 |Dados de Entrada         | Informações solicitadas no campo de Materiais.  |
 
 
+## Evidências de Testes de Softwares
+
+- CT001 – Poder inserir uma nova classificação de Despesas - RF-010
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/2705378f-0074-4061-b774-72bdd6e65eca)
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/5c29873b-c9f1-48a9-910d-56a74305a817)
+
+- CT002 – Poder inserir uma nova Despesa - RF-010
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/321f2a3c-1877-451a-b99d-154ae3353cc5)
 
 
 
