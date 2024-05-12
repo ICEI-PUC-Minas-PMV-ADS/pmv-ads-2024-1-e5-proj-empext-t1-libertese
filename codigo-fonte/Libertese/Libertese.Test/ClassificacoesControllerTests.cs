@@ -1,16 +1,10 @@
 using Libertese.Data;
 using Libertese.Domain.Entities.Financeiro;
-using Libertese.Domain.Entities.Precificacao;
 using Libertese.Web.Controllers.Financeiro;
-using Libertese.Web.Controllers.Precificacao;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
-using Microsoft.Extensions.Options;
-using System.Data.Entity;
 using Libertese.Domain.Enums;
 using Libertese.Test.Context;
-using Microsoft.AspNetCore.Mvc;
-using System.Web.Mvc;
 using ViewResult = Microsoft.AspNetCore.Mvc.ViewResult;
 
 namespace Libertese.Test
@@ -86,7 +80,7 @@ namespace Libertese.Test
             _context.SaveChanges();
 
             /// A - Act: chama-se o metodo ou função para provar o teste.
-            await _controller.Delete(model.Id);
+            await _controller.DeleteConfirmed(model.Id, model.Tipo);
 
             /// A - Assert: onde verifica se a operação passou ou falhou.
             var classificacaoDeletada = _context.Classificacoes.Where(c => c.Id == model.Id).FirstOrDefault();
@@ -110,21 +104,6 @@ namespace Libertese.Test
             Assert.That(model, Is.EqualTo(view?.Model));
 
         }
-
-        [Test]
-        public void TestEditarClassificacaoAssociadaAUmaDespesa()
-        {
-
-        }
-
-        [Test]
-        public void TestEditarClassificacaoAssociadaAUmaReceita() => Assert.Pass();
-
-        [Test]
-        public void TestDeletarClassificacaoAssociadaAUmaDespesa() => Assert.Pass();
-
-        [Test]
-        public void TestDeletarClassificacaoAssociadaAUmaReceita() => Assert.Pass();
 
         [TearDown]
         public void TearDown()

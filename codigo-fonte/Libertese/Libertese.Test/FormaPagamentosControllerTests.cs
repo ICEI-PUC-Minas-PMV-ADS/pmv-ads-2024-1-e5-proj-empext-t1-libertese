@@ -1,13 +1,10 @@
 using Libertese.Data;
 using Libertese.Domain.Entities.Financeiro;
-using Libertese.Domain.Entities.Precificacao;
 using Libertese.Test.Context;
 using Libertese.Web.Controllers.Financeiro;
-using Libertese.Web.Controllers.Precificacao;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
-using Microsoft.Extensions.Options;
-using System.Data.Entity;
+using ViewResult = Microsoft.AspNetCore.Mvc.ViewResult;
 
 namespace Libertese.Test
 {
@@ -71,16 +68,42 @@ namespace Libertese.Test
         }
 
         [Test]
-        public void TestDeletarFormaPagamento() => Assert.Pass();
+        public async Task TestDeletarFormaPagamento()
+        {
+            //// estudando triple A
+
+            /// A - Arrange: configurações necessárias para o teste rodar.
+            /// Inicializar variaveis , criar mocks ou spies.
+            var model = new FormaPagamento { Descricao = "Pix" };
+            _context.FormaPagamentos.Add(model);
+            _context.SaveChanges();
+
+            /// A - Act: chama-se o metodo ou função para provar o teste.
+            await _controller.DeleteConfirmed(model.Id);
+
+            /// A - Assert: onde verifica se a operação passou ou falhou.
+            var classificacaoDeletada = _context.FormaPagamentos.Where(c => c.Id == model.Id).FirstOrDefault();
+            Assert.IsNull(classificacaoDeletada, "Forma de pagamento não foi deletada corretamente");
+        }
 
         [Test]
-        public void TestVisualizarFormaPagamento() => Assert.Pass();
+        public async Task TestVisualizarFormaPagamento()
+        {
+            //// estudando triple A
+            /// A - Arrange: configurações necessárias para o teste rodar.
+            /// Inicializar variaveis , criar mocks ou spies.
+            var model = new FormaPagamento { Descricao = "Cartão de crétido" };
+            _context.FormaPagamentos.Add(model);
+            _context.SaveChanges();
 
-        [Test]
-        public void TestEditarFormaPagamentoAssociadaAUmaDespesa() => Assert.Pass();
+            /// A - Act: chama-se o metodo ou função para provar o teste.
+            var view = await _controller.Details(model.Id) as ViewResult;
 
-        [Test]
-        public void TestDeletarFormaPagamentoAssociadaAUmaDespesa() => Assert.Pass();
+            /// A - Assert: onde verifica se a operação passou ou falhou.
+            Assert.That(model, Is.EqualTo(view?.Model));
+
+        }
+
 
         [TearDown]
         public void TearDown()
