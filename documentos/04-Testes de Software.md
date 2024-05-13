@@ -300,8 +300,17 @@ Os testes funcionais a serem realizados no sistema Libertese são descritos a se
 |Resultado Esperado       | Deverá ser excluído um Material no sistema|
 |Dados de Entrada         | Informações solicitadas no campo de Materiais.  |
 
+| Caso de Teste           | CT004 – Poder Visualizar uma Material - RF-005 / RF-006                                                                         |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|Pre Condições            | Estar na tela de Materiais        | 
+|Procedimento             | 1. No menu Index de Materiais, localizar qual material a ser visualizado |
+|                         | 2. Clicar no botão "lupinha" para visualizar um Material já existente|
+|                         | 3. A tela de visualização de Material deverá ser mostrada|
+|Resultado Esperado       | Deverá ser somente mostrado um Material já cadastrado no sistema|
+|Dados de Entrada         | Informações solicitadas no campo de Materiais.  |
 
-## Evidências de Testes de Softwares
+
+## Evidências de Testes de Softwares - Tela Despesas
 
 - CT001 – Poder inserir uma nova classificação de Despesas - RF-010
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/2705378f-0074-4061-b774-72bdd6e65eca)
@@ -320,6 +329,31 @@ Os testes funcionais a serem realizados no sistema Libertese são descritos a se
 
 - CT005 – Inserir informações de Despesas com campos em branco ou dados inválidos- RF-010
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/38623fbe-9e7c-4092-8fd4-ef99d525d7ce)
+
+
+## Evidências de Testes de Softwares - CRUD de Materiais
+- CT001 – Poder inserir uma novo Material - RF-005 / RF-006
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/5140a637-a656-4245-a480-4cd4f4b5db03)
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/0b16f555-fa64-4713-aac4-4eb7e7cb19af)
+
+- CT002 – Poder editar uma Material - RF-005 / RF-006
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/b725b0cf-2f0e-486d-8722-8dea4275bcd1)
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/7b67dca2-34cd-4a91-8968-ab8fcd5154be)
+
+- CT003 – Poder excluir uma Material - RF-005 / RF-006
+- ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/e7cd8a56-b702-40d9-8493-5fedc4bec121)
+- ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/a933d288-7b8f-4a13-8b48-ff45f3d0dd18)
+
+- CT004 – Poder Visualizar uma Material - RF-005 / RF-006
+- ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/d7e2c900-bf35-4921-ae88-9e0c460bf569)
+- ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/f1476042-bf56-40c8-b174-0d71c8adb73b)
+
+
+
+
+
+
+
 
 
 
