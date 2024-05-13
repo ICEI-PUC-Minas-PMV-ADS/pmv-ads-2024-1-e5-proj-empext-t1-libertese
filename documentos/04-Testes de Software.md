@@ -661,7 +661,6 @@ Os testes funcionais a serem realizados no aplicativo são descritos a seguir:
 |-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 |Pre Condições            | Estar na tela de Funcionários      | 
 |Procedimento             | 1. No menu selecione a opção “Funcionários”. |
-|                         | 
 |Resultado Esperado       | Devem ser exibidas mensagens de erro na tela todos os funcionários cadastrados no banco de dados.                                                                      |
 |Dados de Entrada         | Informações em branco ou dados inválidos.  |
 
