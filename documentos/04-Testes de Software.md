@@ -350,17 +350,6 @@ Os testes funcionais a serem realizados no sistema Libertese são descritos a se
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 # Plano de Testes de Software (Em Pares)
 ##	Objetivo
 Garantir a funcionalidade, confiabilidade e segurança nas telas de:
@@ -778,6 +767,41 @@ Os testes funcionais a serem realizados no aplicativo são descritos a seguir:
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Evidencia%20Funcion%C3%A1rio%20Exclu%C3%ADdo.png)
 
 
+ # Plano de Testes de Software (Em Pares)
+##	Objetivo
+Garantir a funcionalidade, confiabilidade e segurança nas telas de:
+•	Receitas (inicio)
+
+##	Ferramentas utilizadas para os testes
+•	Visual Studio
+•	Navegador Google Chrome
+
+##	Responsáveis pelos testes e pelas funcionalidades desenvolvidas
+Pedro Ertal, realizando testes nas funcionalidades desenvolvidas por: Karinne Massensini
+
+##	Testes Unitários realizados
+Os testes funcionais a serem realizados dentro do sistema Libertese são descritos a seguir:
+
+| Caso de Teste           |	Receita |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+| Requisitos Associados |	RF-011	Permitir cadastro de receita |
+| Objetivo do teste |	Verificar se os dados inseridos na tabela retornam na tela |
+| Passos e Procedimento |	Acessar a tela de Receitas pelo menu lateral |
+| Resultado esperado |	Retornar page receita estilizada  |
+| Retorno  | ok  |
+
+| Caso de Teste           |	Create new Receita |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+| Requisitos Associados |	RF-011	Permitir cadastro de receita |
+| Objetivo do teste |	Verificar CRUD de receitas |
+| Passos e Procedimento |	Acessar a tela de CREATE receita clicando no botão |
+| Resultado esperado |	Retornar a page de create e salvar dados|
+| Retorno  | Não é possivel salvar os dados, pois a um erro no item status |
+
+## Evidências de Testes de Softwares
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/60409021/95466d34-ef28-4cbd-81f3-d316b1f32864)
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/60409021/685cdfe5-b5ec-40f2-89e2-24917c5cb59a)
 
 
 
