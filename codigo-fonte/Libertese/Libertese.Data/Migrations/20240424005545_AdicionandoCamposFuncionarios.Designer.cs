@@ -3,6 +3,7 @@ using System;
 using Libertese.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Libertese.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240424005545_AdicionandoCamposFuncionarios")]
+    partial class AdicionandoCamposFuncionarios
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -40,15 +43,16 @@ namespace Libertese.Data.Migrations
                     b.Property<DateTime?>("DataCriacao")
                         .HasColumnType("timestamp without time zone");
 
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<decimal>("ValorAdicional")
-                        .HasColumnType("numeric");
-
-                    b.Property<decimal>("ValorAporte")
-                        .HasColumnType("numeric");
+                    b.Property<string>("Telefone")
+                        .HasColumnType("text");
 
                     b.HasKey("Id");
 
@@ -71,8 +75,9 @@ namespace Libertese.Data.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<bool>("CursoLibertese")
-                        .HasColumnType("boolean");
+                    b.Property<string>("CursoLibertese")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<DateTime?>("DataAtualizacao")
                         .HasColumnType("timestamp without time zone");
@@ -102,8 +107,9 @@ namespace Libertese.Data.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<bool>("Pessoareclusa")
-                        .HasColumnType("boolean");
+                    b.Property<string>("Pessoareclusa")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<bool>("Remuneracao")
                         .HasColumnType("boolean");
@@ -320,9 +326,6 @@ namespace Libertese.Data.Migrations
 
                     b.Property<int>("Tipo")
                         .HasColumnType("integer");
-
-                    b.Property<decimal>("Valor")
-                        .HasColumnType("numeric");
 
                     b.HasKey("Id");
 
