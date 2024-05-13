@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Libertese.Domain.Entities.Financeiro.Receita>
+﻿@model IEnumerable<Libertese.Domain.Entities.Financeiro.ReceitaDTO>
 
 @using Libertese.Domain.Enums;
 @{
@@ -33,20 +33,21 @@
             var modelData = @Html.Raw(Json.Serialize(Model));
 
             for (let item of modelData) {
-                if (item.Status === 1 {
+                if (item.Status === "Facção") {
                     faccao += item.Valor || 0;
                 }
-                if (item.Status === 2) {
+                if (item.Status === "PatrocÍnio") {
                     patrocinio += item.Valor || 0;
                 }
-                if (item.Status === 3) {
+                if (item.Status === "Vendas Registradas") {
                     vendasRegistradas += item.Valor || 0;
                 }
             }
-
-            document.getElementById("faccao").textContent = aPagar.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-            document.getElementById("patrocinio").textContent = valorAgendado.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-            document.getElementById("vendasRegistradas").textContent = jaPago.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+            var receitaTotal = faccao + patrocinio + vendasRegistradas;
+            document.getElementById("faccao").textContent = faccao.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+            document.getElementById("patrocinio").textContent = patrocinio.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+            document.getElementById("vendasRegistradas").textContent = vendasRegistradas.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+            document.getElementById("receitaTotal").textContent = receitaTotal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
         }
 
         window.onload = calcularTotais;
@@ -142,13 +143,13 @@
                                                 
                                             </td>
                                             <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-                                                <div class="font-medium text-slate-800 dark:text-slate-100">@Html.DisplayFor(modelItem => item.ClassificacaoId)</div>
+                                                <div class="font-medium text-slate-800 dark:text-slate-100">@Html.DisplayFor(modelItem => item.Classificacao)</div>
                                             </td>
                                             <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
                                                 <div class="font-medium text-slate-800 dark:text-slate-100">@Html.DisplayFor(modelItem => item.ClienteId)</div>
                                             </td>
                                              <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-                                                <div class="font-medium text-slate-800 dark:text-slate-100">@Html.DisplayFor(modelItem => item.FormaPagamentoId)</div>
+                                                <div class="font-medium text-slate-800 dark:text-slate-100">@Html.DisplayFor(modelItem => item.FormaPagamento)</div>
                                             </td>
                                             <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
                                                 <div class="font-medium text-slate-800 dark:text-slate-100">@Html.DisplayFor(modelItem => item.DataPrevisao)</div>
