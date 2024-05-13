@@ -578,17 +578,3 @@ Os testes funcionais a serem realizados no sistema Libertese são descritos a se
 |Resultado Esperado       | A visualizaçaõ deverá ser mostrada com sucesso |
 |Dados de Entrada         | Informações solicitadas no campo de Classificação.  |
 
-
-
-
- 
- 
-
-
-
-
-
-
-
-
-
