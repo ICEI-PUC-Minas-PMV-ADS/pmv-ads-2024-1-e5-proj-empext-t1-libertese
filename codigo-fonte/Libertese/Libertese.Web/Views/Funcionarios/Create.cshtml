@@ -359,6 +359,33 @@
                 }
             }
         });
+        // Intercepta o envio do formulário
+        document.querySelector('form').addEventListener('submit', function (event) {
+            // Seleciona todos os campos de entrada exceto os checkboxes
+            var inputs = document.querySelectorAll('input[type="text"], input[type="email"], input[type="password"], select');
+            var isValid = true;
+
+            // Verifica se algum campo obrigatório está vazio
+            inputs.forEach(function (input) {
+                if (input.hasAttribute('required') && !input.value.trim()) {
+                    // Se o campo estiver vazio, adiciona uma classe de erro
+                    input.classList.add('input-error');
+                    // Define isValid como falso para impedir o envio do formulário
+                    isValid = false;
+                } else {
+                    // Remove a classe de erro caso o campo esteja preenchido
+                    input.classList.remove('input-error');
+                }
+            });
+
+            // Se algum campo estiver vazio, impede o envio do formulário
+            if (!isValid) {
+                // Impede o envio do formulário
+                event.preventDefault();
+                // Exibe uma mensagem de erro
+                alert('Por favor, preencha todos os campos obrigatórios.');
+            }
+        });
     </script>
 }
     

@@ -4,13 +4,170 @@
     ViewData["Title"] = "Editar funcionário";
     Layout = "~/Views/Shared/_LayoutWithoutHeader.cshtml";
 }
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="./scaffold/css/vendors/flatpickr.min.css" rel="stylesheet">
+    <link href="./scaffold/style.css" rel="stylesheet">
+    <link href="./output.css" rel="stylesheet">
+<style>
+        body {
+        }
 
-<h1>Edit</h1>
+        .box-edit {
+            padding: auto;
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            align-items: center;
+            justify-content: center;
+            font-family: "Montserrat", sans-serif;
+            font-weight: 500;
+            font-size: 14px;
+        }
 
-<h4>Funcionario</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
+        .input-nome {
+            margin-bottom: 5px;
+        }
+
+        .input-horas {
+            margin-bottom: 5px;
+        }
+
+        .input-dias {
+            margin-bottom: 5px;
+        }
+
+        .input-cpf {
+            margin-bottom: 5px;
+        }
+
+        .input-sexo {
+            margin-bottom: 5px;
+        }
+
+        .input-email {
+            margin-bottom: 5px;
+        }
+
+        .input-celular {
+            margin-bottom: 5px;
+        }
+
+        .input-function {
+            margin-bottom: 5px;
+        }
+
+        .input-pessoareclusa {
+            margin-bottom: 5px;
+        }
+
+        .input-penitenciaria {
+            margin-bottom: 5px;
+        }
+
+        .input-cursolibertese {
+            margin-bottom: 5px;
+        }
+
+        .input-remuneracao {
+            margin-bottom: 20px;
+        }
+
+        .input-salario {
+            margin-bottom: 20px;
+        }
+
+
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"]
+        input[type="submit"]
+        input[type="select"] {
+            font-family: "Montserrat", sans-serif;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .form-control {
+            font-family: "Montserrat", sans-serif;
+            font-weight: 500;
+            font-size: 14px;
+            border: 1px solid #000;
+            background-color: rgba(220,220,220, 0.3);
+        }
+
+        .botao-edit {
+            align-items: center;
+            justify-content: center;
+            width: 200px;
+            background-color: #000;
+            border-radius: .25rem;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .botoes {
+            text-align: center;
+        }
+
+        .botao-voltar {
+            align-items: center;
+            justify-content: center;
+            width: 200px;
+            background-color: #D96704;
+            border-radius: .25rem;
+            display: inline-block;
+            text-align: center;
+        }
+
+            .botao-voltar:hover {
+                color: #fff;
+                background-color: #808080;
+                border-color: #808080;
+            }
+
+        .botao-edit:hover {
+            color: #fff;
+            background-color: #808080;
+            border-color: #808080;
+        }
+
+        input.form-sexo {
+            font-family: "Montserrat", sans-serif;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .edit-employee {
+            width: 500px;
+        }
+
+        .title-cadastro {
+            font-family: "Montserrat", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 600;
+            font-style: normal;
+            font-size: 30px;
+        }
+
+        .botao-back {
+            font-color: #000;
+        }
+</style>
+</head>
+
+<body>
+    <div class="box-edit">
+        <div class="title-cadastro">
+            <h>Editar funcionário</h>
+            <br />
+            <br />
+        </div>
+        <div class="edit-employee">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-nome">
@@ -90,18 +247,118 @@
                 <input asp-for="Salario" class="form-control input-salario" id="salarioInput" placeholder="Digite o salário" />
                 <span asp-validation-for="Salario" class="text-danger"></span>
             </div>
+            <div class="botoes">
             <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+            <div class="botao-edit">
+                <input type="submit" value="Confirmar" class="btn btn-primary botao-edit" id="botao-edit" />
             </div>
+            <div class="botao-voltar">
+                <input asp-action="Index" type="submit" value="Voltar" class="btn btn-primary botao-voltar" id="botao-voltar" />
+            </div>
+            </div>
+        
         </form>
+        </div>
     </div>
-</div>
+    </div>
+</body>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        function formatarCPF(cpf) {
+            // Remove qualquer caracter que não seja número
+            cpf = cpf.replace(/\D/g, '');
+            // Adiciona a formatação
+            cpf = cpf.replace(/(\d{3})(\d)/, '$1.$2');
+            cpf = cpf.replace(/(\d{3})(\d)/, '$1.$2');
+            cpf = cpf.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+            return cpf;
+        }
+
+        // Adiciona o evento de digitação ao campo de CPF
+        document.getElementById('cpfInput').addEventListener('input', function (event) {
+            var input = event.target;
+            var cpf = input.value;
+            // Formata o CPF enquanto o usuário digita
+            input.value = formatarCPF(cpf);
+        });
+
+        document.querySelector('form').addEventListener('submit', function (event) {
+            var cpfInput = document.getElementById('cpfInput');
+            var cpf = cpfInput.value;
+            // Verifica se o CPF está no formato correto
+            if (!validarCPF(cpf)) {
+                alert('Por favor, insira um CPF válido no formato XXX.XXX.XXX-XX.');
+                // Impede o envio do formulário se o CPF não estiver no formato correto
+                event.preventDefault();
+            }
+        });
+
+        // Função para formatar o número de celular
+        function formatarCelular(celular) {
+            // Remove todos os caracteres que não são dígitos
+            var cleaned = celular.replace(/\D/g, '');
+            // Aplica a formatação (XX) XXXXX-XXXX
+            var match = cleaned.match(/^(\d{0,2})(\d{0,5})(\d{0,4})$/);
+            if (match) {
+                // Concatena os grupos capturados com os separadores
+                return (!match[2] ? match[1] : '(' + match[1] + ') ' + match[2]) + (match[3] ? '-' + match[3] : '');
+            }
+            return celular;
+        }
+
+        // Adiciona o evento de formatação ao campo de celular
+        document.getElementById('Celular').addEventListener('input', function (event) {
+            var celularInput = event.target;
+            var formatted = formatarCelular(celularInput.value);
+            // Atualiza o valor do campo com o número de celular formatado
+            celularInput.value = formatted;
+        });
+
+        // Intercepta o envio do formulário para validar o número de celular
+        document.querySelector('form').addEventListener('submit', function (event) {
+            var botaoSubmit = document.activeElement;
+            // Verifica se o botão clicado é o botão de criar (Confirmar)
+            if (botaoSubmit && botaoSubmit.id === 'botao-create') {
+                var celularInput = document.getElementById('Celular');
+                var celular = celularInput.value.replace(/\D/g, ''); // Remove todos os caracteres que não são dígitos
+                // Verifica se o número de celular possui 11 dígitos após a formatação
+                if (celular.length !== 11) {
+                    // Impede o envio do formulário
+                    event.preventDefault();
+                    // Exibe uma mensagem de erro
+                    alert('Por favor, insira um número de celular válido no formato (XX) XXXXX-XXXX');
+                }
+            }
+        });
+        // Intercepta o envio do formulário
+        document.querySelector('form').addEventListener('submit', function (event) {
+            // Seleciona todos os campos de entrada exceto os checkboxes
+            var inputs = document.querySelectorAll('input[type="text"], input[type="email"], input[type="password"], select');
+            var isValid = true;
+
+            // Verifica se algum campo obrigatório está vazio
+            inputs.forEach(function (input) {
+                if (input.hasAttribute('required') && !input.value.trim()) {
+                    // Se o campo estiver vazio, adiciona uma classe de erro
+                    input.classList.add('input-error');
+                    // Define isValid como falso para impedir o envio do formulário
+                    isValid = false;
+                } else {
+                    // Remove a classe de erro caso o campo esteja preenchido
+                    input.classList.remove('input-error');
+                }
+            });
+
+            // Se algum campo estiver vazio, impede o envio do formulário
+            if (!isValid) {
+                // Impede o envio do formulário
+                event.preventDefault();
+                // Exibe uma mensagem de erro
+                alert('Por favor, preencha todos os campos obrigatórios.');
+            }
+        });
+    </script>
 }
