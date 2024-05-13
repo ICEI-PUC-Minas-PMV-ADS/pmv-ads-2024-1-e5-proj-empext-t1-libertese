@@ -430,11 +430,11 @@ Os testes funcionais a serem realizados no sistema Libertese são descritos a se
 | Caso de Teste           | CT001 – Poder inserir uma nova Forma de Pagamento - RF-010 / RF-011                                                           |
 |-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 |Pre Condições            | Estar na tela Forma de Pagamento | 
-|Procedimento             | 1. No menu selecione a opção “+Classificação”. |
-|                         | 2. Na tela Classificação de Despesas, insira o nome da Classificação e clique no botão "+". |
-|                         | 3. Clicar em voltar, o sistema deve retornar para a tela de Despesas |
-|Resultado Esperado       | A nova classificação deve ser inserida com sucesso, e o sistema deverá retornar para a página de Despesas                     |
-|Dados de Entrada         | Informações solicitadas no campo de Classificação.  |
+|Procedimento             | 1. No menu selecione a opção “Criar Nova Forma de Pagamento”. |
+|                         | 2. Inserir as informações solicitadas |
+|                         | 3. Clicar em salvar |
+|Resultado Esperado       | A nova Forma de Pagamento deverá ser inserida com sucesso     |
+|Dados de Entrada         | Informações solicitadas no campo de Forma de Pagamento.  |
 
 ## Testes Funcionais Realizados - CRUD Contas Bancárias
 
