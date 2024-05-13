@@ -578,3 +578,28 @@ Os testes funcionais a serem realizados no sistema Libertese são descritos a se
 |Resultado Esperado       | A visualizaçaõ deverá ser mostrada com sucesso |
 |Dados de Entrada         | Informações solicitadas no campo de Classificação.  |
 
+## Evidências de Testes de Softwares - CRUD Forma de Pagamentos
+
+- CT001 – Poder inserir uma nova Forma de Pagamento - RF-010 / RF-011
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/91369ffd-c3d1-47bd-9bf0-dd7893776cc1)
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/658d8556-20f4-4445-be61-e9ef1ded24fb)
+
+
+
+
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
