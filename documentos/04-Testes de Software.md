@@ -300,8 +300,17 @@ Os testes funcionais a serem realizados no sistema Libertese são descritos a se
 |Resultado Esperado       | Deverá ser excluído um Material no sistema|
 |Dados de Entrada         | Informações solicitadas no campo de Materiais.  |
 
+| Caso de Teste           | CT004 – Poder Visualizar uma Material - RF-005 / RF-006                                                                         |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|Pre Condições            | Estar na tela de Materiais        | 
+|Procedimento             | 1. No menu Index de Materiais, localizar qual material a ser visualizado |
+|                         | 2. Clicar no botão "lupinha" para visualizar um Material já existente|
+|                         | 3. A tela de visualização de Material deverá ser mostrada|
+|Resultado Esperado       | Deverá ser somente mostrado um Material já cadastrado no sistema|
+|Dados de Entrada         | Informações solicitadas no campo de Materiais.  |
 
-## Evidências de Testes de Softwares
+
+## Evidências de Testes de Softwares - Tela Despesas
 
 - CT001 – Poder inserir uma nova classificação de Despesas - RF-010
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/2705378f-0074-4061-b774-72bdd6e65eca)
@@ -320,6 +329,31 @@ Os testes funcionais a serem realizados no sistema Libertese são descritos a se
 
 - CT005 – Inserir informações de Despesas com campos em branco ou dados inválidos- RF-010
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/38623fbe-9e7c-4092-8fd4-ef99d525d7ce)
+
+
+## Evidências de Testes de Softwares - CRUD de Materiais
+- CT001 – Poder inserir uma novo Material - RF-005 / RF-006
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/5140a637-a656-4245-a480-4cd4f4b5db03)
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/0b16f555-fa64-4713-aac4-4eb7e7cb19af)
+
+- CT002 – Poder editar uma Material - RF-005 / RF-006
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/b725b0cf-2f0e-486d-8722-8dea4275bcd1)
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/7b67dca2-34cd-4a91-8968-ab8fcd5154be)
+
+- CT003 – Poder excluir uma Material - RF-005 / RF-006
+- ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/e7cd8a56-b702-40d9-8493-5fedc4bec121)
+- ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/a933d288-7b8f-4a13-8b48-ff45f3d0dd18)
+
+- CT004 – Poder Visualizar uma Material - RF-005 / RF-006
+- ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/d7e2c900-bf35-4921-ae88-9e0c460bf569)
+- ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/f1476042-bf56-40c8-b174-0d71c8adb73b)
+
+
+
+
+
+
+
 
 
 
@@ -366,6 +400,183 @@ RF-014 - Permitir gerar relatórios de venda
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/53317747/00048b40-46aa-4c8c-af2b-96ea349691d2)
 
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/53317747/1a771d29-c1f7-4671-81f4-5ab9b1d34b2d)
+
+
+
+# Plano de Testes de Software (Em pares)
+
+## Objetivo
+
+Garantir a funcionalidade, confiabilidade e segurança das telas de: 
+- CRUD Forma de Pagamento
+- CRUD Contas Bancárias
+- CRUD Classificação de Despesas e Receitas
+
+## Ferramentas utilizadas para os testes
+- Visual studio 2021
+- Google Chrome
+
+## Responsáveis pelos testes e pelas funcionalidades desenvolvidas
+- Responsável pelos testes a seguir: Thaís Bezerra
+- Telas desenvolvidas: Produtos e Materiais - Testadas por: Vinicius Ponciano
+- Funcionalidades testadas: CRUD - Forma de Pagamento, Contas Bancárias, Classificação de Despesas e Receitas (Telas desenvolvidas por Rafael de Oliveira)
+
+## Testes Funcionais Realizados - CRUD Forma de Pagamento
+
+Os testes funcionais a serem realizados no sistema Libertese são descritos a seguir:
+- Funcionalidades desenvolvidas por: Rafael de Oliveira
+ 
+| Caso de Teste           | CT001 – Poder inserir uma nova Forma de Pagamento - RF-010 / RF-011                                                           |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|Pre Condições            | Estar na tela Forma de Pagamento | 
+|Procedimento             | 1. No menu selecione a opção “Nova Forma de Pagamentos”. |
+|                         | 2. Inserir as informações solicitadas |
+|                         | 3. Clicar em salvar |
+|Resultado Esperado       | A nova Forma de Pagamento deverá ser inserida com sucesso     |
+|Dados de Entrada         | Informações solicitadas no campo de Forma de Pagamento.  |
+
+
+| Caso de Teste           | CT002 – Inserir uma nova Forma de Pagamento com campos inválidos - RF-010 / RF-011                                            |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|Pre Condições            | Estar na tela Forma de Pagamento | 
+|Procedimento             | 1. No menu selecione a opção “Nova Forma de Pagamentos”. |
+|                         | 2. Inserir as informações solicitadas, ou deixar alguma informação em branco |
+|                         | 3. Clicar em salvar |
+|Resultado Esperado       | O sistema deverá retornar com os campos obrigatórios para as informações     |
+|Dados de Entrada         | Informações solicitadas no campo de Forma de Pagamento.  |
+
+
+| Caso de Teste           | CT003 – Poder excluir uma Forma de Pagamento - RF-010 / RF-011                                                           |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|Pre Condições            | Estar na tela Index Forma de Pagamento | 
+|Procedimento             | 1. No menu clicar na opção "Excluir”. |
+|                         | 2. O sistema deverá retornar uma caixa de confirmação da exclusão da Forma de Pagamento |
+|                         | 3. Clicar em cancelar, para voltar, ou em "Excluir" para confirmar a ação |
+|Resultado Esperado       | A exclusão deverá ser efetuada com sucesso |
+|Dados de Entrada         | Informações solicitadas no campo de Forma de Pagamento.  |
+
+
+| Caso de Teste           | CT004 – Poder editar uma Forma de Pagamento - RF-010 / RF-011                                                           |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|Pre Condições            | Estar na tela Index Forma de Pagamento | 
+|Procedimento             | 1. No menu clicar na opção "Editar”. |
+|                         | 2. O sistema deverá retornar já entrando no modo de edição |
+|                         | 3. Editar as infomrações necessárias e clicar em "Salvar" |
+|Resultado Esperado       | A modificação deverá ser efetuada com sucesso |
+|Dados de Entrada         | Informações solicitadas no campo de Forma de Pagamento.  |
+
+
+| Caso de Teste           | CT005 – Poder visualizar uma Forma de Pagamento - RF-010 / RF-011                                                           |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|Pre Condições            | Estar na tela Index Forma de Pagamento | 
+|Procedimento             | 1. No menu clicar na opção "Detalhes” para visualizar uma Forma de Pagamento. |
+|                         | 2. O sistema deverá retornar já entrando no modo de visualização |
+|                         | 3. Visualizar as infomrações necessárias |
+|Resultado Esperado       | A visualizaçaõ deverá ser mostrada com sucesso |
+|Dados de Entrada         | Informações solicitadas no campo de Forma de Pagamento.  |
+
+
+## Testes Funcionais Realizados - CRUD Contas Bancárias
+
+| Caso de Teste           | CT001 – Poder inserir uma nova Conta Bancária - RF-010 / RF-011                                                           |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|Pre Condições            | Estar na tela de Contas Bancárias | 
+|Procedimento             | 1. No menu selecione a opção “Criar Nova Conta Bancária”. |
+|                         | 2. Inserir as informações solicitadas |
+|                         | 3. Clicar em salvar |
+|Resultado Esperado       | A nova Conta Bancária deverá ser inserida com sucesso     |
+|Dados de Entrada         | Informações solicitadas no campo de Contas Bancárias.  |
+
+
+| Caso de Teste           | CT002 – Inserir uma nova Conta Bancária com campos inválidos - RF-010 / RF-011                                            |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|Pre Condições            | Estar na tela Forma de Contas Bancárias | 
+|Procedimento             | 1. No menu selecione a opção “Criar Nova Conta Bancária”. |
+|                         | 2. Inserir as informações solicitadas, ou deixar alguma informação em branco |
+|                         | 3. Clicar em salvar |
+|Resultado Esperado       | O sistema deverá retornar com os campos obrigatórios para as informações     |
+|Dados de Entrada         | Informações solicitadas no campo de Contas Bancárias.  |
+
+
+| Caso de Teste           | CT003 – Poder excluir uma Conta Bancária - RF-010 / RF-011                                                              |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|Pre Condições            | Estar na tela Index Contas Bancárias | 
+|Procedimento             | 1. No menu clicar na opção "Excluir”. |
+|                         | 2. O sistema deverá retornar uma caixa de confirmação da exclusão da Conta Bancária |
+|                         | 3. Clicar em cancelar, para voltar, ou em "Excluir" para confirmar a ação |
+|Resultado Esperado       | A exclusão deverá ser efetuada com sucesso |
+|Dados de Entrada         | Informações solicitadas no campo de Contas Bancárias.  |
+
+
+| Caso de Teste           | CT004 – Poder editar uma Conta Bancária - RF-010 / RF-011                                                                  |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|Pre Condições            | Estar na tela Index Contas Bancárias | 
+|Procedimento             | 1. No menu clicar na opção "Editar”. |
+|                         | 2. O sistema deverá retornar já entrando no modo de edição |
+|                         | 3. Editar as informações necessárias e clicar em "Salvar" |
+|Resultado Esperado       | A modificação deverá ser efetuada com sucesso |
+|Dados de Entrada         | Informações solicitadas no campo de Contas Bancárias.  |
+
+
+| Caso de Teste           | CT005 – Poder visualizar uma Conta Bancária - RF-010 / RF-011                                                           |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|Pre Condições            | Estar na tela Index Contas Bancárias | 
+|Procedimento             | 1. No menu clicar na opção "Detalhes” para visualizar uma Conta Bancária. |
+|                         | 2. O sistema deverá retornar já entrando no modo de visualização |
+|                         | 3. Visualizar as infomrações necessárias |
+|Resultado Esperado       | A visualizaçaõ deverá ser mostrada com sucesso |
+|Dados de Entrada         | Informações solicitadas no campo de Contas Bancárias.  |
+
+## Testes Funcionais Realizados - CRUD Classificação de Despesas e Receitas
+
+| Caso de Teste           | CT001 – Poder inserir uma nova Classificação de Despesas ou Receita - RF-010 / RF-011                                     |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|Pre Condições            | Estar na tela de Classificação de Despesas ou Receitas | 
+|Procedimento             | 1. No menu, inserir o nome da Classifiação e clicar no botão "+". |
+|                         | 2. O nome da Classificação deverá ser inserida para baixo da tela, e deverá ser mostrado |
+|                         | 3. O sistema retorna mostrando a nova classificação |
+|Resultado Esperado       | A nova Classificação deverá ser inserida com sucesso     |
+|Dados de Entrada         | Informações solicitadas no campo de Classificação.  |
+
+
+| Caso de Teste           | CT002 – Inserir uma nova Classificação com campos inválidos - RF-010 / RF-011                                            |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|Pre Condições            | Estar na tela Index de Classificação | 
+|Procedimento             | 1. No menu selecione a opção “Nova Classificação”. |
+|                         | 2. Inserir as informações solicitadas, ou deixar alguma informação em branco |
+|                         | 3. Clicar em salvar |
+|Resultado Esperado       | O sistema deverá retornar com os campos obrigatórios para as informações     |
+|Dados de Entrada         | Informações solicitadas no campo de Classificação.  |
+
+
+| Caso de Teste           | CT003 – Poder excluir uma Conta Bancária - RF-010 / RF-011                                                              |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|Pre Condições            | Estar na tela Index Classificação | 
+|Procedimento             | 1. No menu clicar na opção "Excluir”. |
+|                         | 2. O sistema deverá retornar uma caixa de confirmação da exclusão da Classificação |
+|                         | 3. Clicar em cancelar, para voltar, ou em "Excluir" para confirmar a ação |
+|Resultado Esperado       | A exclusão deverá ser efetuada com sucesso |
+|Dados de Entrada         | Informações solicitadas no campo de Classificação.  |
+
+
+| Caso de Teste           | CT004 – Poder editar uma Classificação - RF-010 / RF-011                                                                  |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|Pre Condições            | Estar na tela Index classificação | 
+|Procedimento             | 1. No menu clicar na opção "Editar”. |
+|                         | 2. O sistema deverá retornar já entrando no modo de edição |
+|                         | 3. Editar as informações necessárias e clicar em "Salvar" |
+|Resultado Esperado       | A modificação deverá ser efetuada com sucesso |
+|Dados de Entrada         | Informações solicitadas no campo de Classificação.  |
+
+
+| Caso de Teste           | CT005 – Poder visualizar uma Classificação - RF-010 / RF-011                                                           |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|Pre Condições            | Estar na tela Index Classificação| 
+|Procedimento             | 1. No menu clicar na opção "Detalhes” para visualizar uma Classificação. |
+|                         | 2. O sistema deverá retornar já entrando no modo de visualização |
+|                         | 3. Visualizar as infomrações necessárias |
+|Resultado Esperado       | A visualizaçaõ deverá ser mostrada com sucesso |
+|Dados de Entrada         | Informações solicitadas no campo de Classificação.  |
 
 
 
