@@ -40,16 +40,15 @@ namespace Libertese.Data.Migrations
                     b.Property<DateTime?>("DataCriacao")
                         .HasColumnType("timestamp without time zone");
 
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("text");
-
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("Telefone")
-                        .HasColumnType("text");
+                    b.Property<decimal>("ValorAdicional")
+                        .HasColumnType("numeric");
+
+                    b.Property<decimal>("ValorAporte")
+                        .HasColumnType("numeric");
 
                     b.HasKey("Id");
 
@@ -321,6 +320,9 @@ namespace Libertese.Data.Migrations
 
                     b.Property<int>("Tipo")
                         .HasColumnType("integer");
+
+                    b.Property<decimal>("Valor")
+                        .HasColumnType("numeric");
 
                     b.HasKey("Id");
 

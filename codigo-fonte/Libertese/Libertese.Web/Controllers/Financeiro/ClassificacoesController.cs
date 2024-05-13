@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Libertese.Data;
 using Libertese.Domain.Entities.Financeiro;
+using Libertese.Domain.Enums;
 
 namespace Libertese.Web.Controllers.Financeiro
 {
@@ -43,10 +44,20 @@ namespace Libertese.Web.Controllers.Financeiro
             return View(classificacao);
         }
 
-        // GET: Classificacoes/Create
-        public IActionResult Create()
+        // GET: Classificacoes/Create/1
+        public async Task<IActionResult> Create(int? tipo)
         {
-            return View();
+            if (tipo == null)
+            {
+                return NotFound();
+            }
+
+            ViewBag.Tipo = tipo;
+
+            var classificacoes = await _context.Classificacoes
+                                            .Where(c => c.Tipo == tipo)
+                                            .ToListAsync();
+            return View(classificacoes);
         }
 
         // POST: Classificacoes/Create
@@ -60,9 +71,8 @@ namespace Libertese.Web.Controllers.Financeiro
             {
                 _context.Add(classificacao);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
             }
-            return View(classificacao);
+            return RedirectToAction("Create", "Classificacoes", new { tipo = classificacao.Tipo });
         }
 
         // GET: Classificacoes/Edit/5
@@ -137,7 +147,7 @@ namespace Libertese.Web.Controllers.Financeiro
         // POST: Classificacoes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(int id, int tipo)
         {
             var classificacao = await _context.Classificacoes.FindAsync(id);
             if (classificacao != null)
@@ -146,7 +156,7 @@ namespace Libertese.Web.Controllers.Financeiro
             }
 
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Create", "Classificacoes", new { tipo });
         }
 
         private bool ClassificacaoExists(int id)

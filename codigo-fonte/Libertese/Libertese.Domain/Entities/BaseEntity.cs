@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
 namespace Libertese.Domain.Entities
@@ -13,6 +14,7 @@ namespace Libertese.Domain.Entities
         public DateTime? DataCriacao { get; set; }
 
         [Display(Name = "Atualização")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime? DataAtualizacao { get; set; }
 
     }

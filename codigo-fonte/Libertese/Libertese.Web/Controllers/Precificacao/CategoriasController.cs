@@ -1,32 +1,179 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Libertese.Data.Services.Interfaces;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
+using Libertese.Data;
 using Libertese.Domain.Entities.Precificacao;
 
 namespace Libertese.Web.Controllers.Precificacao
 {
-    public class CategoriasController : BaseController<IProdutoService>
+    public class CategoriasController : Controller
     {
-        public CategoriasController(IProdutoService service) : base(service) {}
+        private readonly ApplicationDbContext _context;
 
-        [HttpGet]
-        public async Task<IActionResult> Create() => View();
+        public CategoriasController(ApplicationDbContext context)
+        {
+            _context = context;
+        }
 
-        [HttpGet]
-        public async Task<IActionResult> Index() => HandleOperationResult(await _service.BuscarCategoria(), false);
+        // GET: Categorias
+        public async Task<IActionResult> Index()
+        {
+            return View(await _context.Categorias.ToListAsync());
+        }
 
-        [HttpGet]
-        public async Task<IActionResult> Edit(int id) => HandleOperationResult(await _service.BuscarCategoria(id), false);
+        // GET: Categorias/Details/5
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
 
-        [HttpGet, ValidateAntiForgeryToken]
-        public async Task<IActionResult> Get(int id) => HandleOperationResult(await _service.BuscarCategoria(id));
+            var categoria = await _context.Categorias
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (categoria == null)
+            {
+                return NotFound();
+            }
 
-        [HttpPost, ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(Categoria categoria) => HandleOperationResult(await _service.CriarCategoria(categoria));
+            return View(categoria);
+        }
 
-        [HttpPost, ValidateAntiForgeryToken]
-        public async Task<IActionResult> Update(int id, Categoria categoria) => HandleOperationResult(await _service.AtualizarCategoria(id, categoria));
+        // GET: Categorias/Create
+        public IActionResult Create()
+        {
+            return View();
+        }
 
-        [HttpPost, ValidateAntiForgeryToken]
-        public async Task<IActionResult> Delete(int id) => HandleOperationResult(await _service.DeletarCategoria(id));
+        // POST: Categorias/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([Bind("Nome,Id,DataCriacao,DataAtualizacao")] Categoria categoria)
+        {
+            if (ModelState.IsValid)
+            {
+                categoria.DataCriacao = DateTime.Now;
+                _context.Add(categoria);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(categoria);
+        }
+
+        // GET: Categorias/Edit/5
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var categoria = await _context.Categorias.FindAsync(id);
+            if (categoria == null)
+            {
+                return NotFound();
+            }
+            return View(categoria);
+        }
+
+        // POST: Categorias/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, [Bind("Nome,Id,DataCriacao,DataAtualizacao")] Categoria categoria)
+        {
+
+            var model = await _context.Categorias.FirstOrDefaultAsync(m => m.Id == id);
+
+            if (id != categoria.Id)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid && model != null)
+            {
+                try
+                {
+                    model.DataAtualizacao = DateTime.Now;
+                    model.Nome = categoria.Nome;
+                    _context.Update(model);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!CategoriaExists(categoria.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            return View(categoria);
+        }
+
+        // GET: Categorias/Delete/5
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var categoria = await _context.Categorias
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (categoria == null)
+            {
+                return NotFound();
+            }
+
+            return View(categoria);
+        }
+
+        // POST: Categorias/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var categoria = await _context.Categorias.FindAsync(id);
+            if (categoria != null)
+            {
+                _context.Categorias.Remove(categoria);
+            }
+
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
+        // POST: Categorias/Search
+        [HttpPost, ActionName("Search")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> SearchText(string nome)
+        {
+
+            if (!string.IsNullOrEmpty(nome))
+            {
+                return View("Index", await _context.Categorias.Where(c => EF.Functions.Like(c.Nome.ToLower(), "%" + nome.ToLower() + "%")).ToListAsync());
+            } 
+            else 
+            {
+                return RedirectToAction(nameof(Index));
+            }
+        }
+
+        private bool CategoriaExists(int id)
+        {
+            return _context.Categorias.Any(e => e.Id == id);
+        }
     }
 }

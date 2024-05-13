@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Libertese.Data;
 using Libertese.Domain.Entities.Financeiro;
+using Libertese.Domain.Enums;
 
 namespace Libertese.Web.Controllers.Financeiro
 {
@@ -22,7 +23,60 @@ namespace Libertese.Web.Controllers.Financeiro
         // GET: Receitas
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Receitas.ToListAsync());
+            List<Receita> listaReceitas = await _context.Receitas.ToListAsync();
+            List<Classificacao> listaClassificacoes = await _context.Classificacoes.Where(x => x.Tipo == (int)ClassificacaoTipo.Receitas).ToListAsync();
+            List<ReceitaDTO> listaReceitaDTO = listaReceitas.Select(receita => new ReceitaDTO
+            {
+                Id = receita.Id,
+                ClienteId = receita.ClienteId,
+                FormaPagamento = convertFormaPagamentoToNome(receita.FormaPagamentoId),
+                DataPrevisao = receita.DataPrevisao,
+                DataRecebimento = receita.DataRecebimento,
+                Descricao = receita.Descricao,
+                Status = convertReceitaStatusToNome(receita.Status),
+                Classificacao = listaClassificacoes.Find(x => x.Id == receita.ClassificacaoId)?.Descricao ?? "Sem Classificação",
+            }).ToList();
+            return View(listaReceitaDTO);
+        }
+
+        private string convertFormaPagamentoToNome(int formaPagamento)
+        {
+            switch ((FormaPagamentoEnum)formaPagamento)
+            {
+                case FormaPagamentoEnum.Boleto:
+                    return FormaDePagamentoNomes.Boleto;
+                case FormaPagamentoEnum.Cheque:
+                    return FormaDePagamentoNomes.Cheque;
+                case FormaPagamentoEnum.CreditoPrazo:
+                    return FormaDePagamentoNomes.CreditoPrazo;
+                case FormaPagamentoEnum.CreditoVista:
+                    return FormaDePagamentoNomes.CreditoVista;
+                case FormaPagamentoEnum.Debito:
+                    return FormaDePagamentoNomes.Debito;
+                case FormaPagamentoEnum.Dinheiro:
+                    return FormaDePagamentoNomes.Dinheiro;
+                case FormaPagamentoEnum.Pix:
+                    return FormaDePagamentoNomes.Pix;
+                case FormaPagamentoEnum.Transferencia:
+                    return FormaDePagamentoNomes.Transferencia;
+                default:
+                    return "Undefinded";
+            }
+        }
+
+        private string convertReceitaStatusToNome(ReceitaStatus receitaStatus)
+        {
+            switch (receitaStatus)
+            {
+                case ReceitaStatus.Faccao:
+                    return "Facção";
+                case ReceitaStatus.Patrocinio:
+                    return "PatrocÍnio";
+                case ReceitaStatus.VendasRegistradas:
+                    return "Vendas Registradas";
+                default:
+                    return "Undefinded";
+            }
         }
 
         // GET: Receitas/Details/5
@@ -54,7 +108,7 @@ namespace Libertese.Web.Controllers.Financeiro
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ClassificacaoId,ClienteId,FormaPagamentoId,ContaBancariaId,DataEmissao,DataPrevisao,DataVencimento,DataRecebimento,Descricao,Status,Id,DataCriacao,DataAtualizacao")] Receita receita)
+        public async Task<IActionResult> Create([Bind("ClassificacaoId,ClienteId,FormaPagamentoId,DataPrevisao,DataRecebimento,Descricao,Status")] Receita receita)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +140,7 @@ namespace Libertese.Web.Controllers.Financeiro
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ClassificacaoId,ClienteId,FormaPagamentoId,ContaBancariaId,DataEmissao,DataPrevisao,DataVencimento,DataRecebimento,Descricao,Status,Id,DataCriacao,DataAtualizacao")] Receita receita)
+        public async Task<IActionResult> Edit(int id, [Bind("ClassificacaoId,ClienteId,FormaPagamentoId,DataPrevisao,DataRecebimento,Descricao,Status")] Receita receita)
         {
             if (id != receita.Id)
             {

@@ -54,7 +54,7 @@ namespace Libertese.Web.Controllers.Cadastro
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Nome,Telefone,Cnpj,Email,Id,DataCriacao,DataAtualizacao")] EmpresaParceira empresaParceira)
+        public async Task<IActionResult> Create([Bind("Nome,Telefone,Cnpj,ValorAporte, ValorAdicional, Email,Id,DataCriacao,DataAtualizacao")] EmpresaParceira empresaParceira)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace Libertese.Web.Controllers.Cadastro
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Nome,Telefone,Cnpj,Email,Id,DataCriacao,DataAtualizacao")] EmpresaParceira empresaParceira)
+        public async Task<IActionResult> Edit(int id, [Bind("Nome,Telefone,Cnpj,ValorAporte, ValorAdicional, Email,Id,DataCriacao,DataAtualizacao")] EmpresaParceira empresaParceira)
         {
             if (id != empresaParceira.Id)
             {
@@ -136,7 +136,6 @@ namespace Libertese.Web.Controllers.Cadastro
 
         // POST: EmpresaParceiras/Delete/5
         [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var empresaParceira = await _context.EmpresasParceiras.FindAsync(id);
