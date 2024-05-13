@@ -599,6 +599,8 @@ CT004 – Poder editar uma Forma de Pagamento - RF-010 / RF-011
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/375c8def-6862-4298-8805-0a9d509b59dd)
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/1d0d5233-63e9-4ffb-a841-e29c1faeaece)
 
+- CT002 – Inserir uma nova Conta Bancária com campos inválidos - RF-010 / RF-011
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/3397ec20-de20-45e5-bec1-ab2cfeac7eb6)
  
  
 
