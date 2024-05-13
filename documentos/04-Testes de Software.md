@@ -603,6 +603,152 @@ CT004 – Poder editar uma Forma de Pagamento - RF-010 / RF-011
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/3397ec20-de20-45e5-bec1-ab2cfeac7eb6)
  
  
+# Plano de Testes de Software (Em pares)
+
+Teste da tela de Funcionários | Feita por Douglas Delareti Simões | Testes feitos por César Luis Costa Moreira
+
+
+## Objetivo
+
+Garantir a funcionalidade, confiabilidade e segurança das telas de: 
+- Implementar controle da inclusão, deleção e edição de funcionários
+
+Os testes funcionais a serem realizados no aplicativo são descritos a seguir:  
+ 
+| Caso de Teste           | CT001 – Criar novo funcionário                                                                                             |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|Pre Condições            | Estar na tela de Funcionários       | 
+|Procedimento             | 1. No menu selecione a opção “Funcionários”. |
+|                         | 2. Na tela Funcionários, clique no botão “Cadastrar Funcionário”. |
+|                         | 3. Na tela de cadastro preencher todas as informações necessárias. |
+|                         | 4. Clicar em “Confirmar”. |
+|                         | 5. Caso deseje retornar para a tela inicial, clique em "Voltar". |
+|Resultado Esperado       | O novo funcionário deve ser cadastrada com sucesso.                                                                       |
+|Dados de Entrada         | Informações solicitadas no campo de cadastro.  |
+
+
+| Caso de Teste           | CT002 – Cadastrar novo funcionário com o número de Celular no formato incorreto                                                      |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|Pre Condições            | Estar na tela de Funcionários      | 
+|Procedimento             | 1. No menu selecione a opção “Funcionários”. |
+|                         | 2. Na tela Empresas Parceiras, clique no botão “Cadastrar Funcionário”. |
+|                         | 3. Na tela de cadastro preencher com informações invalidas ou vazias o campo de celular. |
+|                         | 4. Clicar em Confirmar. |
+|Resultado Esperado       | Devem ser exibidas mensagens de erro na tela indicando campos em branco ou dados inválidos.                                                                      |
+|Dados de Entrada         | Informações em branco ou dados inválidos.  |
+
+| Caso de Teste           | CT003 – Cadastrar novo funcionário com o campo CPF em branco ou no formato incorreto                                                  |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|Pre Condições            | Estar na tela de Funcionários      | 
+|Procedimento             | 1. No menu selecione a opção “Funcionários”. |
+|                         | 2. Na tela Empresas Parceiras, clique no botão “Cadastrar Funcionário”. |
+|                         | 3. Na tela de cadastro preencher com informações invalidas ou vazias o campo de CPF. |
+|                         | 4. Clicar em Confirmar. |
+|Resultado Esperado       | Devem ser exibidas mensagens de erro na tela indicando campos em branco ou dados inválidos.                                                                      |
+|Dados de Entrada         | Informações em branco ou dados inválidos.  |
+
+| Caso de Teste           | CT004 – Cadastrar novo funcionário com os campos em branco                                                 |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|Pre Condições            | Estar na tela de Funcionários      | 
+|Procedimento             | 1. No menu selecione a opção “Funcionários”. |
+|                         | 2. Na tela Funcionários, clique no botão “Cadastrar Funcionário”. |
+|                         | 3. Na tela de cadastro preencher com informações vazias nos campos. |
+|                         | 4. Clicar em Confirmar. |
+|Resultado Esperado       | Devem ser exibidas mensagens de erro na tela indicando campos em branco ou dados inválidos.                                                                      |
+|Dados de Entrada         | Informações em branco ou dados inválidos.  |
+
+| Caso de Teste           | CT005 – Visualizar os funcionários cadastrados                                              |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|Pre Condições            | Estar na tela de Funcionários      | 
+|Procedimento             | 1. No menu selecione a opção “Funcionários”. |
+|                         | 
+|Resultado Esperado       | Devem ser exibidas mensagens de erro na tela todos os funcionários cadastrados no banco de dados.                                                                      |
+|Dados de Entrada         | Informações em branco ou dados inválidos.  |
+
+
+| Caso de Teste           | CT006 – Editar funcionário                                                                                             |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|Pre Condições            | Estar na tela de Funcionários      | 
+|Procedimento             | 1. No menu selecione a opção “Funcionários”. |
+|                         | 2. Na tela Funcionários, clique no botão Editar Funcionário”. |
+|                         | 3. Na tela de editar, preencher com as informações que deseja alterar no funcionário. |
+|                         | 4. Clicar em Confirmar. |
+|Resultado Esperado       | Os dados devem ser alterados e aparecer na tela principal atualizados.                                                                      |
+|Dados de Entrada         | Informações solicitadas no campo de edição.  |
+
+
+| Caso de Teste           | CT007 – Editar funcionário com campo em branco ou inválido                                                                                     |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|Pre Condições            | Estar na tela de Funcionários      | 
+|Procedimento             | 1. No menu selecione a opção “Funcionários”. |
+|                         | 2. Na tela Funcionários, clique no botão Editar Funcionário”. |
+|                         | 3. Na tela de editar, preencher com as informações inválidas ou campos em branco. |
+|                         | 4. Clicar em Confirmar. |
+|Resultado Esperado       | Um erro deve aparecer na tela mostrando os campos vazios e/ou inválidos.                                                                      |
+|Dados de Entrada         | Informações em branco ou dados inválidos.  |
+
+
+| Caso de Teste           | CT008 – Excluir funcionário cadastrado                                                                                    |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|Pre Condições            | Estar na tela de Funcionários      | 
+|Procedimento             | 1. No menu selecione a opção “Funcionários”. |
+|                         | 2. Na tela Funcionários, clique no botão Excluir Funcionário”. |
+|                         | 4. Clicar em Excluir. |
+|Resultado Esperado       | Excluir o usuário da tabela.                                                                      |
+|Dados de Entrada         | N/A |
+
+ 
+# Evidências de Testes de Software - Funcionários
+
+## CT001 – Criar novo funcionário
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Home%20Funcion%C3%A1rios.png)
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Tela%20de%20Cadastro.png)
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Evidencia%20cadastro%20feito.png)
+
+## CT002 – Cadastrar novo funcionário com o número de Celular no formato incorreto
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Home%20Funcion%C3%A1rios.png)
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Cadastro%20-%20Erro%20Celular.png)
+
+## CT003 – Cadastrar novo funcionário com o campo CPF em branco ou no formato incorreto  
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Home%20Funcion%C3%A1rios.png)
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Tela%20CPF%20invalido.png)
+
+## CT004 – Cadastrar novo funcionário com os campos em branco
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Home%20Funcion%C3%A1rios.png)
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Cadastro%20-%20Erro%20campo%20vazio.png)
+
+## CT005 – Visualizar os funcionários cadastrados
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Evidencia%20cadastro%20feito.png)
+
+## CT006 – Editar funcionário
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Evidencia%20cadastro%20feito.png)
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Tela%20Editar%20Funcion%C3%A1rio.png)
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Evidencia%20Funcionario%20Editado.png)
+
+## CT007 – Editar funcionário com campo em branco ou inválido  
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Evidencia%20cadastro%20feito.png)
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Editar%20-%20campo%20errado%20ou%20vazio.png)
+
+## CT008 – Excluir funcionário cadastrado   
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Evidencia%20cadastro%20feito.png)
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Tela%20Excluir.png)
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Evidencia%20Funcion%C3%A1rio%20Exclu%C3%ADdo.png)
+
+
+
+
+
+
 
 
 
