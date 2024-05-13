@@ -436,6 +436,37 @@ Os testes funcionais a serem realizados no sistema Libertese são descritos a se
 |Resultado Esperado       | A nova Forma de Pagamento deverá ser inserida com sucesso     |
 |Dados de Entrada         | Informações solicitadas no campo de Forma de Pagamento.  |
 
+
+| Caso de Teste           | CT002 – Poder excluir uma Forma de Pagamento - RF-010 / RF-011                                                           |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|Pre Condições            | Estar na tela Index Forma de Pagamento | 
+|Procedimento             | 1. No menu clicar na opção "Excluir”. |
+|                         | 2. O sistema deverá retornar uma caixa de confirmação da exclusão da Forma de Pagamento |
+|                         | 3. Clicar em cancelar, para voltar, ou em "Excluir" para confirmar a ação |
+|Resultado Esperado       | A exclusão deverá ser efetuada com sucesso |
+|Dados de Entrada         | Informações solicitadas no campo de Forma de Pagamento.  |
+
+
+| Caso de Teste           | CT003 – Poder editar uma Forma de Pagamento - RF-010 / RF-011                                                           |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|Pre Condições            | Estar na tela Index Forma de Pagamento | 
+|Procedimento             | 1. No menu clicar na opção "Editar”. |
+|                         | 2. O sistema deverá retornar já entrando no modo de edição |
+|                         | 3. Editar as infomrações necessárias e clicar em "Salvar" |
+|Resultado Esperado       | A modificação deverá ser efetuada com sucesso |
+|Dados de Entrada         | Informações solicitadas no campo de Forma de Pagamento.  |
+
+
+| Caso de Teste           | CT004 – Poder visualizar uma Forma de Pagamento - RF-010 / RF-011                                                           |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|Pre Condições            | Estar na tela Index Forma de Pagamento | 
+|Procedimento             | 1. No menu clicar na opção "lupinha” para vosualizar uma Forma de Pagamento. |
+|                         | 2. O sistema deverá retornar já entrando no modo de visualização |
+|                         | 3. Visualizar as infomrações necessárias |
+|Resultado Esperado       | A visualizaçaõ deverá ser mostrada com sucesso |
+|Dados de Entrada         | Informações solicitadas no campo de Forma de Pagamento.  |
+
+
 ## Testes Funcionais Realizados - CRUD Contas Bancárias
 
 ## Testes Funcionais Realizados - CRUD Classificação de Despesas
