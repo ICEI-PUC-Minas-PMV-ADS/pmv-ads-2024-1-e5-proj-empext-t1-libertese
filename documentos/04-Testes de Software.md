@@ -604,7 +604,12 @@ Os testes funcionais a serem realizados no sistema Libertese são descritos a se
 
 ## CT002 – Inserir uma nova Conta Bancária com campos inválidos - RF-010 / RF-011
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/3397ec20-de20-45e5-bec1-ab2cfeac7eb6)
- 
+
+## CT003 – Poder excluir uma Conta Bancária - RF-010 / RF-011
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/59944150/07cdb378-74b5-44da-95dd-868409c8e387)
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/59944150/5c6f6efe-bb7a-43ae-b3fb-6f083ca458cd)
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/59944150/d7d394b2-40ff-4e27-b8ae-045f84e536fb)
+
 # Plano de Testes de Software (Em pares)
 
 Teste da tela de Funcionários | Feita por Douglas Delareti Simões | Testes feitos por César Luis Costa Moreira
