@@ -2,7 +2,8 @@
 {
     public enum ReceitaStatus
     {
-        Aberto = 0,
-        Recebido = 1,
+       Faccao = 1,
+       Patrocinio = 2,
+       VendasRegistradas = 3,
     }
 }

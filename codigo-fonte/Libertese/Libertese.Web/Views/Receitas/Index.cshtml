@@ -1,5 +1,6 @@
 ﻿@model IEnumerable<Libertese.Domain.Entities.Financeiro.Receita>
 
+@using Libertese.Domain.Enums;
 @{
     ViewData["Title"] = "Receita";
     Layout = "~/Views/Shared/_LayoutProdutos.cshtml";
@@ -32,7 +33,7 @@
             var modelData = @Html.Raw(Json.Serialize(Model));
 
             for (let item of modelData) {
-                if (item.Status === 1) {
+                if (item.Status === 1 {
                     faccao += item.Valor || 0;
                 }
                 if (item.Status === 2) {
