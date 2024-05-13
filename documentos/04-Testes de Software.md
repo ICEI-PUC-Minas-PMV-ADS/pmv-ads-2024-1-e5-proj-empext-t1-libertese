@@ -549,7 +549,7 @@ Os testes funcionais a serem realizados no sistema Libertese são descritos a se
 |Dados de Entrada         | Informações solicitadas no campo de Classificação.  |
 
 
-| Caso de Teste           | CT003 – Poder excluir uma Conta Bancária - RF-010 / RF-011                                                              |
+| Caso de Teste           | CT003 – Poder excluir uma Classificação - RF-010 / RF-011                                                              |
 |-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 |Pre Condições            | Estar na tela Index Classificação | 
 |Procedimento             | 1. No menu clicar na opção "Excluir”. |
@@ -596,7 +596,7 @@ Os testes funcionais a serem realizados no sistema Libertese são descritos a se
 ## CT005 – Poder visualizar uma Conta Bancária - RF-010 / RF-011
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/59944150/e30167e5-23da-4b77-b4ea-dadd7a96f107)
 
-## Evidências de Testes de Softwares - CRUD Contas Bancárias
+# Evidências de Testes de Softwares - CRUD Contas Bancárias
 
 ## CT001 – Poder inserir uma nova Conta Bancária - RF-010 / RF-011
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/375c8def-6862-4298-8805-0a9d509b59dd)
@@ -616,6 +616,12 @@ Os testes funcionais a serem realizados no sistema Libertese são descritos a se
 
 ## CT005 – Poder visualizar uma Classificação - RF-010 / RF-011 
  ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/59944150/7f71f900-2f57-4fb3-9d3a-b0b757091f36)
+
+ ## Evidências de Testes de Softwares - CRUD Contas Bancárias
+
+ ## CT001 – Poder inserir uma nova Classificação de Despesas ou Receita - RF-010 / RF-011  
+ ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/59944150/2310b129-0e42-42f4-8f07-575385158f7d)
+ ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/59944150/cdf284d6-e8c4-43c3-b0bd-171e20b72656)
 
 # Plano de Testes de Software (Em pares)
 
