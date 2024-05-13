@@ -629,7 +629,12 @@ Os testes funcionais a serem realizados no sistema Libertese são descritos a se
  ## CT003 – Poder excluir uma Classificação - RF-010 / RF-011 (botão de excluir não funciona, e não informa nenhum possível erro)    
  ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/59944150/e6130c39-1081-4a9b-9526-f1698c35cf17)
 
+ ## CT004 – Poder editar uma Classificação - RF-010 / RF-011 ( ao editar a data de inclusão pode ser manipulada, e redireciona para uma outra tela de classificação)
+ ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/59944150/4741fe57-ee84-4e0d-a7b5-f9f1a9aa60ff)
+ ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/59944150/afb157db-8227-46d1-9ff6-a8a336d3c7f1)
 
+
+ 
 
 # Plano de Testes de Software (Em pares)
 
