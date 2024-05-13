@@ -621,7 +621,12 @@ Os testes funcionais a serem realizados no sistema Libertese são descritos a se
 
  ## CT001 – Poder inserir uma nova Classificação de Despesas ou Receita - RF-010 / RF-011  
  ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/59944150/2310b129-0e42-42f4-8f07-575385158f7d)
- ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/59944150/cdf284d6-e8c4-43c3-b0bd-171e20b72656)
+ ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/59944150/cdf284d6-e8c4-43c3-b0bd-171e20b72656) 
+ 
+ ## CT002 – Inserir uma nova Classificação com campos inválidos - RF-010 / RF-011 (não informa ao usuário o erro ao inserir)
+ ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/59944150/38ae725b-5195-4270-81d2-c7829eff30f8)
+
+ 
 
 # Plano de Testes de Software (Em pares)
 
