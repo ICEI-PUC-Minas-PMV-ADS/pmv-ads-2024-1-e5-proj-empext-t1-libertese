@@ -614,6 +614,9 @@ Os testes funcionais a serem realizados no sistema Libertese são descritos a se
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/59944150/12f93860-d94e-4cb3-8664-0ebe42a6fa93)
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/59944150/18cf4481-d017-471a-9838-feda93ef1369)
 
+## CT005 – Poder visualizar uma Classificação - RF-010 / RF-011 
+ ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/59944150/7f71f900-2f57-4fb3-9d3a-b0b757091f36)
+
 # Plano de Testes de Software (Em pares)
 
 Teste da tela de Funcionários | Feita por Douglas Delareti Simões | Testes feitos por César Luis Costa Moreira
