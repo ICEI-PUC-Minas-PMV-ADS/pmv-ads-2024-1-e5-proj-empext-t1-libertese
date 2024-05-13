@@ -54,7 +54,7 @@ Os testes funcionais a serem realizados no aplicativo são descritos a seguir:
 
 # Testes Automatizados
 
-Ferramenta de testes: NUnit.net (disponilizada para aplicações do .NET Framework)
+## Ferramenta de testes: NUnit.net (disponilizada para aplicações do .NET Framework)
 
 Foram implementados testes de unidade automatizados, que cobrem os principais métodos das entidades de Categorias e Materiais.
 
