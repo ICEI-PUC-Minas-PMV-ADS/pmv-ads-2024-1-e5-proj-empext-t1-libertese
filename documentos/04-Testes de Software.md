@@ -626,7 +626,10 @@ Os testes funcionais a serem realizados no sistema Libertese são descritos a se
  ## CT002 – Inserir uma nova Classificação com campos inválidos - RF-010 / RF-011 (não informa ao usuário o erro ao inserir)
  ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/59944150/38ae725b-5195-4270-81d2-c7829eff30f8)
 
- 
+ ## CT003 – Poder excluir uma Classificação - RF-010 / RF-011 (botão de excluir não funciona, e não informa nenhum possível erro)    
+ ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/59944150/e6130c39-1081-4a9b-9526-f1698c35cf17)
+
+
 
 # Plano de Testes de Software (Em pares)
 
