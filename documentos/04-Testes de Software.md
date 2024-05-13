@@ -410,8 +410,7 @@ RF-014 - Permitir gerar relatórios de venda
 Garantir a funcionalidade, confiabilidade e segurança das telas de: 
 - CRUD Forma de Pagamento
 - CRUD Contas Bancárias
-- CRUD Classificação de Despesas
-- CRUD Classificação de Receitas
+- CRUD Classificação de Despesas e Receitas
 
 ## Ferramentas utilizadas para os testes
 - Visual studio 2021
@@ -422,7 +421,7 @@ Garantir a funcionalidade, confiabilidade e segurança das telas de:
 - Telas desenvolvidas: Produtos e Materiais - Testadas por: Vinicius Ponciano
 - Funcionalidades testadas: CRUD - Forma de Pagamento, Contas Bancárias, Classificação de Despesas e Receitas (Telas desenvolvidas por Rafael de Oliveira)
 
-## Testes Funcionais Realizados - - CRUD Forma de Pagamento
+## Testes Funcionais Realizados - CRUD Forma de Pagamento
 
 Os testes funcionais a serem realizados no sistema Libertese são descritos a seguir:
 - Funcionalidades desenvolvidas por: Rafael de Oliveira
