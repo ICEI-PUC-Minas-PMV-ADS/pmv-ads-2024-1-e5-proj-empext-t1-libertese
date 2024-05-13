@@ -633,7 +633,8 @@ Os testes funcionais a serem realizados no sistema Libertese são descritos a se
  ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/59944150/4741fe57-ee84-4e0d-a7b5-f9f1a9aa60ff)
  ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/59944150/afb157db-8227-46d1-9ff6-a8a336d3c7f1)
 
-
+ ## CT005 – Poder visualizar uma Classificação - RF-010 / RF-011 (não existe botão para exibir detalhes na tela de classificação)
+ ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/59944150/096110f9-09d4-4ca4-82ea-9bf69965233a)
  
 
 # Plano de Testes de Software (Em pares)
