@@ -24,7 +24,6 @@ namespace Libertese.Web.Controllers.Financeiro
         public async Task<IActionResult> Index()
         {
             List<Receita> listaReceitas = await _context.Receitas.ToListAsync();
-            List<Fornecedor> listaFornecedores = await _context.Fornecedores.ToListAsync();
             List<Classificacao> listaClassificacoes = await _context.Classificacoes.Where(x => x.Tipo == (int)ClassificacaoTipo.Receitas).ToListAsync();
             List<ReceitaDTO> listaReceitaDTO = listaReceitas.Select(receita => new ReceitaDTO
             {
