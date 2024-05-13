@@ -584,6 +584,9 @@ Os testes funcionais a serem realizados no sistema Libertese são descritos a se
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/91369ffd-c3d1-47bd-9bf0-dd7893776cc1)
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/658d8556-20f4-4445-be61-e9ef1ded24fb)
 
+- CT002 – Inserir uma nova Forma de Pagamento com campos inválidos - RF-010 / RF-011
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/cd5a1e6d-4546-41c6-a9a5-4081f06af6b4)
+
 
 
 
