@@ -593,6 +593,9 @@ Os testes funcionais a serem realizados no sistema Libertese são descritos a se
 CT004 – Poder editar uma Forma de Pagamento - RF-010 / RF-011
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/9f1ef47d-5d84-47c3-abdd-b70a14ddab2b)
 
+CT005 – Poder visualizar uma Conta Bancária - RF-010 / RF-011
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/59944150/e30167e5-23da-4b77-b4ea-dadd7a96f107)
+
 ## Evidências de Testes de Softwares - CRUD Contas Bancárias
 
 - CT001 – Poder inserir uma nova Conta Bancária - RF-010 / RF-011
