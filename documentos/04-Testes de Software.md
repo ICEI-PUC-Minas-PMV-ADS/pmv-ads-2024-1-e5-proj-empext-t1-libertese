@@ -422,19 +422,25 @@ Garantir a funcionalidade, confiabilidade e segurança das telas de:
 - Telas desenvolvidas: Produtos e Materiais - Testadas por: Vinicius Ponciano
 - Funcionalidades testadas: CRUD - Forma de Pagamento, Contas Bancárias, Classificação de Despesas e Receitas (Telas desenvolvidas por Rafael de Oliveira)
 
-## Testes Funcionais Realizados
+## Testes Funcionais Realizados - - CRUD Forma de Pagamento
 
 Os testes funcionais a serem realizados no sistema Libertese são descritos a seguir:
 - Funcionalidades desenvolvidas por: Rafael de Oliveira
  
-| Caso de Teste           | CT001 – Poder inserir uma nova classificação de Despesas - RF-010                                                            |
+| Caso de Teste           | CT001 – Poder inserir uma nova Forma de Pagamento - RF-010 / RF-011                                                           |
 |-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
-|Pre Condições            | Estar na tela de Despesas       | 
+|Pre Condições            | Estar na tela Forma de Pagamento | 
 |Procedimento             | 1. No menu selecione a opção “+Classificação”. |
 |                         | 2. Na tela Classificação de Despesas, insira o nome da Classificação e clique no botão "+". |
 |                         | 3. Clicar em voltar, o sistema deve retornar para a tela de Despesas |
 |Resultado Esperado       | A nova classificação deve ser inserida com sucesso, e o sistema deverá retornar para a página de Despesas                     |
 |Dados de Entrada         | Informações solicitadas no campo de Classificação.  |
+
+## Testes Funcionais Realizados - CRUD Contas Bancárias
+
+## Testes Funcionais Realizados - CRUD Classificação de Despesas
+
+## Testes Funcionais Realizados - CRUD Classificação de Receitas
 
 
 
