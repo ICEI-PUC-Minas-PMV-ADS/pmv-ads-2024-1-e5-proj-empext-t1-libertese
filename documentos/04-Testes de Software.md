@@ -403,6 +403,41 @@ RF-014 - Permitir gerar relatórios de venda
 
 
 
+# Plano de Testes de Software (Em pares)
+
+## Objetivo
+
+Garantir a funcionalidade, confiabilidade e segurança das telas de: 
+- CRUD Forma de Pagamento
+- CRUD Contas Bancárias
+- CRUD Classificação de Despesas
+- CRUD Classificação de Receitas
+
+## Ferramentas utilizadas para os testes
+- Visual studio 2021
+- Google Chrome
+
+## Responsáveis pelos testes e pelas funcionalidades desenvolvidas
+- Responsável pelos testes a seguir: Thaís Bezerra
+- Telas desenvolvidas: Produtos e Materiais - Testadas por: Vinicius Ponciano
+- Funcionalidades testadas: CRUD - Forma de Pagamento, Contas Bancárias, Classificação de Despesas e Receitas (Telas desenvolvidas por Rafael de Oliveira)
+
+## Testes Funcionais Realizados
+
+Os testes funcionais a serem realizados no sistema Libertese são descritos a seguir:
+- Funcionalidades desenvolvidas por: Rafael de Oliveira
+ 
+| Caso de Teste           | CT001 – Poder inserir uma nova classificação de Despesas - RF-010                                                            |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|Pre Condições            | Estar na tela de Despesas       | 
+|Procedimento             | 1. No menu selecione a opção “+Classificação”. |
+|                         | 2. Na tela Classificação de Despesas, insira o nome da Classificação e clique no botão "+". |
+|                         | 3. Clicar em voltar, o sistema deve retornar para a tela de Despesas |
+|Resultado Esperado       | A nova classificação deve ser inserida com sucesso, e o sistema deverá retornar para a página de Despesas                     |
+|Dados de Entrada         | Informações solicitadas no campo de Classificação.  |
+
+
+
 
  
  
