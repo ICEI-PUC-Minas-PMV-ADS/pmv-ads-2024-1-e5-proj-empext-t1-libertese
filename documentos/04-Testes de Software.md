@@ -590,6 +590,8 @@ Os testes funcionais a serem realizados no sistema Libertese são descritos a se
 - CT003 – Poder excluir uma Forma de Pagamento - RF-010 / RF-011
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/7ee417c0-a543-4698-94e7-a6d99736e56c)
 
+CT004 – Poder editar uma Forma de Pagamento - RF-010 / RF-011
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/9f1ef47d-5d84-47c3-abdd-b70a14ddab2b)
 
 
  
