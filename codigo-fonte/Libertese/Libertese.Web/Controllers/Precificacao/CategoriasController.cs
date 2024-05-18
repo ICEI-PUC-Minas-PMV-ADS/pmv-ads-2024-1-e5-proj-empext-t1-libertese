@@ -59,6 +59,8 @@ namespace Libertese.Web.Controllers.Precificacao
             if (ModelState.IsValid)
             {
                 categoria.DataCriacao = DateTime.Now;
+                categoria.DataAtualizacao = DateTime.Now;
+
                 _context.Add(categoria);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

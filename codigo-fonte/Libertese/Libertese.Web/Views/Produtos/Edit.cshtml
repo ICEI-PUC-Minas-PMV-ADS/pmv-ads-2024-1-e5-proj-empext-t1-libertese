@@ -1,38 +1,122 @@
 ﻿@model Libertese.Domain.Entities.Precificacao.Produto
 
 @{
-    ViewData["Title"] = "Editar";
+    ViewData["Title"] = "Editar Produto";
+    Layout = "~/Views/Shared/_LayoutProdutos.cshtml";
 }
 
-<h1>Editar Produto</h1>
-
-<h4></h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Nome" class="control-label"></label>
-                <input asp-for="Nome" class="form-control" />
-                <span asp-validation-for="Nome" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="TempoProducao" class="control-label"></label>
-                <input asp-for="TempoProducao" class="form-control" />
-                <span asp-validation-for="TempoProducao" class="text-danger"></span>
-            </div>
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <input type="submit" value="Salvar" />
-            </div>
-        </form>
+<body class="font-inter antialiased bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-400">
+    <div class="flex h-[100dvh] overflow-hidden">
+        <div class="relative flex flex-col flex-1 overflow-y-auto overflow-x-hidden bg-white dark:bg-slate-900">   
+            <main class="grow">
+                <div class="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
+                    <div class="mb-8">
+                        <h2 class="text-2xl md:text-3xl text-slate-800 dark:text-slate-100 font-bold">Editar Produto</h2>
+                    </div>
+                    <div class="border-t border-slate-200 dark:border-slate-700">
+                        <form asp-action="Edit">
+                        <div class="space-y-8 mt-5">
+                            <div>
+                                <div class="grid gap-5 md:grid-cols-2">
+                                    <div>
+                                        <div>
+                                            <div class="flex items-center justify-between">
+                                                <label asp-for="Nome" class="block text-sm font-medium mb-1" for="tooltip"></label>
+                                                <div
+                                                    class="relative ml-2"
+                                                    x-data="{ open: false }"
+                                                    @@mouseenter="open = true"
+                                                    @@mouseleave="open = false"
+                                                >
+                                                    <button
+                                                        class="block"
+                                                        aria-haspopup="true"
+                                                        :aria-expanded="open"
+                                                        @@focus="open = true"
+                                                        @@focusout="open = false"
+                                                        @@click.prevent            
+                                                    >
+                                                        <svg class="w-4 h-4 fill-current text-slate-400 dark:text-slate-500" viewBox="0 0 16 16">
+                                                            <path d="M8 0C3.6 0 0 3.6 0 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zm0 12c-.6 0-1-.4-1-1s.4-1 1-1 1 .4 1 1-.4 1-1 1zm1-3H7V4h2v5z"  />
+                                                        </svg>
+                                                    </button>
+                                                    <div class="z-10 absolute bottom-full left-1/2 -translate-x-1/2">
+                                                        <div
+                                                            class="min-w-60 bg-slate-800 text-slate-200 px-2 py-1 rounded overflow-hidden mb-2"
+                                                            x-show="open"
+                                                            x-transition:enter="transition ease-out duration-200 transform"
+                                                            x-transition:enter-start="opacity-0 translate-y-2"
+                                                            x-transition:enter-end="opacity-100 translate-y-0"
+                                                            x-transition:leave="transition ease-out duration-200"
+                                                            x-transition:leave-start="opacity-100"
+                                                            x-transition:leave-end="opacity-0"
+                                                            x-cloak
+                                                        >
+                                                            <div class="text-sm">edita um nome do produto.</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <input  asp-for="Nome" class="form-input w-full" type="text" />
+                                            <span asp-validation-for="Nome" class="text-xs mt-1 text-rose-500"></span>
+                                        </div>
+                                    </div>
+                                        <div>
+                                            <div>
+                                                <div class="flex items-center justify-between">
+                                                    <label asp-for="TempoProducao" class="block text-sm font-medium mb-1" for="tooltip"></label>
+                                                    <div class="relative ml-2"
+                                                         x-data="{ open: false }"
+                                                         @@mouseenter="open = true"
+                                                         @@mouseleave="open = false">
+                                                        <button class="block"
+                                                                aria-haspopup="true"
+                                                                :aria-expanded="open"
+                                                                @@focus="open = true"
+                                                                @@focusout="open = false"
+                                                                @@click.prevent>
+                                                            <svg class="w-4 h-4 fill-current text-slate-400 dark:text-slate-500" viewBox="0 0 16 16">
+                                                                <path d="M8 0C3.6 0 0 3.6 0 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zm0 12c-.6 0-1-.4-1-1s.4-1 1-1 1 .4 1 1-.4 1-1 1zm1-3H7V4h2v5z" />
+                                                            </svg>
+                                                        </button>
+                                                        <div class="z-1000 absolute bottom-full left-1/2 -translate-x-1/2">
+                                                            <div class="min-w-60 bg-slate-800 text-slate-200 px-2 py-1 rounded overflow-visible mb-2"
+                                                                 x-show="open"
+                                                                 x-transition:enter="transition ease-out duration-200 transform"
+                                                                 x-transition:enter-start="opacity-0 translate-y-2"
+                                                                 x-transition:enter-end="opacity-100 translate-y-0"
+                                                                 x-transition:leave="transition ease-out duration-200"
+                                                                 x-transition:leave-start="opacity-100"
+                                                                 x-transition:leave-end="opacity-0"
+                                                                 x-cloak>
+                                                                <div class="text-sm">Tempo por peça.</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <input asp-for="TempoProducao" class="form-input w-full" type="number" />
+                                                <span asp-validation-for="TempoProducao" class="text-xs mt-1 text-rose-500"></span>
+                                            </div>
+                                        </div>
+                                 
+                                </div>
+                            </div>
+                            <footer>
+                                <div class="flex flex-col px-6 py-5 border-t border-slate-200 dark:border-slate-700">
+                                    <div class="flex self-end">
+                                        <a asp-action="Index" class="btn dark:bg-slate-800 border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600 text-slate-600 dark:text-slate-300">Voltar</a>
+                                        <input type="submit" value="Salvar" class="btn bg-orange-500 hover:bg-orange-600 text-white ml-3" />
+                                    </div>
+                                </div>
+                            </footer>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </main>
+        </div>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Voltar</a>
-</div>
+</body>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

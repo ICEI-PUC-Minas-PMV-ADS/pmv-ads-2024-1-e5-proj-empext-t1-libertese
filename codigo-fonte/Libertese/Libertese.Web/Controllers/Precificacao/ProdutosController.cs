@@ -23,6 +23,34 @@ namespace Libertese.Web.Controllers.Precificacao
         // GET: Produtos
         public async Task<IActionResult> Index()
         {
+
+
+//            select
+
+//    pro."Id", 
+//	pro."Nome",  
+//	cat."Nome" as "Categoria", 
+//	pro."TempoProducao", 
+//	coalesce(sum(pm."Quantidade" * m."Preco"), 0) as "Custo"
+
+//    from "Produtos" pro
+//left join "Categorias" cat on cat."Id" = pro."CategoriaId"
+//left join "Precos" pre on pre."ProdutoId" = pro."Id"
+//left join "ProdutoMaterial" pm on pm."ProdutoId" = pro."Id"
+//left join "Materiais" m on m."Id" = pm."MateriaiId" and pm."ProdutoId" = pro."Id"
+//group by pro."Id", pro."Nome", cat."Nome", pro."TempoProducao"
+
+
+
+//select* from "ProdutoMaterial" pm
+
+//select* from "Produtos" p
+
+//select* from "Materiais" m
+
+//select* from "Categorias" c
+
+
             return View(await _context.Produtos.ToListAsync());
         }
 
@@ -60,6 +88,8 @@ namespace Libertese.Web.Controllers.Precificacao
 
             if (ModelState.IsValid)
             {
+                produto.DataCriacao = DateTime.Now;
+                produto.DataAtualizacao = DateTime.Now;
 
                 _context.Add(produto);
                 await _context.SaveChangesAsync();
@@ -100,6 +130,7 @@ namespace Libertese.Web.Controllers.Precificacao
             {
                 try
                 {
+                    produto.DataAtualizacao = DateTime.Now;
                     _context.Update(produto);
                     await _context.SaveChangesAsync();
                 }
@@ -150,6 +181,22 @@ namespace Libertese.Web.Controllers.Precificacao
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
+        }
+
+        // POST: Materiais/Search
+        [HttpPost, ActionName("Search")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> SearchText(string nome)
+        {
+
+            if (!string.IsNullOrEmpty(nome))
+            {
+                return View("Index", await _context.Produtos.Where(c => EF.Functions.Like(c.Nome.ToLower(), "%" + nome.ToLower() + "%")).ToListAsync());
+            }
+            else
+            {
+                return RedirectToAction(nameof(Index));
+            }
         }
 
         private bool ProdutoExists(int id)
