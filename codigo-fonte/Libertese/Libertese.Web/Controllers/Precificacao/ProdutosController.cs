@@ -36,7 +36,7 @@ namespace Libertese.Web.Controllers.Precificacao
                             join material in _context.Materiais on produtoMaterial.MateriaiId equals material.Id into mGroup
                             from material in mGroup.DefaultIfEmpty()
                             group new { produto, categoria, preco, produtoMaterial, material } 
-                            by new { produto.Id, produto.Nome, Categoria = categoria.Nome, produto.TempoProducao, produto.DataCriacao, produto.DataAtualizacao } into gGroup
+                            by new { produto.Id, produto.Nome, Categoria = categoria.Nome, produto.TempoProducao, preco.Valor, produto.DataCriacao, produto.DataAtualizacao } into gGroup
                             select new ProdutoViewModel
                             {
                                 Id = gGroup.Key.Id,
@@ -44,10 +44,20 @@ namespace Libertese.Web.Controllers.Precificacao
                                 Categoria = gGroup.Key.Categoria,
                                 TempoProducao = gGroup.Key.TempoProducao,
                                 Custo = gGroup.Sum(x => x.produtoMaterial.Quantidade * x.material.Preco),
-                                Preco = 0,
+                                Preco = gGroup.Select(x => x.preco.Valor).Distinct().FirstOrDefault(),
                                 Rateio = 0,
                                 DataAtualizacao = gGroup.Key.DataAtualizacao,
-                                DataCriacao = gGroup.Key.DataCriacao                            })
+                                DataCriacao = gGroup.Key.DataCriacao,
+                                TotalMateriais = gGroup.Count(x => x.produtoMaterial != null && x.material != null),
+                                Materiais = gGroup.Where(x => x.produtoMaterial != null && x.material != null)
+                                      .Select(x => new MaterialViewModel
+                                      {
+                                          Id = x.material.Id,
+                                          Nome = x.material.Nome,
+                                          Preco = x.material.Preco,
+                                          Quantidade = x.produtoMaterial.Quantidade
+                                      }).ToList()
+                            })
                             .OrderBy(x => x.Id)
                             .ToList();
 
@@ -79,7 +89,8 @@ namespace Libertese.Web.Controllers.Precificacao
         // GET: Produtos/Create
         public IActionResult Create()
         {
-            return View();
+            var produto = new ProdutoCreateViewModel();
+            return View(produto);
         }
 
         // POST: Produtos/Create
@@ -87,7 +98,7 @@ namespace Libertese.Web.Controllers.Precificacao
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Nome,TempoProducao,Id,DataCriacao,DataAtualizacao")] Produto produto)
+        public async Task<IActionResult> Create([Bind("Nome,Materiais,CategoriaId,Margem,TempoProducao,Id,DataCriacao,DataAtualizacao")] ProdutoCreateViewModel produto)
         {
 
             if (ModelState.IsValid)
@@ -123,7 +134,7 @@ namespace Libertese.Web.Controllers.Precificacao
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Nome,TempoProducao,Id,DataCriacao,DataAtualizacao")] Produto produto)
+        public async Task<IActionResult> Edit(int id, [Bind("Nome,TempoProducao,Id,DataCriacao,DataAtualizacao")] ProdutoCreateViewModel produto)
         {
             if (id != produto.Id)
             {
@@ -206,7 +217,7 @@ namespace Libertese.Web.Controllers.Precificacao
                                 from material in mGroup.DefaultIfEmpty()
                                 where EF.Functions.Like(produto.Nome.ToLower(), "%" + nome.ToLower() + "%")  
                                 group new { produto, categoria, preco, produtoMaterial, material }
-                                by new { produto.Id, produto.Nome, Categoria = categoria.Nome, produto.TempoProducao, produto.DataCriacao, produto.DataAtualizacao } into gGroup
+                                by new { produto.Id, produto.Nome, Categoria = categoria.Nome, produto.TempoProducao, preco.Valor, produto.DataCriacao, produto.DataAtualizacao } into gGroup
                                 select new ProdutoViewModel
                                 {
                                     Id = gGroup.Key.Id,
@@ -214,10 +225,19 @@ namespace Libertese.Web.Controllers.Precificacao
                                     Categoria = gGroup.Key.Categoria,
                                     TempoProducao = gGroup.Key.TempoProducao,
                                     Custo = gGroup.Sum(x => x.produtoMaterial.Quantidade * x.material.Preco),
-                                    Preco = 0,
+                                    Preco = gGroup.Select(x => x.preco.Valor).Distinct().FirstOrDefault(),
                                     Rateio = 0,
                                     DataAtualizacao = gGroup.Key.DataAtualizacao,
-                                    DataCriacao = gGroup.Key.DataCriacao
+                                    DataCriacao = gGroup.Key.DataCriacao,
+                                    TotalMateriais = gGroup.Count(x => x.produtoMaterial != null && x.material != null),
+                                    Materiais = gGroup.Where(x => x.produtoMaterial != null && x.material != null)
+                                      .Select(x => new MaterialViewModel
+                                      {
+                                          Id = x.material.Id,
+                                          Nome = x.material.Nome,
+                                          Preco = x.material.Preco,
+                                          Quantidade = x.produtoMaterial.Quantidade
+                                      }).ToList()
                                 })
                             .OrderBy(x => x.Id)
                             .ToList();
