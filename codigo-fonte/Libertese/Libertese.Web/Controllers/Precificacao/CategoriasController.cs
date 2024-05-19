@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Libertese.Data;
 using Libertese.Domain.Entities.Precificacao;
+using Libertese.ViewModels;
 
 namespace Libertese.Web.Controllers.Precificacao
 {
@@ -171,6 +172,17 @@ namespace Libertese.Web.Controllers.Precificacao
             {
                 return RedirectToAction(nameof(Index));
             }
+        }
+
+        [HttpGet, ActionName("SearchByText")]
+        public JsonResult SearchByText([FromQuery(Name = "searchString")] string searchString)
+        {
+            var result  = _context.Categorias
+                            .Where(x => EF.Functions.Like(x.Nome.ToLower(), "%" + searchString.ToLower() + "%"))
+                            .Select(x => new OptionViewModel { Id = x.Id, Nome = x.Nome })
+                            .Take(10)
+                            .ToList();
+            return Json(result);
         }
 
         private bool CategoriaExists(int id)

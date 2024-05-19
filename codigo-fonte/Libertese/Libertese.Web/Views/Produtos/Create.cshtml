@@ -1,20 +1,35 @@
-﻿@model Libertese.Domain.Entities.Precificacao.Produto
+﻿@model Libertese.ViewModels.ProdutoCreateViewModel
+@using Microsoft.AspNetCore.Mvc.TagHelpers
 
 @{
     ViewData["Title"] = "Novo Produto";
     Layout = "~/Views/Shared/_LayoutProdutos.cshtml";
 }
 
+<head>
+    <meta charset="utf-8" />
+    <title>Autocomplete Example</title>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+</head>
+
+
 <body class="font-inter antialiased bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-400">
     <div class="flex h-[100dvh] overflow-hidden">
         <div class="relative flex flex-col flex-1 overflow-y-auto overflow-x-hidden bg-white dark:bg-slate-900">   
             <main class="grow">
-                <div class="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
-                    <div class="mb-8">
+                <div class="px-4 sm:px-6 lg:px-8 pt-8 w-full max-w-9xl mx-auto">
+                    <div class="mb-1">
                         <h2 class="text-2xl md:text-3xl text-slate-800 dark:text-slate-100 font-bold">Novo Produto</h2>
                     </div>
+                </div>
+                <form id="ProdutoForm" asp-action="Create">
+                <div class="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
+                        <div class="mb-1">
+                            <h4 class="text-xl md:text-xl text-slate-800 dark:text-slate-100 font-bold">Informações básicas</h4>
+                        </div>
                     <div class="border-t border-slate-200 dark:border-slate-700">
-                        <form asp-action="Create">
                         <div class="space-y-8 mt-5">
                             <div>
                                 <div class="grid gap-5 md:grid-cols-2">
@@ -52,7 +67,7 @@
                                                             x-transition:leave-end="opacity-0"
                                                             x-cloak
                                                         >
-                                                            <div class="text-sm">insira um nome para o produto.</div>
+                                                            <div class="text-sm">Descrição curta de um produto.</div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -61,31 +76,455 @@
                                             <span asp-validation-for="Nome" class="text-xs mt-1 text-rose-500"></span>
                                         </div>
                                     </div>
-                                     <div>
-                                            <div>
-                                                <label asp-for="TempoProducao" class="block text-sm font-medium mb-1" ></label>
+                                    <div>
+                                        <div>
+                                                <div class="flex items-center justify-start">
+                                                    <label asp-for="TempoProducao" class="block text-sm font-medium mb-1" for="tooltip"></label>
+                                                    <div class="relative ml-2"
+                                                         x-data="{ open: false }"
+                                                         @@mouseenter="open = true"
+                                                         @@mouseleave="open = false">
+                                                        <button class="block"
+                                                                aria-haspopup="true"
+                                                                :aria-expanded="open"
+                                                                @@focus="open = true"
+                                                                @@focusout="open = false"
+                                                                @@click.prevent>
+                                                            <svg class="w-4 h-4 fill-current text-slate-400 dark:text-slate-500" viewBox="0 0 16 16">
+                                                                <path d="M8 0C3.6 0 0 3.6 0 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zm0 12c-.6 0-1-.4-1-1s.4-1 1-1 1 .4 1 1-.4 1-1 1zm1-3H7V4h2v5z" />
+                                                            </svg>
+                                                        </button>
+                                                        <div class="z-10 absolute bottom-full left-1/2 -translate-x-1/2">
+                                                            <div class="min-w-60 bg-slate-800 text-slate-200 px-2 py-1 rounded overflow-hidden mb-2"
+                                                                 x-show="open"
+                                                                 x-transition:enter="transition ease-out duration-200 transform"
+                                                                 x-transition:enter-start="opacity-0 translate-y-2"
+                                                                 x-transition:enter-end="opacity-100 translate-y-0"
+                                                                 x-transition:leave="transition ease-out duration-200"
+                                                                 x-transition:leave-start="opacity-100"
+                                                                 x-transition:leave-end="opacity-0"
+                                                                 x-cloak>
+                                                                <div class="text-sm">Tempo em minutos para a produção de um produto.</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                                 <input asp-for="TempoProducao" class="form-input w-full" type="number" />
                                                 <span asp-validation-for="TempoProducao" class="text-xs mt-1 text-rose-500"></span>
+                                            </div>
+                                    </div>
+                                    <div>
+                                        <div>
+                                            <div>
+                                                    <div class="flex items-center justify-between">
+                                                    <label asp-for="CategoriaId" class="block text-sm font-medium mb-1" for="tooltip"></label>
+                                                    <div class="relative ml-2"
+                                                         x-data="{ open: false }"
+                                                         @@mouseenter="open = true"
+                                                         @@mouseleave="open = false">
+                                                        <button class="block"
+                                                                aria-haspopup="true"
+                                                                :aria-expanded="open"
+                                                                @@focus="open = true"
+                                                                @@focusout="open = false"
+                                                                @@click.prevent>
+                                                            <svg class="w-4 h-4 fill-current text-slate-400 dark:text-slate-500" viewBox="0 0 16 16">
+                                                                <path d="M8 0C3.6 0 0 3.6 0 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zm0 12c-.6 0-1-.4-1-1s.4-1 1-1 1 .4 1 1-.4 1-1 1zm1-3H7V4h2v5z" />
+                                                            </svg>
+                                                        </button>
+                                                        <div class="z-10 absolute bottom-full left-1/2 -translate-x-1/2">
+                                                            <div class="min-w-60 bg-slate-800 text-slate-200 px-2 py-1 rounded overflow-hidden mb-2"
+                                                                 x-show="open"
+                                                                 x-transition:enter="transition ease-out duration-200 transform"
+                                                                 x-transition:enter-start="opacity-0 translate-y-2"
+                                                                 x-transition:enter-end="opacity-100 translate-y-0"
+                                                                 x-transition:leave="transition ease-out duration-200"
+                                                                 x-transition:leave-start="opacity-100"
+                                                                 x-transition:leave-end="opacity-0"
+                                                                 x-cloak>
+                                                                <div class="text-sm">Categoria em que o produto será associado.</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                    <input style="display: none;" asp-for="CategoriaId" id="CategoriaId" />
+                                                    <input class="form-input w-full" type="text" id="SearchCategoria" />
+                                                <span asp-validation-for="CategoriaId" class="text-xs mt-1 text-rose-500"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                        <div>
+                                            <div>
+                                                <div class="flex items-center justify-start">
+                                                    <label asp-for="Margem" class="block text-sm font-medium mb-1" for="tooltip"></label>
+                                                    <div class="relative ml-2"
+                                                         x-data="{ open: false }"
+                                                         @@mouseenter="open = true"
+                                                         @@mouseleave="open = false">
+                                                        <button class="block"
+                                                                aria-haspopup="true"
+                                                                :aria-expanded="open"
+                                                                @@focus="open = true"
+                                                                @@focusout="open = false"
+                                                                @@click.prevent>
+                                                            <svg class="w-4 h-4 fill-current text-slate-400 dark:text-slate-500" viewBox="0 0 16 16">
+                                                                <path d="M8 0C3.6 0 0 3.6 0 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zm0 12c-.6 0-1-.4-1-1s.4-1 1-1 1 .4 1 1-.4 1-1 1zm1-3H7V4h2v5z" />
+                                                            </svg>
+                                                        </button>
+                                                        <div class="z-10 absolute bottom-full left-1/2 -translate-x-1/2">
+                                                            <div class="min-w-60 bg-slate-800 text-slate-200 px-2 py-1 rounded overflow-hidden mb-2"
+                                                                 x-show="open"
+                                                                 x-transition:enter="transition ease-out duration-200 transform"
+                                                                 x-transition:enter-start="opacity-0 translate-y-2"
+                                                                 x-transition:enter-end="opacity-100 translate-y-0"
+                                                                 x-transition:leave="transition ease-out duration-200"
+                                                                 x-transition:leave-start="opacity-100"
+                                                                 x-transition:leave-end="opacity-0"
+                                                                 x-cloak>
+                                                                <div class="text-sm">Margem de lucro percentual aplicação ao produto</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <input asp-for="Margem" class="form-input w-full" type="number" />
+                                                <span asp-validation-for="Margem" class="text-xs mt-1 text-rose-500"></span>
                                             </div>
                                         </div>
                                 </div>
                             </div>
-                            <footer>
-                                <div class="flex flex-col px-6 py-5 border-t border-slate-200 dark:border-slate-700">
-                                    <div class="flex self-end">
-                                        <a asp-action="Index" class="btn dark:bg-slate-800 border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600 text-slate-600 dark:text-slate-300">Voltar</a>
-                                        <input type="submit" value="Salvar" class="btn bg-orange-500 hover:bg-orange-600 text-white ml-3" />
-                                    </div>
-                                </div>
-                            </footer>
                         </div>
-                        </form>
                     </div>
                 </div>
+                <div class="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
+                        <div class="mb-1">
+                            <h4 class="text-xl md:text-xl text-slate-800 dark:text-slate-100 font-bold">Composição</h4>
+                        </div>
+                        <div class="border-t border-slate-200 dark:border-slate-700">
+                            <div class="space-y-8 mt-5">
+                                <div>
+                                    <div class="grid gap-5 md:grid-cols-2 mb-10">
+                                        <div>
+                                            <div>
+                                                <div class="flex items-center justify-between">
+                                                    <label asp-for="MaterialId" class="block text-sm font-medium mb-1" for="tooltip"></label>
+                                                    <div class="relative ml-2"
+                                                         x-data="{ open: false }"
+                                                         @@mouseenter="open = true"
+                                                         @@mouseleave="open = false">
+                                                        <button class="block"
+                                                                aria-haspopup="true"
+                                                                :aria-expanded="open"
+                                                                @@focus="open = true"
+                                                                @@focusout="open = false"
+                                                                @@click.prevent>
+                                                            <svg class="w-4 h-4 fill-current text-slate-400 dark:text-slate-500" viewBox="0 0 16 16">
+                                                                <path d="M8 0C3.6 0 0 3.6 0 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zm0 12c-.6 0-1-.4-1-1s.4-1 1-1 1 .4 1 1-.4 1-1 1zm1-3H7V4h2v5z" />
+                                                            </svg>
+                                                        </button>
+                                                        <div class="z-10 absolute bottom-full left-1/2 -translate-x-1/2">
+                                                            <div class="min-w-60 bg-slate-800 text-slate-200 px-2 py-1 rounded overflow-hidden mb-2"
+                                                                 x-show="open"
+                                                                 x-transition:enter="transition ease-out duration-200 transform"
+                                                                 x-transition:enter-start="opacity-0 translate-y-2"
+                                                                 x-transition:enter-end="opacity-100 translate-y-0"
+                                                                 x-transition:leave="transition ease-out duration-200"
+                                                                 x-transition:leave-start="opacity-100"
+                                                                 x-transition:leave-end="opacity-0"
+                                                                 x-cloak>
+                                                                <div class="text-sm">Escolha o material que deseja incluir ao produto.</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <input style="display: none;" name="MaterialId" id="MaterialId" />
+                                                <input style="display: none;" name="MaterialNome" id="MaterialNome" />
+                                                <input style="display: none;" name="MaterialPreco" id="MaterialPreco" />
+                                                <input style="display: none;" name="MaterialValorTotal" id="MaterialValorTotal" />
+                                                <input style="display: none;" name="Material" id="Material" />
+                                                <input class="form-input w-full" type="text" id="SearchMaterial" />
+                                                <span asp-validation-for="MaterialId" class="text-xs mt-1 text-rose-500"></span>
+                                            </div>
+                                        </div> 
+                                        <div>
+                                            <div>
+                                                <div class="flex items-center justify-start">
+                                                    <label asp-for="Quantidade" class="block text-sm font-medium mb-1" for="tooltip"></label>
+                                                    <div class="relative ml-2"
+                                                         x-data="{ open: false }"
+                                                         @@mouseenter="open = true"
+                                                         @@mouseleave="open = false">
+                                                        <button class="block"
+                                                                aria-haspopup="true"
+                                                                :aria-expanded="open"
+                                                                @@focus="open = true"
+                                                                @@focusout="open = false"
+                                                                @@click.prevent>
+                                                            <svg class="w-4 h-4 fill-current text-slate-400 dark:text-slate-500" viewBox="0 0 16 16">
+                                                                <path d="M8 0C3.6 0 0 3.6 0 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zm0 12c-.6 0-1-.4-1-1s.4-1 1-1 1 .4 1 1-.4 1-1 1zm1-3H7V4h2v5z" />
+                                                            </svg>
+                                                        </button>
+                                                        <div class="z-10 absolute bottom-full left-1/2 -translate-x-1/2">
+                                                            <div class="min-w-60 bg-slate-800 text-slate-200 px-2 py-1 rounded overflow-hidden mb-2"
+                                                                 x-show="open"
+                                                                 x-transition:enter="transition ease-out duration-200 transform"
+                                                                 x-transition:enter-start="opacity-0 translate-y-2"
+                                                                 x-transition:enter-end="opacity-100 translate-y-0"
+                                                                 x-transition:leave="transition ease-out duration-200"
+                                                                 x-transition:leave-start="opacity-100"
+                                                                 x-transition:leave-end="opacity-0"
+                                                                 x-cloak>
+                                                                <div class="text-sm">Escolha a quantidade para o material selecionado.</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="flex items-center space-x-5">
+                                                    <input name="MaterialQuantidade" id="MaterialQuantidade" class="form-input w-full" type="number" />
+                                                    <button id="addMaterial" class="btn bg-orange-800 hover:bg-orange-900 text-white">
+                                                        <svg class="w-4 h-4 fill-current opacity-50 shrink-0" viewBox="0 0 16 16">
+                                                            <path d="M15 7H9V1c0-.6-.4-1-1-1S7 .4 7 1v6H1c-.6 0-1 .4-1 1s.4 1 1 1h6v6c0 .6.4 1 1 1s1-.4 1-1V9h6c.6 0 1-.4 1-1s-.4-1-1-1z" />
+                                                        </svg>
+                                                        <span class="hidden xs:block ml-2">Incluir</span>
+                                                    </button>
+                                                </div>
+                                                <span asp-validation-for="Quantidade" class="text-xs mt-1 text-rose-500"></span>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700 mb-10">
+                                        <header class="px-5 py-4">
+                                            <h2 class="font-semibold text-slate-800 dark:text-slate-100">Materiais <span class="text-slate-400 dark:text-slate-500 font-medium">0</span></h2>
+                                        </header>
+                                        <div x-data="{ modalDeletarOpen: false, modalVisualizarOpen: false, tableIndex: 0 }">
+                                            <div class="overflow-x-auto">
+                                                <table id="materiaisTable"  class="table-auto w-full dark:text-slate-300">
+                                                    <thead class="text-xs font-semibold uppercase text-slate-500 dark:text-slate-400 bg-slate-50 dark:bg-slate-900/20 border-t border-b border-slate-200 dark:border-slate-700">
+                                                        <tr>
+                                                            <th class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
+                                                                <div class="font-semibold text-left">Código</div>
+                                                            </th>
+                                                            <th class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
+                                                                <div class="font-semibold text-left">Nome</div>
+                                                            </th>
+                                                            <th class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
+                                                                <div class="font-semibold text-left">Quantidade</div>
+                                                            </th>
+                                                            <th class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
+                                                                <div class="font-semibold text-left">Preço</div>
+                                                            </th>
+                                                            <th class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
+                                                                <div class="font-semibold text-left">Total</div>
+                                                            </th>
+                                                         
+                                                            <th class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
+                                                                <div class="font-semibold text-left">Ações</div>
+                                                            </th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody class="text-sm divide-y divide-slate-200 dark:divide-slate-700">
+                                                        @for (var i = 0; i < Model.Materiais.Count; i++)
+                                                        {
+                                                            <tr>
+                                                                <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap"><div class="font-medium text-sky-500">@Model.Materiais[i].Id</div></td>
+                                                                <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap"><div class="font-medium text-slate-800 dark:text-slate-100">@Model.Materiais[i].Nome</div></td>
+                                                                <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap"><div class="font-medium text-slate-800 dark:text-slate-100">@Model.Materiais[i].Quantidade</div></td>
+                                                                <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap"><div class="font-medium text-slate-800 dark:text-slate-100">R$ @Model.Materiais[i].Preco</div></td>
+                                                                <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap"><div class="font-medium text-slate-800 dark:text-slate-100">R$ @Model.Materiais[i].ValorTotal</div></td>
+                                                                <td x-data="{ modalDeletarOpen: false, modalVisualizarOpen: false }" class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap w-px">
+                                                                    <div class="space-x-1">
+                                                                        <button type="button" class="removeMaterial text-rose-500 hover:text-rose-600 rounded-full">
+                                                                            <span class="sr-only">Deletar</span>
+                                                                            <svg class="w-8 h-8 fill-current" viewBox="0 0 32 32">
+                                                                                <path d="M13 15h2v6h-2zM17 15h2v6h-2z" />
+                                                                                <path d="M20 9c0-.6-.4-1-1-1h-6c-.6 0-1 .4-1 1v2H8v2h1v10c0 .6.4 1 1 1h12c.6 0 1-.4 1-1V13h1v-2h-4V9zm-6 1h4v1h-4v-1zm7 3v9H11v-9h10z" />
+                                                                            </svg>
+                                                                        </button>
+                                                                    </div>
+                                                                </td>
+
+                                                                <input type="hidden" asp-for="@Model.Materiais[i].Id" name="Materiais[@i].Id" />
+                                                                <input type="hidden" asp-for="@Model.Materiais[i].Nome" name="Materiais[@i].Nome" />
+                                                                <input type="hidden" asp-for="@Model.Materiais[i].Quantidade" name="Materiais[@i].Quantidade" />
+                                                                <input type="hidden" asp-for="@Model.Materiais[i].Preco" name="Materiais[@i].Preco" />
+                                                                <input type="hidden" asp-for="@Model.Materiais[i].ValorTotal" name="Materiais[@i].ValorTotal" />
+                                                            </tr>
+                                                        }
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                
+
+
+
+                                </div>
+                                <footer>
+                                    <div class="flex flex-col px-6 py-5 border-t border-slate-200 dark:border-slate-700">
+                                        <div class="flex self-end">
+                                            <a  asp-action="Index" class="btn dark:bg-slate-800 border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600 text-slate-600 dark:text-slate-300">Voltar</a>
+                                            <button id="submitForm" name="submitForm" type="submit" value="Salvar" class="btn bg-orange-500 hover:bg-orange-600 text-white ml-3">Salvar</button>
+                                        </div>
+                                    </div>
+                                </footer>
+                            </div>
+
+                        </div>
+                    </div>
+                </form>
             </main>
         </div>
     </div>
 </body>
+<script type="text/javascript">
+
+      $("#SearchCategoria").autocomplete({
+        source: function (request, response) {
+            $.ajax({
+                url: '@Url.Action("SearchByText", "Categorias")',
+                dataType: "json",
+                data: { searchString: $("#SearchCategoria").val() },
+                success: function (data) {
+                    response($.map(data, function (item) {
+                        return {label: `${item.id} - ${item.nome}`, value: item.id, };
+                    }))
+                },
+                error: function (xhr, status, error) {
+                    alert("Erro ao buscar categorias, insira uma palavra valida!");
+                }
+            })
+        },
+        select: function (event, ui) {
+                 $("#SearchCategoria").val(ui.item.label);
+                 $("#CategoriaId").val(ui.item.value);
+                 return false;
+             }
+      })
+
+    $("#SearchMaterial").autocomplete({
+        source: function (request, response) {
+            $.ajax({
+                url: '@Url.Action("SearchByText", "Materiais")',
+                dataType: "json",
+                data: { searchString: $("#SearchMaterial").val() },
+                success: function (data) {
+                    response($.map(data, function (item) {
+                        return { label: `${item.id} - ${item.nome}`, value: item, };
+                    }))
+                },
+                error: function (xhr, status, error) {
+                    alert("Erro ao buscar materiais, insira uma palavra valida!");
+                }
+            })
+        },
+        select: function (event, ui) {
+            $("#SearchMaterial").val(ui.item.label);
+            $("#MaterialId").val(ui.item.value.id);
+            $("#MaterialNome").val(ui.item.value.nome);
+            $("#MaterialQuantidade").val(ui.item.value.quantidade);
+            $("#MaterialPreco").val(ui.item.value.preco);
+            $("#MaterialValorTotal").val(ui.item.value.valorTotal);
+            $("#Material").val(ui.item.value);
+            console.log(ui.item.value)
+            return false;
+        }
+    })
+
+    $(document).ready(function () {
+        $("#addMaterial").click(function () {
+            var searchMaterial = $("#SearchMaterial").val();
+            var materialId = $("#MaterialId").val();
+            var nome = $("#MaterialNome").val();
+            var quantidade = $("#MaterialQuantidade").val();
+            var preco = $("#MaterialPreco").val();
+            var valorTotal = $("#MaterialValorTotal").val();
+            var material = $("#Material").val();
+
+            if (materialId && nome && preco && quantidade && valorTotal) {
+                var rowCount = $("#materiaisTable tbody tr").length;
+
+                var newRow = `
+
+                                                               <tr>
+                                                                <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
+                                                                            <div class="font-medium text-sky-500">${materialId}</div>
+
+                                                                </td>
+                                                                <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
+                                                                                <div class="font-medium text-slate-800 dark:text-slate-100">${nome}</div>
+                                                                </td>
+                                                                <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
+                                                                        <div class="font-medium text-slate-800 dark:text-slate-100">${quantidade}</div>
+                                                                </td>
+                                                                <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
+                                                                            <div class="font-medium text-slate-800 dark:text-slate-100">R$ ${preco}</div>
+                                                                </td>
+                                                                <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
+                                                                                    <div class="font-medium text-slate-800 dark:text-slate-100">R$ ${quantidade * preco}</div>
+                                                                </td>
+
+                                                                <td x-data="{ modalDeletarOpen: false, modalVisualizarOpen: false }" class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap w-px">
+                                                                    <div class="space-x-1">
+                                                                            <button type="button" class="removeMaterial text-rose-500 hover:text-rose-600 rounded-full">
+                                                                            <span class="sr-only">Deletar</span>
+                                                                            <svg class="w-8 h-8 fill-current" viewBox="0 0 32 32">
+                                                                                <path d="M13 15h2v6h-2zM17 15h2v6h-2z" />
+                                                                                <path d="M20 9c0-.6-.4-1-1-1h-6c-.6 0-1 .4-1 1v2H8v2h1v10c0 .6.4 1 1 1h12c.6 0 1-.4 1-1V13h1v-2h-4V9zm-6 1h4v1h-4v-1zm7 3v9H11v-9h10z" />
+                                                                            </svg>
+                                                                        </button>
+                                                                    </div>
+                                                                </td>
+                                                                                                     <input type="hidden" name="Materiais[${rowCount}].Id" value="${materialId} />
+                                                                                                     <input type="hidden" name="Materiais[${rowCount}].Nome" value="${nome} />
+                                                                                                 <input type="hidden" name="Materiais[${rowCount}].Quantidade" value="${quantidade} />
+                                                                                                    <input type="hidden" name="Materiais[${rowCount}].Preco" value="R$ ${preco} />
+                                                                                                    <input type="hidden"  name="Materiais[${rowCount}].ValorTotal" value="R$ ${quantidade * preco}  />
+                                                                    
+                                                            </tr>`;
+                $("#materiaisTable tbody").append(newRow);
+
+                // Limpa os campos após adicionar a linha
+                $("#MaterialId").val('');
+                $("#SearchMaterial").val('');
+                $("#MaterialNome").val('');
+                $("#MaterialQuantidade").val('');
+                $("#MaterialPreco").val('');
+                $("#MaterialValorTotal").val('');
+                $("#Material").val('');
+            } else {
+                alert("Por favor, escolha o material e quantidade que deseja incluir no produto.");
+            }
+        });
+
+
+        $("#materiaisTable").on("click", ".removeMaterial", function () {
+            $(this).closest("tr").remove();
+            $("#materiaisTable tbody tr").each(function (index, tr) {
+                $(tr).find("input[name^='Materiais']").each(function () {
+                    var name = $(this).attr("name");
+                    var newName = name.replace(/\[\d+\]/, `[${index}]`);
+                    $(this).attr("name", newName);
+                });
+            });
+        });
+
+        $("#ProdutoForm").on("submit", function (event) {
+            event.preventDefault();
+        });
+
+        $("#submitForm").click(function () {
+            $("#ProdutoForm").off("submit").submit();
+        });
+    });
+
+
+</script>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
