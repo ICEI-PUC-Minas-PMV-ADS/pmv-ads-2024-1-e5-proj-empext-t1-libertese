@@ -22,6 +22,7 @@
                 <div class="px-4 sm:px-6 lg:px-8 pt-8 w-full max-w-9xl mx-auto">
                     <div class="mb-1">
                         <h2 class="text-2xl md:text-3xl text-slate-800 dark:text-slate-100 font-bold">Novo Produto</h2>
+                         
                     </div>
                 </div>
                 <form id="ProdutoForm" asp-action="Create">
@@ -473,7 +474,7 @@
                                                                             <div class="font-medium text-slate-800 dark:text-slate-100">R$ ${preco}</div>
                                                                 </td>
                                                                 <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-                                                                                    <div class="font-medium text-slate-800 dark:text-slate-100">R$ ${quantidade * preco}</div>
+                                                                                    <div class="font-medium text-slate-800 dark:text-slate-100">R$ ${parseFloat((quantidade * preco).toFixed(2))}</div>
                                                                 </td>
 
                                                                 <td x-data="{ modalDeletarOpen: false, modalVisualizarOpen: false }" class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap w-px">

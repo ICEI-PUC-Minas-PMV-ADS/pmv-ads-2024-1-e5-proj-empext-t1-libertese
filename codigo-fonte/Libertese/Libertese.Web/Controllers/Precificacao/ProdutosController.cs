@@ -152,12 +152,47 @@ namespace Libertese.Web.Controllers.Precificacao
                 return NotFound();
             }
 
-            var produto = await _context.Produtos.FindAsync(id);
-            if (produto == null)
+            var _produto = (from produto in _context.Produtos
+                            join categoria in _context.Categorias on produto.CategoriaId equals categoria.Id into cGroup
+                            from categoria in cGroup.DefaultIfEmpty()
+                            join preco in _context.Precos on produto.Id equals preco.ProdutoId into pGroup
+                            from preco in pGroup.DefaultIfEmpty()
+                            join produtoMaterial in _context.ProdutoMaterial on produto.Id equals produtoMaterial.ProdutoId into pmGroup
+                            from produtoMaterial in pmGroup.DefaultIfEmpty()
+                            join material in _context.Materiais on produtoMaterial.MateriaiId equals material.Id into mGroup
+                            from material in mGroup.DefaultIfEmpty()
+                            where produto.Id == id
+                            group new { produto, categoria, preco, produtoMaterial, material }
+                            by new { produto.Id, produto.Nome, Categoria = categoria.Nome, produto.TempoProducao, preco.Valor, produto.DataCriacao, produto.DataAtualizacao } into gGroup
+                            select new ProdutoViewModel
+                            {
+                                Id = gGroup.Key.Id,
+                                Nome = gGroup.Key.Nome,
+                                Categoria = gGroup.Key.Categoria,
+                                TempoProducao = gGroup.Key.TempoProducao,
+                                Custo = gGroup.Sum(x => x.produtoMaterial.Quantidade * x.material.Preco),
+                                Preco = gGroup.Select(x => x.preco.Valor).Distinct().FirstOrDefault(),
+                                Rateio = 0,
+                                DataAtualizacao = gGroup.Key.DataAtualizacao,
+                                DataCriacao = gGroup.Key.DataCriacao,
+                                TotalMateriais = gGroup.Count(x => x.produtoMaterial != null && x.material != null),
+                                Materiais = gGroup.Where(x => x.produtoMaterial != null && x.material != null)
+                                  .Select(x => new MaterialViewModel
+                                  {
+                                      Id = x.material.Id,
+                                      Nome = x.material.Nome,
+                                      Preco = x.material.Preco,
+                                      Quantidade = x.produtoMaterial.Quantidade
+                                  }).ToList()
+                            })
+            .OrderBy(x => x.Id)
+            .ToList();
+
+            if (_produto == null)
             {
                 return NotFound();
             }
-            return View(produto);
+            return View(_produto);
         }
 
         // POST: Produtos/Edit/5
