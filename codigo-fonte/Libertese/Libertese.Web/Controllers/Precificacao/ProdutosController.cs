@@ -163,30 +163,38 @@ namespace Libertese.Web.Controllers.Precificacao
                             from material in mGroup.DefaultIfEmpty()
                             where produto.Id == id
                             group new { produto, categoria, preco, produtoMaterial, material }
-                            by new { produto.Id, produto.Nome, Categoria = categoria.Nome, produto.TempoProducao, preco.Valor, produto.DataCriacao, produto.DataAtualizacao } into gGroup
-                            select new ProdutoViewModel
+                            by new { produto.Id, produto.Nome, produto.Margem, Categoria = categoria.Nome, produto.TempoProducao, preco.Valor, produto.DataCriacao, produto.DataAtualizacao } into gGroup
+                            select new ProdutoEditViewModel
                             {
                                 Id = gGroup.Key.Id,
                                 Nome = gGroup.Key.Nome,
-                                Categoria = gGroup.Key.Categoria,
+                                CategoriaId = gGroup.Select(x => x.categoria.Id).Distinct().FirstOrDefault(),
+                                SearchCategoria = gGroup.Key.Categoria,
                                 TempoProducao = gGroup.Key.TempoProducao,
-                                Custo = gGroup.Sum(x => x.produtoMaterial.Quantidade * x.material.Preco),
-                                Preco = gGroup.Select(x => x.preco.Valor).Distinct().FirstOrDefault(),
-                                Rateio = 0,
+                                Margem = gGroup.Key.Margem,
                                 DataAtualizacao = gGroup.Key.DataAtualizacao,
                                 DataCriacao = gGroup.Key.DataCriacao,
-                                TotalMateriais = gGroup.Count(x => x.produtoMaterial != null && x.material != null),
+                                MateriaisJson = JsonConvert.SerializeObject(gGroup.Where(x => x.produtoMaterial != null && x.material != null)
+                                  .Select(x => new MaterialViewModel
+                                  {
+                                      Id = x.material.Id,
+                                      Nome = x.material.Nome,
+                                      Preco = x.material.Preco,
+                                      Quantidade = x.produtoMaterial.Quantidade,
+                                      ValorTotal = Math.Round((decimal)(x.produtoMaterial.Quantidade * x.material.Preco), 2)
+                                  })),
                                 Materiais = gGroup.Where(x => x.produtoMaterial != null && x.material != null)
                                   .Select(x => new MaterialViewModel
                                   {
                                       Id = x.material.Id,
                                       Nome = x.material.Nome,
                                       Preco = x.material.Preco,
-                                      Quantidade = x.produtoMaterial.Quantidade
+                                      Quantidade = x.produtoMaterial.Quantidade,
+                                      ValorTotal = Math.Round((decimal)(x.produtoMaterial.Quantidade * x.material.Preco), 2)
                                   }).ToList()
                             })
             .OrderBy(x => x.Id)
-            .ToList();
+            .FirstOrDefault();
 
             if (_produto == null)
             {
@@ -200,54 +208,74 @@ namespace Libertese.Web.Controllers.Precificacao
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Nome,TempoProducao,Id,DataCriacao,DataAtualizacao")] ProdutoCreateViewModel produto)
+        public async Task<IActionResult> Edit(int id, [Bind("SearchCategoria, Nome,MateriaisJson,CategoriaId,Margem,TempoProducao,Id")] ProdutoEditViewModel produto)
         {
+
             if (id != produto.Id)
             {
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
+            var produtoExistente = await _context.Produtos.FirstOrDefaultAsync(p => p.Id == id);
+
+            if (produto.MateriaisJson == null)
             {
-                try
+                return View(produto);
+            }
+
+            var materiais = new List<ProdutoMaterial>();
+            produto.Materiais = produto.MateriaisJson != null ? JsonConvert.DeserializeObject<List<MaterialViewModel>>(produto.MateriaisJson) : [];
+
+
+            if (ModelState.IsValid && produtoExistente != null && produto.Materiais.Count() > 0)
+            {
+                using (var transaction = await _context.Database.BeginTransactionAsync())
                 {
-                    produto.DataAtualizacao = DateTime.Now;
-                    _context.Update(produto);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!ProdutoExists(produto.Id))
+                    try
                     {
-                        return NotFound();
+                        produtoExistente.DataAtualizacao = DateTime.Now;
+                        produtoExistente.Nome = produto.Nome;
+                        produtoExistente.Margem = produto.Margem;
+                        produtoExistente.TempoProducao = produto.TempoProducao;
+                        produtoExistente.CategoriaId = produto.CategoriaId;
+                        _context.Update(produtoExistente);
+                        await _context.SaveChangesAsync();
+
+                        var produtoMaterialParaDeletar = await _context.ProdutoMaterial.Where(p => p.ProdutoId == produtoExistente.Id).ToListAsync();
+                        
+                        if (produtoMaterialParaDeletar.Count() > 0)
+                        {
+                            _context.ProdutoMaterial.RemoveRange(produtoMaterialParaDeletar);
+                        }
+
+                        foreach (var item in produto.Materiais)
+                        {
+                            var produtoMaterial = new ProdutoMaterial();
+                            produtoMaterial.MateriaiId = item.Id;
+                            produtoMaterial.Quantidade = item.Quantidade;
+                            produtoMaterial.ProdutoId = produtoExistente.Id;
+                            produtoMaterial.DataCriacao = DateTime.Now;
+                            produtoMaterial.DataAtualizacao = DateTime.Now;
+                            _context.Add(produtoMaterial);
+                            await _context.SaveChangesAsync();
+                        }
+
+                        await transaction.CommitAsync();
+
+                        return RedirectToAction(nameof(Index));
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        throw;
+                        await transaction.RollbackAsync();
+
+                        View(produto);
                     }
                 }
-                return RedirectToAction(nameof(Index));
+
             }
             return View(produto);
         }
 
-        // GET: Produtos/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var produto = await _context.Produtos
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (produto == null)
-            {
-                return NotFound();
-            }
-
-            return View(produto);
-        }
 
         // POST: Produtos/Delete/5
         [HttpPost, ActionName("Delete")]
