@@ -5,20 +5,21 @@ namespace Libertese.ViewModels
 {
     public class ProdutoCreateViewModel : BaseEntity
     {
-        public ProdutoCreateViewModel()
-        {
-            DataAtualizacao = DateTime.Now;
-            DataCriacao = DateTime.Now;
-            Materiais = new List<MaterialViewModel>();
-        }
 
         [Display(Name = "Categoria")]
+        [Required(ErrorMessage = "Categoria é obrigatório.")]
         public int CategoriaId { get; set; }
+
+        [Display(Name = "Nome")]
+        [Required(ErrorMessage = "Nome do produto é obrigatório.")]
         public string? Nome { get; set; }
+
         [Display (Name = "Tempo de Produção")]
+        [Required(ErrorMessage = "Tempo de produção é obrigatório.")]
         public int TempoProducao { get; set;}
 
         [Display(Name = "Margem de Lucro")]
+        [Required(ErrorMessage = "Margem de lucro é obrigatório.")]
         public decimal Margem { get; set; }
 
         [Display(Name = "Materiail")]
@@ -28,8 +29,10 @@ namespace Libertese.ViewModels
         public int? Quantidade { get; set; }
 
         [Display(Name = "Materiais")]
-        public List<MaterialViewModel> Materiais { get; set; }
+        public List<MaterialViewModel> Materiais { get; set; } = new List<MaterialViewModel>();
 
+        [Required(ErrorMessage = "Incluir Materiais é obrigatório.")]
+        public string? MateriaisJson { get; set; }
 
     }
 }

@@ -9,7 +9,7 @@ namespace Libertese.Domain.Entities.Precificacao
         [ForeignKey("Categoria")]
         [Display(Name = "Categoria")]
         public int CategoriaId { get; set; }
-        public required string Nome { get; set; }
+        public string? Nome { get; set; }
         [Display (Name = "Tempo de Produção")]
         public int TempoProducao { get; set;}
         public int Empresa { get; set; }
