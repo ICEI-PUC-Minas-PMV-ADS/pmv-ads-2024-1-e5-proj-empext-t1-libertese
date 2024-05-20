@@ -8,6 +8,6 @@ namespace Libertese.Domain.Entities.Precificacao
 
         public int MateriaiId { get; set; }
 
-        public int Quantidade { get; set; }
+        public int? Quantidade { get; set; }
     }
 }

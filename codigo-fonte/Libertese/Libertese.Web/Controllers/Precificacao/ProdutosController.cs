@@ -10,6 +10,7 @@ using Libertese.Domain.Entities.Precificacao;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using Libertese.ViewModels;
 using System.Text.RegularExpressions;
+using Newtonsoft.Json;
 
 namespace Libertese.Web.Controllers.Precificacao
 {
@@ -98,16 +99,46 @@ namespace Libertese.Web.Controllers.Precificacao
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Nome,Materiais,CategoriaId,Margem,TempoProducao,Id,DataCriacao,DataAtualizacao")] ProdutoCreateViewModel produto)
+        public async Task<IActionResult> Create([Bind("Nome,MateriaisJson,CategoriaId,Margem,TempoProducao,Id,DataCriacao,DataAtualizacao")] ProdutoCreateViewModel produto)
         {
 
-            if (ModelState.IsValid)
+            if(produto.MateriaisJson == null)
+            {
+                return View(produto);
+            }            
+
+            var materiais = new List<ProdutoMaterial>();
+            produto.Materiais = produto.MateriaisJson != null ? JsonConvert.DeserializeObject<List<MaterialViewModel>>(produto.MateriaisJson) : [];
+
+
+            if (ModelState.IsValid && produto.Materiais.Count() > 0)
             {
                 produto.DataCriacao = DateTime.Now;
                 produto.DataAtualizacao = DateTime.Now;
 
-                _context.Add(produto);
+                var _produto = new Produto();
+                _produto.DataCriacao = DateTime.Now;
+                _produto.DataAtualizacao = DateTime.Now;
+                _produto.Nome = produto.Nome;
+                _produto.Margem = produto.Margem;
+                _produto.TempoProducao = produto.TempoProducao;
+                _produto.CategoriaId = produto.CategoriaId;
+                _context.Add(_produto);
                 await _context.SaveChangesAsync();
+
+
+                foreach (var item in produto.Materiais)
+                {
+                    var produtoMaterial = new ProdutoMaterial();
+                    produtoMaterial.MateriaiId = item.Id;
+                    produtoMaterial.Quantidade = item.Quantidade;
+                    produtoMaterial.ProdutoId = _produto.Id;
+                    produtoMaterial.DataCriacao = DateTime.Now;
+                    produtoMaterial.DataAtualizacao = DateTime.Now;
+                    _context.Add(produtoMaterial);
+                    await _context.SaveChangesAsync();
+                }
+
                 return RedirectToAction(nameof(Index));
             }
             return View(produto);

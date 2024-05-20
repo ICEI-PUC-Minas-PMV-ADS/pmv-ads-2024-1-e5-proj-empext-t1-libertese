@@ -115,8 +115,7 @@
                                     </div>
                                     <div>
                                         <div>
-                                            <div>
-                                                    <div class="flex items-center justify-between">
+                                                <div class="flex items-center justify-between">
                                                     <label asp-for="CategoriaId" class="block text-sm font-medium mb-1" for="tooltip"></label>
                                                     <div class="relative ml-2"
                                                          x-data="{ open: false }"
@@ -150,11 +149,11 @@
                                                     <input style="display: none;" asp-for="CategoriaId" id="CategoriaId" />
                                                     <input class="form-input w-full" type="text" id="SearchCategoria" />
                                                 <span asp-validation-for="CategoriaId" class="text-xs mt-1 text-rose-500"></span>
-                                            </div>
+                                            
                                         </div>
                                     </div>
+                                    <div>
                                         <div>
-                                            <div>
                                                 <div class="flex items-center justify-start">
                                                     <label asp-for="Margem" class="block text-sm font-medium mb-1" for="tooltip"></label>
                                                     <div class="relative ml-2"
@@ -188,8 +187,8 @@
                                                 </div>
                                                 <input asp-for="Margem" class="form-input w-full" type="number" />
                                                 <span asp-validation-for="Margem" class="text-xs mt-1 text-rose-500"></span>
-                                            </div>
                                         </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -241,8 +240,8 @@
                                                 <input style="display: none;" name="MaterialPreco" id="MaterialPreco" />
                                                 <input style="display: none;" name="MaterialValorTotal" id="MaterialValorTotal" />
                                                 <input style="display: none;" name="Material" id="Material" />
+                                                <input style="display: none;" name="MateriaisJson" id="MateriaisJson" />
                                                 <input class="form-input w-full" type="text" id="SearchMaterial" />
-                                                <span asp-validation-for="MaterialId" class="text-xs mt-1 text-rose-500"></span>
                                             </div>
                                         </div> 
                                         <div>
@@ -343,12 +342,6 @@
                                                                         </button>
                                                                     </div>
                                                                 </td>
-
-                                                                <input type="hidden" asp-for="@Model.Materiais[i].Id" name="Materiais[@i].Id" />
-                                                                <input type="hidden" asp-for="@Model.Materiais[i].Nome" name="Materiais[@i].Nome" />
-                                                                <input type="hidden" asp-for="@Model.Materiais[i].Quantidade" name="Materiais[@i].Quantidade" />
-                                                                <input type="hidden" asp-for="@Model.Materiais[i].Preco" name="Materiais[@i].Preco" />
-                                                                <input type="hidden" asp-for="@Model.Materiais[i].ValorTotal" name="Materiais[@i].ValorTotal" />
                                                             </tr>
                                                         }
 
@@ -358,8 +351,9 @@
                                         </div>
                                     </div>
 
+                                    <span asp-validation-for="Materiais" class="text-xs mt-1 text-rose-500"></span>
 
-                                
+
 
 
 
@@ -430,7 +424,6 @@
             $("#MaterialPreco").val(ui.item.value.preco);
             $("#MaterialValorTotal").val(ui.item.value.valorTotal);
             $("#Material").val(ui.item.value);
-            console.log(ui.item.value)
             return false;
         }
     })
@@ -445,12 +438,27 @@
             var valorTotal = $("#MaterialValorTotal").val();
             var material = $("#Material").val();
 
-            if (materialId && nome && preco && quantidade && valorTotal) {
+            var materialIdExistente = false;
+            $("#materiaisTable tbody tr").each(function () {
+                var idExistente = $(this).attr("id");
+                if (idExistente === materialId) {
+                    materialIdExistente = true;
+                    return false; // Sai do loop, pois o materialId já foi encontrado
+                }
+            });
+
+            if (materialIdExistente) {
+                alert("Por favor, escolha outro material o mesmo já existe na lista.");
+            
+            } else if (materialId && nome && preco && quantidade && valorTotal) {
+
+
+
                 var rowCount = $("#materiaisTable tbody tr").length;
 
                 var newRow = `
 
-                                                               <tr>
+                                                               <tr id="${materialId}">
                                                                 <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
                                                                             <div class="font-medium text-sky-500">${materialId}</div>
 
@@ -488,7 +496,6 @@
                                                             </tr>`;
                 $("#materiaisTable tbody").append(newRow);
 
-                // Limpa os campos após adicionar a linha
                 $("#MaterialId").val('');
                 $("#SearchMaterial").val('');
                 $("#MaterialNome").val('');
@@ -496,6 +503,26 @@
                 $("#MaterialPreco").val('');
                 $("#MaterialValorTotal").val('');
                 $("#Material").val('');
+
+                var rows = $("#materiaisTable tbody tr");
+                var materiais = [];
+
+                for (var i = 0; i < rows.length; i++) {
+                    var cells = rows[i].getElementsByTagName('td');
+                    var material = {
+                        Id: cells[0].innerText,
+                        Nome: cells[1].innerText,
+                        Quantidade: cells[2].innerText,
+                        Preco: cells[3].innerText.replace('R$ ', ''),
+                        ValorTotal: cells[4].innerText.replace('R$ ', '')
+                    };
+                    materiais.push(material);
+                }
+
+                console.log(materiais)
+
+                $("#MateriaisJson").val(JSON.stringify(materiais));
+
             } else {
                 alert("Por favor, escolha o material e quantidade que deseja incluir no produto.");
             }
@@ -511,6 +538,13 @@
                     $(this).attr("name", newName);
                 });
             });
+
+            var materiaisJson = $("#MateriaisJson").val()
+            var indexToRemove = $(this).closest("tr").index();
+            var materiaisList = JSON.parse(materiaisJson);
+            materiaisList.splice(indexToRemove, 1);
+            materiaisJson = JSON.stringify(materiaisList);
+            $("#MateriaisJson").val(materiaisJson);
         });
 
         $("#ProdutoForm").on("submit", function (event) {
