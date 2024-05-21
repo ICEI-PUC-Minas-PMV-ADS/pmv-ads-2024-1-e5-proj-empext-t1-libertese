@@ -1,6 +1,6 @@
 ﻿namespace Libertese.Domain.Entities.Financeiro
 {
-    public class Fornecedor : BaseEntity
+    public class FornecedorDTO : BaseEntity
     {
         public required string Nome { get; set; }
         public string? Endereco { get; set; }
@@ -11,6 +11,6 @@
         public string? TelefoneDois { get; set; }
         public string? Email { get; set; }
         public int DadosBancariosId { get; set; }
-        public int MaterialFornecidoId { get; set; }
+        public required string MaterialFornecido { get; set; }
     }
 }
