@@ -11,7 +11,10 @@
             <main class="grow">
                 <div class="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
                     <div class="mb-8">
-                        <h2 class="text-2xl md:text-3xl text-slate-800 dark:text-slate-100 font-bold">Editar Material</h2>
+                        <div class="flex items-center justify-between">
+                            <h2 class="text-2xl md:text-3xl text-slate-800 dark:text-slate-100 font-bold">Editar Material</h2>
+                            <a asp-action="Index" class="btn bg-orange-500 hover:bg-orange-600 text-white ml-3 rounded-lg w-24">Voltar</a>
+                        </div>
                     </div>
                     <div class="border-t border-slate-200 dark:border-slate-700">
                         <form asp-action="Edit">
@@ -72,10 +75,10 @@
                             </div>
                             <footer>
                                 <div class="flex flex-col px-6 py-5 border-t border-slate-200 dark:border-slate-700">
-                                    <div class="flex self-end">
-                                        <a asp-action="Index" class="btn dark:bg-slate-800 border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600 text-slate-600 dark:text-slate-300">Voltar</a>
-                                        <input type="submit" value="Salvar" class="btn bg-orange-500 hover:bg-orange-600 text-white ml-3" />
-                                    </div>
+                                    
+                                        <div class="flex self-center">
+                                            <button id="submitForm" name="submitForm" type="submit" value="Salvar" class="btn bg-slate-900 hover:bg-orange-600 text-white ml-3 rounded-lg w-32">Confirmar</button>
+                                        </div>
                                 </div>
                             </footer>
                         </div>

@@ -3,6 +3,7 @@ using System;
 using Libertese.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Libertese.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240519113315_ValorPrecos")]
+    partial class ValorPrecos
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -571,16 +574,11 @@ namespace Libertese.Data.Migrations
                     b.Property<int>("Empresa")
                         .HasColumnType("integer");
 
-                    b.Property<decimal>("Margem")
-                        .HasColumnType("numeric");
-
                     b.Property<string>("Nome")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<decimal>("Preco")
-                        .HasColumnType("numeric");
-
-                    b.Property<decimal>("Rateio")
                         .HasColumnType("numeric");
 
                     b.Property<int>("TempoProducao")
@@ -611,7 +609,7 @@ namespace Libertese.Data.Migrations
                     b.Property<int>("ProdutoId")
                         .HasColumnType("integer");
 
-                    b.Property<int?>("Quantidade")
+                    b.Property<int>("Quantidade")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
