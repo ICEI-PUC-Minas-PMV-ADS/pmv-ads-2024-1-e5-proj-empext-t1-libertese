@@ -47,7 +47,7 @@
                 <div class="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto ">
                     <div class="sm:flex sm:justify-between flex-col sm:items-center mb-5">
                         <div class="mb-4 sm:mb-0">
-                            <h1 class="text-2xl md:text-3xl text-slate-800 dark:text-slate-100 font-bold mb-6">Cadastro despesas </h1>
+                            <h1 class="text-2xl md:text-3xl text-slate-800 dark:text-slate-100 font-bold mb-6">Novo fornecedor </h1>
                         </div>
                     </div>
                 </div>
@@ -57,7 +57,7 @@
                     <div class="flex flex-col mb-6">
                         <label asp-for="Nome" class="control-label"></label>
                         <input asp-for="Nome" class="form-input pl-6 bg-white dark:bg-slate-800" />
-                        <span asp-validation-for="Nome" class="text-danger">É obrigatório preencher o campo de nome</span>
+                        <span asp-validation-for="Nome" class="text-danger"></span>
                     </div>
                     <div class="flex flex-col mb-6">
                         <label asp-for="Endereco" class="control-label"></label>
@@ -88,7 +88,7 @@
                                     asp-items="@(new SelectList(ViewBag.Material, "Id", "Nome"))">
                                 <option>Selecione o Material</option>
                             </select>
-                            <span asp-validation-for="MaterialFornecidoId" class="text-danger">É obrigatório selecionar um material</span>
+                            <span asp-validation-for="MaterialFornecidoId" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="flex flex-row w-full justify-between mb-6">
@@ -109,7 +109,7 @@
                         <span asp-validation-for="Email" class="text-danger"></span>
                     </div>
                     <div>
-                        <input type"hidden" asp-for="DadosBancariosId" class="form-input pl-6 bg-white dark:bg-slate-800" />
+                        <input type="hidden" value="1" asp-for="DadosBancariosId" class="form-input pl-6 bg-white dark:bg-slate-800" />
                         <input type="hidden" asp-for="DataCriacao" class="form-input pl-6 bg-white dark:bg-slate-800" />
                         <input type="hidden" asp-for="DataAtualizacao" class="form-input pl-6 bg-white dark:bg-slate-800" />
                     </div>

@@ -24,7 +24,23 @@ namespace Libertese.Web.Controllers.Financeiro
         // GET: Fornecedores
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Fornecedores.ToListAsync());
+            List<Fornecedor> listaFornecedores = await _context.Fornecedores.ToListAsync();
+            List<Material> listaMateriais = await _context.Materiais.ToListAsync();
+            List<FornecedorDTO> listaFornecedorDTO = listaFornecedores.Select(fornecedor => new FornecedorDTO
+            {
+                Id = fornecedor.Id,
+                Nome = fornecedor.Nome,
+                Endereco = fornecedor.Endereco,
+                Cep = fornecedor.Cep,
+                Cpf = fornecedor.Cpf,
+                Cnpj = fornecedor.Cnpj,
+                Telefone = fornecedor.Telefone,
+                TelefoneDois = fornecedor.TelefoneDois,
+                Email = fornecedor.Email,
+                DadosBancariosId = fornecedor.DadosBancariosId,
+                MaterialFornecido = listaMateriais.Find(x => x.Id == fornecedor.MaterialFornecidoId)?.Nome ?? "Sem Material",
+            }).ToList();
+            return View(listaFornecedorDTO);
         }
 
         // GET: Fornecedores/Details/5
@@ -63,7 +79,7 @@ namespace Libertese.Web.Controllers.Financeiro
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Nome,Endereco,Cep,Cpf,Cnpj,Telefone,Email,DadosBancariosId,MaterialFornecidoId,Id,DataCriacao,DataAtualizacao")] Fornecedor fornecedor)
+        public async Task<IActionResult> Create([Bind("Nome,Endereco,Cep,Cpf,Cnpj,Telefone,TelefoneDois,Email,DadosBancariosId,MaterialFornecidoId,Id,DataCriacao,DataAtualizacao")] Fornecedor fornecedor)
         {
             if (ModelState.IsValid)
             {
@@ -97,7 +113,7 @@ namespace Libertese.Web.Controllers.Financeiro
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Nome,Endereco,Cep,Cpf,Cnpj,Telefone,Email,DadosBancariosId,MaterialFornecidoId,Id,DataCriacao,DataAtualizacao")] Fornecedor fornecedor)
+        public async Task<IActionResult> Edit(int id, [Bind("Nome,Endereco,Cep,Cpf,Cnpj,Telefone,TelefoneDois,Email,DadosBancariosId,MaterialFornecidoId,Id,DataCriacao,DataAtualizacao")] Fornecedor fornecedor)
         {
             if (id != fornecedor.Id)
             {
