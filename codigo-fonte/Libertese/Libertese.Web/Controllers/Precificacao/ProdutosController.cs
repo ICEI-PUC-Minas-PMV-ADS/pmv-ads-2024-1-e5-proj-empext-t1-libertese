@@ -354,6 +354,40 @@ namespace Libertese.Web.Controllers.Precificacao
             }
         }
 
+        [HttpGet, ActionName("SearchByText")]
+        public JsonResult SearchByText([FromQuery(Name = "searchString")] string searchString)
+        {
+
+            var result = (from produto in _context.Produtos
+                          join categoria in _context.Categorias on produto.CategoriaId equals categoria.Id into cGroup
+                          from categoria in cGroup.DefaultIfEmpty()
+                          join preco in _context.Precos on produto.Id equals preco.ProdutoId into pGroup
+                          from preco in pGroup.DefaultIfEmpty()
+                          join produtoMaterial in _context.ProdutoMaterial on produto.Id equals produtoMaterial.ProdutoId into pmGroup
+                          from produtoMaterial in pmGroup.DefaultIfEmpty()
+                          join material in _context.Materiais on produtoMaterial.MateriaiId equals material.Id into mGroup
+                          from material in mGroup.DefaultIfEmpty()
+                          where EF.Functions.Like(produto.Nome.ToLower(), "%" + searchString.ToLower() + "%")
+                          where preco != null && preco.Valor > 0
+                          group new { produto, categoria, preco, produtoMaterial, material }
+                          by new { produto.Id, produto.Nome, preco.Valor } into gGroup
+                          select new ProdutoVendaViewModel
+                          {
+                              Id = gGroup.Key.Id,
+                              Nome = gGroup.Key.Nome,
+                              Quantidade = 1,
+                              Preco = gGroup.Select(x => x.preco.Valor).Distinct().FirstOrDefault(),
+                              ValorTotal = gGroup.Select(x => x.preco.Valor).Distinct().FirstOrDefault() * 1
+                          })
+                            .OrderBy(x => x.Nome)
+                            .Take(10)
+                            .ToList();
+
+
+            return Json(result);
+
+        }
+
         private bool ProdutoExists(int id)
         {
             return _context.Produtos.Any(e => e.Id == id);

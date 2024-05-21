@@ -7,6 +7,10 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Libertese.Data;
 using Libertese.Domain.Entities.Venda;
+using Libertese.ViewModels;
+using Libertese.Domain.Entities.Financeiro;
+using Libertese.Domain.Entities.Precificacao;
+using Newtonsoft.Json;
 
 namespace Libertese.Web.Controllers.Vendas
 {
@@ -25,41 +29,58 @@ namespace Libertese.Web.Controllers.Vendas
             return View(await _context.Vendas.ToListAsync());
         }
 
-        // GET: Vendas/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var venda = await _context.Vendas
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (venda == null)
-            {
-                return NotFound();
-            }
-
-            return View(venda);
-        }
-
+    
         // GET: Vendas/Create
         public IActionResult Create()
         {
-            return View();
+            var formaPagamento = _context.FormaPagamentos.ToList();
+            var model = new VendaCreateViewModel();
+            model.FormaPagamento = formaPagamento;
+            return View(model);
         }
 
-        // POST: Vendas/Create
+
+        // POST: Produtos/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ProdutoId,Quantidade,ValorUnitario,ValorTotal,Id,DataCriacao,DataAtualizacao")] Venda venda)
+        public async Task<IActionResult> Create([Bind("Cliente,SearchCliente,Produtos,ProdutosJson,FormaPagamentoId,ClienteId,Id")] VendaCreateViewModel venda)
         {
-            if (ModelState.IsValid)
+
+            if (venda.ProdutosJson == null)
             {
-                _context.Add(venda);
-                await _context.SaveChangesAsync();
+                var formaPagamento = _context.FormaPagamentos.ToList();
+                venda.FormaPagamento = formaPagamento;
+                return View(venda);
+            }
+
+            venda.Produtos = venda.ProdutosJson != null ? JsonConvert.DeserializeObject<List<ProdutoVendaViewModel>>(venda.ProdutosJson) : [];
+
+            if (ModelState.ContainsKey("Produtos") && ModelState["Produtos"].Errors.Count > 0 && venda.Produtos.Count > 0)
+            {
+                ModelState["Produtos"].Errors.Clear();
+            }
+
+            if (ModelState.Values.Sum(v => v.Errors.Count) == 0)
+            {
+                var dataCriacao = DateTime.Now;
+                var dataAtualizacao = DateTime.Now;
+
+                foreach (var item in venda.Produtos)
+                {
+                    var _venda = new Venda();
+                    _venda.ProdutoId = item.Id;
+                    _venda.ClienteId = venda.ClienteId;
+                    _venda.Quantidade = item.Quantidade;
+                    _venda.ValorUnitario = item.Preco;
+                    _venda.ValorTotal = item.Quantidade * item.Preco;
+                    _venda.DataCriacao = dataCriacao;
+                    _venda.DataAtualizacao = dataAtualizacao;
+                    _context.Add(_venda);
+                    await _context.SaveChangesAsync();
+                }
+
                 return RedirectToAction(nameof(Index));
             }
             return View(venda);
@@ -113,24 +134,6 @@ namespace Libertese.Web.Controllers.Vendas
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(venda);
-        }
-
-        // GET: Vendas/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var venda = await _context.Vendas
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (venda == null)
-            {
-                return NotFound();
-            }
-
             return View(venda);
         }
 
