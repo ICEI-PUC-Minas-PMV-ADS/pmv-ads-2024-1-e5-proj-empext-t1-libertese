@@ -1,73 +1,137 @@
 ﻿@model Libertese.Domain.Entities.Financeiro.Fornecedor
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Create Fornecedor";
 }
 
-<h1>Create</h1>
+@using Libertese.Domain.Enums
 
-<h4>Fornecedor</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Nome" class="control-label"></label>
-                <input asp-for="Nome" class="form-control" />
-                <span asp-validation-for="Nome" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Endereco" class="control-label"></label>
-                <input asp-for="Endereco" class="form-control" />
-                <span asp-validation-for="Endereco" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Cpf" class="control-label"></label>
-                <input asp-for="Cpf" class="form-control" />
-                <span asp-validation-for="Cpf" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Cnpj" class="control-label"></label>
-                <input asp-for="Cnpj" class="form-control" />
-                <span asp-validation-for="Cnpj" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Telefone" class="control-label"></label>
-                <input asp-for="Telefone" class="form-control" />
-                <span asp-validation-for="Telefone" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DadosBancarios" class="control-label"></label>
-                <input asp-for="DadosBancarios" class="form-control" />
-                <span asp-validation-for="DadosBancarios" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DataCriacao" class="control-label"></label>
-                <input asp-for="DataCriacao" class="form-control" />
-                <span asp-validation-for="DataCriacao" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DataAtualizacao" class="control-label"></label>
-                <input asp-for="DataAtualizacao" class="form-control" />
-                <span asp-validation-for="DataAtualizacao" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Libertese</title>
+    <link rel="stylesheet" href="~/../sidebar/assets/css/styles.css" asp-append-version="true" />
+    <link href="../scaffold/css/vendors/flatpickr.min.css" rel="stylesheet">
+    <link href="../scaffold/style.css" rel="stylesheet">
+    <link href="../scaffold/css/vendors/flatpickr.min.css" />
+    <style>
+        .confirmar {
+            background-color: #000;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background-color 0.5s ease;
+            width: 15%;
+            height: 3rem;
+        }
+    </style>
+</head>
+
+@{
+    ViewData["Title"] = "Cadastro despesas";
+    Layout = "~/Views/Shared/_LayoutProdutos.cshtml";
+}
+
+<body class="font-inter antialiased bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-400">
+    <div class="flex overflow-hidden">
+        <div class="relative flex flex-col flex-1 overflow-y-auto overflow-x-hidden">
+            <main class="grow" style="margin-left: 4rem">
+                <div class="grid grid-flow-col sm:auto-cols-max justify-start sm:justify-end gap-2">
+                    <a asp-action="Index" class="btn bg-orange-500 hover:bg-orange-600 text-white">
+                        <span class="hidden xs:block">Voltar</span>
+                    </a>
+                </div>
+                <div class="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto ">
+                    <div class="sm:flex sm:justify-between flex-col sm:items-center mb-5">
+                        <div class="mb-4 sm:mb-0">
+                            <h1 class="text-2xl md:text-3xl text-slate-800 dark:text-slate-100 font-bold mb-6">Cadastro despesas </h1>
+                        </div>
+                    </div>
+                </div>
+
+                <form asp-action="Create" class="flex flex-col align-content-center">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="flex flex-col mb-6">
+                        <label asp-for="Nome" class="control-label"></label>
+                        <input asp-for="Nome" class="form-input pl-6 bg-white dark:bg-slate-800" />
+                        <span asp-validation-for="Nome" class="text-danger">É obrigatório preencher o campo de nome</span>
+                    </div>
+                    <div class="flex flex-col mb-6">
+                        <label asp-for="Endereco" class="control-label"></label>
+                        <input asp-for="Endereco" class="form-input pl-6 bg-white dark:bg-slate-800" />
+                        <span asp-validation-for="Endereco" class="text-danger"></span>
+                    </div>
+                    <div class="flex flex-row w-full justify-between mb-6">
+                        <div class="flex flex-col" style="width: 48%">
+                            <label asp-for="Cep" class="control-label"></label>
+                            <input asp-for="Cep" class="form-input pl-6 bg-white dark:bg-slate-800" />
+                            <span asp-validation-for="Cep" class="text-danger"></span>
+                        </div>                        
+                        <div class="flex flex-col" style="width: 48%">
+                            <label asp-for="Cpf" class="control-label"></label>
+                            <input asp-for="Cpf" class="form-input pl-6 bg-white dark:bg-slate-800" />
+                            <span asp-validation-for="Cpf" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="flex flex-row w-full justify-between mb-6">
+                        <div class="flex flex-col" style="width: 48%">
+                            <label asp-for="Cnpj" class="control-label">CNPJ *</label>
+                            <input asp-for="Cnpj" class="form-input pl-6 bg-white dark:bg-slate-800" />
+                            <span asp-validation-for="Cnpj" class="text-danger"></span>
+                        </div>
+                        <div class="flex flex-col" style="width: 48%">
+                            <label asp-for="MaterialFornecidoId" class="control-label">Material a fornecer *</label>
+                            <select class="form-input pl-6 bg-white dark:bg-slate-800" asp-for="MaterialFornecidoId"
+                                    asp-items="@(new SelectList(ViewBag.Material, "Id", "Nome"))">
+                                <option>Selecione o Material</option>
+                            </select>
+                            <span asp-validation-for="MaterialFornecidoId" class="text-danger">É obrigatório selecionar um material</span>
+                        </div>
+                    </div>
+                    <div class="flex flex-row w-full justify-between mb-6">
+                        <div class="flex flex-col" style="width: 48%">
+                            <label asp-for="Telefone" class="control-label"></label>
+                            <input asp-for="Telefone" class="form-input pl-6 bg-white dark:bg-slate-800" />
+                            <span asp-validation-for="Telefone" class="text-danger"></span>
+                        </div>                        
+                        <div class="flex flex-col" style="width: 48%">
+                            <label asp-for="TelefoneDois" class="control-label"></label>
+                            <input asp-for="TelefoneDois" class="form-input pl-6 bg-white dark:bg-slate-800" />
+                            <span asp-validation-for="TelefoneDois" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="flex flex-col mb-6">
+                        <label asp-for="Email" class="control-label"></label>
+                        <input asp-for="Email" class="form-input pl-6 bg-white dark:bg-slate-800" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div>
+                        <input type"hidden" asp-for="DadosBancariosId" class="form-input pl-6 bg-white dark:bg-slate-800" />
+                        <input type="hidden" asp-for="DataCriacao" class="form-input pl-6 bg-white dark:bg-slate-800" />
+                        <input type="hidden" asp-for="DataAtualizacao" class="form-input pl-6 bg-white dark:bg-slate-800" />
+                    </div>
+                    <div class="flex justify-center mt-12">
+                        <input type="submit" value="Confirmar" class="confirmar">
+                    </div>
+                </form>
+            </main>
+        </div>
     </div>
-</div>
+</body>
+</html>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+<script src="~/../sidebar/assets/js/main.js"></script>
+<script src="~/../sidebar/assets/js/main.js"></script>
+<script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js" asp-append-version="true"></script>
+<script src="~/../lib/jquery/dist/jquery.min.js"></script>
+<script src="~/../js/site.js" asp-append-version="true"></script>
+<script src="../scaffold/js/vendors/alpinejs.min.js" defer></script>
+<script src="../scaffold/js/main.js"></script>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+

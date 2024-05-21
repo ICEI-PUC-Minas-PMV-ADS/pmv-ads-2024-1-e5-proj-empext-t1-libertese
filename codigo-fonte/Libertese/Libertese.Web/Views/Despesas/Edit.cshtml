@@ -189,6 +189,16 @@
                             <textarea asp-for="Observacao" class="form-input pl-6 bg-white dark:bg-slate-800 h-full" placeholder="Escreva..."></textarea>
                             <span asp-validation-for="Observacao" class="text-danger"></span>
                         </div>
+                        <div class="form-group">
+                            <label asp-for="DataCriacao" class="control-label"></label>
+                            <input asp-for="DataCriacao" class="form-input pl-6 bg-white dark:bg-slate-800 mb-10" />
+                            <span asp-validation-for="DataCriacao" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="DataAtualizacao" class="control-label"></label>
+                            <input asp-for="DataAtualizacao" class="form-input pl-6 bg-white dark:bg-slate-800 mb-10" />
+                            <span asp-validation-for="DataAtualizacao" class="text-danger"></span>
+                        </div>
                     </div>
                     <div class="flex justify-center mt-12">
                         <input type="submit" value="Confirmar" class="confirmar">
