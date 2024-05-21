@@ -8,18 +8,21 @@ namespace Libertese.ViewModels
 
         [Display(Name = "Categoria")]
         [Required(ErrorMessage = "Categoria é obrigatório.")]
-        public int CategoriaId { get; set; }
+        [Range(1, int.MaxValue, ErrorMessage = "Categoria é obrigatório.")]
+        public int? CategoriaId { get; set; }
 
         [Display(Name = "Nome")]
         [Required(ErrorMessage = "Nome do produto é obrigatório.")]
         public string? Nome { get; set; }
 
-        [Display (Name = "Tempo de Produção")]
-        [Required(ErrorMessage = "Tempo de produção é obrigatório.")]
+        [Display(Name = "Tempo de Produção")]
+        [Required(ErrorMessage = "O campo Tempo de produção é obrigatório.")]
+        [Range(1, int.MaxValue, ErrorMessage = "Tempo de produção deve ser maior que zero.")]
         public int TempoProducao { get; set;}
 
         [Display(Name = "Margem de Lucro")]
-        [Required(ErrorMessage = "Margem de lucro é obrigatório.")]
+        [Required(ErrorMessage = "O Margem de lucro é obrigatório.")]
+        [Range(1, int.MaxValue, ErrorMessage = "Margem de Lucro deve ser maior que zero.")]
         public decimal Margem { get; set; }
 
         [Display(Name = "Materiail")]
@@ -29,6 +32,8 @@ namespace Libertese.ViewModels
         public int? Quantidade { get; set; }
 
         [Display(Name = "Materiais")]
+        [Required(ErrorMessage = "Materiais são obrigatórios.")]
+        [MinLength(1, ErrorMessage = "Escolha pelo menos um material para compor o produto.")]
         public List<MaterialViewModel> Materiais { get; set; } = new List<MaterialViewModel>();
 
         [Required(ErrorMessage = "Incluir Materiais é obrigatório.")]

@@ -99,7 +99,7 @@ namespace Libertese.Web.Controllers.Precificacao
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Nome,MateriaisJson,CategoriaId,Margem,TempoProducao,Id,DataCriacao,DataAtualizacao")] ProdutoCreateViewModel produto)
+        public async Task<IActionResult> Create([Bind("Nome,Materiais,MateriaisJson,CategoriaId,Margem,TempoProducao,Id,DataCriacao,DataAtualizacao")] ProdutoCreateViewModel produto)
         {
 
             if(produto.MateriaisJson == null)
@@ -110,8 +110,12 @@ namespace Libertese.Web.Controllers.Precificacao
             var materiais = new List<ProdutoMaterial>();
             produto.Materiais = produto.MateriaisJson != null ? JsonConvert.DeserializeObject<List<MaterialViewModel>>(produto.MateriaisJson) : [];
 
+            if (ModelState.ContainsKey("Materiais") && ModelState["Materiais"].Errors.Count > 0 && produto.Materiais.Count() > 0)
+            {
+                ModelState["Materiais"].Errors.Clear();
+            }
 
-            if (ModelState.IsValid && produto.Materiais.Count() > 0)
+            if (ModelState.Values.Sum(v => v.Errors.Count) == 0)
             {
                 produto.DataCriacao = DateTime.Now;
                 produto.DataAtualizacao = DateTime.Now;
@@ -122,7 +126,7 @@ namespace Libertese.Web.Controllers.Precificacao
                 _produto.Nome = produto.Nome;
                 _produto.Margem = produto.Margem;
                 _produto.TempoProducao = produto.TempoProducao;
-                _produto.CategoriaId = produto.CategoriaId;
+                _produto.CategoriaId = (int)produto.CategoriaId;
                 _context.Add(_produto);
                 await _context.SaveChangesAsync();
 
@@ -208,7 +212,7 @@ namespace Libertese.Web.Controllers.Precificacao
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("SearchCategoria, Nome,MateriaisJson,CategoriaId,Margem,TempoProducao,Id")] ProdutoEditViewModel produto)
+        public async Task<IActionResult> Edit(int id, [Bind("SearchCategoria,Materiais,Nome,MateriaisJson,CategoriaId,Margem,TempoProducao,Id")] ProdutoEditViewModel produto)
         {
 
             if (id != produto.Id)
@@ -227,7 +231,12 @@ namespace Libertese.Web.Controllers.Precificacao
             produto.Materiais = produto.MateriaisJson != null ? JsonConvert.DeserializeObject<List<MaterialViewModel>>(produto.MateriaisJson) : [];
 
 
-            if (ModelState.IsValid && produtoExistente != null && produto.Materiais.Count() > 0)
+            if (ModelState.ContainsKey("Materiais") && ModelState["Materiais"].Errors.Count > 0 && produto.Materiais.Count() > 0)
+            {
+                ModelState["Materiais"].Errors.Clear();
+            }
+
+            if (ModelState.Values.Sum(v => v.Errors.Count) == 0)
             {
                 using (var transaction = await _context.Database.BeginTransactionAsync())
                 {
@@ -237,7 +246,7 @@ namespace Libertese.Web.Controllers.Precificacao
                         produtoExistente.Nome = produto.Nome;
                         produtoExistente.Margem = produto.Margem;
                         produtoExistente.TempoProducao = produto.TempoProducao;
-                        produtoExistente.CategoriaId = produto.CategoriaId;
+                        produtoExistente.CategoriaId = (int)produto.CategoriaId;
                         _context.Update(produtoExistente);
                         await _context.SaveChangesAsync();
 

@@ -150,8 +150,8 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                    <input style="display: none;" asp-for="CategoriaId" id="CategoriaId" />
-                                                <input class="form-input w-full" type="text" name="SearchCategoria" id="SearchCategoria" />
+                                                    <input class="form-input w-full" type="text" name="SearchCategoria" id="SearchCategoria" />
+                                                <input style="display: none;" asp-for="CategoriaId" />
                                                 <span asp-validation-for="CategoriaId" class="text-xs mt-1 text-rose-500"></span>
                                             
                                         </div>
@@ -244,7 +244,7 @@
                                                 <input style="display: none;" name="MaterialPreco" id="MaterialPreco" />
                                                 <input style="display: none;" name="MaterialValorTotal" id="MaterialValorTotal" />
                                                 <input style="display: none;" name="Material" id="Material" />
-                                                <input style="display: none;" name="MateriaisJson" id="MateriaisJson" />
+                                                <input style="display: none;" asp-for="MateriaisJson" />
                                                 <input class="form-input w-full" type="text" id="SearchMaterial" />
                                             </div>
                                         </div> 
@@ -300,9 +300,9 @@
                                         </div>
                                     </div>
 
-                                    <div class="bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700 mb-10">
+                                    <div class="bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700 mb-0">
                                         <header class="px-5 py-4">
-                                            <h2 class="font-semibold text-slate-800 dark:text-slate-100">Materiais <span class="text-slate-400 dark:text-slate-500 font-medium">0</span></h2>
+                                            <h2 class="font-semibold text-slate-800 dark:text-slate-100">Materiais <span name="totalDeMateriais" id="totalDeMateriais" class="text-slate-400 dark:text-slate-500 font-medium">0</span></h2>
                                         </header>
                                         <div x-data="{ modalDeletarOpen: false, modalVisualizarOpen: false, tableIndex: 0 }">
                                             <div class="overflow-x-auto">
@@ -528,6 +528,7 @@
 
                 console.log(materiais)
 
+                $("#totalDeMateriais").text(materiais.length);
                 $("#MateriaisJson").val(JSON.stringify(materiais));
 
             } else {
@@ -550,6 +551,7 @@
             var indexToRemove = $(this).closest("tr").index();
             var materiaisList = JSON.parse(materiaisJson);
             materiaisList.splice(indexToRemove, 1);
+            $("#totalDeMateriais").text(materiaisList.length);
             materiaisJson = JSON.stringify(materiaisList);
             $("#MateriaisJson").val(materiaisJson);
         });
