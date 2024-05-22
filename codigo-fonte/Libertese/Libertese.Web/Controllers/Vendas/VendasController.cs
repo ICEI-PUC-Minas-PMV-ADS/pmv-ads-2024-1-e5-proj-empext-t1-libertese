@@ -26,7 +26,36 @@ namespace Libertese.Web.Controllers.Vendas
         // GET: Vendas
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Vendas.ToListAsync());
+            var vendas = (from venda in _context.Vendas
+                          join cliente in _context.Clientes on venda.ClienteId equals cliente.Id into cGroup
+                          from cliente in cGroup.DefaultIfEmpty()
+                          join produto in _context.Produtos on venda.ProdutoId equals produto.Id into pGroup
+                          from produto in pGroup.DefaultIfEmpty()
+                          group new { venda, cliente, produto }
+                          by new { cliente.Nome, venda.Identificador } into gGroup
+                          select new VendaViewModel
+                          {
+                              Id = gGroup.Key.Identificador,
+                              Cliente = gGroup.Key.Nome,
+                              Itens = gGroup.Count(x => x.produto != null),
+                              Cancelamento = gGroup.Select(x => x.venda.DataCancelamento).Distinct().FirstOrDefault(),
+                              Data = (DateTime)gGroup.Select(x => x.venda.DataCriacao).Distinct().FirstOrDefault(),
+                              Hora = (DateTime)gGroup.Select(x => x.venda.DataCriacao).Distinct().FirstOrDefault(),
+                              Valor = gGroup.Sum(x => x.venda.ValorTotal),
+                              Produtos = gGroup.Where(x => x.produto != null)
+                                        .Select(x => new ProdutoVendaViewModel
+                                        {
+                                            Id = x.produto.Id,
+                                            Nome = x.produto.Nome,
+                                            Quantidade = x.venda.Quantidade,
+                                            Preco = x.venda.ValorUnitario,
+                                            ValorTotal = x.venda.ValorTotal,
+                                        }).ToList()
+                          })
+                          .OrderBy(x => x.Id)
+                          .ToList();
+
+               return View(vendas);
         }
 
     
@@ -77,6 +106,7 @@ namespace Libertese.Web.Controllers.Vendas
                     _venda.ValorTotal = item.Quantidade * item.Preco;
                     _venda.DataCriacao = dataCriacao;
                     _venda.DataAtualizacao = dataAtualizacao;
+                    _venda.Identificador = ((DateTimeOffset)dataCriacao).ToUnixTimeSeconds().ToString();
                     _context.Add(_venda);
                     await _context.SaveChangesAsync();
                 }
@@ -85,72 +115,77 @@ namespace Libertese.Web.Controllers.Vendas
             }
             return View(venda);
         }
-
-        // GET: Vendas/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var venda = await _context.Vendas.FindAsync(id);
-            if (venda == null)
-            {
-                return NotFound();
-            }
-            return View(venda);
-        }
-
-        // POST: Vendas/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ProdutoId,Quantidade,ValorUnitario,ValorTotal,Id,DataCriacao,DataAtualizacao")] Venda venda)
-        {
-            if (id != venda.Id)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(venda);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!VendaExists(venda.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(venda);
-        }
-
+        
         // POST: Vendas/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(string id)
         {
-            var venda = await _context.Vendas.FindAsync(id);
-            if (venda != null)
+            var dataCancelamento = DateTime.Now;
+            var vendas = await _context.Vendas.Where(x => x.Identificador == id).ToListAsync();
+
+            if (vendas != null)
             {
-                _context.Vendas.Remove(venda);
+                foreach (var venda in vendas)
+                {
+                    venda.DataCancelamento = dataCancelamento;
+                }
+                
+                _context.UpdateRange(vendas);
+                await _context.SaveChangesAsync();
             }
 
-            await _context.SaveChangesAsync();
+
             return RedirectToAction(nameof(Index));
         }
+
+        // POST: Materiais/Search
+        [HttpPost, ActionName("Search")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> SearchText(string nome)
+        {
+
+            if (!string.IsNullOrEmpty(nome))
+            {
+
+                var vendas = (from venda in _context.Vendas
+                              join cliente in _context.Clientes on venda.ClienteId equals cliente.Id into cGroup
+                              from cliente in cGroup.DefaultIfEmpty()
+                              join produto in _context.Produtos on venda.ProdutoId equals produto.Id into pGroup
+                              from produto in pGroup.DefaultIfEmpty()
+                              where EF.Functions.Like(cliente.Nome.ToLower(), "%" + nome.ToLower() + "%")
+                              group new { venda, cliente, produto }
+                              by new { cliente.Nome, venda.Identificador } into gGroup
+                              select new VendaViewModel
+                              {
+                                  Id = gGroup.Key.Identificador,
+                                  Cliente = gGroup.Key.Nome,
+                                  Itens = gGroup.Count(x => x.produto != null),
+                                  Cancelamento = gGroup.Select(x => x.venda.DataCancelamento).Distinct().FirstOrDefault(),
+                                  Data = (DateTime)gGroup.Select(x => x.venda.DataCriacao).Distinct().FirstOrDefault(),
+                                  Hora = (DateTime)gGroup.Select(x => x.venda.DataCriacao).Distinct().FirstOrDefault(),
+                                  Valor = gGroup.Sum(x => x.venda.ValorTotal),
+                                  Produtos = gGroup.Where(x => x.produto != null)
+                                            .Select(x => new ProdutoVendaViewModel
+                                            {
+                                                Id = x.produto.Id,
+                                                Nome = x.produto.Nome,
+                                                Quantidade = x.venda.Quantidade,
+                                                Preco = x.venda.ValorUnitario,
+                                                ValorTotal = x.venda.ValorTotal,
+                                            }).ToList()
+                              })
+              .OrderBy(x => x.Id)
+              .ToList();
+
+                return View("Index", vendas);
+            }
+            else
+            {
+                return RedirectToAction(nameof(Index));
+            }
+        }
+
 
         private bool VendaExists(int id)
         {

@@ -5,32 +5,45 @@ namespace Libertese.ViewModels
 {
     public class VendaViewModel : BaseEntity
     {
-        public int Id { get; set; }
-        
-        [Display(Name = "Produto")]
-        public string? Nome { get; set; }
-        
-        [Display(Name = "Categoria")]
-        public string? Categoria { get; set; }
 
-        [Display(Name = "Tempo Produção")]
-        public int? TempoProducao { get; set; }
+        public string Id { get; set; }
+
+        [Display(Name = "Cliente")]
+        public string Cliente { get; set; }
         
-        [Display(Name = "Custo de Materiais")]
-        public decimal? Custo { get; set; }
+        [Display(Name = "Total de itens")]
+        public int Itens { get; set; }
 
-        [Display(Name = "Preço")]
-        public decimal? Preco { get; set; }
-        
-        [Display(Name = "Rateio de Custos Fixos")]
-        public decimal? Rateio { get; set; }
+        [Display(Name = "Data da venda")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime Data { get; set; }
 
-        [Display(Name = "Total de Materiais")]
-        public int TotalMateriais { get; set; }
+        [DisplayFormat(DataFormatString = "{0:HH:mm:ss}", ApplyFormatInEditMode = true)]
+        [DataType(DataType.Time)]
+        [Display(Name = "Hora da venda")]
+        public DateTime Hora { get; set; }
 
-        [Display(Name = "Materiais")]
-        public List<MaterialViewModel> Materiais { get; set; } = new List<MaterialViewModel>();
+        public dynamic? Cancelamento { get; set; }
+
+        [Display(Name = "Valor Total da Venda")]
+        public decimal Valor { get; set; }
+
+        [Display(Name = "Produtos")]
+        public List<ProdutoVendaViewModel> Produtos { get; set; } = new List<ProdutoVendaViewModel>();
+
+        [Display(Name = "Unix Timestamp")]
+        public string Identificador
+        {
+            get 
+            {
+                return ((DateTimeOffset)Data).ToUnixTimeSeconds().ToString();
+            }
+        }
+    
+    
+    
     }
+
 }
 
 
