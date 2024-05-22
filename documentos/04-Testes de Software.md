@@ -807,16 +807,16 @@ Os testes funcionais a serem realizados dentro do sistema Libertese são descrit
 ## Objetivo
 
 Garantir a funcionalidade, confiabilidade e segurança das telas de: 
-- CRUD Produtos
-- Registro de Vendas
+- CRUD Produtos - RF 005
+
 
 ## Ferramentas utilizadas para os testes
 - Visual studio 2021
 - Google Chrome
 
 ## Responsáveis pelos testes e pelas funcionalidades desenvolvidas
-- Responsável pelos testes a seguir:
-- Telas desenvolvidas: Produtos e Registro de Vendas
+- Responsável pelas telas a seguir: Thaís Gurgel
+- Telas desenvolvidas: Produtos
 - Testadas por: 
 - Funcionalidades testadas: 
 
@@ -889,8 +889,70 @@ Garantir a funcionalidade, confiabilidade e segurança das telas de:
 | **Resultado Esperado** | O produto selecionado deve ser removido da lista de produtos na página inicial.                            |
 |                     |                                                                                                              |
 
+## Objetivo
+
+Garantir a funcionalidade, confiabilidade e segurança das telas de: 
+- Registro de Vendas - RF 014
 
 
+## Ferramentas utilizadas para os testes
+- Visual studio 2021
+- Google Chrome
+
+## Responsáveis pelos testes e pelas funcionalidades desenvolvidas
+- Responsável pelos telas a seguir: Thaís Gurgel
+- Telas desenvolvidas: Registro de Vendas
+- Testadas por: 
+- Funcionalidades testadas: 
+
+
+### CT001 - Registrar Nova Venda
+
+| Casos de Teste      | CT001 - Registrar Nova Venda                                                                               |
+|---------------------|------------------------------------------------------------------------------------------------------------|
+| **Pré Condições**   | Estar na tela de Vendas                                                                                    |
+| **Procedimento**    | 1. No menu, selecionar a opção “Venda”.                                                                    |
+|                     | 2. Na tela de Venda, selecionar a opção “Novo Registro Venda”.                                             |
+|                     | 3. Na tela de Nova Venda, registrar todas as informações necessárias.                                       |
+|                     | 4. Clicar em “Confirmar”.                                                                                  |
+| **Resultado Esperado** | A nova venda deve ser registrada com sucesso e deverá constar na lista de vendas.                          |
+| **Dados de Entrada** | Informações necessárias para o registro da venda.                                                           |
+
+### CT002 - Registrar Nova Venda com Campos em Branco ou Inválidos
+
+| Casos de Teste      | CT004 - Registrar Nova Venda com Campos em Branco ou Inválidos                                             |
+|---------------------|------------------------------------------------------------------------------------------------------------|
+| **Pré Condições**   | Estar na tela de Vendas                                                                                    |
+| **Procedimento**    | 1. No menu, selecionar a opção “Venda”.                                                                    |
+|                     | 2. Na tela de Venda, selecionar a opção “Novo Registro Venda”.                                             |
+|                     | 3. Na tela de Nova Venda, deixar um ou mais campos em branco ou inserir dados inválidos.                   |
+|                     | 4. Clicar em “Confirmar”.                                                                            |
+| **Resultado Esperado** | Devem ser exibidas mensagens de erro indicando campos em branco ou inválidos.                             |
+| **Dados de Entrada** | Informações em branco ou inválidos.                                                                        |
+
+
+
+### CT003 - Visualizar Venda
+
+| Casos de Teste      | CT002 - Visualizar Venda                                                                                   |
+|---------------------|------------------------------------------------------------------------------------------------------------|
+| **Pré Condições**   | Estar na tela de Vendas                                                                                    |
+| **Procedimento**    | 1. No menu, selecionar a opção “Venda”.                                                                    |
+|                     | 2. Na tela de Venda, selecionar a opção “Visualizar Venda”.                                                |
+|                     | 3. Selecionar a venda desejada para visualização.                                                          |
+| **Resultado Esperado** | Todas as informações referentes à venda selecionada devem ser exibidas corretamente.                      |
+|                     |                                                                                                            |
+
+### CT004 - Cancelar Venda
+
+| Casos de Teste      | CT003 - Cancelar Venda                                                                                     |
+|---------------------|------------------------------------------------------------------------------------------------------------|
+| **Pré Condições**   | Estar na tela de Vendas                                                                                    |
+| **Procedimento**    | 1. No menu, selecionar a opção “Venda”.                                                                    |
+|                     | 2. Na tela de Venda, selecionar a opção “Cancelar Venda”.                                                  |
+|                     | 3. Confirmar a operação de cancelamento.                                                                   |
+| **Resultado Esperado** | A venda selecionada deve ser cancelada e na lista de vendas deverá constar status cancelado.               |
+|                     |                                                                                                            |
 
 
 
