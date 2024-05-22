@@ -804,6 +804,92 @@ Os testes funcionais a serem realizados dentro do sistema Libertese são descrit
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/60409021/685cdfe5-b5ec-40f2-89e2-24917c5cb59a)
 
 
+## Objetivo
+
+Garantir a funcionalidade, confiabilidade e segurança das telas de: 
+- CRUD Produtos
+- Registro de Vendas
+
+## Ferramentas utilizadas para os testes
+- Visual studio 2021
+- Google Chrome
+
+## Responsáveis pelos testes e pelas funcionalidades desenvolvidas
+- Responsável pelos testes a seguir:
+- Telas desenvolvidas: Produtos e Registro de Vendas
+- Testadas por: 
+- Funcionalidades testadas: 
+
+### CT001 - Criar novo Produto
+
+| Casos de Teste      | CT001 - Criar novo Produto                                                                                   |
+|---------------------|--------------------------------------------------------------------------------------------------------------|
+| **Pré Condições**   | Estar na tela de Produtos                                                                                   |
+| **Procedimento**    | 1. No menu, selecionar a opção “Produtos”.                                                                  |
+|                     | 2. Na tela de Produto, selecionar a opção “Novo Produto”.                                                    |
+|                     | 3. Na tela de Novo Produto, preencher todas as informações necessárias.                                      |
+|                     | 4. Clicar em “Salvar”.                                                                                      |
+| **Resultado Esperado** | O novo produto deve ser cadastrado e deverá constar na tabela de produtos.                                   |
+| **Dados de Entrada** | Informações solicitadas nos campos de cadastro.                                                              |
+
+### CT002 - Criar produto com campos em branco ou inválidos
+
+| Casos de Teste      | CT002 - Criar produto com campos em branco ou inválidos.                                                     |
+|---------------------|--------------------------------------------------------------------------------------------------------------|
+| **Pré Condições**   | Estar na tela de Produtos                                                                                   |
+| **Procedimento**    | 1. No menu, selecionar a opção “Produtos”.                                                                  |
+|                     | 2. Na tela de Produto, selecionar a opção “Novo Produto”.                                                    |
+|                     | 3. Na tela de Novo Produto deixe um ou mais campos em branco ou insira dados inválidos.                      |
+|                     | 4. Clicar em “Salvar”.                                                                                      |
+| **Resultado Esperado** | Devem ser exibidas mensagens de erro na tela indicando campos em branco ou inválidos.                       |
+| **Dados de Entrada** | Informações em branco ou inválidos.                                                                         |
+
+### CT003 - Visualizar Produto
+
+| Casos de Teste      | CT003 - Visualizar Produto                                                                                   |
+|---------------------|--------------------------------------------------------------------------------------------------------------|
+| **Pré Condições**   | Estar na tela de Produtos                                                                                   |
+| **Procedimento**    | 1. No menu, selecionar a opção “Produtos”.                                                                  |
+|                     | 2. Na tela de Produto, selecionar a opção “Visualizar Produto”.                                             |
+| **Resultado Esperado** | Todas as informações corretas referentes ao produto selecionado devem ser exibidas.                        |
+|                     |                                                                                                              |
+
+### CT004 - Editar produto
+
+| Casos de Teste      | CT004 - Editar produto.                                                                                     |
+|---------------------|--------------------------------------------------------------------------------------------------------------|
+| **Pré Condições**   | Estar na tela de Produtos                                                                                   |
+| **Procedimento**    | 1. No menu, selecionar a opção “Produtos”.                                                                  |
+|                     | 2. Na tela de Produto, selecionar a opção “Editar Produto”.                                                 |
+|                     | 3. Na tela de Editar Produto, edite a informação desejada.                                                   |
+|                     | 4. Clicar em “Salvar”.                                                                                      |
+| **Resultado Esperado** | As informações editadas devem ser atualizadas com sucesso e a data de atualização deve constar na tabela de produtos. |
+| **Dados de Entrada** | Informações que deseja atualizar.                                                                          |
+
+### CT005 - Editar produto com campos em branco ou inválidos
+
+| Casos de Teste      | CT005 - Editar produto com campos em branco ou inválidos.                                                   |
+|---------------------|--------------------------------------------------------------------------------------------------------------|
+| **Pré Condições**   | Estar na tela de Produtos                                                                                   |
+| **Procedimento**    | 1. No menu, selecionar a opção “Produtos”.                                                                  |
+|                     | 2. Na tela de Produto, selecionar a opção “Editar Produto”.                                                 |
+|                     | 3. Na tela de Editar Produto, deixe um ou mais campos em branco ou insira dados inválidos.                  |
+|                     | 4. Clicar em “Salvar”.                                                                                      |
+| **Resultado Esperado** | Devem ser exibidas mensagens de erro na tela indicando campos em branco ou inválidos.                       |
+| **Dados de Entrada** | Informações em branco ou inválidos.                                                                         |
+
+### CT006 - Deletar produto
+
+| Casos de Teste      | CT006 - Deletar produto.                                                                                    |
+|---------------------|--------------------------------------------------------------------------------------------------------------|
+| **Pré Condições**   | Estar na tela de Produtos                                                                                   |
+| **Procedimento**    | 1. No menu, selecionar a opção “Produtos”.                                                                  |
+|                     | 2. Na tela de Produto, selecionar a opção “Deletar Produto”.                                                |
+|                     | 3. Na mensagem de confirmação, clicar em “Deletar” confirmando assim a remoção do registro.               |
+| **Resultado Esperado** | O produto selecionado deve ser removido da lista de produtos na página inicial.                            |
+|                     |                                                                                                              |
+
+
 
 
 
