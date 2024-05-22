@@ -3,6 +3,7 @@ using System;
 using Libertese.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Libertese.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240521212004_Adicionando ClienteId e DataCancelamento em Vendas")]
+    partial class AdicionandoClienteIdeDataCancelamentoemVendas
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -677,15 +680,11 @@ namespace Libertese.Data.Migrations
                     b.Property<DateTime?>("DataAtualizacao")
                         .HasColumnType("timestamp without time zone");
 
-                    b.Property<DateTime?>("DataCancelamento")
+                    b.Property<DateTime>("DataCancelamento")
                         .HasColumnType("timestamp without time zone");
 
                     b.Property<DateTime?>("DataCriacao")
                         .HasColumnType("timestamp without time zone");
-
-                    b.Property<string>("Identificador")
-                        .IsRequired()
-                        .HasColumnType("text");
 
                     b.Property<int>("ProdutoId")
                         .HasColumnType("integer");
