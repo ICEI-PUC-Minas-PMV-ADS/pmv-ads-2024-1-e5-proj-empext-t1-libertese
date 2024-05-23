@@ -68,38 +68,6 @@
                         <span asp-validation-for="ClassificacaoId" class="text-danger"></span>
                     </div>
                     <div class="flex flex-col mb-6">
-                        <label asp-for="Tipo" class="control-label">Tipo de despesa *</label>
-
-                        <select class="form-input pl-6 bg-white dark:bg-slate-800" asp-for="Tipo">
-                            <option value="">Selecione o Tipo de despesa</option>
-                            @foreach (var despesaTipo in Enum.GetValues(typeof(DespesaTipo)))
-                            {
-                                string nome = convertDespesaTipoToNome((int)despesaTipo);
-                                <option value="@((int)despesaTipo)">@nome</option>
-                            }
-                        </select>
-                            @functions {
-                                    static string convertDespesaTipoToNome(int despesaTipo)
-                                    {
-                                        switch (despesaTipo)
-                                        {
-                                            case 1:
-                                                return DespesaTipoNomes.Comprometido;
-                                            case 2:
-                                                return DespesaTipoNomes.GastoFixo;
-                                            case 3:
-                                                return DespesaTipoNomes.GastoVariavel;
-                                            case 4:
-                                                return DespesaTipoNomes.Previsao;
-                                            case 5:
-                                                return DespesaTipoNomes.Impostos;
-                                            default:
-                                                return string.Empty;
-                                        } 
-                                    }}
-                        <span asp-validation-for="Tipo" class="text-danger"></span>
-                    </div>
-                    <div class="flex flex-col mb-6">
                         <label asp-for="DataVencimento" class="control-label">Data de vencimento *</label>
                         <input type="datetime-local" asp-for="DataVencimento" class="form-input pl-6 bg-white dark:bg-slate-800" />
                         <span asp-validation-for="DataVencimento" class="text-danger"></span>
@@ -107,40 +75,10 @@
                     <div class="flex flex-row w-full justify-between mb-6">
                     <div class="flex flex-col" style="width: 48%">
                         <label asp-for="FormaPagamentoId" class="control-label">Forma de Pagamento *</label>
-                        <select class="form-input pl-6 bg-white dark:bg-slate-800" asp-for="FormaPagamentoId">
-                            <option value="">Selecione a forma de pagamento</option>
-                            @foreach (var formaDePagamento in Enum.GetValues(typeof(FormaPagamentoEnum)))
-                            {
-                                string nome = convertFormaPagamentoToNome((int)formaDePagamento);
-                                <option value="@((int)formaDePagamento)">@nome</option>
-                            }
+                        <select class="form-input pl-6 bg-white dark:bg-slate-800" asp-for="FormaPagamentoId"
+                                asp-items="@(new SelectList(ViewBag.FormaPagamento, "Id", "Descricao"))">
+                            <option value="">Selecione a Classificação</option>
                         </select>
-                            @functions {
-                                    static string convertFormaPagamentoToNome(int formaPagamento)
-                                    {
-                                        switch ((FormaPagamentoEnum)formaPagamento)
-                                        {
-                                            case FormaPagamentoEnum.Boleto:
-                                                return FormaDePagamentoNomes.Boleto;
-                                            case FormaPagamentoEnum.Cheque:
-                                                return FormaDePagamentoNomes.Cheque;
-                                            case FormaPagamentoEnum.CreditoPrazo:
-                                                return FormaDePagamentoNomes.CreditoPrazo;
-                                            case FormaPagamentoEnum.CreditoVista:
-                                                return FormaDePagamentoNomes.CreditoVista;
-                                            case FormaPagamentoEnum.Debito:
-                                                return FormaDePagamentoNomes.Debito;                
-                                            case FormaPagamentoEnum.Dinheiro:
-                                                return FormaDePagamentoNomes.Dinheiro;                
-                                            case FormaPagamentoEnum.Pix:
-                                                return FormaDePagamentoNomes.Pix;                
-                                            case FormaPagamentoEnum.Transferencia:
-                                                return FormaDePagamentoNomes.Transferencia;                
-                                            default:
-                                                return string.Empty;
-                                        }
-                                    }
-                                }
                         <span asp-validation-for="FormaPagamentoId" class="text-danger"></span>
                     </div>
                     <div class="flex flex-col" style="width: 48%">
@@ -161,9 +99,6 @@
                         <label asp-for="ContaBancariaId" class="control-label"></label>
                         <input type="number" asp-for="ContaBancariaId" class="form-input pl-6 bg-white dark:bg-slate-800" />
                         <span asp-validation-for="ContaBancariaId" class="text-danger"></span>
-                    </div>
-                    <div class="flex flex-col mb-6">
-                        <input type="hidden" value="Field to be removed" asp-for="Descricao" class="form-input pl-6 bg-white dark:bg-slate-800" />
                     </div>
                     <div class="flex flex-row w-full justify-between mb-6">
                         <div class="flex flex-col" style="width: 48%">

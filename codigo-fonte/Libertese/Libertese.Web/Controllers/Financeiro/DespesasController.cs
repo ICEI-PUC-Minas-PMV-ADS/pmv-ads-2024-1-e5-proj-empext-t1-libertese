@@ -27,39 +27,23 @@ namespace Libertese.Web.Controllers.Financeiro
             List<Despesa> listaDespesas = await _context.Despesas.ToListAsync();
             List<Fornecedor> listaFornecedores = await GetListaFornecedores();
             List<Classificacao> listaClassificacoes = await GetListaClassificacoesDespesas();
+            List<FormaPagamento> listaFormaPagamento = await GetListaFormaPagamento();
             List<DespesaDTO> listaDespesaDTO = listaDespesas.Select(despesa => new DespesaDTO
             {
                 Id = despesa.Id,
                 Valor = despesa.Valor,
-                Tipo = convertDespesaTipoToNome(despesa.Tipo),
                 Status = convertDespesaStatusToNome(despesa.Status),
-                FormaPagamentoName = convertFormaPagamentoToNome(despesa.FormaPagamentoId),
-                Descricao = despesa.Descricao,
+                FormaPagamentoName = listaFormaPagamento.Find(x => x.Id == despesa.FormaPagamentoId)?.Descricao ?? "Sem Forma de Pagamento",
+                Observacao = despesa.Observacao ?? "Sem Observações",
                 DataVencimento = despesa.DataVencimento?.ToString("dd/MM/yyyy") ?? "Sem Data",
                 DataPagamento = despesa.DataPagamento?.ToString("dd/MM/yyyy") ?? "Sem Data",
+                DataAtualiza = despesa.DataAtualizacao?.ToString("dd/MM/yyyy") ?? "Sem Data",
                 Classificacao = listaClassificacoes.Find(x => x.Id == despesa.ClassificacaoId)?.Descricao ?? "Sem Classificação",
                 FornecedorName = listaFornecedores.Find(x => x.Id == despesa.FornecedorId)?.Nome ?? "Sem Fornecedor",
 
+
             }).ToList();
             return View(listaDespesaDTO);
-        }
-
-        // GET: Despesas/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var despesa = await _context.Despesas
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (despesa == null)
-            {
-                return NotFound();
-            }
-
-            return View(despesa);
         }
 
         // GET: Despesas/Create
@@ -67,6 +51,8 @@ namespace Libertese.Web.Controllers.Financeiro
         {
             List<Classificacao> listaClassificacoes = await GetListaClassificacoesDespesas();
             List<Fornecedor> listaFornecedores = await GetListaFornecedores();
+            List<FormaPagamento> listaFormaPagamento = await GetListaFormaPagamento();
+            ViewBag.FormaPagamento = listaFormaPagamento;
             ViewBag.Fornecedor = listaFornecedores;
             ViewBag.Classificacao = listaClassificacoes;
             return View();
@@ -87,6 +73,8 @@ namespace Libertese.Web.Controllers.Financeiro
             }
             List<Classificacao> listaClassificacoes = await GetListaClassificacoesDespesas();
             List<Fornecedor> listaFornecedores = await GetListaFornecedores();
+            List<FormaPagamento> listaFormaPagamento = await GetListaFormaPagamento();
+            ViewBag.FormaPagamento = listaFormaPagamento;
             ViewBag.Fornecedor = listaFornecedores;
             ViewBag.Classificacao = listaClassificacoes;
             return View(despesa);
@@ -97,6 +85,8 @@ namespace Libertese.Web.Controllers.Financeiro
         {
             List<Classificacao> listaClassificacoes = await GetListaClassificacoesDespesas();
             List<Fornecedor> listaFornecedores = await GetListaFornecedores();
+            List<FormaPagamento> listaFormaPagamento = await GetListaFormaPagamento();
+            ViewBag.FormaPagamento = listaFormaPagamento;
             ViewBag.Fornecedor = listaFornecedores;
             ViewBag.Classificacao = listaClassificacoes;
             if (id == null)
@@ -146,26 +136,10 @@ namespace Libertese.Web.Controllers.Financeiro
             }
             List<Classificacao> listaClassificacoes = await GetListaClassificacoesDespesas();
             List<Fornecedor> listaFornecedores = await GetListaFornecedores();
+            List<FormaPagamento> listaFormaPagamento = await GetListaFormaPagamento();
+            ViewBag.FormaPagamento = listaFormaPagamento;
             ViewBag.Fornecedor = listaFornecedores;
             ViewBag.Classificacao = listaClassificacoes;
-            return View(despesa);
-        }
-
-        // GET: Despesas/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var despesa = await _context.Despesas
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (despesa == null)
-            {
-                return NotFound();
-            }
-
             return View(despesa);
         }
 
@@ -193,52 +167,13 @@ namespace Libertese.Web.Controllers.Financeiro
         {
             return await _context.Classificacoes.Where(x => x.Tipo == (int)ClassificacaoTipo.Despesas).ToListAsync();
         }
+        private async Task<List<FormaPagamento>> GetListaFormaPagamento()
+        {
+            return await _context.FormaPagamentos.ToListAsync();
+        }
         private async Task<List<Fornecedor>> GetListaFornecedores()
         {
             return await _context.Fornecedores.ToListAsync();
-        }
-
-        private string convertDespesaTipoToNome(DespesaTipo despesaTipo)
-        {
-            switch (despesaTipo)
-            {
-                case DespesaTipo.Comprometido:
-                    return DespesaTipoNomes.Comprometido;
-                case DespesaTipo.GastoFixo:
-                    return DespesaTipoNomes.GastoFixo;
-                case DespesaTipo.GastoVariavel:
-                    return DespesaTipoNomes.GastoVariavel;
-                case DespesaTipo.Previsao:
-                    return DespesaTipoNomes.Previsao;
-                case DespesaTipo.Impostos:
-                    return DespesaTipoNomes.Impostos;
-                default:
-                    return "Undefinded";
-            }
-        }
-        private string convertFormaPagamentoToNome(int formaPagamento)
-        {
-            switch ((FormaPagamentoEnum)formaPagamento)
-            {
-                case FormaPagamentoEnum.Boleto:
-                    return FormaDePagamentoNomes.Boleto;
-                case FormaPagamentoEnum.Cheque:
-                    return FormaDePagamentoNomes.Cheque;
-                case FormaPagamentoEnum.CreditoPrazo:
-                    return FormaDePagamentoNomes.CreditoPrazo;
-                case FormaPagamentoEnum.CreditoVista:
-                    return FormaDePagamentoNomes.CreditoVista;
-                case FormaPagamentoEnum.Debito:
-                    return FormaDePagamentoNomes.Debito;
-                case FormaPagamentoEnum.Dinheiro:
-                    return FormaDePagamentoNomes.Dinheiro;
-                case FormaPagamentoEnum.Pix:
-                    return FormaDePagamentoNomes.Pix;
-                case FormaPagamentoEnum.Transferencia:
-                    return FormaDePagamentoNomes.Transferencia;
-                default:
-                    return "Undefinded";
-            }
         }
 
         private string convertDespesaStatusToNome(DespesaStatus despesaStatus)
