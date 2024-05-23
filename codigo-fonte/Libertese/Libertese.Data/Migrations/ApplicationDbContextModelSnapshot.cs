@@ -44,12 +44,6 @@ namespace Libertese.Data.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<decimal>("ValorAdicional")
-                        .HasColumnType("numeric");
-
-                    b.Property<decimal>("ValorAporte")
-                        .HasColumnType("numeric");
-
                     b.HasKey("Id");
 
                     b.ToTable("EmpresasParceiras");
