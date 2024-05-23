@@ -54,7 +54,7 @@ Os testes funcionais a serem realizados no aplicativo são descritos a seguir:
 
 # Testes Automatizados
 
-Ferramenta de testes: xUnit.net (disponilizada para aplicações do .NET Framework)
+## Ferramenta de testes: NUnit.net (disponilizada para aplicações do .NET Framework)
 
 Foram implementados testes de unidade automatizados, que cobrem os principais métodos das entidades de Categorias e Materiais.
 
@@ -350,17 +350,6 @@ Os testes funcionais a serem realizados no sistema Libertese são descritos a se
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 # Plano de Testes de Software (Em Pares)
 ##	Objetivo
 Garantir a funcionalidade, confiabilidade e segurança nas telas de:
@@ -549,7 +538,7 @@ Os testes funcionais a serem realizados no sistema Libertese são descritos a se
 |Dados de Entrada         | Informações solicitadas no campo de Classificação.  |
 
 
-| Caso de Teste           | CT003 – Poder excluir uma Conta Bancária - RF-010 / RF-011                                                              |
+| Caso de Teste           | CT003 – Poder excluir uma Classificação - RF-010 / RF-011                                                              |
 |-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 |Pre Condições            | Estar na tela Index Classificação | 
 |Procedimento             | 1. No menu clicar na opção "Excluir”. |
@@ -578,34 +567,398 @@ Os testes funcionais a serem realizados no sistema Libertese são descritos a se
 |Resultado Esperado       | A visualizaçaõ deverá ser mostrada com sucesso |
 |Dados de Entrada         | Informações solicitadas no campo de Classificação.  |
 
-## Evidências de Testes de Softwares - CRUD Forma de Pagamentos
+# Evidências de Testes de Softwares - CRUD Forma de Pagamentos
 
-- CT001 – Poder inserir uma nova Forma de Pagamento - RF-010 / RF-011
+## CT001 – Poder inserir uma nova Forma de Pagamento - RF-010 / RF-011
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/91369ffd-c3d1-47bd-9bf0-dd7893776cc1)
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/658d8556-20f4-4445-be61-e9ef1ded24fb)
 
-- CT002 – Inserir uma nova Forma de Pagamento com campos inválidos - RF-010 / RF-011
+## CT002 – Inserir uma nova Forma de Pagamento com campos inválidos - RF-010 / RF-011
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/cd5a1e6d-4546-41c6-a9a5-4081f06af6b4)
 
-- CT003 – Poder excluir uma Forma de Pagamento - RF-010 / RF-011
+## CT003 – Poder excluir uma Forma de Pagamento - RF-010 / RF-011
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/7ee417c0-a543-4698-94e7-a6d99736e56c)
 
-CT004 – Poder editar uma Forma de Pagamento - RF-010 / RF-011
+## CT004 – Poder editar uma Forma de Pagamento - RF-010 / RF-011
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/9f1ef47d-5d84-47c3-abdd-b70a14ddab2b)
 
-## Evidências de Testes de Softwares - CRUD Contas Bancárias
+## CT005 – Poder visualizar uma Conta Bancária - RF-010 / RF-011
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/59944150/e30167e5-23da-4b77-b4ea-dadd7a96f107)
 
-- CT001 – Poder inserir uma nova Conta Bancária - RF-010 / RF-011
+# Evidências de Testes de Softwares - CRUD Contas Bancárias
+
+## CT001 – Poder inserir uma nova Conta Bancária - RF-010 / RF-011
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/375c8def-6862-4298-8805-0a9d509b59dd)
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/1d0d5233-63e9-4ffb-a841-e29c1faeaece)
 
-- CT002 – Inserir uma nova Conta Bancária com campos inválidos - RF-010 / RF-011
+## CT002 – Inserir uma nova Conta Bancária com campos inválidos - RF-010 / RF-011
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/3397ec20-de20-45e5-bec1-ab2cfeac7eb6)
 
+## CT003 – Poder excluir uma Conta Bancária - RF-010 / RF-011
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/59944150/07cdb378-74b5-44da-95dd-868409c8e387)
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/59944150/5c6f6efe-bb7a-43ae-b3fb-6f083ca458cd)
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/59944150/d7d394b2-40ff-4e27-b8ae-045f84e536fb)
+
+## CT004 – Poder editar uma Classificação - RF-010 / RF-011
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/59944150/12f93860-d94e-4cb3-8664-0ebe42a6fa93)
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/59944150/18cf4481-d017-471a-9838-feda93ef1369)
+
+## CT005 – Poder visualizar uma Classificação - RF-010 / RF-011 
+ ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/59944150/7f71f900-2f57-4fb3-9d3a-b0b757091f36)
+
+ ## Evidências de Testes de Softwares - CRUD Contas Bancárias
+
+ ## CT001 – Poder inserir uma nova Classificação de Despesas ou Receita - RF-010 / RF-011  
+ ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/59944150/2310b129-0e42-42f4-8f07-575385158f7d)
+ ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/59944150/cdf284d6-e8c4-43c3-b0bd-171e20b72656) 
+ 
+ ## CT002 – Inserir uma nova Classificação com campos inválidos - RF-010 / RF-011 (não informa ao usuário o erro ao inserir)
+ ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/59944150/38ae725b-5195-4270-81d2-c7829eff30f8)
+
+ ## CT003 – Poder excluir uma Classificação - RF-010 / RF-011 (botão de excluir não funciona, e não informa nenhum possível erro)    
+ ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/59944150/e6130c39-1081-4a9b-9526-f1698c35cf17)
+
+ ## CT004 – Poder editar uma Classificação - RF-010 / RF-011 ( ao editar a data de inclusão pode ser manipulada, e redireciona para uma outra tela de classificação)
+ ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/59944150/4741fe57-ee84-4e0d-a7b5-f9f1a9aa60ff)
+ ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/59944150/afb157db-8227-46d1-9ff6-a8a336d3c7f1)
+
+ ## CT005 – Poder visualizar uma Classificação - RF-010 / RF-011 (não existe botão para exibir detalhes na tela de classificação)
+ ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/59944150/096110f9-09d4-4ca4-82ea-9bf69965233a)
+ 
+
+# Plano de Testes de Software (Em pares)
+
+Teste da tela de Funcionários | Feita por Douglas Delareti Simões | Testes feitos por César Luis Costa Moreira
 
 
+## Objetivo
+
+Garantir a funcionalidade, confiabilidade e segurança das telas de: 
+- Implementar controle da inclusão, deleção e edição de funcionários
+
+Os testes funcionais a serem realizados no aplicativo são descritos a seguir:  
  
+| Caso de Teste           | CT001 – Criar novo funcionário                                                                                             |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|Pre Condições            | Estar na tela de Funcionários       | 
+|Procedimento             | 1. No menu selecione a opção “Funcionários”. |
+|                         | 2. Na tela Funcionários, clique no botão “Cadastrar Funcionário”. |
+|                         | 3. Na tela de cadastro preencher todas as informações necessárias. |
+|                         | 4. Clicar em “Confirmar”. |
+|                         | 5. Caso deseje retornar para a tela inicial, clique em "Voltar". |
+|Resultado Esperado       | O novo funcionário deve ser cadastrada com sucesso.                                                                       |
+|Dados de Entrada         | Informações solicitadas no campo de cadastro.  |
+
+
+| Caso de Teste           | CT002 – Cadastrar novo funcionário com o número de Celular no formato incorreto                                                      |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|Pre Condições            | Estar na tela de Funcionários      | 
+|Procedimento             | 1. No menu selecione a opção “Funcionários”. |
+|                         | 2. Na tela Empresas Parceiras, clique no botão “Cadastrar Funcionário”. |
+|                         | 3. Na tela de cadastro preencher com informações invalidas ou vazias o campo de celular. |
+|                         | 4. Clicar em Confirmar. |
+|Resultado Esperado       | Devem ser exibidas mensagens de erro na tela indicando campos em branco ou dados inválidos.                                                                      |
+|Dados de Entrada         | Informações em branco ou dados inválidos.  |
+
+| Caso de Teste           | CT003 – Cadastrar novo funcionário com o campo CPF em branco ou no formato incorreto                                                  |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|Pre Condições            | Estar na tela de Funcionários      | 
+|Procedimento             | 1. No menu selecione a opção “Funcionários”. |
+|                         | 2. Na tela Empresas Parceiras, clique no botão “Cadastrar Funcionário”. |
+|                         | 3. Na tela de cadastro preencher com informações invalidas ou vazias o campo de CPF. |
+|                         | 4. Clicar em Confirmar. |
+|Resultado Esperado       | Devem ser exibidas mensagens de erro na tela indicando campos em branco ou dados inválidos.                                                                      |
+|Dados de Entrada         | Informações em branco ou dados inválidos.  |
+
+| Caso de Teste           | CT004 – Cadastrar novo funcionário com os campos em branco                                                 |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|Pre Condições            | Estar na tela de Funcionários      | 
+|Procedimento             | 1. No menu selecione a opção “Funcionários”. |
+|                         | 2. Na tela Funcionários, clique no botão “Cadastrar Funcionário”. |
+|                         | 3. Na tela de cadastro preencher com informações vazias nos campos. |
+|                         | 4. Clicar em Confirmar. |
+|Resultado Esperado       | Devem ser exibidas mensagens de erro na tela indicando campos em branco ou dados inválidos.                                                                      |
+|Dados de Entrada         | Informações em branco ou dados inválidos.  |
+
+| Caso de Teste           | CT005 – Visualizar os funcionários cadastrados                                              |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|Pre Condições            | Estar na tela de Funcionários      | 
+|Procedimento             | 1. No menu selecione a opção “Funcionários”. |
+|Resultado Esperado       | Devem ser exibidas mensagens de erro na tela todos os funcionários cadastrados no banco de dados.                                                                      |
+|Dados de Entrada         | Informações em branco ou dados inválidos.  |
+
+
+| Caso de Teste           | CT006 – Editar funcionário                                                                                             |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|Pre Condições            | Estar na tela de Funcionários      | 
+|Procedimento             | 1. No menu selecione a opção “Funcionários”. |
+|                         | 2. Na tela Funcionários, clique no botão Editar Funcionário”. |
+|                         | 3. Na tela de editar, preencher com as informações que deseja alterar no funcionário. |
+|                         | 4. Clicar em Confirmar. |
+|Resultado Esperado       | Os dados devem ser alterados e aparecer na tela principal atualizados.                                                                      |
+|Dados de Entrada         | Informações solicitadas no campo de edição.  |
+
+
+| Caso de Teste           | CT007 – Editar funcionário com campo em branco ou inválido                                                                                     |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|Pre Condições            | Estar na tela de Funcionários      | 
+|Procedimento             | 1. No menu selecione a opção “Funcionários”. |
+|                         | 2. Na tela Funcionários, clique no botão Editar Funcionário”. |
+|                         | 3. Na tela de editar, preencher com as informações inválidas ou campos em branco. |
+|                         | 4. Clicar em Confirmar. |
+|Resultado Esperado       | Um erro deve aparecer na tela mostrando os campos vazios e/ou inválidos.                                                                      |
+|Dados de Entrada         | Informações em branco ou dados inválidos.  |
+
+
+| Caso de Teste           | CT008 – Excluir funcionário cadastrado                                                                                    |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|Pre Condições            | Estar na tela de Funcionários      | 
+|Procedimento             | 1. No menu selecione a opção “Funcionários”. |
+|                         | 2. Na tela Funcionários, clique no botão Excluir Funcionário”. |
+|                         | 4. Clicar em Excluir. |
+|Resultado Esperado       | Excluir o usuário da tabela.                                                                      |
+|Dados de Entrada         | N/A |
+
  
+# Evidências de Testes de Software - Funcionários
+
+## CT001 – Criar novo funcionário
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Home%20Funcion%C3%A1rios.png)
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Tela%20de%20Cadastro.png)
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Evidencia%20cadastro%20feito.png)
+
+## CT002 – Cadastrar novo funcionário com o número de Celular no formato incorreto
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Home%20Funcion%C3%A1rios.png)
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Cadastro%20-%20Erro%20Celular.png)
+
+## CT003 – Cadastrar novo funcionário com o campo CPF em branco ou no formato incorreto  
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Home%20Funcion%C3%A1rios.png)
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Tela%20CPF%20invalido.png)
+
+## CT004 – Cadastrar novo funcionário com os campos em branco
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Home%20Funcion%C3%A1rios.png)
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Cadastro%20-%20Erro%20campo%20vazio.png)
+
+## CT005 – Visualizar os funcionários cadastrados
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Evidencia%20cadastro%20feito.png)
+
+## CT006 – Editar funcionário
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Evidencia%20cadastro%20feito.png)
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Tela%20Editar%20Funcion%C3%A1rio.png)
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Evidencia%20Funcionario%20Editado.png)
+
+## CT007 – Editar funcionário com campo em branco ou inválido  
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Evidencia%20cadastro%20feito.png)
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Editar%20-%20campo%20errado%20ou%20vazio.png)
+
+## CT008 – Excluir funcionário cadastrado   
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Evidencia%20cadastro%20feito.png)
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Tela%20Excluir.png)
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Evidencia%20Funcion%C3%A1rio%20Exclu%C3%ADdo.png)
+
+
+ # Plano de Testes de Software (Em Pares)
+##	Objetivo
+Garantir a funcionalidade, confiabilidade e segurança nas telas de:
+•	Receitas (inicio)
+
+##	Ferramentas utilizadas para os testes
+•	Visual Studio
+•	Navegador Google Chrome
+
+##	Responsáveis pelos testes e pelas funcionalidades desenvolvidas
+Pedro Ertal, realizando testes nas funcionalidades desenvolvidas por: Karinne Massensini
+
+##	Testes Unitários realizados
+Os testes funcionais a serem realizados dentro do sistema Libertese são descritos a seguir:
+
+| Caso de Teste           |	Receita |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+| Requisitos Associados |	RF-011	Permitir cadastro de receita |
+| Objetivo do teste |	Verificar se os dados inseridos na tabela retornam na tela |
+| Passos e Procedimento |	Acessar a tela de Receitas pelo menu lateral |
+| Resultado esperado |	Retornar page receita estilizada  |
+| Retorno  | ok  |
+
+| Caso de Teste           |	Create new Receita |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+| Requisitos Associados |	RF-011	Permitir cadastro de receita |
+| Objetivo do teste |	Verificar CRUD de receitas |
+| Passos e Procedimento |	Acessar a tela de CREATE receita clicando no botão |
+| Resultado esperado |	Retornar a page de create e salvar dados|
+| Retorno  | Não é possivel salvar os dados, pois a um erro no item status |
+
+## Evidências de Testes de Softwares
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/60409021/95466d34-ef28-4cbd-81f3-d316b1f32864)
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/60409021/685cdfe5-b5ec-40f2-89e2-24917c5cb59a)
+
+
+## Objetivo
+
+Garantir a funcionalidade, confiabilidade e segurança das telas de: 
+- CRUD Produtos - RF 005
+
+
+## Ferramentas utilizadas para os testes
+- Visual studio 2021
+- Google Chrome
+
+## Responsáveis pelos testes e pelas funcionalidades desenvolvidas
+- Responsável pelas telas a seguir: Thaís Gurgel
+- Telas desenvolvidas: Produtos
+- Testadas por: 
+- Funcionalidades testadas: 
+
+### CT001 - Criar novo Produto
+
+| Casos de Teste      | CT001 - Criar novo Produto                                                                                   |
+|---------------------|--------------------------------------------------------------------------------------------------------------|
+| **Pré Condições**   | Estar na tela de Produtos                                                                                   |
+| **Procedimento**    | 1. No menu, selecionar a opção “Produtos”.                                                                  |
+|                     | 2. Na tela de Produto, selecionar a opção “Novo Produto”.                                                    |
+|                     | 3. Na tela de Novo Produto, preencher todas as informações necessárias.                                      |
+|                     | 4. Clicar em “Salvar”.                                                                                      |
+| **Resultado Esperado** | O novo produto deve ser cadastrado e deverá constar na tabela de produtos.                                   |
+| **Dados de Entrada** | Informações solicitadas nos campos de cadastro.                                                              |
+
+### CT002 - Criar produto com campos em branco ou inválidos
+
+| Casos de Teste      | CT002 - Criar produto com campos em branco ou inválidos.                                                     |
+|---------------------|--------------------------------------------------------------------------------------------------------------|
+| **Pré Condições**   | Estar na tela de Produtos                                                                                   |
+| **Procedimento**    | 1. No menu, selecionar a opção “Produtos”.                                                                  |
+|                     | 2. Na tela de Produto, selecionar a opção “Novo Produto”.                                                    |
+|                     | 3. Na tela de Novo Produto deixe um ou mais campos em branco ou insira dados inválidos.                      |
+|                     | 4. Clicar em “Salvar”.                                                                                      |
+| **Resultado Esperado** | Devem ser exibidas mensagens de erro na tela indicando campos em branco ou inválidos.                       |
+| **Dados de Entrada** | Informações em branco ou inválidos.                                                                         |
+
+### CT003 - Visualizar Produto
+
+| Casos de Teste      | CT003 - Visualizar Produto                                                                                   |
+|---------------------|--------------------------------------------------------------------------------------------------------------|
+| **Pré Condições**   | Estar na tela de Produtos                                                                                   |
+| **Procedimento**    | 1. No menu, selecionar a opção “Produtos”.                                                                  |
+|                     | 2. Na tela de Produto, selecionar a opção “Visualizar Produto”.                                             |
+| **Resultado Esperado** | Todas as informações corretas referentes ao produto selecionado devem ser exibidas.                        |
+|                     |                                                                                                              |
+
+### CT004 - Editar produto
+
+| Casos de Teste      | CT004 - Editar produto.                                                                                     |
+|---------------------|--------------------------------------------------------------------------------------------------------------|
+| **Pré Condições**   | Estar na tela de Produtos                                                                                   |
+| **Procedimento**    | 1. No menu, selecionar a opção “Produtos”.                                                                  |
+|                     | 2. Na tela de Produto, selecionar a opção “Editar Produto”.                                                 |
+|                     | 3. Na tela de Editar Produto, edite a informação desejada.                                                   |
+|                     | 4. Clicar em “Salvar”.                                                                                      |
+| **Resultado Esperado** | As informações editadas devem ser atualizadas com sucesso e a data de atualização deve constar na tabela de produtos. |
+| **Dados de Entrada** | Informações que deseja atualizar.                                                                          |
+
+### CT005 - Editar produto com campos em branco ou inválidos
+
+| Casos de Teste      | CT005 - Editar produto com campos em branco ou inválidos.                                                   |
+|---------------------|--------------------------------------------------------------------------------------------------------------|
+| **Pré Condições**   | Estar na tela de Produtos                                                                                   |
+| **Procedimento**    | 1. No menu, selecionar a opção “Produtos”.                                                                  |
+|                     | 2. Na tela de Produto, selecionar a opção “Editar Produto”.                                                 |
+|                     | 3. Na tela de Editar Produto, deixe um ou mais campos em branco ou insira dados inválidos.                  |
+|                     | 4. Clicar em “Salvar”.                                                                                      |
+| **Resultado Esperado** | Devem ser exibidas mensagens de erro na tela indicando campos em branco ou inválidos.                       |
+| **Dados de Entrada** | Informações em branco ou inválidos.                                                                         |
+
+### CT006 - Deletar produto
+
+| Casos de Teste      | CT006 - Deletar produto.                                                                                    |
+|---------------------|--------------------------------------------------------------------------------------------------------------|
+| **Pré Condições**   | Estar na tela de Produtos                                                                                   |
+| **Procedimento**    | 1. No menu, selecionar a opção “Produtos”.                                                                  |
+|                     | 2. Na tela de Produto, selecionar a opção “Deletar Produto”.                                                |
+|                     | 3. Na mensagem de confirmação, clicar em “Deletar” confirmando assim a remoção do registro.               |
+| **Resultado Esperado** | O produto selecionado deve ser removido da lista de produtos na página inicial.                            |
+|                     |                                                                                                              |
+
+## Objetivo
+
+Garantir a funcionalidade, confiabilidade e segurança das telas de: 
+- Registro de Vendas - RF 014
+
+
+## Ferramentas utilizadas para os testes
+- Visual studio 2021
+- Google Chrome
+
+## Responsáveis pelos testes e pelas funcionalidades desenvolvidas
+- Responsável pelos telas a seguir: Thaís Gurgel
+- Telas desenvolvidas: Registro de Vendas
+- Testadas por: 
+- Funcionalidades testadas: 
+
+
+### CT001 - Registrar Nova Venda
+
+| Casos de Teste      | CT001 - Registrar Nova Venda                                                                               |
+|---------------------|------------------------------------------------------------------------------------------------------------|
+| **Pré Condições**   | Estar na tela de Vendas                                                                                    |
+| **Procedimento**    | 1. No menu, selecionar a opção “Venda”.                                                                    |
+|                     | 2. Na tela de Venda, selecionar a opção “Novo Registro Venda”.                                             |
+|                     | 3. Na tela de Nova Venda, registrar todas as informações necessárias.                                       |
+|                     | 4. Clicar em “Confirmar”.                                                                                  |
+| **Resultado Esperado** | A nova venda deve ser registrada com sucesso e deverá constar na lista de vendas.                          |
+| **Dados de Entrada** | Informações necessárias para o registro da venda.                                                           |
+
+### CT002 - Registrar Nova Venda com Campos em Branco ou Inválidos
+
+| Casos de Teste      | CT004 - Registrar Nova Venda com Campos em Branco ou Inválidos                                             |
+|---------------------|------------------------------------------------------------------------------------------------------------|
+| **Pré Condições**   | Estar na tela de Vendas                                                                                    |
+| **Procedimento**    | 1. No menu, selecionar a opção “Venda”.                                                                    |
+|                     | 2. Na tela de Venda, selecionar a opção “Novo Registro Venda”.                                             |
+|                     | 3. Na tela de Nova Venda, deixar um ou mais campos em branco ou inserir dados inválidos.                   |
+|                     | 4. Clicar em “Confirmar”.                                                                            |
+| **Resultado Esperado** | Devem ser exibidas mensagens de erro indicando campos em branco ou inválidos.                             |
+| **Dados de Entrada** | Informações em branco ou inválidos.                                                                        |
+
+
+
+### CT003 - Visualizar Venda
+
+| Casos de Teste      | CT002 - Visualizar Venda                                                                                   |
+|---------------------|------------------------------------------------------------------------------------------------------------|
+| **Pré Condições**   | Estar na tela de Vendas                                                                                    |
+| **Procedimento**    | 1. No menu, selecionar a opção “Venda”.                                                                    |
+|                     | 2. Na tela de Venda, selecionar a opção “Visualizar Venda”.                                                |
+|                     | 3. Selecionar a venda desejada para visualização.                                                          |
+| **Resultado Esperado** | Todas as informações referentes à venda selecionada devem ser exibidas corretamente.                      |
+|                     |                                                                                                            |
+
+### CT004 - Cancelar Venda
+
+| Casos de Teste      | CT003 - Cancelar Venda                                                                                     |
+|---------------------|------------------------------------------------------------------------------------------------------------|
+| **Pré Condições**   | Estar na tela de Vendas                                                                                    |
+| **Procedimento**    | 1. No menu, selecionar a opção “Venda”.                                                                    |
+|                     | 2. Na tela de Venda, selecionar a opção “Cancelar Venda”.                                                  |
+|                     | 3. Confirmar a operação de cancelamento.                                                                   |
+| **Resultado Esperado** | A venda selecionada deve ser cancelada e na lista de vendas deverá constar status cancelado.               |
+|                     |                                                                                                            |
+
+
+
+
+
+
 
 
 

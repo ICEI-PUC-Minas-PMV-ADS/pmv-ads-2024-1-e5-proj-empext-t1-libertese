@@ -9,6 +9,10 @@
     <link href="~/scaffold/style.css" rel="stylesheet">
 </head>
 
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+
 @{
     string currentController = ViewContext.RouteData.Values["controller"].ToString();
 }
@@ -28,15 +32,15 @@
                         <ion-icon name="home-outline" class="nav__icon"></ion-icon>
                         <span asp-controller="HomeController"  asp-action="Index" class="nav__name">Início</span>
                     </a>
-                    <a asp-controller="Funcionarios" class="@("nav__link" + (currentController == "Funcionarios" ? "active" : ""))" class="nav__link active">
+                    <a asp-controller="Funcionarios" class="@("nav__link " + (currentController == "Funcionarios" ? "active" : ""))" class="nav__link active">
                         <ion-icon name="people-outline" class="nav__icon"></ion-icon>
                         <span asp-action="Index" class="nav__name">Funcionários</span>
                     </a>
-                    <a asp-controller="Receitas" class="@("nav__link" + (currentController == "Receitas" ? "active" : ""))" class="nav__link active">
+                    <a asp-controller="Receitas" class="@("nav__link " + (currentController == "Receitas" ? "active" : ""))" class="nav__link active">
                         <ion-icon name="cash-outline" class="nav__icon"></ion-icon>
                         <span asp-action="Index" class="nav__name">Receita</span>
                     </a>
-                    <a asp-controller="Despesas" class="@("nav__link" + (currentController == "Despesas" ? "active" : ""))" class="nav__link active">
+                    <a asp-controller="Despesas" class="@("nav__link " + (currentController == "Despesas" ? "active" : ""))" class="nav__link active">
                         <ion-icon name="wallet-outline" class="nav__icon"></ion-icon>
                         <span asp-action="Index" class="nav__name">Despesa</span>
                     </a>
@@ -44,11 +48,11 @@
                         <ion-icon name="file-tray-stacked-outline" class="nav__icon"></ion-icon>
                         <span asp-action="Index" class="nav__name">Produtos</span>
                     </a>
-                    <a asp-controller="Vendas" class="@("nav__link" + (currentController == "Vendas" ? "active" : ""))" class="nav__link active">
+                    <a asp-controller="Vendas" class="@("nav__link " + (currentController == "Vendas" ? "active" : ""))" class="nav__link active">
                         <ion-icon name="calculator-outline" class="nav__icon"></ion-icon>
                         <span asp-action="Index" class="nav__name">Vendas</span>
                     </a>
-                    <a asp-controller="Fornecedores" class="@("nav__link" + (currentController == "Fornecedores" ? "active" : ""))" class="nav__link active">
+                    <a asp-controller="Fornecedores" class="@("nav__link " + (currentController == "Fornecedores" ? "active" : ""))" class="nav__link active">
                         <ion-icon name="cart-outline" class="nav__icon"></ion-icon>
                         <span asp-action="Index" class="nav__name">Fornecedores</span>
                     </a>

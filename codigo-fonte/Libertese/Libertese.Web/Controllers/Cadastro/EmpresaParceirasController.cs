@@ -54,7 +54,7 @@ namespace Libertese.Web.Controllers.Cadastro
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Nome,Telefone,Cnpj,ValorAporte, ValorAdicional, Email,Id,DataCriacao,DataAtualizacao")] EmpresaParceira empresaParceira)
+        public async Task<IActionResult> Create([Bind("Id,Nome,Cnpj,DataCriacao,DataAtualizacao")] EmpresaParceira empresaParceira)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace Libertese.Web.Controllers.Cadastro
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Nome,Telefone,Cnpj,ValorAporte, ValorAdicional, Email,Id,DataCriacao,DataAtualizacao")] EmpresaParceira empresaParceira)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,Cnpj,DataCriacao,DataAtualizacao")] EmpresaParceira empresaParceira)
         {
             if (id != empresaParceira.Id)
             {

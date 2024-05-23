@@ -90,7 +90,8 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 |RF-011| Permitir cadastro de receita | MÉDIA |
 |RF-012| Implementar fluxo de caixa  | ALTA |
 |RF-013| Implementar calculadora de gestão financeira | BAIXA |
-|RF-014| Permitir gerar relatórios de venda |  BAIXA | 
+|RF-014| Permitir registro de venda | MÉDIA |
+|RF-015| Permitir gerar relatórios de venda |  BAIXA | 
 
 ### Requisitos não Funcionais
 
