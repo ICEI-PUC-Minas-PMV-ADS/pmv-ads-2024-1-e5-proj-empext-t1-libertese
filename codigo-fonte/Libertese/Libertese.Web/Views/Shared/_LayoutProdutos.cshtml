@@ -14,7 +14,7 @@
 }
 
 <body id="body-pd" class="body-pd">
-    <div class="l-navbar expander" id="navbar">
+    <div class="l-navbar expander" id="navbar" position="fixed">
         <nav class="nav">
             <div>
                 <div id="without-logo" class="nav__brand expander-logo">
@@ -52,13 +52,13 @@
                         <ion-icon name="cart-outline" class="nav__icon"></ion-icon>
                         <span asp-action="Index" class="nav__name">Fornecedores</span>
                     </a>
-                    <a asp-controller="EmpresaParceiras" class="@("nav__link " + (currentController == "EmpresaParceiras" ? "active" : ""))" class="nav__link active">
-                        <ion-icon name="wallet-outline"></ion-icon>
+                    <a asp-controller="EmpresasParceiras" class="@("nav__link " + (currentController == "EmpresasParceiras" ? "active" : ""))" class="nav__link active">
+                        <ion-icon name="people-circle-outline"></ion-icon>
                         <span asp-action="Index" class="nav__name">Empresas Parceiras</span>
                     </a>
                     <a asp-controller="Relatorios" class="@("nav__link " + (currentController == "Relatorios" ? "active" : ""))" class="nav__link active">
                         <ion-icon name="podium-outline"></ion-icon>
-                        <span asp-action="Index" class="nav__name">Empresas Parceiras</span>
+                        <span asp-action="Index" class="nav__name">Relatórios</span>
                     </a>
                 </div>
             </div>
