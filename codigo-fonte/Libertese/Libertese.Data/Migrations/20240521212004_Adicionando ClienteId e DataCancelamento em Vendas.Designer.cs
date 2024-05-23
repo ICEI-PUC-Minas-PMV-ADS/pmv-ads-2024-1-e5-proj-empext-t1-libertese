@@ -3,6 +3,7 @@ using System;
 using Libertese.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,13 +12,15 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Libertese.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240521212004_Adicionando ClienteId e DataCancelamento em Vendas")]
+    partial class AdicionandoClienteIdeDataCancelamentoemVendas
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.5")
+                .HasAnnotation("ProductVersion", "8.0.4")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
@@ -43,6 +46,12 @@ namespace Libertese.Data.Migrations
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasColumnType("text");
+
+                    b.Property<decimal>("ValorAdicional")
+                        .HasColumnType("numeric");
+
+                    b.Property<decimal>("ValorAporte")
+                        .HasColumnType("numeric");
 
                     b.HasKey("Id");
 
@@ -296,6 +305,10 @@ namespace Libertese.Data.Migrations
                     b.Property<DateTimeOffset?>("DataVencimento")
                         .HasColumnType("timestamp with time zone");
 
+                    b.Property<string>("Descricao")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<int>("FormaPagamentoId")
                         .HasColumnType("integer");
 
@@ -306,6 +319,9 @@ namespace Libertese.Data.Migrations
                         .HasColumnType("text");
 
                     b.Property<int>("Status")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("Tipo")
                         .HasColumnType("integer");
 
                     b.Property<decimal>("Valor")
@@ -664,15 +680,11 @@ namespace Libertese.Data.Migrations
                     b.Property<DateTime?>("DataAtualizacao")
                         .HasColumnType("timestamp without time zone");
 
-                    b.Property<DateTime?>("DataCancelamento")
+                    b.Property<DateTime>("DataCancelamento")
                         .HasColumnType("timestamp without time zone");
 
                     b.Property<DateTime?>("DataCriacao")
                         .HasColumnType("timestamp without time zone");
-
-                    b.Property<string>("Identificador")
-                        .IsRequired()
-                        .HasColumnType("text");
 
                     b.Property<int>("ProdutoId")
                         .HasColumnType("integer");
