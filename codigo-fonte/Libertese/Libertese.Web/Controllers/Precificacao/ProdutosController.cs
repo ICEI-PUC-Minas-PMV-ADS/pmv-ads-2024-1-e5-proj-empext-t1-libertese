@@ -11,9 +11,11 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 using Libertese.ViewModels;
 using System.Text.RegularExpressions;
 using Newtonsoft.Json;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Libertese.Web.Controllers.Precificacao
 {
+    [Authorize(Policy = "Produtos")]
     public class ProdutosController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -23,7 +25,6 @@ namespace Libertese.Web.Controllers.Precificacao
             _context = context;
         }
 
-        // GET: Produtos
         public async Task<IActionResult> Index()
         {
 

@@ -8,9 +8,11 @@ using Microsoft.EntityFrameworkCore;
 using Libertese.Data;
 using Libertese.Domain.Entities.Precificacao;
 using Libertese.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Libertese.Web.Controllers.Precificacao
 {
+    [Authorize(Policy = "Categorias")]
     public class CategoriasController : Controller
     {
         private readonly ApplicationDbContext _context;

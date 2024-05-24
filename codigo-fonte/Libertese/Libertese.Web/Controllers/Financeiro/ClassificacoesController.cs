@@ -8,9 +8,13 @@ using Microsoft.EntityFrameworkCore;
 using Libertese.Data;
 using Libertese.Domain.Entities.Financeiro;
 using Libertese.Domain.Enums;
+using Libertese.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Libertese.Web.Controllers.Financeiro
 {
+
+    [Authorize(Policy = "Classificacoes")]
     public class ClassificacoesController : Controller
     {
         private readonly ApplicationDbContext _context;

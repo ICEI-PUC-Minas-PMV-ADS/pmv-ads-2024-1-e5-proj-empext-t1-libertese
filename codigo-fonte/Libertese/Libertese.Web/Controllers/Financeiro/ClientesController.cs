@@ -8,9 +8,12 @@ using Microsoft.EntityFrameworkCore;
 using Libertese.Data;
 using Libertese.Domain.Entities.Financeiro;
 using Libertese.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Libertese.Web.Controllers.Financeiro
 {
+
+    [Authorize(Policy = "Clientes")]
     public class ClientesController : Controller
     {
         private readonly ApplicationDbContext _context;
