@@ -9,9 +9,12 @@ using Libertese.Data;
 using Libertese.Domain.Entities.Financeiro;
 using Libertese.Domain.Entities.Precificacao;
 using Libertese.Domain.Enums;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Libertese.Web.Controllers.Financeiro
 {
+
+    [Authorize(Policy = "Fornecedores")]
     public class FornecedoresController : Controller
     {
         private readonly ApplicationDbContext _context;

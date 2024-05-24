@@ -11,9 +11,11 @@ using Libertese.ViewModels;
 using Libertese.Domain.Entities.Financeiro;
 using Libertese.Domain.Entities.Precificacao;
 using Newtonsoft.Json;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Libertese.Web.Controllers.Vendas
 {
+    [Authorize(Policy = "Vendas")]
     public class VendasController : Controller
     {
         private readonly ApplicationDbContext _context;

@@ -5,6 +5,7 @@ using Libertese.Data.Repositories.Interfaces;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
 using System.Security.Claims;
+using Microsoft.Extensions.Options;
 
 namespace Libertese.Web.Controllers.Cadastro
 {
@@ -54,13 +55,32 @@ namespace Libertese.Web.Controllers.Cadastro
                 var claims = new List<Claim>
 			    {
 			    	new Claim(ClaimTypes.Name, user.Email),
+                    new Claim("EmpresasParceiras", "EMPP"),
+                    new Claim("Funcionarios", "FUNC"),
+                    new Claim("Classificacoes", "CLAF"),
+                    new Claim("Clientes", "CLIE"),
+                    new Claim("ContaBancarias", "COBA"),
+                    new Claim("Despesas", "DESP"),
+                    new Claim("FormaPagamentos", "FOPA"),
+                    new Claim("Fornecedores", "FORN"),
+                    new Claim("Receitas", "RECE"),
+                    new Claim("CapacidadeProdutivas", "CAPP"),
+                    new Claim("Categorias", "CATE"),
+                    new Claim("Materiais", "MATE"),
+                    new Claim("Precos", "PREC"),
+                    new Claim("Produtos", "PROD"),
+                    new Claim("Vendas", "VEND"),
+                    new Claim("Rateios", "RATE"),
+                    new Claim("Relatorios", "RELA"),
+                    new Claim("Vendas", "VEND"),
                 };
 
-				var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
 				var authProperties = new AuthenticationProperties
 				{
 					IsPersistent = true,
-				};
+                    ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(60)
+                };
 
 				await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
 					new ClaimsPrincipal(claimsIdentity), authProperties);
