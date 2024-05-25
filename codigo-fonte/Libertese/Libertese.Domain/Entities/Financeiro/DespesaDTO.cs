@@ -11,6 +11,7 @@ namespace Libertese.Domain.Entities.Financeiro
     {
         public required string FornecedorName { get; set; }
         public required string FormaPagamentoName { get; set; }
+        public required string ContaBancariaName { get; set; }
         public required string Classificacao { get; set; }
         public required string Observacao { get; set; }
         public required string Status { get; set; }

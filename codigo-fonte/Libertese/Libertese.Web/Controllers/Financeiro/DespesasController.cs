@@ -31,6 +31,7 @@ namespace Libertese.Web.Controllers.Financeiro
             List<Fornecedor> listaFornecedores = await GetListaFornecedores();
             List<Classificacao> listaClassificacoes = await GetListaClassificacoesDespesas();
             List<FormaPagamento> listaFormaPagamento = await GetListaFormaPagamento();
+            List<ContaBancaria> listaContaBancaria = await GetListaContaBancaria();
             List<DespesaDTO> listaDespesaDTO = listaDespesas.Select(despesa => new DespesaDTO
             {
                 Id = despesa.Id,
@@ -43,6 +44,7 @@ namespace Libertese.Web.Controllers.Financeiro
                 DataAtualiza = despesa.DataAtualizacao?.ToString("dd/MM/yyyy") ?? "Sem Data",
                 Classificacao = listaClassificacoes.Find(x => x.Id == despesa.ClassificacaoId)?.Descricao ?? "Sem Classificação",
                 FornecedorName = listaFornecedores.Find(x => x.Id == despesa.FornecedorId)?.Nome ?? "Sem Fornecedor",
+                ContaBancariaName = listaContaBancaria.Find(x => x.Id == despesa.ContaBancariaId)?.Nome ?? "Sem Conta Bancária",
 
 
             }).ToList();
@@ -55,6 +57,8 @@ namespace Libertese.Web.Controllers.Financeiro
             List<Classificacao> listaClassificacoes = await GetListaClassificacoesDespesas();
             List<Fornecedor> listaFornecedores = await GetListaFornecedores();
             List<FormaPagamento> listaFormaPagamento = await GetListaFormaPagamento();
+            List<ContaBancaria> listaContaBancaria = await GetListaContaBancaria();
+            ViewBag.ContaBancaria = listaFormaPagamento;
             ViewBag.FormaPagamento = listaFormaPagamento;
             ViewBag.Fornecedor = listaFornecedores;
             ViewBag.Classificacao = listaClassificacoes;
@@ -77,6 +81,8 @@ namespace Libertese.Web.Controllers.Financeiro
             List<Classificacao> listaClassificacoes = await GetListaClassificacoesDespesas();
             List<Fornecedor> listaFornecedores = await GetListaFornecedores();
             List<FormaPagamento> listaFormaPagamento = await GetListaFormaPagamento();
+            List<ContaBancaria> listaContaBancaria = await GetListaContaBancaria();
+            ViewBag.ContaBancaria = listaContaBancaria;
             ViewBag.FormaPagamento = listaFormaPagamento;
             ViewBag.Fornecedor = listaFornecedores;
             ViewBag.Classificacao = listaClassificacoes;
@@ -89,6 +95,8 @@ namespace Libertese.Web.Controllers.Financeiro
             List<Classificacao> listaClassificacoes = await GetListaClassificacoesDespesas();
             List<Fornecedor> listaFornecedores = await GetListaFornecedores();
             List<FormaPagamento> listaFormaPagamento = await GetListaFormaPagamento();
+            List<ContaBancaria> listaContaBancaria = await GetListaContaBancaria();
+            ViewBag.ContaBancaria = listaContaBancaria;
             ViewBag.FormaPagamento = listaFormaPagamento;
             ViewBag.Fornecedor = listaFornecedores;
             ViewBag.Classificacao = listaClassificacoes;
@@ -140,6 +148,8 @@ namespace Libertese.Web.Controllers.Financeiro
             List<Classificacao> listaClassificacoes = await GetListaClassificacoesDespesas();
             List<Fornecedor> listaFornecedores = await GetListaFornecedores();
             List<FormaPagamento> listaFormaPagamento = await GetListaFormaPagamento();
+            List<ContaBancaria> listaContaBancaria = await GetListaContaBancaria();
+            ViewBag.ContaBancaria = listaContaBancaria;
             ViewBag.FormaPagamento = listaFormaPagamento;
             ViewBag.Fornecedor = listaFornecedores;
             ViewBag.Classificacao = listaClassificacoes;
@@ -177,6 +187,10 @@ namespace Libertese.Web.Controllers.Financeiro
         private async Task<List<Fornecedor>> GetListaFornecedores()
         {
             return await _context.Fornecedores.ToListAsync();
+        }
+        private async Task<List<ContaBancaria>> GetListaContaBancaria()
+        {
+            return await _context.ContasBancarias.ToListAsync();
         }
 
         private string convertDespesaStatusToNome(DespesaStatus despesaStatus)
