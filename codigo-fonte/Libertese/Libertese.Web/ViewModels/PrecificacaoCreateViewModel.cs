@@ -34,13 +34,16 @@ namespace Libertese.ViewModels
         [Display(Name = "Produto")]
         public int ProdutoId { get; set; }
 
+        [Display(Name = "Quantidade")]
+        public int ProdutoQuantidade { get; set; }
+
         [Display(Name = "Produtos")]
         [Required(ErrorMessage = "Produtos são obrigatórios.")]
         [MinLength(1, ErrorMessage = "Escolha pelo menos um produto para compor a precificação.")]
-        public List<PrecificacaoDespesaViewModel> Despesas { get; set; } = new List<PrecificacaoDespesaViewModel>();
+        public List<PrecificacaoProdutoViewModel> Produtos { get; set; } = new List<PrecificacaoProdutoViewModel>();
 
         [Required(ErrorMessage = "Incluir Produtos é obrigatório.")]
-        public string? ProdutoJson { get; set; }
+        public string? ProdutosJson { get; set; }
 
         // Composição de produtos da precificação (fim)
 
@@ -61,10 +64,10 @@ namespace Libertese.ViewModels
         [Display(Name = "Despesas")]
         [Required(ErrorMessage = "Despesas são obrigatórios.")]
         [MinLength(1, ErrorMessage = "Escolha pelo menos uma despesa para compor a precificação.")]
-        public List<PrecificacaoDespesaViewModel> Produtos { get; set; } = new List<PrecificacaoDespesaViewModel>();
+        public List<PrecificacaoDespesaViewModel> Despesas { get; set; } = new List<PrecificacaoDespesaViewModel>();
 
         [Required(ErrorMessage = "Incluir Despesas é obrigatório.")]
-        public string? DespesaJson { get; set; }
+        public string? DespesasJson { get; set; }
 
         // Composição de despesas da precificação (fim)
 

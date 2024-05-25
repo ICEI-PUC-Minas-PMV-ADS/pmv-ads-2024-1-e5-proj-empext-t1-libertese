@@ -1,0 +1,234 @@
+﻿@model Libertese.ViewModels.PrecificacaoCreateViewModel
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+
+
+<div class="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
+    <div class="mb-1">
+        <h4 class="text-xl md:text-xl text-slate-800 dark:text-slate-100 font-bold">Rateio</h4>
+    </div>
+    <div class="border-t border-slate-200 dark:border-slate-700">
+        <div class="space-y-8 mt-5">
+            <div>
+                <div class="bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700 mb-0">
+                    <header class="px-5 py-4">
+                        <h2 class="font-semibold text-slate-800 dark:text-slate-100">Produtos <span name="totalDeMateriais" id="totalDeMateriais" class="text-slate-400 dark:text-slate-500 font-medium">0</span></h2>
+                    </header>
+                    <div x-data="{ modalDeletarOpen: false, modalVisualizarOpen: false, tableIndex: 0 }">
+                        <div class="overflow-x-auto">
+                            <table id="materiaisTable" class="table-auto w-full dark:text-slate-300">
+                                <thead class="text-xs font-semibold uppercase text-slate-500 dark:text-slate-400 bg-slate-50 dark:bg-slate-900/20 border-t border-b border-slate-200 dark:border-slate-700">
+                                    <tr>
+                                        <th class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
+                                            <div class="font-semibold text-left">Código</div>
+                                        </th>
+                                        <th class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
+                                            <div class="font-semibold text-left">Nome</div>
+                                        </th>
+                                        <th class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
+                                            <div class="font-semibold text-left">Valor</div>
+                                        </th>
+                                        <th class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
+                                            <div class="font-semibold text-left">Ações</div>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-sm divide-y divide-slate-200 dark:divide-slate-700">
+                                    @for (var i = 0; i < Model.Materiais.Count; i++)
+                                    {
+                                        <tr>
+                                            <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap"><div class="font-medium text-sky-500">@Model.Materiais[i].Id</div></td>
+                                            <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap"><div class="font-medium text-slate-800 dark:text-slate-100">@Model.Materiais[i].Nome</div></td>
+                                            <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap"><div class="font-medium text-slate-800 dark:text-slate-100">R$ @Model.Materiais[i].Preco</div></td>
+                                            <td x-data="{ modalDeletarOpen: false, modalVisualizarOpen: false }" class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap w-px">
+                                                <div class="space-x-1">
+                                                    <button type="button" class="removeMaterial text-rose-500 hover:text-rose-600 rounded-full">
+                                                        <span class="sr-only">Deletar</span>
+                                                        <svg class="w-8 h-8 fill-current" viewBox="0 0 32 32">
+                                                            <path d="M13 15h2v6h-2zM17 15h2v6h-2z" />
+                                                            <path d="M20 9c0-.6-.4-1-1-1h-6c-.6 0-1 .4-1 1v2H8v2h1v10c0 .6.4 1 1 1h12c.6 0 1-.4 1-1V13h1v-2h-4V9zm-6 1h4v1h-4v-1zm7 3v9H11v-9h10z" />
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <span asp-validation-for="Materiais" class="text-xs mt-1 text-rose-500"></span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $("#SearchMaterial").autocomplete({
+        source: function (request, response) {
+            $.ajax({
+                url: '@Url.Action("SearchByText", "Materiais")',
+                dataType: "json",
+                data: { searchString: $("#SearchMaterial").val() },
+                success: function (data) {
+                    response($.map(data, function (item) {
+                        return { label: `${item.id} - ${item.nome}`, value: item, };
+                    }))
+                },
+                error: function (xhr, status, error) {
+                    alert("Erro ao buscar materiais, insira uma palavra valida!");
+                }
+            })
+        },
+        select: function (event, ui) {
+            $("#SearchMaterial").val(ui.item.label);
+            $("#MaterialId").val(ui.item.value.id);
+            $("#MaterialNome").val(ui.item.value.nome);
+            $("#MaterialQuantidade").val(ui.item.value.quantidade);
+            $("#MaterialPreco").val(ui.item.value.preco);
+            $("#MaterialValorTotal").val(ui.item.value.valorTotal);
+            $("#Material").val(ui.item.value);
+            return false;
+        }
+    })
+
+    $(document).ready(function () {
+        $("#addMaterial").click(function () {
+            var searchMaterial = $("#SearchMaterial").val();
+            var materialId = $("#MaterialId").val();
+            var nome = $("#MaterialNome").val();
+            var quantidade = $("#MaterialQuantidade").val();
+            var preco = $("#MaterialPreco").val();
+            var valorTotal = $("#MaterialValorTotal").val();
+            var material = $("#Material").val();
+
+            var materialIdExistente = false;
+            $("#materiaisTable tbody tr").each(function () {
+                var idExistente = $(this).attr("id");
+                if (idExistente === materialId) {
+                    materialIdExistente = true;
+                    return false;
+                }
+            });
+
+            if (materialIdExistente) {
+                alert("Por favor, escolha outro material o mesmo já existe na lista.");
+
+            } else if (materialId && nome && preco && quantidade && valorTotal) {
+
+
+
+                var rowCount = $("#materiaisTable tbody tr").length;
+
+                var newRow = `
+
+                                                                   <tr id="${materialId}">
+                                                                    <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
+                                                                                <div class="font-medium text-sky-500">${materialId}</div>
+
+                                                                    </td>
+                                                                    <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
+                                                                                    <div class="font-medium text-slate-800 dark:text-slate-100">${nome}</div>
+                                                                    </td>
+                                                                    <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
+                                                                            <div class="font-medium text-slate-800 dark:text-slate-100">${quantidade}</div>
+                                                                    </td>
+                                                                    <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
+                                                                                <div class="font-medium text-slate-800 dark:text-slate-100">R$ ${preco}</div>
+                                                                    </td>
+                                                                    <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
+                                                                                        <div class="font-medium text-slate-800 dark:text-slate-100">R$ ${parseFloat((quantidade * preco).toFixed(2))}</div>
+                                                                    </td>
+
+                                                                    <td x-data="{ modalDeletarOpen: false, modalVisualizarOpen: false }" class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap w-px">
+                                                                        <div class="space-x-1">
+                                                                                <button type="button" class="removeMaterial text-rose-500 hover:text-rose-600 rounded-full">
+                                                                                <span class="sr-only">Deletar</span>
+                                                                                <svg class="w-8 h-8 fill-current" viewBox="0 0 32 32">
+                                                                                    <path d="M13 15h2v6h-2zM17 15h2v6h-2z" />
+                                                                                    <path d="M20 9c0-.6-.4-1-1-1h-6c-.6 0-1 .4-1 1v2H8v2h1v10c0 .6.4 1 1 1h12c.6 0 1-.4 1-1V13h1v-2h-4V9zm-6 1h4v1h-4v-1zm7 3v9H11v-9h10z" />
+                                                                                </svg>
+                                                                            </button>
+                                                                        </div>
+                                                                    </td>
+                                                                                                         <input type="hidden" name="Materiais[${rowCount}].Id" value="${materialId} />
+                                                                                                         <input type="hidden" name="Materiais[${rowCount}].Nome" value="${nome} />
+                                                                                                     <input type="hidden" name="Materiais[${rowCount}].Quantidade" value="${quantidade} />
+                                                                                                        <input type="hidden" name="Materiais[${rowCount}].Preco" value="R$ ${preco} />
+                                                                                                        <input type="hidden"  name="Materiais[${rowCount}].ValorTotal" value="R$ ${quantidade * preco}  />
+
+                                                                </tr>`;
+                $("#materiaisTable tbody").append(newRow);
+
+                $("#MaterialId").val('');
+                $("#SearchMaterial").val('');
+                $("#MaterialNome").val('');
+                $("#MaterialQuantidade").val('');
+                $("#MaterialPreco").val('');
+                $("#MaterialValorTotal").val('');
+                $("#Material").val('');
+
+                var rows = $("#materiaisTable tbody tr");
+                var materiais = [];
+
+                for (var i = 0; i < rows.length; i++) {
+                    var cells = rows[i].getElementsByTagName('td');
+                    var material = {
+                        Id: cells[0].innerText,
+                        Nome: cells[1].innerText,
+                        Quantidade: cells[2].innerText,
+                        Preco: cells[3].innerText.replace('R$ ', ''),
+                        ValorTotal: cells[4].innerText.replace('R$ ', '')
+                    };
+                    materiais.push(material);
+                }
+
+                console.log(materiais)
+
+                $("#totalDeMateriais").text(materiais.length);
+                $("#MateriaisJson").val(JSON.stringify(materiais));
+
+            } else {
+                alert("Por favor, escolha o material e quantidade que deseja incluir no produto.");
+            }
+        });
+
+
+        $("#materiaisTable").on("click", ".removeMaterial", function () {
+            $(this).closest("tr").remove();
+            $("#materiaisTable tbody tr").each(function (index, tr) {
+                $(tr).find("input[name^='Materiais']").each(function () {
+                    var name = $(this).attr("name");
+                    var newName = name.replace(/\[\d+\]/, `[${index}]`);
+                    $(this).attr("name", newName);
+                });
+            });
+
+            var materiaisJson = $("#MateriaisJson").val()
+            var indexToRemove = $(this).closest("tr").index();
+            var materiaisList = JSON.parse(materiaisJson);
+            materiaisList.splice(indexToRemove, 1);
+            $("#totalDeMateriais").text(materiaisList.length);
+            materiaisJson = JSON.stringify(materiaisList);
+            $("#MateriaisJson").val(materiaisJson);
+        });
+
+        $("#ProdutoForm").on("submit", function (event) {
+            event.preventDefault();
+        });
+
+        $("#submitForm").click(function () {
+            $("#ProdutoForm").off("submit").submit();
+        });
+    });
+
+
+</script>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
