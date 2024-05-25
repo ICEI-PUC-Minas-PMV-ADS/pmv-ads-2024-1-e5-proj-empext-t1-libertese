@@ -2,42 +2,45 @@
 
 @{
     ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_LayoutProdutos.cshtml";
 }
 
-<h1>Criar Forma de Pagamentos</h1>
-
-<h4>Forma de Pagamentos</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Descricao" class="control-label"></label>
-                <input asp-for="Descricao" class="form-control" />
-                <span asp-validation-for="Descricao" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DataCriacao" class="control-label"></label>
-                <input asp-for="DataCriacao" class="form-control" />
-                <span asp-validation-for="DataCriacao" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DataAtualizacao" class="control-label"></label>
-                <input asp-for="DataAtualizacao" class="form-control" />
-                <span asp-validation-for="DataAtualizacao" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Criar" class="btn btn-primary" />
-            </div>
-        </form>
+<body class="font-inter antialiased bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-400">
+    <div class="flex h-[100dvh] overflow-hidden">
+        <div class="relative flex flex-col flex-1 overflow-y-auto overflow-x-hidden bg-white dark:bg-slate-900">
+            <main class="grow">
+                <div class="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
+                    <div class="mb-8">
+                        <div class="flex items-center justify-between">
+                            <h2 class="text-2xl md:text-3xl text-slate-800 dark:text-slate-100 font-bold">Nova Forma de Pagamento</h2>
+                            <a asp-action="Index" class="btn bg-orange-500 hover:bg-orange-600 text-white ml-3 rounded-lg w-24">Voltar</a>
+                        </div>
+                    </div>
+                    <div class="border-t border-slate-200 dark:border-slate-700">
+                        <form asp-action="Create" class="space-y-8 mt-5">
+                            <div class="grid gap-5 md:grid-cols-2">
+                                <div>
+                                    <label asp-for="Descricao" class="block text-sm font-medium mb-1 text-slate-800 dark:text-slate-100"></label>
+                                    <input asp-for="Descricao" class="form-input w-full" type="text" />
+                                    <span asp-validation-for="Descricao" class="text-xs mt-1 text-rose-500"></span>
+                                </div>
+                            <footer>
+                                <div class="flex flex-col px-6 py-5 border-t border-slate-200 dark:border-slate-700">
+                                    <div class="flex self-center">
+                                        <button id="submitForm" name="submitForm" type="submit" class="btn bg-slate-900 hover:bg-orange-600 text-white ml-3 rounded-lg w-32">Salvar</button>
+                                    </div>
+                                </div>
+                            </footer>
+                        </form>
+                    </div>
+                </div>
+            </main>
+        </div>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Voltar para a lista</a>
-</div>
+</body>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
