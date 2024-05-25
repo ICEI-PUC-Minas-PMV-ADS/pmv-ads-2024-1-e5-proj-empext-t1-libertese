@@ -44,6 +44,10 @@
                         <ion-icon name="wallet-outline" class="nav__icon"></ion-icon>
                         <span asp-action="Index" class="nav__name">Despesa</span>
                     </a>
+                    <a asp-controller="FluxoCaixa" asp-action="Index" class="@("nav__link " + (currentController == "FluxoCaixa" ? "active" : ""))" class="nav__link active">
+                        <ion-icon name="calculator-outline" class="nav__icon"></ion-icon>
+                        <span asp-action="Index" class="nav__name">Fluxo de Caixa</span>
+                    </a>
                     <a asp-controller="Produtos" asp-action="Index" class="@("nav__link " + (currentController == "Produtos" ? "active" : ""))" class="nav__link active">
                         <ion-icon name="file-tray-stacked-outline" class="nav__icon"></ion-icon>
                         <span asp-action="Index" class="nav__name">Produtos</span>
