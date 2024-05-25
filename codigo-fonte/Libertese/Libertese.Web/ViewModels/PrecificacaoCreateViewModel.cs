@@ -6,24 +6,30 @@ namespace Libertese.ViewModels
     public class PrecificacaoCreateViewModel : BaseEntity
     {
 
-        [Display(Name = "Categoria")]
-        [Required(ErrorMessage = "Categoria é obrigatório.")]
-        [Range(1, int.MaxValue, ErrorMessage = "Categoria é obrigatório.")]
-        public int? CategoriaId { get; set; }
+        [Display(Name = "Pessoas por produção")]
+        [Required(ErrorMessage = "Esse campo é obrigatório.")]
+        [Range(1, int.MaxValue, ErrorMessage = "Esse campo é obrigatório.")]
+        public int? TotalPessoas { get; set; }
 
-        [Display(Name = "Nome")]
-        [Required(ErrorMessage = "Nome do produto é obrigatório.")]
-        public string? Nome { get; set; }
+        [Display(Name = "Horas por dia")]
+        [Required(ErrorMessage = "Esse campo é obrigatório.")]
+        [Range(1, int.MaxValue, ErrorMessage = "Esse campo é obrigatório.")]
+        public int? HorasDiarias { get; set; }
 
-        [Display (Name = "Tempo de Produção")]
-        [Required(ErrorMessage = "O campo Tempo de produção é obrigatório.")]
-        [Range(1, int.MaxValue, ErrorMessage = "Tempo de produção deve ser maior que zero.")]
-        public int TempoProducao { get; set;}
+        [Display (Name = "Dias por mês")]
+        [Required(ErrorMessage = "Esse campo é obrigatório.")]
+        [Range(1, int.MaxValue, ErrorMessage = "Esse campo é obrigatório.")]
+        public int? DiasMes { get; set;}
 
-        [Display(Name = "Margem de Lucro")]
-        [Required(ErrorMessage = "O Margem de lucro é obrigatório.")]
-        [Range(1, int.MaxValue, ErrorMessage = "Margem de Lucro deve ser maior que zero.")]
-        public decimal Margem { get; set; }
+        [Display(Name = "Horas mensal")]
+        public int? TotalHorasMes { get; set; }
+
+        [Display(Name = "Comissão")]
+        public int? Comissao { get; set; }
+
+        [Display(Name = "Impostos")]
+        public int? Impostos { get; set; }
+
 
 
         // ########################### CONTEXTO PRODUTOS ###########################
