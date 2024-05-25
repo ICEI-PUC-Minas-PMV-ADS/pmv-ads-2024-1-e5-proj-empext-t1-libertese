@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Libertese.Web.Controllers.Precificacao
 {
-    [Authorize(Policy = "Materiais")]
+    [Authorize(Policy = "RequireMateriais")]
     public class MateriaisController : Controller
     {
         private readonly ApplicationDbContext _context;

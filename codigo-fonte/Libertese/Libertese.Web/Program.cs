@@ -24,42 +24,40 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 		  .AddCookie(options =>
 		  {
 			  options.LoginPath = "/Home/Login";
+              options.AccessDeniedPath = "/Home/Login";
               options.ExpireTimeSpan = TimeSpan.FromMinutes(60);
-              options.SlidingExpiration = false;
-              options.Cookie.HttpOnly = true;
-              options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
-              options.Cookie.SameSite = SameSiteMode.Strict;
           });
 
 builder.Services.AddAuthorization(options =>
 {
     // Cadastro
-    options.AddPolicy("EmpresasParceiras", policy => policy.RequireClaim("EmpresasParceiras", "EMPP"));
-    options.AddPolicy("Funcionarios", policy => policy.RequireClaim("Funcionarios", "FUNC"));
+    options.AddPolicy("RequireEmpresasParceiras", policy => policy.RequireClaim("EmpresasParceiras", "EMPP"));
+    options.AddPolicy("RequireFuncionarios", policy => policy.RequireClaim("Funcionarios", "FUNC"));
 
     // Financeiro
-    options.AddPolicy("Classificacoes", policy => policy.RequireClaim("Classificacoes", "CLAF"));
-    options.AddPolicy("Clientes", policy => policy.RequireClaim("Clientes", "CLIE"));
-    options.AddPolicy("ContaBancarias", policy => policy.RequireClaim("ContaBancarias", "COBA"));
-    options.AddPolicy("Despesas", policy => policy.RequireClaim("Despesas", "DESP"));
-    options.AddPolicy("FormaPagamentos", policy => policy.RequireClaim("FormaPagamentos", "FOPA"));
-    options.AddPolicy("Fornecedores", policy => policy.RequireClaim("Fornecedores", "FORN"));
-    options.AddPolicy("Receitas", policy => policy.RequireClaim("Receitas", "RECE"));
+    options.AddPolicy("RequireClassificacoes", policy => policy.RequireClaim("Classificacoes", "CLAF"));
+    options.AddPolicy("RequireClientes", policy => policy.RequireClaim("Clientes", "CLIE"));
+    options.AddPolicy("RequireContaBancarias", policy => policy.RequireClaim("ContaBancarias", "COBA"));
+    options.AddPolicy("RequireDespesas", policy => policy.RequireClaim("Despesas", "DESP"));
+    options.AddPolicy("RequireFormaPagamentos", policy => policy.RequireClaim("FormaPagamentos", "FOPA"));
+    options.AddPolicy("RequireFornecedores", policy => policy.RequireClaim("Fornecedores", "FORN"));
+    options.AddPolicy("RequireReceitas", policy => policy.RequireClaim("Receitas", "RECE"));
 
     // Precificacao
-    options.AddPolicy("CapacidadeProdutivas", policy => policy.RequireClaim("CapacidadeProdutivas", "CAPP"));
-    options.AddPolicy("Categorias", policy => policy.RequireClaim("Categorias", "CATE"));
-    options.AddPolicy("Materiais", policy => policy.RequireClaim("Materiais", "MATE"));
-    options.AddPolicy("Precos", policy => policy.RequireClaim("Precos", "PREC"));
-    options.AddPolicy("Produtos", policy => policy.RequireClaim("Produtos", "PROD"));
-    options.AddPolicy("Vendas", policy => policy.RequireClaim("Vendas", "VEND"));
-    options.AddPolicy("Rateios", policy => policy.RequireClaim("Rateios", "RATE"));
+    options.AddPolicy("RequireCapacidadeProdutivas", policy => policy.RequireClaim("CapacidadeProdutivas", "CAPP"));
+    options.AddPolicy("RequireCategorias", policy => policy.RequireClaim("Categorias", "CATE"));
+    options.AddPolicy("RequireMateriais", policy => policy.RequireClaim("Materiais", "MATE"));
+    options.AddPolicy("RequirePrecos", policy => policy.RequireClaim("Precos", "PREC"));
+    options.AddPolicy("RequireProdutos", policy => policy.RequireClaim("Produtos", "PROD"));
+    options.AddPolicy("RequireVendas", policy => policy.RequireClaim("Vendas", "VEND"));
+    options.AddPolicy("RequireRateios", policy => policy.RequireClaim("Rateios", "RATE"));
 
     // Relatórios
-    options.AddPolicy("Relatorios", policy => policy.RequireClaim("Relatorios", "RELA"));
+    options.AddPolicy("RequireRelatorios", policy => policy.RequireClaim("Relatorios", "RELA"));
+    options.AddPolicy("RequireHome", policy => policy.RequireClaim("Home", "HOME"));
 
     // Vendas
-    options.AddPolicy("Vendas", policy => policy.RequireClaim("Vendas", "VEND"));
+    options.AddPolicy("RequireVendas", policy => policy.RequireClaim("Vendas", "VEND"));
 });
 
 builder.Services.AddDataProtection().PersistKeysToFileSystem(new DirectoryInfo(Path.Combine(Directory.GetCurrentDirectory(), "keys")));

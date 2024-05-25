@@ -73,6 +73,7 @@ namespace Libertese.Web.Controllers.Cadastro
                     new Claim("Rateios", "RATE"),
                     new Claim("Relatorios", "RELA"),
                     new Claim("Vendas", "VEND"),
+                    new Claim("Home", "HOME"),
                 };
 
                 var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
@@ -89,11 +90,10 @@ namespace Libertese.Web.Controllers.Cadastro
 			}
         }
 
-        [HttpGet]
-        public IActionResult Get()
+        public async Task<IActionResult> Logout()
         {
-            var Usuarios = _userRepository.Get();
-            return Ok(Usuarios);
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAction("Index", "Home");
         }
     }
 }

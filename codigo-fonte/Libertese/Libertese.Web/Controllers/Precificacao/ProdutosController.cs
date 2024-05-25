@@ -15,7 +15,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Libertese.Web.Controllers.Precificacao
 {
-    [Authorize(Policy = "Produtos")]
+    [Authorize(Policy = "RequireProdutos")]
     public class ProdutosController : Controller
     {
         private readonly ApplicationDbContext _context;

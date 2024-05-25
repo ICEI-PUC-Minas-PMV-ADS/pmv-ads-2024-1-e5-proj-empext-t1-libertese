@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace Libertese.Web.Controllers.Precificacao
 {
 
-    [Authorize(Policy = "CapacidadeProdutivas")]
+    [Authorize(Policy = "RequireCapacidadeProdutivas")]
     public class CapacidadeProdutivasController : Controller
     {
         private readonly ApplicationDbContext _context;
