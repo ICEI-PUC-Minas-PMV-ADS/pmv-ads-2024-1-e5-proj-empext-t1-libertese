@@ -13,7 +13,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace Libertese.Web.Controllers.Financeiro
 {
 
-    [Authorize(Policy = "Receitas")]
+    [Authorize(Policy = "RequireReceitas")]
     public class ReceitasController : Controller
     {
         private readonly ApplicationDbContext _context;

@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Libertese.Web.Controllers.Precificacao
 {
-    [Authorize(Policy = "Categorias")]
+    [Authorize(Policy = "RequireCategorias")]
     public class CategoriasController : Controller
     {
         private readonly ApplicationDbContext _context;

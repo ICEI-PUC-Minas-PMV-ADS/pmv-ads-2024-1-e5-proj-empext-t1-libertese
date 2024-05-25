@@ -14,7 +14,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace Libertese.Web.Controllers.Financeiro
 {
 
-    [Authorize(Policy = "Classificacoes")]
+    [Authorize(Policy = "RequireClassificacoes")]
     public class ClassificacoesController : Controller
     {
         private readonly ApplicationDbContext _context;

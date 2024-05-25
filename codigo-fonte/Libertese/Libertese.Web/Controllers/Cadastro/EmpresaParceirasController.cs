@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Libertese.Web.Controllers.Cadastro
 {
-    [Authorize(Policy = "EmpresasParceiras")]
+    [Authorize(Policy = "RequireEmpresasParceiras")]
     public class EmpresaParceirasController : Controller
     {
         private readonly ApplicationDbContext _context;

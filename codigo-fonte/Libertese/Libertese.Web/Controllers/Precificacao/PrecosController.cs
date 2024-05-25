@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Libertese.Web.Controllers.Precificacao
 {
-    [Authorize(Policy = "Precos")]
+    [Authorize(Policy = "RequirePrecos")]
     public class PrecosController : Controller
     {
         private readonly ApplicationDbContext _context;

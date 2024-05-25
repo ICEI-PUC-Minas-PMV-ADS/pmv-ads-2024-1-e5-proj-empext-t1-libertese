@@ -8,7 +8,7 @@ namespace Libertese.Web.Controllers
     public class HomeController : Controller
     {
 
-        [Authorize]
+        [Authorize(Policy = "RequireHome")]
         public IActionResult Index()
         {
             return View();

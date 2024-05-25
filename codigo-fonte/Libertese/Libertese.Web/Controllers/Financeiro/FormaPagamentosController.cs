@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace Libertese.Web.Controllers.Financeiro
 {
 
-    [Authorize(Policy = "FormaPagamentos")]
+    [Authorize(Policy = "RequireFormaPagamentos")]
     public class FormaPagamentosController : Controller
     {
         private readonly ApplicationDbContext _context;

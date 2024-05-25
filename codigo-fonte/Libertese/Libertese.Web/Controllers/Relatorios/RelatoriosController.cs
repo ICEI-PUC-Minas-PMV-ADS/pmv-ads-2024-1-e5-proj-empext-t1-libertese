@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Libertese.Web.Controllers.Relatorios
 {
-    [Authorize(Policy = "Relatorios")]
+    [Authorize(Policy = "RequireRelatorios")]
     public class RelatoriosController : Controller
     {
         private readonly ApplicationDbContext _context;

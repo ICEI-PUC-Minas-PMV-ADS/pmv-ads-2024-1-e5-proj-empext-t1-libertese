@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Libertese.Web.Controllers.Cadastro
 {
-    [Authorize(Policy = "Funcionarios")]
+    [Authorize(Policy = "RequireFuncionarios")]
     public class FuncionariosController : Controller
     {
         private readonly ApplicationDbContext _context;

@@ -15,7 +15,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Libertese.Web.Controllers.Vendas
 {
-    [Authorize(Policy = "Vendas")]
+    [Authorize(Policy = "RequireVendas")]
     public class VendasController : Controller
     {
         private readonly ApplicationDbContext _context;
