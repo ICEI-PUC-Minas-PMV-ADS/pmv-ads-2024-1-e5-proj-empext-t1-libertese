@@ -16,6 +16,7 @@ namespace Libertese.Domain.Entities.Financeiro
         public required string Observacao { get; set; }
         public required string Status { get; set; }
         public required string DataPagamento { get; set; }
+        public required string DataCompetencia { get; set; }
         public required string DataVencimento { get; set; }
         public required string DataAtualiza { get; set; }
         public decimal Valor {  get; set; }

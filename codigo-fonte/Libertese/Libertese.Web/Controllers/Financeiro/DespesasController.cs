@@ -40,6 +40,7 @@ namespace Libertese.Web.Controllers.Financeiro
                 FormaPagamentoName = listaFormaPagamento.Find(x => x.Id == despesa.FormaPagamentoId)?.Descricao ?? "Sem Forma de Pagamento",
                 Observacao = despesa.Observacao ?? "Sem Observações",
                 DataVencimento = despesa.DataVencimento?.ToString("dd/MM/yyyy") ?? "Sem Data",
+                DataCompetencia = despesa.DataCompetencia?.ToString("dd/MM/yyyy") ?? "Sem Data",
                 DataPagamento = despesa.DataPagamento?.ToString("dd/MM/yyyy") ?? "Sem Data",
                 DataAtualiza = despesa.DataAtualizacao?.ToString("dd/MM/yyyy") ?? "Sem Data",
                 Classificacao = listaClassificacoes.Find(x => x.Id == despesa.ClassificacaoId)?.Descricao ?? "Sem Classificação",
@@ -58,7 +59,7 @@ namespace Libertese.Web.Controllers.Financeiro
             List<Fornecedor> listaFornecedores = await GetListaFornecedores();
             List<FormaPagamento> listaFormaPagamento = await GetListaFormaPagamento();
             List<ContaBancaria> listaContaBancaria = await GetListaContaBancaria();
-            ViewBag.ContaBancaria = listaFormaPagamento;
+            ViewBag.ContaBancaria = listaContaBancaria;
             ViewBag.FormaPagamento = listaFormaPagamento;
             ViewBag.Fornecedor = listaFornecedores;
             ViewBag.Classificacao = listaClassificacoes;
@@ -70,7 +71,7 @@ namespace Libertese.Web.Controllers.Financeiro
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("FornecedorId,FormaPagamentoId,ContaBancariaId,ClassificacaoId,Tipo,Descricao,Status,DataPagamento,DataVencimento,Observacao,Id,DataCriacao,DataAtualizacao,Valor")] Despesa despesa)
+        public async Task<IActionResult> Create([Bind("FornecedorId,FormaPagamentoId,ContaBancariaId,ClassificacaoId,Tipo,Descricao,Status,DataPagamento,DataCompetencia,DataVencimento,Observacao,Id,DataCriacao,DataAtualizacao,Valor")] Despesa despesa)
         {
             if (ModelState.IsValid)
             {
@@ -118,7 +119,7 @@ namespace Libertese.Web.Controllers.Financeiro
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("FornecedorId,FormaPagamentoId,ContaBancariaId,ClassificacaoId,Tipo,Descricao,Status,DataPagamento,DataVencimento,Observacao,Id,DataCriacao,DataAtualizacao,Valor")] Despesa despesa)
+        public async Task<IActionResult> Edit(int id, [Bind("FornecedorId,FormaPagamentoId,ContaBancariaId,ClassificacaoId,Tipo,Descricao,Status,DataPagamento,DataCompetencia,DataVencimento,Observacao,Id,DataCriacao,DataAtualizacao,Valor")] Despesa despesa)
         {
             if (id != despesa.Id)
             {
