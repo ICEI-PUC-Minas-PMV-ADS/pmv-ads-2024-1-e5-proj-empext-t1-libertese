@@ -45,7 +45,10 @@
                             </div>
                             <input style="display: none;" name="ProdutoId" id="ProdutoId" />
                             <input style="display: none;" name="ProdutoNome" id="ProdutoNome" />
-                            <input style="display: none;" name="ProdutoPreco" id="ProdutoPreco" />
+                            <input style="display: none;" name="ProdutoCusto" id="ProdutoCusto" />
+                            <input style="display: none;" name="ProdutoTempo" id="ProdutoTempo" />
+                            <input style="display: none;" name="ProdutoMargem" id="ProdutoMargem" />
+                            <input style="display: none;" name="ProdutoTempoTotal" id="ProdutoTempoTotal" />
                             <input style="display: none;" name="ProdutoValorTotal" id="ProdutoValorTotal" />
                             <input style="display: none;" name="Produto" id="Produto" />
                             <input style="display: none;" asp-for="ProdutosJson" />
@@ -54,10 +57,8 @@
                     </div>
                     <div>
                         <div>
-                            <div class="flex items-center justify-between">
+                            <div class="flex items-center justify-start">
                                 <label asp-for="ProdutoQuantidade" class="block text-sm font-medium mb-1" for="tooltip"></label>
-                                <div></div>
-                                <div></div>
                                 <div class="relative ml-2"
                                      x-data="{ open: false }"
                                      @@mouseenter="open = true"
@@ -105,11 +106,11 @@
 
                 <div class="bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700 mb-0">
                     <header class="px-5 py-4">
-                        <h2 class="font-semibold text-slate-800 dark:text-slate-100">Produtos <span name="totalDeMateriais" id="totalDeMateriais" class="text-slate-400 dark:text-slate-500 font-medium">0</span></h2>
+                        <h2 class="font-semibold text-slate-800 dark:text-slate-100">Produtos <span name="TotalDeProdutos" id="TotalDeProdutos" class="text-slate-400 dark:text-slate-500 font-medium">@Model.Produtos.Count()</span></h2>
                     </header>
                     <div x-data="{ modalDeletarOpen: false, modalVisualizarOpen: false, tableIndex: 0 }">
                         <div class="overflow-x-auto">
-                            <table id="materiaisTable" class="table-auto w-full dark:text-slate-300">
+                            <table id="produtosTable" class="table-auto w-full dark:text-slate-300">
                                 <thead class="text-xs font-semibold uppercase text-slate-500 dark:text-slate-400 bg-slate-50 dark:bg-slate-900/20 border-t border-b border-slate-200 dark:border-slate-700">
                                     <tr>
                                         <th class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
@@ -117,6 +118,12 @@
                                         </th>
                                         <th class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
                                             <div class="font-semibold text-left">Nome</div>
+                                        </th>
+                                        <th class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
+                                            <div class="font-semibold text-left">QTD</div>
+                                        </th>
+                                        <th style="display: none;">
+                                            <div class="font-semibold text-left">Margem</div>
                                         </th>
                                         <th class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
                                             <div class="font-semibold text-left">Tempo</div>
@@ -136,15 +143,20 @@
                                     </tr>
                                 </thead>
                                 <tbody class="text-sm divide-y divide-slate-200 dark:divide-slate-700">
-                                    @for (var i = 0; i < Model.Materiais.Count; i++)
+                                    @for (var i = 0; i < Model.Produtos.Count; i++)
                                     {
                                         <tr>
-                                            <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap"><div class="font-medium text-sky-500">@Model.Materiais[i].Id</div></td>
-                                            <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap"><div class="font-medium text-slate-800 dark:text-slate-100">@Model.Materiais[i].Nome</div></td>
-                                            <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap"><div class="font-medium text-slate-800 dark:text-slate-100">R$ @Model.Materiais[i].Preco</div></td>
+                                            <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap"><div class="font-medium text-sky-500">@Model.Produtos[i].Id</div></td>
+                                            <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap"><div class="truncate max-w-80ch font-medium text-slate-800 dark:text-slate-100">@Model.Produtos[i].Nome</div></td>
+                                            <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap"><div class="truncate max-w-80ch font-medium text-slate-800 dark:text-slate-100">@Model.Produtos[i].Quantidade</div></td>
+                                            <td style="display: none;"><div class="truncate max-w-80ch font-medium text-slate-800 dark:text-slate-100">@Model.Produtos[i].Margem</div></td>
+                                            <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap"><div class="font-medium text-slate-800 dark:text-slate-100">@Model.Produtos[i].TempoProducao min</div></td>
+                                            <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap"><div class="font-medium text-slate-800 dark:text-slate-100">@Model.Produtos[i].TempoProducaoTotal min</div></td>
+                                            <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap"><div class="font-medium text-slate-800 dark:text-slate-100">R$ @Model.Produtos[i].Custo</div></td>
+                                            <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap"><div class="font-medium text-slate-800 dark:text-slate-100">R$ @Model.Produtos[i].Total</div></td>
                                             <td x-data="{ modalDeletarOpen: false, modalVisualizarOpen: false }" class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap w-px">
                                                 <div class="space-x-1">
-                                                    <button type="button" class="removeMaterial text-rose-500 hover:text-rose-600 rounded-full">
+                                                    <button type="button" class="removeProduto text-rose-500 hover:text-rose-600 rounded-full">
                                                         <span class="sr-only">Deletar</span>
                                                         <svg class="w-8 h-8 fill-current" viewBox="0 0 32 32">
                                                             <path d="M13 15h2v6h-2zM17 15h2v6h-2z" />
@@ -161,92 +173,107 @@
                         </div>
                     </div>
                 </div>
-                <span asp-validation-for="Materiais" class="text-xs mt-1 text-rose-500"></span>
+                <span asp-validation-for="Produtos" class="text-xs mt-1 text-rose-500"></span>
             </div>
         </div>
     </div>
 </div>
-
 <script type="text/javascript">
-    $("#SearchMaterial").autocomplete({
+    $("#SearchProduto").autocomplete({
         source: function (request, response) {
             $.ajax({
-                url: '@Url.Action("SearchByText", "Materiais")',
+                url: '@Url.Action("SearchPrecificacaoByText", "Produtos")',
                 dataType: "json",
-                data: { searchString: $("#SearchMaterial").val() },
+                data: { searchString: $("#SearchProduto").val() },
                 success: function (data) {
                     response($.map(data, function (item) {
                         return { label: `${item.id} - ${item.nome}`, value: item, };
                     }))
                 },
                 error: function (xhr, status, error) {
-                    alert("Erro ao buscar materiais, insira uma palavra valida!");
+                    alert("Erro ao buscar produtos, insira uma produto valido!");
                 }
             })
         },
         select: function (event, ui) {
-            $("#SearchMaterial").val(ui.item.label);
-            $("#MaterialId").val(ui.item.value.id);
-            $("#MaterialNome").val(ui.item.value.nome);
-            $("#MaterialQuantidade").val(ui.item.value.quantidade);
-            $("#MaterialPreco").val(ui.item.value.preco);
-            $("#MaterialValorTotal").val(ui.item.value.valorTotal);
-            $("#Material").val(ui.item.value);
+            $("#SearchProduto").val(ui.item.label);
+            $("#ProdutoId").val(ui.item.value.id);
+            $("#ProdutoNome").val(ui.item.value.nome);
+            $("#ProdutoTempo").val(ui.item.value.tempoProducao);
+            $("#ProdutoTempoTotal").val(ui.item.value.tempoProducaoTotal);
+            $("#ProdutoQuantidade").val(ui.item.value.quantidade);
+            $("#ProdutoMargem").val(ui.item.value.margem);
+            $("#ProdutoCusto").val(ui.item.value.custo);
+            $("#ProdutoValorTotal").val(ui.item.value.total);
+            $("#Produto").val(ui.item.value);
+            console.log(ui.item.value)
             return false;
         }
     })
 
     $(document).ready(function () {
-        $("#addMaterial").click(function () {
-            var searchMaterial = $("#SearchMaterial").val();
-            var materialId = $("#MaterialId").val();
-            var nome = $("#MaterialNome").val();
-            var quantidade = $("#MaterialQuantidade").val();
-            var preco = $("#MaterialPreco").val();
-            var valorTotal = $("#MaterialValorTotal").val();
-            var material = $("#Material").val();
+        $("#addProduto").click(function () {
+            var searchProduto = $("#SearchProduto").val();
+            var produtoId = $("#ProdutoId").val();
+            var nome = $("#ProdutoNome").val();
+            var quantidade = $("#ProdutoQuantidade").val();
+            var margem = $("#ProdutoMargem").val();
+            var tempo = $("#ProdutoTempo").val();
+            var custo = $("#ProdutoCusto").val();
+            var valorTotal = $("#ProdutoValorTotal").val();
+            var tempoTotal = $("#ProdutoTempoTotal").val();
+            var produto = $("#Produto").val();
 
-            var materialIdExistente = false;
-            $("#materiaisTable tbody tr").each(function () {
+
+            var produtoIdExistente = false;
+            $("#produtosTable tbody tr").each(function () {
                 var idExistente = $(this).attr("id");
-                if (idExistente === materialId) {
-                    materialIdExistente = true;
+                if (idExistente === produtoId) {
+                    produtoIdExistente = true;
                     return false;
                 }
             });
 
-            if (materialIdExistente) {
-                alert("Por favor, escolha outro material o mesmo já existe na lista.");
+            if (produtoIdExistente) {
+                alert("Por favor, escolha outro produto o mesmo já existe na lista.");
 
-            } else if (materialId && nome && preco && quantidade && valorTotal) {
+            } else if (produtoId && nome && tempo && custo && quantidade && valorTotal) {
 
 
-
-                var rowCount = $("#materiaisTable tbody tr").length;
+                var rowCount = $("#produtosTable tbody tr").length;
 
                 var newRow = `
 
-                                                                   <tr id="${materialId}">
+                                                                       <tr id="${produtoId}">
                                                                     <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-                                                                                <div class="font-medium text-sky-500">${materialId}</div>
+                                                                                    <div class="font-medium text-sky-500">${produtoId}</div>
 
                                                                     </td>
                                                                     <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-                                                                                    <div class="font-medium text-slate-800 dark:text-slate-100">${nome}</div>
+                                                                                        <div class="truncate max-w-80ch font-medium text-slate-800 dark:text-slate-100">${nome}</div>
                                                                     </td>
                                                                     <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
                                                                             <div class="font-medium text-slate-800 dark:text-slate-100">${quantidade}</div>
                                                                     </td>
-                                                                    <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-                                                                                <div class="font-medium text-slate-800 dark:text-slate-100">R$ ${preco}</div>
+                                                                    <td  style="display: none;">
+                                                                        <div class="font-medium text-slate-800 dark:text-slate-100">${margem}</div>
                                                                     </td>
                                                                     <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-                                                                                        <div class="font-medium text-slate-800 dark:text-slate-100">R$ ${parseFloat((quantidade * preco).toFixed(2))}</div>
+                                                                           <div class="font-medium text-slate-800 dark:text-slate-100">${tempo} min</div>
+                                                                    </td>
+                                                                    <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
+                                                                               <div class="font-medium text-slate-800 dark:text-slate-100">${tempo * quantidade} min</div>
+                                                                    </td>
+                                                                    <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
+                                                                                    <div class="font-medium text-slate-800 dark:text-slate-100">R$ ${custo}</div>
+                                                                    </td>
+                                                                    <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
+                                                                                            <div class="font-medium text-slate-800 dark:text-slate-100">R$ ${parseFloat((quantidade * custo).toFixed(2))}</div>
                                                                     </td>
 
                                                                     <td x-data="{ modalDeletarOpen: false, modalVisualizarOpen: false }" class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap w-px">
                                                                         <div class="space-x-1">
-                                                                                <button type="button" class="removeMaterial text-rose-500 hover:text-rose-600 rounded-full">
+                                                                                    <button type="button" class="removeProduto text-rose-500 hover:text-rose-600 rounded-full">
                                                                                 <span class="sr-only">Deletar</span>
                                                                                 <svg class="w-8 h-8 fill-current" viewBox="0 0 32 32">
                                                                                     <path d="M13 15h2v6h-2zM17 15h2v6h-2z" />
@@ -255,66 +282,75 @@
                                                                             </button>
                                                                         </div>
                                                                     </td>
-                                                                                                         <input type="hidden" name="Materiais[${rowCount}].Id" value="${materialId} />
-                                                                                                         <input type="hidden" name="Materiais[${rowCount}].Nome" value="${nome} />
-                                                                                                     <input type="hidden" name="Materiais[${rowCount}].Quantidade" value="${quantidade} />
-                                                                                                        <input type="hidden" name="Materiais[${rowCount}].Preco" value="R$ ${preco} />
-                                                                                                        <input type="hidden"  name="Materiais[${rowCount}].ValorTotal" value="R$ ${quantidade * preco}  />
+                                                                                                                <input type="hidden" name="Produtos[${rowCount}].Id" value="${produtoId} />
+                                                                                                                <input type="hidden" name="Produtos[${rowCount}].Nome" value="${nome} />
+                                                                                                                <input type="hidden" name="Produtos[${rowCount}].Quantidade" value="${quantidade} />
+                                                                                                                <input type="hidden" name="Produtos[${rowCount}].Margem" value="${margem} />
+                                                                                                                <input type="hidden" name="Produtos[${rowCount}].TempoProducao" value="${tempo} />
+                                                                                                                <input type="hidden" name="Produtos[${rowCount}].TempoProducaoTotal" value="R$ ${quantidade * tempo}  />
+                                                                                                                <input type="hidden" name="Produtos[${rowCount}].Custo" value="R$ ${custo} />
+                                                                                                                <input type="hidden" name="Produtos[${rowCount}].Total" value="R$ ${quantidade * custo}  />
 
                                                                 </tr>`;
-                $("#materiaisTable tbody").append(newRow);
+                $("#produtosTable tbody").append(newRow);
 
-                $("#MaterialId").val('');
-                $("#SearchMaterial").val('');
-                $("#MaterialNome").val('');
-                $("#MaterialQuantidade").val('');
-                $("#MaterialPreco").val('');
-                $("#MaterialValorTotal").val('');
-                $("#Material").val('');
+                $("#ProdutoId").val('');
+                $("#SearchProduto").val('');
+                $("#ProdutoNome").val('');
+                $("#ProdutoQuantidade").val('');
+                $("#ProdutoMargem").val('');
+                $("#ProdutoTempo").val('');
+                $("#ProdutoTempoTotal").val('');
+                $("#ProdutoCusto").val('');
+                $("#ProdutoValorTotal").val('');
+                $("#Produto").val('');
 
-                var rows = $("#materiaisTable tbody tr");
-                var materiais = [];
+                var rows = $("#produtosTable tbody tr");
+                var produtos = [];
 
                 for (var i = 0; i < rows.length; i++) {
                     var cells = rows[i].getElementsByTagName('td');
-                    var material = {
+                    var produto = {
                         Id: cells[0].innerText,
                         Nome: cells[1].innerText,
                         Quantidade: cells[2].innerText,
-                        Preco: cells[3].innerText.replace('R$ ', ''),
-                        ValorTotal: cells[4].innerText.replace('R$ ', '')
+                        Margem: cells[3].innerText,
+                        TempoProducao: cells[4].innerText.replace('min', ''),
+                        tempoProducaoTotal: cells[5].innerText.replace('min', ''),
+                        Custo: cells[6].innerText.replace('R$ ', ''),
+                        Total: cells[7].innerText.replace('R$ ', '')
                     };
-                    materiais.push(material);
+                    produtos.push(produto);
                 }
 
-                console.log(materiais)
-
-                $("#totalDeMateriais").text(materiais.length);
-                $("#MateriaisJson").val(JSON.stringify(materiais));
+                $("#TotalDeProdutos").text(produtos.length)
+                $("#ProdutosJson").val(JSON.stringify(produtos));
 
             } else {
-                alert("Por favor, escolha o material e quantidade que deseja incluir no produto.");
+                alert("Por favor, escolha o produto e quantidade que deseja incluir na precificação.");
             }
         });
 
 
-        $("#materiaisTable").on("click", ".removeMaterial", function () {
+        $("#produtosTable").on("click", ".removeProduto", function () {
             $(this).closest("tr").remove();
-            $("#materiaisTable tbody tr").each(function (index, tr) {
-                $(tr).find("input[name^='Materiais']").each(function () {
+            $("#produtosTable tbody tr").each(function (index, tr) {
+                $(tr).find("input[name^='Produtos']").each(function () {
                     var name = $(this).attr("name");
                     var newName = name.replace(/\[\d+\]/, `[${index}]`);
                     $(this).attr("name", newName);
                 });
             });
 
-            var materiaisJson = $("#MateriaisJson").val()
+            var produtosJson = $("#ProdutosJson").val()
             var indexToRemove = $(this).closest("tr").index();
-            var materiaisList = JSON.parse(materiaisJson);
-            materiaisList.splice(indexToRemove, 1);
-            $("#totalDeMateriais").text(materiaisList.length);
-            materiaisJson = JSON.stringify(materiaisList);
-            $("#MateriaisJson").val(materiaisJson);
+            var produtosList = JSON.parse(produtosJson);
+            produtosList.splice(indexToRemove, 1);
+            console.log(produtosList)
+            console.log(produtosList.length)
+            $("#TotalDeProdutos").text(produtosList.length);
+            produtosJson = JSON.stringify(produtosList);
+            $("#ProdutosJson").val(produtosJson);
         });
 
         $("#ProdutoForm").on("submit", function (event) {
@@ -328,7 +364,6 @@
 
 
 </script>
-
 
 @section Scripts {
     @{

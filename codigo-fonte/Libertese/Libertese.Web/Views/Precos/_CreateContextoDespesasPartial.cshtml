@@ -48,7 +48,7 @@
                     </div>
                     <div>
                         <div>
-                            <div class="flex items-center justify-between">
+                            <div class="flex items-center justify-start">
                                 <label asp-for="DespesaId" class="block text-sm font-medium mb-1" for="tooltip"></label>
                                 <div></div>
                                 <div></div>
@@ -82,15 +82,14 @@
                                 </div>
                                 <div></div>
                             </div>
-                            <input style="display: none;" name="MaterialId" id="MaterialId" />
-                            <input style="display: none;" name="MaterialNome" id="MaterialNome" />
-                            <input style="display: none;" name="MaterialPreco" id="MaterialPreco" />
-                            <input style="display: none;" name="MaterialValorTotal" id="MaterialValorTotal" />
-                            <input style="display: none;" name="Material" id="Material" />
-                            <input style="display: none;" asp-for="MateriaisJson" />
+                            <input style="display: none;" name="DespesaId" id="DespesaId" />
+                            <input style="display: none;" name="DespesaNome" id="DespesaNome" />
+                            <input style="display: none;" name="DespesaValor" id="DespesaValor" />
+                            <input style="display: none;" name="Despesa" id="Despesa" />
+                            <input style="display: none;" asp-for="DespesasJson" />
                             <div class="flex items-center space-x-5">
-                                <input class="form-input w-full" type="text" id="SearchMaterial" />
-                                <button id="addMaterial" class="btn bg-orange-800 hover:bg-orange-900 text-white rounded-lg w-32">
+                                <input class="form-input w-full" type="text" id="SearchDespesa" />
+                                <button id="addDespesa" class="btn bg-orange-800 hover:bg-orange-900 text-white rounded-lg w-32">
                                     <svg class="w-4 h-4 fill-current opacity-50 shrink-0" viewBox="0 0 16 16">
                                         <path d="M15 7H9V1c0-.6-.4-1-1-1S7 .4 7 1v6H1c-.6 0-1 .4-1 1s.4 1 1 1h6v6c0 .6.4 1 1 1s1-.4 1-1V9h6c.6 0 1-.4 1-1s-.4-1-1-1z" />
                                     </svg>
@@ -105,11 +104,11 @@
 
                 <div class="bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700 mb-0">
                     <header class="px-5 py-4">
-                        <h2 class="font-semibold text-slate-800 dark:text-slate-100">Despesas <span name="totalDeMateriais" id="totalDeMateriais" class="text-slate-400 dark:text-slate-500 font-medium">0</span></h2>
+                        <h2 class="font-semibold text-slate-800 dark:text-slate-100">Despesas <span name="TotalDeDespesas"  id="TotalDeDespesas" class="text-slate-400 dark:text-slate-500 font-medium">@Model.Despesas.Count()</span></h2>
                     </header>
                     <div x-data="{ modalDeletarOpen: false, modalVisualizarOpen: false, tableIndex: 0 }">
                         <div class="overflow-x-auto">
-                            <table id="materiaisTable" class="table-auto w-full dark:text-slate-300">
+                            <table id="despesasTable" class="table-auto w-full dark:text-slate-300">
                                 <thead class="text-xs font-semibold uppercase text-slate-500 dark:text-slate-400 bg-slate-50 dark:bg-slate-900/20 border-t border-b border-slate-200 dark:border-slate-700">
                                     <tr>
                                         <th class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
@@ -127,15 +126,15 @@
                                     </tr>
                                 </thead>
                                 <tbody class="text-sm divide-y divide-slate-200 dark:divide-slate-700">
-                                    @for (var i = 0; i < Model.Materiais.Count; i++)
+                                    @for (var i = 0; i < Model.Despesas.Count; i++)
                                     {
                                         <tr>
-                                            <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap"><div class="font-medium text-sky-500">@Model.Materiais[i].Id</div></td>
-                                            <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap"><div class="font-medium text-slate-800 dark:text-slate-100">@Model.Materiais[i].Nome</div></td>
-                                            <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap"><div class="font-medium text-slate-800 dark:text-slate-100">R$ @Model.Materiais[i].Preco</div></td>
+                                            <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap"><div class="font-medium text-sky-500">@Model.Despesas[i].Id</div></td>
+                                            <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap"><div class="font-medium text-slate-800 dark:text-slate-100">@Model.Despesas[i].Nome</div></td>
+                                            <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap"><div class="font-medium text-slate-800 dark:text-slate-100">R$ @Model.Despesas[i].Valor</div></td>
                                             <td x-data="{ modalDeletarOpen: false, modalVisualizarOpen: false }" class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap w-px">
                                                 <div class="space-x-1">
-                                                    <button type="button" class="removeMaterial text-rose-500 hover:text-rose-600 rounded-full">
+                                                    <button type="button" class="removeDespesa text-rose-500 hover:text-rose-600 rounded-full">
                                                         <span class="sr-only">Deletar</span>
                                                         <svg class="w-8 h-8 fill-current" viewBox="0 0 32 32">
                                                             <path d="M13 15h2v6h-2zM17 15h2v6h-2z" />
@@ -152,174 +151,150 @@
                         </div>
                     </div>
                 </div>
-                <span asp-validation-for="Materiais" class="text-xs mt-1 text-rose-500"></span>
+                <span asp-validation-for="Despesas" class="text-xs mt-1 text-rose-500"></span>
             </div>
         </div>
     </div>
 </div>
 
 <script type="text/javascript">
-    $("#SearchMaterial").autocomplete({
+    $("#SearchDespesa").autocomplete({
         source: function (request, response) {
             $.ajax({
-                url: '@Url.Action("SearchByText", "Materiais")',
+                url: '@Url.Action("SearchPrecificacaoByText", "Despesas")',
                 dataType: "json",
-                data: { searchString: $("#SearchMaterial").val() },
+                data: { 
+                    searchString: $("#SearchDespesa").val(),
+                    despesaCompetencia: $("#DespesaCompetencia").val()
+                },
                 success: function (data) {
                     response($.map(data, function (item) {
                         return { label: `${item.id} - ${item.nome}`, value: item, };
                     }))
                 },
                 error: function (xhr, status, error) {
-                    alert("Erro ao buscar materiais, insira uma palavra valida!");
+                    alert("Erro ao buscar despesas, insira uma despesa valida!");
                 }
             })
         },
         select: function (event, ui) {
-            $("#SearchMaterial").val(ui.item.label);
-            $("#MaterialId").val(ui.item.value.id);
-            $("#MaterialNome").val(ui.item.value.nome);
-            $("#MaterialQuantidade").val(ui.item.value.quantidade);
-            $("#MaterialPreco").val(ui.item.value.preco);
-            $("#MaterialValorTotal").val(ui.item.value.valorTotal);
-            $("#Material").val(ui.item.value);
+            $("#SearchDespesa").val(ui.item.label);
+            $("#DespesaId").val(ui.item.value.id);
+            $("#DespesaNome").val(ui.item.value.nome);
+            $("#DespesaValor").val(ui.item.value.valor);
+            $("#Despesa").val(ui.item.value);
+            console.log(ui.item.value)
             return false;
         }
     })
 
     $(document).ready(function () {
-        $("#addMaterial").click(function () {
-            var searchMaterial = $("#SearchMaterial").val();
-            var materialId = $("#MaterialId").val();
-            var nome = $("#MaterialNome").val();
-            var quantidade = $("#MaterialQuantidade").val();
-            var preco = $("#MaterialPreco").val();
-            var valorTotal = $("#MaterialValorTotal").val();
-            var material = $("#Material").val();
+        $("#addDespesa").click(function () {
+            var searchDespesa = $("#SearchDespesa").val();
+            var despesaId = $("#DespesaId").val();
+            var nome = $("#DespesaNome").val();
+            var valor = $("#DespesaValor").val();
+            var despesa = $("#Despesa").val();
 
-            var materialIdExistente = false;
-            $("#materiaisTable tbody tr").each(function () {
+
+            var despesaIdExistente = false;
+            $("#despesasTable tbody tr").each(function () {
                 var idExistente = $(this).attr("id");
-                if (idExistente === materialId) {
-                    materialIdExistente = true;
+                if (idExistente === despesaId) {
+                    despesaIdExistente = true;
                     return false;
                 }
             });
 
-            if (materialIdExistente) {
-                alert("Por favor, escolha outro material o mesmo já existe na lista.");
+            if (despesaIdExistente) {
+                alert("Por favor, escolha outra despesa a mesma já existe na lista.");
 
-            } else if (materialId && nome && preco && quantidade && valorTotal) {
+            } else if (despesaId && nome && valor) {
 
 
-
-                var rowCount = $("#materiaisTable tbody tr").length;
+                var rowCount = $("#despesasTable tbody tr").length;
 
                 var newRow = `
 
-                                                                   <tr id="${materialId}">
-                                                                    <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-                                                                                <div class="font-medium text-sky-500">${materialId}</div>
+                                                                               <tr id="${despesaId}">
+                                                                        <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
+                                                                                            <div class="font-medium text-sky-500">${despesaId}</div>
 
-                                                                    </td>
-                                                                    <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-                                                                                    <div class="font-medium text-slate-800 dark:text-slate-100">${nome}</div>
-                                                                    </td>
-                                                                    <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-                                                                            <div class="font-medium text-slate-800 dark:text-slate-100">${quantidade}</div>
-                                                                    </td>
-                                                                    <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-                                                                                <div class="font-medium text-slate-800 dark:text-slate-100">R$ ${preco}</div>
-                                                                    </td>
-                                                                    <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-                                                                                        <div class="font-medium text-slate-800 dark:text-slate-100">R$ ${parseFloat((quantidade * preco).toFixed(2))}</div>
-                                                                    </td>
+                                                                        </td>
+                                                                        <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
+                                                                                            <div class="truncate max-w-80ch font-medium text-slate-800 dark:text-slate-100">${nome}</div>
+                                                                        </td>
+                                                                        <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
+                                                                                            <div class="font-medium text-slate-800 dark:text-slate-100">R$ ${valor}</div>
+                                                                        </td>
+                                                                        <td x-data="{ modalDeletarOpen: false, modalVisualizarOpen: false }" class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap w-px">
+                                                                            <div class="space-x-1">
+                                                                                        <button type="button" class="removeDespesa text-rose-500 hover:text-rose-600 rounded-full">
+                                                                                    <span class="sr-only">Deletar</span>
+                                                                                    <svg class="w-8 h-8 fill-current" viewBox="0 0 32 32">
+                                                                                        <path d="M13 15h2v6h-2zM17 15h2v6h-2z" />
+                                                                                        <path d="M20 9c0-.6-.4-1-1-1h-6c-.6 0-1 .4-1 1v2H8v2h1v10c0 .6.4 1 1 1h12c.6 0 1-.4 1-1V13h1v-2h-4V9zm-6 1h4v1h-4v-1zm7 3v9H11v-9h10z" />
+                                                                                    </svg>
+                                                                                </button>
+                                                                            </div>
+                                                                        </td>
+                                                                                                                    <input type="hidden" name="Despesas[${rowCount}].Id" value="${despesaId} />
+                                                                                                                        <input type="hidden" name="Despesas[${rowCount}].Nome" value="${nome} />
+                                                                                                                        <input type="hidden" name="Despesas[${rowCount}].Quantidade" value="${valor} />
 
-                                                                    <td x-data="{ modalDeletarOpen: false, modalVisualizarOpen: false }" class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap w-px">
-                                                                        <div class="space-x-1">
-                                                                                <button type="button" class="removeMaterial text-rose-500 hover:text-rose-600 rounded-full">
-                                                                                <span class="sr-only">Deletar</span>
-                                                                                <svg class="w-8 h-8 fill-current" viewBox="0 0 32 32">
-                                                                                    <path d="M13 15h2v6h-2zM17 15h2v6h-2z" />
-                                                                                    <path d="M20 9c0-.6-.4-1-1-1h-6c-.6 0-1 .4-1 1v2H8v2h1v10c0 .6.4 1 1 1h12c.6 0 1-.4 1-1V13h1v-2h-4V9zm-6 1h4v1h-4v-1zm7 3v9H11v-9h10z" />
-                                                                                </svg>
-                                                                            </button>
-                                                                        </div>
-                                                                    </td>
-                                                                                                         <input type="hidden" name="Materiais[${rowCount}].Id" value="${materialId} />
-                                                                                                         <input type="hidden" name="Materiais[${rowCount}].Nome" value="${nome} />
-                                                                                                     <input type="hidden" name="Materiais[${rowCount}].Quantidade" value="${quantidade} />
-                                                                                                        <input type="hidden" name="Materiais[${rowCount}].Preco" value="R$ ${preco} />
-                                                                                                        <input type="hidden"  name="Materiais[${rowCount}].ValorTotal" value="R$ ${quantidade * preco}  />
+                                                                    </tr>`;
+                $("#despesasTable tbody").append(newRow);
 
-                                                                </tr>`;
-                $("#materiaisTable tbody").append(newRow);
+                $("#despesaId").val('');
+                $("#SearchDespesa").val('');
+                $("#DespesaNome").val('');
+                $("#DespesaValor").val('');
+                $("#Despesa").val('');
 
-                $("#MaterialId").val('');
-                $("#SearchMaterial").val('');
-                $("#MaterialNome").val('');
-                $("#MaterialQuantidade").val('');
-                $("#MaterialPreco").val('');
-                $("#MaterialValorTotal").val('');
-                $("#Material").val('');
-
-                var rows = $("#materiaisTable tbody tr");
-                var materiais = [];
+                var rows = $("#despesasTable tbody tr");
+                var despesas = [];
 
                 for (var i = 0; i < rows.length; i++) {
                     var cells = rows[i].getElementsByTagName('td');
-                    var material = {
+                    var despesa = {
                         Id: cells[0].innerText,
                         Nome: cells[1].innerText,
-                        Quantidade: cells[2].innerText,
-                        Preco: cells[3].innerText.replace('R$ ', ''),
-                        ValorTotal: cells[4].innerText.replace('R$ ', '')
+                        Valor: cells[2].innerText.replace('R$ ', '')
                     };
-                    materiais.push(material);
+                    despesas.push(despesa);
                 }
 
-                console.log(materiais)
-
-                $("#totalDeMateriais").text(materiais.length);
-                $("#MateriaisJson").val(JSON.stringify(materiais));
+                $("#TotalDeDespesas").text(despesas.length)
+                $("#DespesasJson").val(JSON.stringify(despesas));
 
             } else {
-                alert("Por favor, escolha o material e quantidade que deseja incluir no produto.");
+                alert("Por favor, escolha uma data de competência e uma despesa que deseja incluir na precificação.");
             }
         });
 
 
-        $("#materiaisTable").on("click", ".removeMaterial", function () {
+        $("#despesasTable").on("click", ".removeDespesa", function () {
             $(this).closest("tr").remove();
-            $("#materiaisTable tbody tr").each(function (index, tr) {
-                $(tr).find("input[name^='Materiais']").each(function () {
+            $("#despesasTable tbody tr").each(function (index, tr) {
+                $(tr).find("input[name^='Despesas']").each(function () {
                     var name = $(this).attr("name");
                     var newName = name.replace(/\[\d+\]/, `[${index}]`);
                     $(this).attr("name", newName);
                 });
             });
 
-            var materiaisJson = $("#MateriaisJson").val()
+            var despesasJson = $("#DespesasJson").val()
             var indexToRemove = $(this).closest("tr").index();
-            var materiaisList = JSON.parse(materiaisJson);
-            materiaisList.splice(indexToRemove, 1);
-            $("#totalDeMateriais").text(materiaisList.length);
-            materiaisJson = JSON.stringify(materiaisList);
-            $("#MateriaisJson").val(materiaisJson);
-        });
-
-        $("#ProdutoForm").on("submit", function (event) {
-            event.preventDefault();
-        });
-
-        $("#submitForm").click(function () {
-            $("#ProdutoForm").off("submit").submit();
+            var despesasList = JSON.parse(despesasJson);
+            despesasList.splice(indexToRemove, 1);
+            $("#TotalDeDespesas").text(despesasList.length);
+            despesasJson = JSON.stringify(despesasList);
+            $("#DespesasJson").val(despesasJson);
         });
     });
 
 
 </script>
-
 
 @section Scripts {
     @{
