@@ -95,12 +95,12 @@ namespace Libertese.ViewModels
 
         // Composição de rateios da precificação (inicio) 
 
-        [Display(Name = "Despesas")]
-        [Required(ErrorMessage = "Despesas são obrigatórios.")]
-        [MinLength(1, ErrorMessage = "Escolha pelo menos uma despesa para compor a precificação.")]
+        [Display(Name = "Rateios")]
+        [Required(ErrorMessage = "Rateios são obrigatórios.")]
+        [MinLength(1, ErrorMessage = "Rateios são obrigatórios.")]
         public List<PrecificacaoRateioViewModel> Rateios { get; set; } = new List<PrecificacaoRateioViewModel>();
 
-        [Required(ErrorMessage = "Calcular Rateios é obrigatório.")]
+        [Required(ErrorMessage = "Rateios são obrigatórios.")]
         public string? RateiosJson { get; set; }
 
         public int? TotalDeRateios { get; set; }
@@ -109,24 +109,21 @@ namespace Libertese.ViewModels
         // Composição de rateios da precificação (fim)
 
 
+        // ########################### CONTEXTO PRECOS ###########################
 
 
+        // Composição de precos da precificação (inicio) 
 
+        [Display(Name = "Preços")]
+        [Required(ErrorMessage = "Preços são obrigatórios.")]
+        [MinLength(1, ErrorMessage = "Preços são obrigatórios.")]
+        public List<PrecificacaoPrecoViewModel> Precos { get; set; } = new List<PrecificacaoPrecoViewModel>();
 
+        [Required(ErrorMessage = "Preços são obrigatórios.")]
+        public string? PrecosJson { get; set; }
 
-
-
-
-
-
-
-        [Display(Name = "Materiais")]
-        [Required(ErrorMessage = "Materiais são obrigatórios.")]
-        [MinLength(1, ErrorMessage = "Escolha pelo menos um material para compor o produto.")]
-        public List<MaterialViewModel> Materiais { get; set; } = new List<MaterialViewModel>();
-
-        [Required(ErrorMessage = "Incluir Materiais é obrigatório.")]
-        public string? MateriaisJson { get; set; }
+        public int? TotalDePrecos { get; set; }
+        // Composição de precos da precificação (fim)
 
     }
 }

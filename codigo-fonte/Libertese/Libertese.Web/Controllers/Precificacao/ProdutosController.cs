@@ -460,6 +460,7 @@ namespace Libertese.Web.Controllers.Precificacao
                               Id = gGroup.Key.Id,
                               Nome = gGroup.Key.Nome,
                               Quantidade = 1,
+                              Margem = gGroup.Select(x => x.produto.Margem).Distinct().FirstOrDefault(),
                               TempoProducao = gGroup.Select(x => x.produto.TempoProducao).Distinct().FirstOrDefault(),
                               TempoProducaoTotal = gGroup.Select(x => x.produto.TempoProducao).Distinct().FirstOrDefault() * 1,
                               Custo = (decimal)gGroup.Sum(x => x.produtoMaterial.Quantidade * x.material.Preco),

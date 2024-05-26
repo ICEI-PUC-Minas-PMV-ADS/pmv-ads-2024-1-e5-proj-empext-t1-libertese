@@ -151,6 +151,7 @@ namespace Libertese.Web.Controllers.Precificacao
                     Id = contator,
                     Nome = item.Nome,
                     CustoProducao = item.Total,
+                    Margem = item.Margem,
                     PercentualProducao = _percentualProducao,
                     ValorRateio = Math.Round((decimal)(_valorRateio), 2),
                     CustoProdutoTotal = Math.Round((decimal)(_custoProdutoTotal), 2),
@@ -158,7 +159,31 @@ namespace Libertese.Web.Controllers.Precificacao
                 });
             }
 
+
             preco.Rateios = precificacaoRateios;
+            var precificacaoPrecos = new List<PrecificacaoPrecoViewModel>();
+
+            foreach (var item in preco.Rateios)
+            {
+                var _precoSugerido = ((item.CustoProdutoUnitario / 100) * item.Margem) + item.CustoProdutoUnitario;
+                var _comissao = Math.Round((decimal)((preco.Comissao * _precoSugerido ) / 100), 2);
+                var _imposto = Math.Round((decimal)((preco.Impostos * _precoSugerido) / 100), 2);
+
+                precificacaoPrecos.Add(new PrecificacaoPrecoViewModel
+                {
+                    Id = item.Id,
+                    Nome = item.Nome,
+                    CustoUnitario = item.CustoProdutoUnitario,
+                    Comissao = _comissao,
+                    Imposto = _imposto,
+                    Margem = item.Margem,
+                    PrecoSugerido = Math.Round((decimal)(_precoSugerido), 2),
+                    Lucro = Math.Round((decimal)(_precoSugerido - (_comissao + _imposto) - item.CustoProdutoUnitario), 2),
+                    LucroTotal = 0
+                });
+            }
+
+            preco.Precos = precificacaoPrecos;
 
 
             return View("~/Views/Precos/Create.cshtml", preco);

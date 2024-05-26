@@ -18,6 +18,9 @@ namespace Libertese.ViewModels
         [Display(Name = "Quantidade")]
         public decimal Quantidade { get; set; }
 
+        [Display(Name = "Margem")]
+        public decimal Margem { get; set; }
+
         [Display(Name = "Custo Por Peça")]
         public decimal Custo { get; set; }
 

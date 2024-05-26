@@ -9,6 +9,9 @@ namespace Libertese.ViewModels
         [Display(Name = "Produto")]
         public string? Nome { get; set; }
 
+        [Display(Name = "Margem")]
+        public decimal? Margem { get; set; }
+
         [Display(Name = "Custo de Produção")]
         public decimal? CustoProducao { get; set; }
 
