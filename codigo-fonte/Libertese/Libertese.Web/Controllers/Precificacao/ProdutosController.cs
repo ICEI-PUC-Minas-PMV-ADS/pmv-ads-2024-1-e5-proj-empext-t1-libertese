@@ -377,8 +377,48 @@ namespace Libertese.Web.Controllers.Precificacao
                               Id = gGroup.Key.Id,
                               Nome = gGroup.Key.Nome,
                               Quantidade = 1,
+                              Tempo = gGroup.Select(x => x.produto.TempoProducao).Distinct().FirstOrDefault(),
                               Preco = gGroup.Select(x => x.preco.Valor).Distinct().FirstOrDefault(),
-                              ValorTotal = gGroup.Select(x => x.preco.Valor).Distinct().FirstOrDefault() * 1
+                              ValorTotal = gGroup.Select(x => x.preco.Valor).Distinct().FirstOrDefault() * 1,
+                              TempoTotal = gGroup.Select(x => x.produto.TempoProducao).Distinct().FirstOrDefault() * 1
+
+                          })
+                            .OrderBy(x => x.Nome)
+                            .Take(10)
+                            .ToList();
+
+
+            return Json(result);
+
+        }
+
+
+        [HttpGet, ActionName("SearchPrecificacaoByText")]
+        public JsonResult SearchPrecificacaoByText([FromQuery(Name = "searchString")] string searchString)
+        {
+
+            var result = (from produto in _context.Produtos
+                          join categoria in _context.Categorias on produto.CategoriaId equals categoria.Id into cGroup
+                          from categoria in cGroup.DefaultIfEmpty()
+                          join preco in _context.Precos on produto.Id equals preco.ProdutoId into pGroup
+                          from preco in pGroup.DefaultIfEmpty()
+                          join produtoMaterial in _context.ProdutoMaterial on produto.Id equals produtoMaterial.ProdutoId into pmGroup
+                          from produtoMaterial in pmGroup.DefaultIfEmpty()
+                          join material in _context.Materiais on produtoMaterial.MateriaiId equals material.Id into mGroup
+                          from material in mGroup.DefaultIfEmpty()
+                          where EF.Functions.Like(produto.Nome.ToLower(), "%" + searchString.ToLower() + "%")
+                          group new { produto, categoria, preco, produtoMaterial, material }
+                          by new { produto.Id, produto.Nome } into gGroup
+                          select new ProdutoVendaViewModel
+                          {
+                              Id = gGroup.Key.Id,
+                              Nome = gGroup.Key.Nome,
+                              Quantidade = 1,
+                              Tempo = gGroup.Select(x => x.produto.TempoProducao).Distinct().FirstOrDefault(),
+                              Preco = (decimal)gGroup.Sum(x => x.produtoMaterial.Quantidade * x.material.Preco),
+                              ValorTotal = (decimal)gGroup.Sum(x => x.produtoMaterial.Quantidade * x.material.Preco) * 1,
+                              TempoTotal = gGroup.Select(x => x.produto.TempoProducao).Distinct().FirstOrDefault() * 1
+
                           })
                             .OrderBy(x => x.Nome)
                             .Take(10)
