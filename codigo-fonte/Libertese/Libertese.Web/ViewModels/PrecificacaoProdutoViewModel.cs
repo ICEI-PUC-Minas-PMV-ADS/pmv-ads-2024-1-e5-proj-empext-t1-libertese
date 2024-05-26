@@ -12,6 +12,9 @@ namespace Libertese.ViewModels
         [Display(Name = "Tempo de Produção")]
         public int TempoProducao { get; set; }
 
+        [Display(Name = "Tempo de Produção Total")]
+        public int TempoProducaoTotal { get; set; }
+
         [Display(Name = "Quantidade")]
         public decimal Quantidade { get; set; }
 

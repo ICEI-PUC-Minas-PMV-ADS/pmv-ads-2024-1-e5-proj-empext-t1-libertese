@@ -12,13 +12,14 @@
 }
 
 <body class="font-inter antialiased bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-400">
-    <div class="flex h-[100dvh] overflow-hidden">
-        <div class="relative flex flex-col flex-1 overflow-y-auto overflow-x-hidden">
+    <div class="flex h-[100dvh] overflow-visible">
+        <div class="relative flex flex-col flex-1 overflow-y-visible overflow-x-visible">
             <main class="grow">
                 <div class="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
                     <div class="sm:flex sm:justify-between sm:items-center mb-5">
                         <div class="mb-4 sm:mb-0">
                             <h1 class="text-2xl md:text-3xl text-slate-800 dark:text-slate-100 font-bold">Produtos</h1>
+                            <span class="text-xs mt-1 text-rose-500">@ViewData["ErrorMessage"]</span>
                         </div>
 
                         <div class="grid grid-flow-col sm:auto-cols-max justify-start sm:justify-end gap-2">
@@ -119,8 +120,8 @@
                                                 <div class="font-medium text-sky-500">@Html.DisplayFor(modelItem => item.Id)</div>
                                                 
                                             </td>
-                                            <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-                                                <div class="font-medium text-slate-800 dark:text-slate-100">@Html.DisplayFor(modelItem => item.Nome)</div>
+                                                <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
+                                                <div class="truncate max-w-60ch font-medium text-slate-800 dark:text-slate-100">@Html.DisplayFor(modelItem => item.Nome)</div>
                                             </td>
                                                 <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
                                                     <div class="font-medium text-slate-800 dark:text-slate-100">@Html.DisplayFor(modelItem => item.Categoria)</div>
@@ -194,12 +195,13 @@
                                                                             <div class="text-lg font-semibold text-slate-800 dark:text-slate-100">Visualizar produto</div>
                                                                         </div>
                                                                         <div class="mb-2">
+                                                                                
                                                                             <p><strong>Código: </strong>@Html.DisplayFor(modelItem => item.Id)</p>
-                                                                            <p><strong>Nome: </strong> @Html.DisplayFor(modelItem => item.Nome)</p>
+                                                                            <p class="truncate max-w-40ch"><strong>Nome: </strong>@Html.DisplayFor(modelItem => item.Nome)</p>
                                                                             <p><strong>Categoria: </strong> @Html.DisplayFor(modelItem => item.Categoria)</p>
-                                                                                <p><strong>Material: </strong> R$ @Html.DisplayFor(modelItem => item.Custo)</p>
+                                                                            <p><strong>Material: </strong> R$ @Html.DisplayFor(modelItem => item.Custo)</p>
                                                                             <p><strong>Rateio: </strong> R$ @Html.DisplayFor(modelItem => item.Rateio)</p>
-                                                                                <p><strong>Preço: </strong> R$ @Html.DisplayFor(modelItem => item.Preco)</p>
+                                                                            <p><strong>Preço: </strong> R$ @Html.DisplayFor(modelItem => item.Preco)</p>
                                                                             <p><strong>Atualização: </strong> @Html.DisplayFor(modelItem => item.DataAtualizacao)</p>
                                                                     
                                                                         </div>
@@ -302,7 +304,10 @@
                                                                             <div class="text-lg font-semibold text-slate-800 dark:text-slate-100">Excluir produto</div>
                                                                         </div>
                                                                         <div class="mb-2">
-                                                                            <p>Deseja excluir o produto <strong>@Html.DisplayFor(modelItem => item.Nome)</strong> ?</p>
+                                                                                <p class="truncate max-w-40ch">
+                                                                                    Deseja excluir o produto:<strong>@Html.DisplayFor(modelItem => item.Nome)
+                                                                                    </strong>?
+                                                                                </p>
                                                                             <p><strong>Essa ação é irreversível.</strong></p>
                                                                         </div>
                                                                     </div>
@@ -333,3 +338,22 @@
         </div>
     </div>
 </body>
+<style>
+    .max-w-60ch {
+        max-width: 60ch;
+    }
+
+    .max-w-40ch {
+        max-width: 40ch;
+    }
+
+    .max-w-20ch {
+        max-width: 20ch;
+    }
+
+    .truncate {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+</style>

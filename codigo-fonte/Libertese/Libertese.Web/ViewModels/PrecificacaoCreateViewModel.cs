@@ -6,6 +6,11 @@ namespace Libertese.ViewModels
     public class PrecificacaoCreateViewModel : BaseEntity
     {
 
+        public void CalcularTotalHorasMes()
+        {
+            TotalHorasMes = (TotalPessoas * HorasDiarias) * DiasMes;
+        }
+
         [Display(Name = "Pessoas por produção")]
         [Required(ErrorMessage = "Esse campo é obrigatório.")]
         [Range(1, int.MaxValue, ErrorMessage = "Esse campo é obrigatório.")]
@@ -51,6 +56,8 @@ namespace Libertese.ViewModels
         [Required(ErrorMessage = "Incluir Produtos é obrigatório.")]
         public string? ProdutosJson { get; set; }
 
+        public int? TotalDeProdutos { get; set; }
+
         // Composição de produtos da precificação (fim)
 
 
@@ -74,6 +81,9 @@ namespace Libertese.ViewModels
 
         [Required(ErrorMessage = "Incluir Despesas é obrigatório.")]
         public string? DespesasJson { get; set; }
+
+        public int? TotalDeDespesas { get; set; }
+
 
         // Composição de despesas da precificação (fim)
 

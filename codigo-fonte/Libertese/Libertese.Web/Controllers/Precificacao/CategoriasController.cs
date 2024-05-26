@@ -151,13 +151,25 @@ namespace Libertese.Web.Controllers.Precificacao
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var categoria = await _context.Categorias.FindAsync(id);
+            bool existeProdutoComEssaCategoria = await _context.Produtos.AnyAsync(pm => pm.CategoriaId == id);
             if (categoria != null)
             {
-                _context.Categorias.Remove(categoria);
-            }
+                if (existeProdutoComEssaCategoria)
+                {
+                    var categorias = await _context.Categorias.ToListAsync();
+                    ViewData["ErrorMessage"] = $"A categoria {categoria.Nome} está associado a um produto e não pode ser deletada.";
+                    return View(nameof(Index), categorias);
+                }
 
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+                _context.Categorias.Remove(categoria);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            else
+            {
+                ViewData["ErrorMessage"] = $"A categoria ID: {id} informado não foi encontrado.";
+                return View("ErrorView");
+            }
         }
 
         // POST: Categorias/Search

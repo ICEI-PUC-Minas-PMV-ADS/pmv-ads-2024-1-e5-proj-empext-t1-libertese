@@ -9,6 +9,7 @@ using Libertese.Data;
 using Libertese.Domain.Entities.Precificacao;
 using Microsoft.AspNetCore.Authorization;
 using Libertese.ViewModels;
+using Newtonsoft.Json;
 
 namespace Libertese.Web.Controllers.Precificacao
 {
@@ -26,23 +27,122 @@ namespace Libertese.Web.Controllers.Precificacao
         public IActionResult Create()
         {
             var produto = new PrecificacaoCreateViewModel();
+            produto.TotalPessoas = 1;
+            produto.HorasDiarias = 8;
+            produto.DiasMes = 22;
+            produto.Impostos = 0;
+            produto.Comissao = 0;
+            produto.TotalDeProdutos = 0;
+            produto.TotalDeDespesas = 0;
+            produto.CalcularTotalHorasMes();
             return View(produto);
         }
 
-        // POST: Precos/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ProdutoId,RateioId,Vigencia,Id,DataCriacao,DataAtualizacao")] Preco preco)
+        public async Task<IActionResult> Create([Bind("TotalPessoas,HorasDiarias,DiasMes,TotalHorasMes,Impostos,Comissao,Produtos,ProdutosJson,Despesas,DespesasJson")] PrecificacaoCreateViewModel preco)
         {
-            if (ModelState.IsValid)
+            //validando produtos 
+            if (preco.ProdutosJson == null)
+            {
+                return View(preco);
+            }
+
+            var precificacaoProduto = new List<PrecificacaoProdutoViewModel>();
+            preco.Produtos = preco.ProdutosJson != null ? JsonConvert.DeserializeObject<List<PrecificacaoProdutoViewModel>>(preco.ProdutosJson) : [];
+
+            if (ModelState.ContainsKey("Produtos") && ModelState["Produtos"].Errors.Count > 0 && preco.Produtos.Count() > 0)
+            {
+                ModelState["Produtos"].Errors.Clear();
+                preco.TotalDeProdutos = preco.Produtos.Count();
+            }
+
+            var tempoProducaoTotal = (preco.Produtos.Sum(x => x.TempoProducaoTotal) / 60);
+
+            if (tempoProducaoTotal > preco.TotalHorasMes)
+            {
+                ModelState.AddModelError("Produtos", "O tempo de produção não pode exceder o total de horas mês.");
+              
+            }
+
+            //validando despesas 
+            if (preco.DespesasJson == null)
+            {
+                return View(preco);
+            }
+
+            var precificacaoDespesas = new List<PrecificacaoDespesaViewModel>();
+            preco.Despesas = preco.DespesasJson != null ? JsonConvert.DeserializeObject<List<PrecificacaoDespesaViewModel>>(preco.DespesasJson) : [];
+
+            if (ModelState.ContainsKey("Despesas") && ModelState["Despesas"].Errors.Count > 0 && preco.Despesas.Count() > 0)
+            {
+                ModelState["Despesas"].Errors.Clear();
+                preco.TotalDeDespesas = preco.Despesas.Count();
+            }
+
+            if (ModelState.Values.Sum(v => v.Errors.Count) == 0)
             {
                 _context.Add(preco);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             return View(preco);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CalcularRateio([Bind("TotalDeProdutos,TotalDeDespesas,TotalPessoas,HorasDiarias,DiasMes,TotalHorasMes,Impostos,Comissao,Produtos,ProdutosJson,Despesas,DespesasJson")] PrecificacaoCreateViewModel preco)
+        {
+            //validando produtos 
+            if (preco.ProdutosJson == null)
+            {
+                return View("~/Views/Precos/Create.cshtml", preco);
+            }
+
+            var precificacaoProduto = new List<PrecificacaoProdutoViewModel>();
+            preco.Produtos = preco.ProdutosJson != null ? JsonConvert.DeserializeObject<List<PrecificacaoProdutoViewModel>>(preco.ProdutosJson) : [];
+
+            if (ModelState.ContainsKey("Produtos") && ModelState["Produtos"].Errors.Count > 0 && preco.Produtos.Count() > 0)
+            {
+                ModelState["Produtos"].Errors.Clear();
+                preco.TotalDeProdutos = preco.Produtos.Count();
+            }
+
+            var tempoProducaoTotal = (preco.Produtos.Sum(x => x.TempoProducaoTotal) / 60);
+
+            if (tempoProducaoTotal > preco.TotalHorasMes)
+            {
+                ModelState.AddModelError("Produtos", "O tempo de produção não pode exceder o total de horas mês.");
+
+            }
+
+            //validando despesas 
+            if (preco.DespesasJson == null)
+            {
+                return View("~/Views/Precos/Create.cshtml", preco);
+            }
+
+            var precificacaoDespesas = new List<PrecificacaoDespesaViewModel>();
+            preco.Despesas = preco.DespesasJson != null ? JsonConvert.DeserializeObject<List<PrecificacaoDespesaViewModel>>(preco.DespesasJson) : [];
+
+            if (ModelState.ContainsKey("Despesas") && ModelState["Despesas"].Errors.Count > 0 && preco.Despesas.Count() > 0)
+            {
+                ModelState["Despesas"].Errors.Clear();
+                preco.TotalDeDespesas = preco.Despesas.Count();
+            }
+
+
+            // rateio (inicio)
+
+
+            if (ModelState.Values.Sum(v => v.Errors.Count) == 0)
+            {
+                _context.Add(preco);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+
+            return View("~/Views/Precos/Create.cshtml", preco);
         }
     }
 }
