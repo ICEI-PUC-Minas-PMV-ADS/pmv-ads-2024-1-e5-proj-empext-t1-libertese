@@ -134,6 +134,35 @@ namespace Libertese.Web.Controllers.Precificacao
 
             // rateio (inicio)
 
+            var custosFixos = preco.Despesas.Sum(x => x.Valor);
+            var totalCustosDeProducao = preco.Produtos.Sum(x => x.Total);
+            var precificacaoRateios = new List<PrecificacaoRateioViewModel>();
+            var contator = 0;
+
+            foreach (var item in preco.Produtos)
+            {
+                var _percentualProducao = (item.Total / totalCustosDeProducao);
+                var _valorRateio = (_percentualProducao * custosFixos);
+                var _custoProdutoTotal = item.Total + _valorRateio;
+                contator += 1;
+
+                precificacaoRateios.Add(new PrecificacaoRateioViewModel
+                {
+                    Id = contator,
+                    Nome = item.Nome,
+                    CustoProducao = item.Total,
+                    PercentualProducao = _percentualProducao,
+                    ValorRateio = Math.Round((decimal)(_valorRateio), 2),
+                    CustoProdutoTotal = Math.Round((decimal)(_custoProdutoTotal), 2),
+                    CustoProdutoUnitario = Math.Round((decimal)(_custoProdutoTotal /  item.Quantidade), 2)
+                });
+            }
+
+            preco.Rateios = precificacaoRateios;
+
+
+            return View("~/Views/Precos/Create.cshtml", preco);
+
 
             if (ModelState.Values.Sum(v => v.Errors.Count) == 0)
             {

@@ -1,4 +1,5 @@
 ﻿using Libertese.Domain.Entities;
+using Libertese.Domain.Entities.Precificacao;
 using System.ComponentModel.DataAnnotations;
 
 namespace Libertese.ViewModels
@@ -86,6 +87,26 @@ namespace Libertese.ViewModels
 
 
         // Composição de despesas da precificação (fim)
+
+
+
+        // ########################### CONTEXTO RATEIOS ###########################
+
+
+        // Composição de rateios da precificação (inicio) 
+
+        [Display(Name = "Despesas")]
+        [Required(ErrorMessage = "Despesas são obrigatórios.")]
+        [MinLength(1, ErrorMessage = "Escolha pelo menos uma despesa para compor a precificação.")]
+        public List<PrecificacaoRateioViewModel> Rateios { get; set; } = new List<PrecificacaoRateioViewModel>();
+
+        [Required(ErrorMessage = "Calcular Rateios é obrigatório.")]
+        public string? RateiosJson { get; set; }
+
+        public int? TotalDeRateios { get; set; }
+
+
+        // Composição de rateios da precificação (fim)
 
 
 
