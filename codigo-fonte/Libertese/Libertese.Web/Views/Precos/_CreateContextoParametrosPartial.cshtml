@@ -42,7 +42,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <input asp-for="TotalPessoas" class="form-input w-full" type="number" />
+                            <input asp-for="TotalPessoas" class="form-input w-full" type="number" onchange="recalculateTotalHorasMes()" />
                             <span asp-validation-for="TotalPessoas" class="text-xs mt-1 text-rose-500"></span>
                         </div>
                     </div>
@@ -79,7 +79,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <input asp-for="HorasDiarias" class="form-input w-full" type="number" />
+                            <input asp-for="HorasDiarias" class="form-input w-full" type="number" onchange="recalculateTotalHorasMes()" />
                             <span asp-validation-for="HorasDiarias" class="text-xs mt-1 text-rose-500"></span>
                         </div>
                     </div>
@@ -119,7 +119,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <input asp-for="DiasMes" class="form-input w-full" type="number" />
+                            <input asp-for="DiasMes" class="form-input w-full" type="number" onchange="recalculateTotalHorasMes()" />
                             <span asp-validation-for="DiasMes" class="text-xs mt-1 text-rose-500"></span>
                         </div>
                     </div>
@@ -162,7 +162,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <input asp-for="TotalHorasMes" class="form-input w-full" type="number" />
+                            <input asp-for="TotalHorasMes" class="form-input w-full" type="number" readonly />
                             <span asp-validation-for="TotalHorasMes" class="text-xs mt-1 text-rose-500"></span>
                         </div>
                     </div>
@@ -248,7 +248,23 @@
             </div>
         </div>
     </div>
-    </div>
+</div>
+
+<script>
+    function recalculateTotalHorasMes() {
+        var totalPessoas = parseInt(document.getElementById('TotalPessoas').value) || 0;
+        var horasDiarias = parseInt(document.getElementById('HorasDiarias').value) || 0;
+        var diasMes = parseInt(document.getElementById('DiasMes').value) || 0;
+
+        var totalHorasMes = totalPessoas * horasDiarias * diasMes;
+        document.getElementById('TotalHorasMes').value = totalHorasMes;
+    }
+
+    // Initialize calculation on page load
+    document.addEventListener("DOMContentLoaded", function() {
+        recalculateTotalHorasMes();
+    });
+</script>
 
 @section Scripts {
     @{

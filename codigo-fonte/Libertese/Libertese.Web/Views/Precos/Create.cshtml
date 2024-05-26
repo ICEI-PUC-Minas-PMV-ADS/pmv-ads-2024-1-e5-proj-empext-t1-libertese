@@ -37,6 +37,14 @@
                         await Html.RenderPartialAsync("_CreateContextoRateioPartial", Model);
                         await Html.RenderPartialAsync("_CreateContextoFormacaoDePrecoPartial", Model);
                     }
+
+                    <footer>
+                        <div class="flex flex-col px-6 py-5 border-t border-slate-200 dark:border-slate-700">
+                            <div class="flex self-center">
+                                <button id="submitForm" name="submitForm" type="submit" value="Salvar" class="btn bg-slate-900 hover:bg-orange-600 text-white ml-3 rounded-lg w-32">Confirmar</button>
+                            </div>
+                        </div>
+                    </footer>
                 </form>
             </main>
         </div>
@@ -227,7 +235,30 @@
 
 
 </script>
+<style>
+    .max-w-80ch {
+        max-width: 80ch;
+    }
 
+    .max-w-60ch {
+        max-width: 60ch;
+    }
+
+
+    .max-w-40ch {
+        max-width: 40ch;
+    }
+
+    .max-w-20ch {
+        max-width: 20ch;
+    }
+
+    .truncate {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+</style>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

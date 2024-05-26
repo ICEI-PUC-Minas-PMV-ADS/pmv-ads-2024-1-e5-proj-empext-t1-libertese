@@ -17,6 +17,10 @@ namespace Libertese.ViewModels
 
         [Display(Name = "Total")]
         public decimal ValorTotal { get; set; }
+
+        public int? Tempo { get; set; }
+
+        public int? TempoTotal { get; set; }
     }
 }
 

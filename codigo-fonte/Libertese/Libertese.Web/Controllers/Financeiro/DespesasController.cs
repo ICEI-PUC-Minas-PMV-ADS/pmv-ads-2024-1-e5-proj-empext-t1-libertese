@@ -10,6 +10,7 @@ using Libertese.Domain.Entities.Financeiro;
 using Libertese.Domain.Enums;
 using System.Collections;
 using Microsoft.AspNetCore.Authorization;
+using Libertese.ViewModels;
 
 namespace Libertese.Web.Controllers.Financeiro
 {
@@ -171,6 +172,30 @@ namespace Libertese.Web.Controllers.Financeiro
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+
+
+        [HttpGet, ActionName("SearchPrecificacaoByText")]
+        public JsonResult SearchPrecificacaoByText([FromQuery(Name = "searchString")] string searchString, [FromQuery(Name = "despesaCompetencia")]  DateTime despesaCompetencia)
+        {
+
+            var year = despesaCompetencia.Year;
+            var month = despesaCompetencia.Month;
+
+
+            var result = _context.Despesas
+                  .Where(x => EF.Functions.Like(x.Observacao.ToLower(), "%" + searchString.ToLower() + "%"))
+                  .Where(x => x.DataCompetencia.Value.Year == year && x.DataCompetencia.Value.Month == month)
+                  .Select(x => new PrecificacaoDespesaViewModel 
+                  { Id = x.Id, 
+                    Nome = x.Observacao,
+                    Valor = x.Valor
+                  })
+                  .Take(10)
+                  .ToList();
+            return Json(result);
+
+        }
+
 
         private bool DespesaExists(int id)
         {
