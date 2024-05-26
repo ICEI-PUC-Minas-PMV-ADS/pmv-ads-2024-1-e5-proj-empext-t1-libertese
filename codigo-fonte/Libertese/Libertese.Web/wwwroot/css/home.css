@@ -73,19 +73,19 @@
   height: 200px;
   display: flex;
   position: absolute;
-  align-items: flex-start;
+  align-items: center;
+  border-radius: 35px;
   flex-shrink: 1;
   background-color: rgba(242, 202, 179, 0.8999999761581421);
 }
 .home02-text {
-  top: 52.011474609375px;
   left: 65.92198944091797px;
   color: rgba(125, 110, 67, 1);
   width: 649px;
   height: auto;
   position: absolute;
+  display: flex;
   font-size: 36px;
-  font-style: Regular;
   text-align: left;
   font-family: Montserrat;
   font-weight: 400;
@@ -114,7 +114,6 @@
   height: auto;
   position: absolute;
   font-size: 14px;
-  font-style: SemiBold;
   text-align: left;
   font-family: Montserrat;
   font-weight: 600;
@@ -130,7 +129,6 @@
   height: auto;
   position: absolute;
   font-size: 14px;
-  font-style: SemiBold;
   text-align: left;
   font-family: Montserrat;
   font-weight: 600;
@@ -146,7 +144,6 @@
   height: auto;
   position: absolute;
   font-size: 14px;
-  font-style: SemiBold;
   text-align: left;
   font-family: Montserrat;
   font-weight: 600;
@@ -162,7 +159,6 @@
   height: auto;
   position: absolute;
   font-size: 14px;
-  font-style: SemiBold;
   text-align: left;
   font-family: Montserrat;
   font-weight: 600;
@@ -178,7 +174,6 @@
   height: auto;
   position: absolute;
   font-size: 14px;
-  font-style: SemiBold;
   text-align: left;
   font-family: Montserrat;
   font-weight: 600;
@@ -194,7 +189,6 @@
   height: auto;
   position: absolute;
   font-size: 14px;
-  font-style: SemiBold;
   text-align: left;
   font-family: Montserrat;
   font-weight: 600;
@@ -210,7 +204,6 @@
   height: auto;
   position: absolute;
   font-size: 32px;
-  font-style: Regular;
   text-align: center;
   font-family: Montserrat;
   font-weight: 400;
@@ -226,7 +219,6 @@
   height: auto;
   position: absolute;
   font-size: 24px;
-  font-style: Regular;
   text-align: center;
   font-family: Montserrat;
   font-weight: 400;
