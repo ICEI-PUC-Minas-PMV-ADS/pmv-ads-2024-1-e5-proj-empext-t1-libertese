@@ -85,11 +85,14 @@
         var comissao = parseFloat(linha.cells[4].innerText.replace('R$', '').trim());
         var imposto = parseFloat(linha.cells[5].innerText.replace('R$', '').trim());
         var precoSugerido = parseFloat(input.value);
-        var lucro = precoSugerido - (custoUnitario + comissao + imposto);
-        var margemCalculada = (lucro / custoUnitario) * 100;
+        var comissaoCalculada = ((@Model.Comissao * precoSugerido) / 100);
+        var impostoCalculada = ((@Model.Impostos * precoSugerido) / 100);
+        var lucro = precoSugerido - (comissaoCalculada + impostoCalculada) - custoUnitario;
+        var margemCalculada = (lucro >= 0) ? (lucro / custoUnitario) * 100 : 0;
 
-        linha.cells[6].innerHTML = 'R$ ' + lucro.toFixed(2);
-        linha.cells[7].innerHTML = 'R$ ' + precoSugerido.toFixed(2);
-        linha.cells[5].innerHTML = '% ' + margemCalculada.toFixed(2);
+        linha.cells[3].innerHTML = (lucro >= 0 ? margemCalculada.toFixed(2) : '0.00') + ' %';
+        linha.cells[4].innerHTML = 'R$ ' + comissaoCalculada.toFixed(2);
+        linha.cells[5].innerHTML = 'R$ ' + impostoCalculada.toFixed(2);
+        linha.cells[6].innerHTML = 'R$ ' + `${lucro}`;
     }
 </script>
