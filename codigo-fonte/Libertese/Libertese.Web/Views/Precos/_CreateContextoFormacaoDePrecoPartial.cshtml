@@ -61,6 +61,8 @@
                                             <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap"><div class="font-medium text-slate-800 dark:text-slate-100">R$ @Model.Precos[i].Imposto</div></td>
                                             <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap"><div class="font-medium text-slate-800 dark:text-slate-100">R$ @Model.Precos[i].Lucro</div></td>
                                             <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap"><div class="font-medium text-slate-800 dark:text-slate-100">R$ @Model.Precos[i].LucroTotal</div></td>
+                                            <td style="display: none;"><div class="font-medium text-slate-800 dark:text-slate-100">@Model.Precos[i].Quantidade</div></td>
+                                            <td style="display: none;"><div class="font-medium text-slate-800 dark:text-slate-100">@Model.Precos[i].ValorRateio</div></td>
                                             <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
                                                 <input class="form-input" type="text" name="PrecoSugerido" onchange="recalcularLinha(this)" value="@Model.Precos[i].PrecoSugerido" />
                                             </td>
@@ -76,6 +78,7 @@
         </div>
     </div>
 </div>
+<input style="display: none;" asp-for="PrecosJson" />
 
 <script>
     function recalcularLinha(input) {
@@ -84,15 +87,76 @@
         var margem = parseFloat(linha.cells[3].innerText.replace('%', '').trim());
         var comissao = parseFloat(linha.cells[4].innerText.replace('R$', '').trim());
         var imposto = parseFloat(linha.cells[5].innerText.replace('R$', '').trim());
-        var precoSugerido = parseFloat(input.value);
+        var quantidade = parseInt(linha.cells[8].innerText.trim());
+        var valorRateio = parseInt(linha.cells[9].innerText.trim());
+        var precoSugerido = parseFloat(input.value).toFixed(2);
         var comissaoCalculada = ((@Model.Comissao * precoSugerido) / 100);
         var impostoCalculada = ((@Model.Impostos * precoSugerido) / 100);
-        var lucro = precoSugerido - (comissaoCalculada + impostoCalculada) - custoUnitario;
-        var margemCalculada = (lucro >= 0) ? (lucro / custoUnitario) * 100 : 0;
+        var lucro = parseFloat((precoSugerido - (comissaoCalculada + impostoCalculada) - custoUnitario).toFixed(2));
+        var margemCalculada = (lucro / custoUnitario) * 100;
+        var lucroTotal = (lucro * quantidade).toFixed(2);
 
-        linha.cells[3].innerHTML = (lucro >= 0 ? margemCalculada.toFixed(2) : '0.00') + ' %';
+        linha.cells[3].innerHTML = margemCalculada.toFixed(2) + ' %';
         linha.cells[4].innerHTML = 'R$ ' + comissaoCalculada.toFixed(2);
         linha.cells[5].innerHTML = 'R$ ' + impostoCalculada.toFixed(2);
         linha.cells[6].innerHTML = 'R$ ' + `${lucro}`;
+        linha.cells[7].innerHTML = 'R$ ' + `${lucroTotal}`;
+        (linha.cells[10].querySelector('input')).value = `${precoSugerido}`;
+
+        var rows = $("#precosTable tbody tr");
+        var precos = [];
+
+        for (var i = 0; i < rows.length; i++) {
+            var cells = rows[i].getElementsByTagName('td');
+            var preco = {
+                Id: cells[0].innerText,
+                Nome: cells[1].innerText.trim(),
+                CustoUnitario: parseFloat(cells[2].innerText.replace('R$ ', '').trim()),
+                Margem: cells[3].innerText.replace(' %', '').trim(),
+                Comissao: cells[4].innerText.replace('R$ ', '').trim(),
+                Imposto: cells[5].innerText.replace('R$ ', '').trim(),
+                Lucro: cells[6].innerText.replace('R$ ', '').trim(),
+                lucroTotal: cells[7].innerText.replace('R$ ', '').trim(),
+                Quantidade: parseInt(cells[8].innerText.replace('R$ ', '').trim()),
+                ValorRateio: parseFloat(cells[9].innerText.replace('R$ ', '').trim()),
+                PrecoSugerido: parseFloat(cells[10].querySelector('input').value).toFixed(2),
+            };
+            precos.push(preco);
+        }
+
+        console.log(precos);
+
+        $("#PrecosJson").val(JSON.stringify(precos));
+
     }
+
+    function setPrecosJson() {
+        var rows = $("#precosTable tbody tr");
+        var precos = [];
+
+        for (var i = 0; i < rows.length; i++) {
+            var cells = rows[i].getElementsByTagName('td');
+            var preco = {
+                Id: cells[0].innerText,
+                Nome: cells[1].innerText.trim(),
+                CustoUnitario: parseFloat(cells[2].innerText.replace('R$ ', '').trim()),
+                Margem: cells[3].innerText.replace(' %', '').trim(),
+                Comissao: cells[4].innerText.replace('R$ ', '').trim(),
+                Imposto: cells[5].innerText.replace('R$ ', '').trim(),
+                Lucro: cells[6].innerText.replace('R$ ', '').trim(),
+                lucroTotal: cells[7].innerText.replace('R$ ', '').trim(),
+                Quantidade: parseInt(cells[8].innerText.replace('R$ ', '').trim()),
+                ValorRateio: parseFloat(cells[9].innerText.replace('R$ ', '').trim()),
+                PrecoSugerido: parseFloat(cells[10].querySelector('input').value.replace(',', '.')),
+            };
+            precos.push(preco);
+        }
+
+        console.log(precos);
+
+        $("#PrecosJson").val(JSON.stringify(precos));
+
+    }
+
+    setPrecosJson();
 </script>

@@ -11,6 +11,8 @@
         public decimal? PrecoSugerido { get; set; }
         public decimal? Lucro { get; set; }
         public decimal? LucroTotal { get; set; }
+        public decimal? ValorRateio { get; set; }
+        public int Quantidade { get; set; }
 
     }
 }

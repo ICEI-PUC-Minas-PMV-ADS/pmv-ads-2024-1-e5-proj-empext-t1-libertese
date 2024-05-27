@@ -27,6 +27,9 @@ namespace Libertese.ViewModels
         [Display(Name = "Custo Total")]
         public decimal? CustoProdutoTotal { get; set; }
 
+        [Display(Name = "Quantidade Produzida")]
+        public int Quantidade { get; set; }
+
     }
 }
 

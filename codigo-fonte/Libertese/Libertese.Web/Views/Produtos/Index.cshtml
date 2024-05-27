@@ -133,7 +133,7 @@
                                                     <div class="font-medium text-slate-800 dark:text-slate-100">R$ @Html.DisplayFor(modelItem => item.Custo)</div>
                                                 </td>
                                                 <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-                                                    <div class="font-medium text-slate-800 dark:text-slate-100">R$ 0</div>
+                                                    <div class="font-medium text-slate-800 dark:text-slate-100">R$ @Html.DisplayFor(modelItem => item.Rateio)</div>
                                                 </td>
                                                 <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
                                                     <div class="font-medium text-slate-800 dark:text-slate-100">R$ @Html.DisplayFor(modelItem => item.Preco)</div>
@@ -340,7 +340,7 @@
 </body>
 <style>
     .max-w-60ch {
-        max-width: 60ch;
+        max-width: 40ch;
     }
 
     .max-w-40ch {

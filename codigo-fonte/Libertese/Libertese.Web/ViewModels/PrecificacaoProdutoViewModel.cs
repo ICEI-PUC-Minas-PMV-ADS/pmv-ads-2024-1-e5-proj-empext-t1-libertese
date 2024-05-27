@@ -16,7 +16,7 @@ namespace Libertese.ViewModels
         public int TempoProducaoTotal { get; set; }
 
         [Display(Name = "Quantidade")]
-        public decimal Quantidade { get; set; }
+        public int Quantidade { get; set; }
 
         [Display(Name = "Margem")]
         public decimal Margem { get; set; }

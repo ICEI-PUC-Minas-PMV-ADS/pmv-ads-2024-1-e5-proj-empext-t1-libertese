@@ -2,8 +2,9 @@
 {
     public class Rateio : BaseEntity
     {
-        public int CapacidadeProdutivaId { get; set; }
 
+        public int ProdutoId { get; set; }
+        public int CapacidadeProdutivaId { get; set; }
         public decimal CustoFixo { get; set; }
 
         public decimal Valor { get; set; }
