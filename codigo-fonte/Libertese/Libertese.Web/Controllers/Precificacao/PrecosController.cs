@@ -30,6 +30,7 @@ namespace Libertese.Web.Controllers.Precificacao
             produto.TotalPessoas = 1;
             produto.HorasDiarias = 8;
             produto.DiasMes = 22;
+            produto.DespesaCompetencia = DateTime.Now;
             produto.Impostos = 0;
             produto.Comissao = 0;
             produto.TotalDeProdutos = 0;
@@ -161,11 +162,14 @@ namespace Libertese.Web.Controllers.Precificacao
                     _preco.Valor = (decimal)item.PrecoSugerido;
                     _context.Add(_preco);
                     await _context.SaveChangesAsync();
-
+                
                 }
+
+                return RedirectToAction("Index", "Produtos");
             }
 
-            return RedirectToAction("Index", "Produtos");
+            return View(preco);
+
         }
 
         [HttpPost]
