@@ -40,7 +40,7 @@ namespace Libertese.Web.Controllers.Precificacao
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("TotalPessoas,HorasDiarias,DiasMes,TotalHorasMes,Impostos,Comissao,Produtos,ProdutosJson,Despesas,DespesasJson")] PrecificacaoCreateViewModel preco)
+        public async Task<IActionResult> Create([Bind("TotalPessoas,HorasDiarias,DiasMes,TotalHorasMes,Impostos,Comissao,Produtos,ProdutosJson,Despesas,DespesasJson,Rateios,RateiosJson,Precos,PrecosJson")] PrecificacaoCreateViewModel preco)
         {
             //validando produtos 
             if (preco.ProdutosJson == null)
@@ -79,6 +79,38 @@ namespace Libertese.Web.Controllers.Precificacao
                 ModelState["Despesas"].Errors.Clear();
                 preco.TotalDeDespesas = preco.Despesas.Count();
             }
+
+            //validando rateio 
+            if (preco.RateiosJson == null)
+            {
+                return View(preco);
+            }
+
+            var precificacaoRateios = new List<PrecificacaoRateioViewModel>();
+            preco.Rateios = preco.RateiosJson != null ? JsonConvert.DeserializeObject<List<PrecificacaoRateioViewModel>>(preco.RateiosJson) : [];
+
+            if (ModelState.ContainsKey("Rateios") && ModelState["Rateios"].Errors.Count > 0 && preco.Rateios.Count() > 0)
+            {
+                ModelState["Rateios"].Errors.Clear();
+                preco.TotalDeRateios = preco.Rateios.Count();
+            }
+
+            //validando precos 
+            if (preco.PrecosJson == null)
+            {
+                return View(preco);
+            }
+
+            var precificacaoPrecos = new List<PrecificacaoPrecoViewModel>();
+            preco.Precos = preco.PrecosJson != null ? JsonConvert.DeserializeObject<List<PrecificacaoPrecoViewModel>>(preco.PrecosJson) : [];
+
+            if (ModelState.ContainsKey("Precos") && ModelState["Precos"].Errors.Count > 0 && preco.Precos.Count() > 0)
+            {
+                ModelState["Precos"].Errors.Clear();
+                preco.TotalDePrecos = preco.Precos.Count();
+            }
+
+            return View(preco);
 
             if (ModelState.Values.Sum(v => v.Errors.Count) == 0)
             {
@@ -152,6 +184,7 @@ namespace Libertese.Web.Controllers.Precificacao
                     Nome = item.Nome,
                     CustoProducao = item.Total,
                     Margem = item.Margem,
+                    Quantidade = item.Quantidade,
                     PercentualProducao = _percentualProducao,
                     ValorRateio = Math.Round((decimal)(_valorRateio), 2),
                     CustoProdutoTotal = Math.Round((decimal)(_custoProdutoTotal), 2),
@@ -168,6 +201,9 @@ namespace Libertese.Web.Controllers.Precificacao
                 var _precoSugerido = ((item.CustoProdutoUnitario / 100) * item.Margem) + item.CustoProdutoUnitario;
                 var _comissao = Math.Round((decimal)((preco.Comissao * _precoSugerido ) / 100), 2);
                 var _imposto = Math.Round((decimal)((preco.Impostos * _precoSugerido) / 100), 2);
+                _precoSugerido = Math.Round((decimal)(_precoSugerido), 2);
+                var _lucro = Math.Round((decimal)(_precoSugerido - (_comissao + _imposto) - item.CustoProdutoUnitario));
+                var _lucroTotal = Math.Round((decimal)(_lucro * item.Quantidade), 2);
 
                 precificacaoPrecos.Add(new PrecificacaoPrecoViewModel
                 {
@@ -177,9 +213,11 @@ namespace Libertese.Web.Controllers.Precificacao
                     Comissao = _comissao,
                     Imposto = _imposto,
                     Margem = item.Margem,
-                    PrecoSugerido = Math.Round((decimal)(_precoSugerido), 2),
-                    Lucro = Math.Round((decimal)(_precoSugerido - (_comissao + _imposto) - item.CustoProdutoUnitario), 2),
-                    LucroTotal = 0
+                    PrecoSugerido = _precoSugerido,
+                    Lucro = _lucro,
+                    LucroTotal = _lucroTotal,
+                    ValorRateio = item.ValorRateio,
+                    Quantidade = item.Quantidade
                 });
             }
 

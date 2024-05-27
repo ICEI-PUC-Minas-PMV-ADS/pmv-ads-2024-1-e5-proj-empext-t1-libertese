@@ -21,7 +21,7 @@
                     </header>
                     <div x-data="{ modalDeletarOpen: false, modalVisualizarOpen: false, tableIndex: 0 }">
                         <div class="overflow-x-auto">
-                            <table id="rateiossTable" class="table-auto w-full dark:text-slate-300">
+                            <table id="rateiosTable" class="table-auto w-full dark:text-slate-300">
                                 <thead class="text-xs font-semibold uppercase text-slate-500 dark:text-slate-400 bg-slate-50 dark:bg-slate-900/20 border-t border-b border-slate-200 dark:border-slate-700">
                                     <tr>
                                         <th class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
@@ -54,6 +54,9 @@
                                             <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap"><div class="font-medium text-slate-800 dark:text-slate-100">R$ @Model.Rateios[i].ValorRateio</div></td>
                                             <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap"><div class="font-medium text-slate-800 dark:text-slate-100">R$ @Model.Rateios[i].CustoProdutoTotal</div></td>
                                             <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap"><div class="font-medium text-slate-800 dark:text-slate-100">R$ @Model.Rateios[i].CustoProdutoUnitario</div></td>
+                                            <td style="display: none;"><div class="font-medium text-slate-800 dark:text-slate-100">@Model.Rateios[i].Margem</div></td>
+                                            <td style="display: none;"><div class="font-medium text-slate-800 dark:text-slate-100">@Model.Rateios[i].PercentualProducao</div></td>
+                                            <td style="display: none;"><div class="font-medium text-slate-800 dark:text-slate-100">@Model.Rateios[i].Quantidade</div></td>
                                         </tr>
                                     }
 
@@ -66,6 +69,7 @@
         </div>
     </div>
 </div>
+<input style="display: none;" asp-for="RateiosJson" />
 
 <script>
     document.getElementById("calcularRateio").addEventListener("click", function (event) {
@@ -77,6 +81,29 @@
         form.action = newActionUrl;
         form.submit();
     });
+
+    var rows = $("#rateiosTable tbody tr");
+    var rateios = [];
+
+    for (var i = 0; i < rows.length; i++) {
+        var cells = rows[i].getElementsByTagName('td');
+        var rateio = {
+            Id: cells[0].innerText,
+            Nome: cells[1].innerText.trim(),
+            CustoProducao: parseFloat(cells[2].innerText.replace('R$ ', '').trim()),
+            ValorRateio: parseFloat(cells[3].innerText.replace('R$ ', '').trim()),
+            CustoProdutoTotal: parseFloat(cells[4].innerText.replace('R$ ', '').trim()),
+            CustoProdutoUnitario: parseFloat(cells[5].innerText.replace('R$ ', '').trim()),
+            Margem: parseFloat(cells[6].innerText.replace('R$ ', '').trim()),
+            PercentualProducao: parseFloat(cells[7].innerText.replace('R$ ', '').trim()),
+            Quantidade: parseInt(cells[8].innerText.replace('R$ ', '').trim()),
+        };
+        rateios.push(rateio);
+    }
+
+    console.log(rateios);
+
+    $("#RateiosJson").val(JSON.stringify(rateios));
 </script>
 
 

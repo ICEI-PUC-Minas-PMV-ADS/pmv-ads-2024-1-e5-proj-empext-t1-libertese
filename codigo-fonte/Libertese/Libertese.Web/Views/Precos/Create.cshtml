@@ -51,179 +51,7 @@
     </div>
 </body>
 <script type="text/javascript">
-
-      $("#SearchCategoria").autocomplete({
-        source: function (request, response) {
-            $.ajax({
-                url: '@Url.Action("SearchByText", "Categorias")',
-                dataType: "json",
-                data: { searchString: $("#SearchCategoria").val() },
-                success: function (data) {
-                    response($.map(data, function (item) {
-                        return {label: `${item.id} - ${item.nome}`, value: item.id, };
-                    }))
-                },
-                error: function (xhr, status, error) {
-                    alert("Erro ao buscar categorias, insira uma palavra valida!");
-                }
-            })
-        },
-        select: function (event, ui) {
-                 $("#SearchCategoria").val(ui.item.label);
-                 $("#CategoriaId").val(ui.item.value);
-                 return false;
-             }
-      })
-
-    $("#SearchMaterial").autocomplete({
-        source: function (request, response) {
-            $.ajax({
-                url: '@Url.Action("SearchByText", "Materiais")',
-                dataType: "json",
-                data: { searchString: $("#SearchMaterial").val() },
-                success: function (data) {
-                    response($.map(data, function (item) {
-                        return { label: `${item.id} - ${item.nome}`, value: item, };
-                    }))
-                },
-                error: function (xhr, status, error) {
-                    alert("Erro ao buscar materiais, insira uma palavra valida!");
-                }
-            })
-        },
-        select: function (event, ui) {
-            $("#SearchMaterial").val(ui.item.label);
-            $("#MaterialId").val(ui.item.value.id);
-            $("#MaterialNome").val(ui.item.value.nome);
-            $("#MaterialQuantidade").val(ui.item.value.quantidade);
-            $("#MaterialPreco").val(ui.item.value.preco);
-            $("#MaterialValorTotal").val(ui.item.value.valorTotal);
-            $("#Material").val(ui.item.value);
-            return false;
-        }
-    })
-
     $(document).ready(function () {
-        $("#addMaterial").click(function () {
-            var searchMaterial = $("#SearchMaterial").val();
-            var materialId = $("#MaterialId").val();
-            var nome = $("#MaterialNome").val();
-            var quantidade = $("#MaterialQuantidade").val();
-            var preco = $("#MaterialPreco").val();
-            var valorTotal = $("#MaterialValorTotal").val();
-            var material = $("#Material").val();
-
-            var materialIdExistente = false;
-            $("#materiaisTable tbody tr").each(function () {
-                var idExistente = $(this).attr("id");
-                if (idExistente === materialId) {
-                    materialIdExistente = true;
-                    return false; // Sai do loop, pois o materialId já foi encontrado
-                }
-            });
-
-            if (materialIdExistente) {
-                alert("Por favor, escolha outro material o mesmo já existe na lista.");
-            
-            } else if (materialId && nome && preco && quantidade && valorTotal) {
-
-
-
-                var rowCount = $("#materiaisTable tbody tr").length;
-
-                var newRow = `
-
-                                                               <tr id="${materialId}">
-                                                                <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-                                                                            <div class="font-medium text-sky-500">${materialId}</div>
-
-                                                                </td>
-                                                                <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-                                                                                <div class="font-medium text-slate-800 dark:text-slate-100">${nome}</div>
-                                                                </td>
-                                                                <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-                                                                        <div class="font-medium text-slate-800 dark:text-slate-100">${quantidade}</div>
-                                                                </td>
-                                                                <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-                                                                            <div class="font-medium text-slate-800 dark:text-slate-100">R$ ${preco}</div>
-                                                                </td>
-                                                                <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-                                                                                    <div class="font-medium text-slate-800 dark:text-slate-100">R$ ${parseFloat((quantidade * preco).toFixed(2))}</div>
-                                                                </td>
-
-                                                                <td x-data="{ modalDeletarOpen: false, modalVisualizarOpen: false }" class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap w-px">
-                                                                    <div class="space-x-1">
-                                                                            <button type="button" class="removeMaterial text-rose-500 hover:text-rose-600 rounded-full">
-                                                                            <span class="sr-only">Deletar</span>
-                                                                            <svg class="w-8 h-8 fill-current" viewBox="0 0 32 32">
-                                                                                <path d="M13 15h2v6h-2zM17 15h2v6h-2z" />
-                                                                                <path d="M20 9c0-.6-.4-1-1-1h-6c-.6 0-1 .4-1 1v2H8v2h1v10c0 .6.4 1 1 1h12c.6 0 1-.4 1-1V13h1v-2h-4V9zm-6 1h4v1h-4v-1zm7 3v9H11v-9h10z" />
-                                                                            </svg>
-                                                                        </button>
-                                                                    </div>
-                                                                </td>
-                                                                                                     <input type="hidden" name="Materiais[${rowCount}].Id" value="${materialId} />
-                                                                                                     <input type="hidden" name="Materiais[${rowCount}].Nome" value="${nome} />
-                                                                                                 <input type="hidden" name="Materiais[${rowCount}].Quantidade" value="${quantidade} />
-                                                                                                    <input type="hidden" name="Materiais[${rowCount}].Preco" value="R$ ${preco} />
-                                                                                                    <input type="hidden"  name="Materiais[${rowCount}].ValorTotal" value="R$ ${quantidade * preco}  />
-                                                                    
-                                                            </tr>`;
-                $("#materiaisTable tbody").append(newRow);
-
-                $("#MaterialId").val('');
-                $("#SearchMaterial").val('');
-                $("#MaterialNome").val('');
-                $("#MaterialQuantidade").val('');
-                $("#MaterialPreco").val('');
-                $("#MaterialValorTotal").val('');
-                $("#Material").val('');
-
-                var rows = $("#materiaisTable tbody tr");
-                var materiais = [];
-
-                for (var i = 0; i < rows.length; i++) {
-                    var cells = rows[i].getElementsByTagName('td');
-                    var material = {
-                        Id: cells[0].innerText,
-                        Nome: cells[1].innerText,
-                        Quantidade: cells[2].innerText,
-                        Preco: cells[3].innerText.replace('R$ ', ''),
-                        ValorTotal: cells[4].innerText.replace('R$ ', '')
-                    };
-                    materiais.push(material);
-                }
-
-                console.log(materiais)
-
-                $("#totalDeMateriais").text(materiais.length);
-                $("#MateriaisJson").val(JSON.stringify(materiais));
-
-            } else {
-                alert("Por favor, escolha o material e quantidade que deseja incluir no produto.");
-            }
-        });
-
-
-        $("#materiaisTable").on("click", ".removeMaterial", function () {
-            $(this).closest("tr").remove();
-            $("#materiaisTable tbody tr").each(function (index, tr) {
-                $(tr).find("input[name^='Materiais']").each(function () {
-                    var name = $(this).attr("name");
-                    var newName = name.replace(/\[\d+\]/, `[${index}]`);
-                    $(this).attr("name", newName);
-                });
-            });
-
-            var materiaisJson = $("#MateriaisJson").val()
-            var indexToRemove = $(this).closest("tr").index();
-            var materiaisList = JSON.parse(materiaisJson);
-            materiaisList.splice(indexToRemove, 1);
-            $("#totalDeMateriais").text(materiaisList.length);
-            materiaisJson = JSON.stringify(materiaisList);
-            $("#MateriaisJson").val(materiaisJson);
-        });
-
         $("#ProdutoForm").on("submit", function (event) {
             event.preventDefault();
         });
@@ -232,16 +60,16 @@
             $("#ProdutoForm").off("submit").submit();
         });
     });
-
-
 </script>
+
+
 <style>
     .max-w-80ch {
-        max-width: 80ch;
+        max-width: 40ch;
     }
 
     .max-w-60ch {
-        max-width: 60ch;
+        max-width: 40ch;
     }
 
 
