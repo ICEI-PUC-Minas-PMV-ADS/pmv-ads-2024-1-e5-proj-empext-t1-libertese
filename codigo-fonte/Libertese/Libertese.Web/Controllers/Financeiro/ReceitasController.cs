@@ -68,12 +68,10 @@ namespace Libertese.Web.Controllers.Financeiro
         {
             switch (receitaStatus)
             {
-                case ReceitaStatus.Faccao:
-                    return "Facção";
-                case ReceitaStatus.Patrocinio:
-                    return "PatrocÍnio";
-                case ReceitaStatus.VendasRegistradas:
-                    return "Vendas Registradas";
+                case ReceitaStatus.AReceber:
+                    return "A Receber";
+                case ReceitaStatus.Recebido:
+                    return "Recebido";
                 default:
                     return "Undefinded";
             }
