@@ -110,15 +110,62 @@ namespace Libertese.Web.Controllers.Precificacao
                 preco.TotalDePrecos = preco.Precos.Count();
             }
 
-            return View(preco);
-
             if (ModelState.Values.Sum(v => v.Errors.Count) == 0)
             {
-                _context.Add(preco);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                var _now = DateTime.Now;
+
+                foreach (var item in preco.Precos)
+                {
+                    var _deletarRateios = _context.Rateios.Where(p => p.ProdutoId == item.Id).ToList();
+                    var _deletarCapacidadeProdutiva = _context.CapacidadeProdutivas.Where(p => p.ProdutoId == item.Id).ToList();
+                    var _deletarPrecos = _context.Precos.Where(p => p.ProdutoId == item.Id).ToList();
+
+                    if (_deletarRateios.Count() > 0) _context.Rateios.RemoveRange(_deletarRateios);
+                    if (_deletarCapacidadeProdutiva.Count() > 0) _context.CapacidadeProdutivas.RemoveRange(_deletarCapacidadeProdutiva);
+                    if (_deletarPrecos.Count() > 0) _context.Precos.RemoveRange(_deletarPrecos);
+
+
+                    var _capacidadeProdutiva = new CapacidadeProdutiva();
+                    var _produtoViewModel = preco.Produtos.FirstOrDefault(x => x.Id == item.Id);
+                    var _rateioViewModel = preco.Rateios.FirstOrDefault(x => x.Id == item.Id);
+                    _capacidadeProdutiva.DataCriacao = _now;
+                    _capacidadeProdutiva.DataAtualizacao = _now;
+                    _capacidadeProdutiva.ProdutoId = item.Id;
+                    _capacidadeProdutiva.Quantidade = item.Quantidade;
+                    _capacidadeProdutiva.Mes = _now.Month;
+                    _capacidadeProdutiva.Ano = _now.Year;
+                    _capacidadeProdutiva.Tempo = _produtoViewModel.TempoProducaoTotal;
+                    _capacidadeProdutiva.Custo = Math.Round((decimal)(_produtoViewModel.Quantidade * _produtoViewModel.Custo), 2);
+                    _context.Add(_capacidadeProdutiva);
+                    await _context.SaveChangesAsync();
+
+                    var _rateio = new Rateio();
+                    _rateio.ProdutoId = _produtoViewModel.Id;
+                    _rateio.CapacidadeProdutivaId = _capacidadeProdutiva.Id;
+                    _rateio.CustoFixo = (decimal)_rateioViewModel.CustoProducao;
+                    _rateio.Valor = (decimal)_rateioViewModel.ValorRateio;
+                    _rateio.Percentual = (float)_rateioViewModel.PercentualProducao;
+                    _rateio.CustoUnitario = (decimal)_rateioViewModel.CustoProdutoUnitario;
+                    _rateio.DataCriacao = _now;
+                    _rateio.DataAtualizacao = _now;
+                    _context.Add(_rateio);
+                    await _context.SaveChangesAsync();
+
+
+                    var _preco = new Preco();
+                    _preco.ProdutoId = _produtoViewModel.Id;  
+                    _preco.RateioId = _rateio.Id;
+                    _preco.Vigencia = _now;
+                    _preco.DataCriacao = _now;
+                    _preco.DataAtualizacao = _now;
+                    _preco.Valor = (decimal)item.PrecoSugerido;
+                    _context.Add(_preco);
+                    await _context.SaveChangesAsync();
+
+                }
             }
-            return View(preco);
+
+            return RedirectToAction("Index", "Produtos");
         }
 
         [HttpPost]
@@ -169,18 +216,16 @@ namespace Libertese.Web.Controllers.Precificacao
             var custosFixos = preco.Despesas.Sum(x => x.Valor);
             var totalCustosDeProducao = preco.Produtos.Sum(x => x.Total);
             var precificacaoRateios = new List<PrecificacaoRateioViewModel>();
-            var contator = 0;
 
             foreach (var item in preco.Produtos)
             {
                 var _percentualProducao = (item.Total / totalCustosDeProducao);
                 var _valorRateio = (_percentualProducao * custosFixos);
                 var _custoProdutoTotal = item.Total + _valorRateio;
-                contator += 1;
 
                 precificacaoRateios.Add(new PrecificacaoRateioViewModel
                 {
-                    Id = contator,
+                    Id = item.Id,
                     Nome = item.Nome,
                     CustoProducao = item.Total,
                     Margem = item.Margem,
@@ -223,16 +268,6 @@ namespace Libertese.Web.Controllers.Precificacao
 
             preco.Precos = precificacaoPrecos;
 
-
-            return View("~/Views/Precos/Create.cshtml", preco);
-
-
-            if (ModelState.Values.Sum(v => v.Errors.Count) == 0)
-            {
-                _context.Add(preco);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
 
             return View("~/Views/Precos/Create.cshtml", preco);
         }

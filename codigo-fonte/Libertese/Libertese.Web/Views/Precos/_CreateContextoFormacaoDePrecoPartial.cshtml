@@ -129,4 +129,34 @@
         $("#PrecosJson").val(JSON.stringify(precos));
 
     }
+
+    function setPrecosJson() {
+        var rows = $("#precosTable tbody tr");
+        var precos = [];
+
+        for (var i = 0; i < rows.length; i++) {
+            var cells = rows[i].getElementsByTagName('td');
+            var preco = {
+                Id: cells[0].innerText,
+                Nome: cells[1].innerText.trim(),
+                CustoUnitario: parseFloat(cells[2].innerText.replace('R$ ', '').trim()),
+                Margem: cells[3].innerText.replace(' %', '').trim(),
+                Comissao: cells[4].innerText.replace('R$ ', '').trim(),
+                Imposto: cells[5].innerText.replace('R$ ', '').trim(),
+                Lucro: cells[6].innerText.replace('R$ ', '').trim(),
+                lucroTotal: cells[7].innerText.replace('R$ ', '').trim(),
+                Quantidade: parseInt(cells[8].innerText.replace('R$ ', '').trim()),
+                ValorRateio: parseFloat(cells[9].innerText.replace('R$ ', '').trim()),
+                PrecoSugerido: parseFloat(cells[10].querySelector('input').value.replace(',', '.')),
+            };
+            precos.push(preco);
+        }
+
+        console.log(precos);
+
+        $("#PrecosJson").val(JSON.stringify(precos));
+
+    }
+
+    setPrecosJson();
 </script>

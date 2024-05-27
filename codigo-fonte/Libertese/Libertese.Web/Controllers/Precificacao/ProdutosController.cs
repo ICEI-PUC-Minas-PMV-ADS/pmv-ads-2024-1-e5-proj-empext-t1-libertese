@@ -33,11 +33,13 @@ namespace Libertese.Web.Controllers.Precificacao
                             from categoria in cGroup.DefaultIfEmpty()
                             join preco in _context.Precos on produto.Id equals preco.ProdutoId into pGroup
                             from preco in pGroup.DefaultIfEmpty()
+                            join rateio in _context.Rateios on produto.Id equals rateio.ProdutoId into rGroup
+                            from rateio in rGroup.DefaultIfEmpty()
                             join produtoMaterial in _context.ProdutoMaterial on produto.Id equals produtoMaterial.ProdutoId into pmGroup
                             from produtoMaterial in pmGroup.DefaultIfEmpty()
                             join material in _context.Materiais on produtoMaterial.MateriaiId equals material.Id into mGroup
                             from material in mGroup.DefaultIfEmpty()
-                            group new { produto, categoria, preco, produtoMaterial, material } 
+                            group new { produto, categoria, preco, produtoMaterial, material, rateio } 
                             by new { produto.Id, produto.Nome, Categoria = categoria.Nome, produto.TempoProducao, preco.Valor, produto.DataCriacao, produto.DataAtualizacao } into gGroup
                             select new ProdutoViewModel
                             {
@@ -47,7 +49,7 @@ namespace Libertese.Web.Controllers.Precificacao
                                 TempoProducao = gGroup.Key.TempoProducao,
                                 Custo = gGroup.Sum(x => x.produtoMaterial.Quantidade * x.material.Preco),
                                 Preco = gGroup.Select(x => x.preco.Valor).Distinct().FirstOrDefault(),
-                                Rateio = 0,
+                                Rateio = gGroup.Select(x => x.rateio.Valor).Distinct().FirstOrDefault(),
                                 DataAtualizacao = gGroup.Key.DataAtualizacao,
                                 DataCriacao = gGroup.Key.DataCriacao,
                                 TotalMateriais = gGroup.Count(x => x.produtoMaterial != null && x.material != null),
