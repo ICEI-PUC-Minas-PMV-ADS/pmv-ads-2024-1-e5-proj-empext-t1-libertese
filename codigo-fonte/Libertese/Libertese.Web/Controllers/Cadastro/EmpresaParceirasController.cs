@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Libertese.Data;
 using Libertese.Domain.Entities.Cadastro;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Libertese.Web.Controllers.Cadastro
 {
+    [Authorize(Policy = "RequireEmpresasParceiras")]
     public class EmpresaParceirasController : Controller
     {
         private readonly ApplicationDbContext _context;

@@ -9,9 +9,13 @@ using Libertese.Data;
 using Libertese.Domain.Entities.Financeiro;
 using Libertese.Domain.Enums;
 using System.Collections;
+using Microsoft.AspNetCore.Authorization;
+using Libertese.ViewModels;
 
 namespace Libertese.Web.Controllers.Financeiro
 {
+
+    [Authorize(Policy = "RequireDespesas")]
     public class DespesasController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -28,6 +32,7 @@ namespace Libertese.Web.Controllers.Financeiro
             List<Fornecedor> listaFornecedores = await GetListaFornecedores();
             List<Classificacao> listaClassificacoes = await GetListaClassificacoesDespesas();
             List<FormaPagamento> listaFormaPagamento = await GetListaFormaPagamento();
+            List<ContaBancaria> listaContaBancaria = await GetListaContaBancaria();
             List<DespesaDTO> listaDespesaDTO = listaDespesas.Select(despesa => new DespesaDTO
             {
                 Id = despesa.Id,
@@ -36,10 +41,12 @@ namespace Libertese.Web.Controllers.Financeiro
                 FormaPagamentoName = listaFormaPagamento.Find(x => x.Id == despesa.FormaPagamentoId)?.Descricao ?? "Sem Forma de Pagamento",
                 Observacao = despesa.Observacao ?? "Sem Observações",
                 DataVencimento = despesa.DataVencimento?.ToString("dd/MM/yyyy") ?? "Sem Data",
+                DataCompetencia = despesa.DataCompetencia?.ToString("dd/MM/yyyy") ?? "Sem Data",
                 DataPagamento = despesa.DataPagamento?.ToString("dd/MM/yyyy") ?? "Sem Data",
                 DataAtualiza = despesa.DataAtualizacao?.ToString("dd/MM/yyyy") ?? "Sem Data",
                 Classificacao = listaClassificacoes.Find(x => x.Id == despesa.ClassificacaoId)?.Descricao ?? "Sem Classificação",
                 FornecedorName = listaFornecedores.Find(x => x.Id == despesa.FornecedorId)?.Nome ?? "Sem Fornecedor",
+                ContaBancariaName = listaContaBancaria.Find(x => x.Id == despesa.ContaBancariaId)?.Nome ?? "Sem Conta Bancária",
 
 
             }).ToList();
@@ -52,6 +59,8 @@ namespace Libertese.Web.Controllers.Financeiro
             List<Classificacao> listaClassificacoes = await GetListaClassificacoesDespesas();
             List<Fornecedor> listaFornecedores = await GetListaFornecedores();
             List<FormaPagamento> listaFormaPagamento = await GetListaFormaPagamento();
+            List<ContaBancaria> listaContaBancaria = await GetListaContaBancaria();
+            ViewBag.ContaBancaria = listaContaBancaria;
             ViewBag.FormaPagamento = listaFormaPagamento;
             ViewBag.Fornecedor = listaFornecedores;
             ViewBag.Classificacao = listaClassificacoes;
@@ -63,7 +72,7 @@ namespace Libertese.Web.Controllers.Financeiro
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("FornecedorId,FormaPagamentoId,ContaBancariaId,ClassificacaoId,Tipo,Descricao,Status,DataPagamento,DataVencimento,Observacao,Id,DataCriacao,DataAtualizacao,Valor")] Despesa despesa)
+        public async Task<IActionResult> Create([Bind("FornecedorId,FormaPagamentoId,ContaBancariaId,ClassificacaoId,Tipo,Descricao,Status,DataPagamento,DataCompetencia,DataVencimento,Observacao,Id,DataCriacao,DataAtualizacao,Valor")] Despesa despesa)
         {
             if (ModelState.IsValid)
             {
@@ -74,6 +83,8 @@ namespace Libertese.Web.Controllers.Financeiro
             List<Classificacao> listaClassificacoes = await GetListaClassificacoesDespesas();
             List<Fornecedor> listaFornecedores = await GetListaFornecedores();
             List<FormaPagamento> listaFormaPagamento = await GetListaFormaPagamento();
+            List<ContaBancaria> listaContaBancaria = await GetListaContaBancaria();
+            ViewBag.ContaBancaria = listaContaBancaria;
             ViewBag.FormaPagamento = listaFormaPagamento;
             ViewBag.Fornecedor = listaFornecedores;
             ViewBag.Classificacao = listaClassificacoes;
@@ -86,6 +97,8 @@ namespace Libertese.Web.Controllers.Financeiro
             List<Classificacao> listaClassificacoes = await GetListaClassificacoesDespesas();
             List<Fornecedor> listaFornecedores = await GetListaFornecedores();
             List<FormaPagamento> listaFormaPagamento = await GetListaFormaPagamento();
+            List<ContaBancaria> listaContaBancaria = await GetListaContaBancaria();
+            ViewBag.ContaBancaria = listaContaBancaria;
             ViewBag.FormaPagamento = listaFormaPagamento;
             ViewBag.Fornecedor = listaFornecedores;
             ViewBag.Classificacao = listaClassificacoes;
@@ -107,7 +120,7 @@ namespace Libertese.Web.Controllers.Financeiro
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("FornecedorId,FormaPagamentoId,ContaBancariaId,ClassificacaoId,Tipo,Descricao,Status,DataPagamento,DataVencimento,Observacao,Id,DataCriacao,DataAtualizacao,Valor")] Despesa despesa)
+        public async Task<IActionResult> Edit(int id, [Bind("FornecedorId,FormaPagamentoId,ContaBancariaId,ClassificacaoId,Tipo,Descricao,Status,DataPagamento,DataCompetencia,DataVencimento,Observacao,Id,DataCriacao,DataAtualizacao,Valor")] Despesa despesa)
         {
             if (id != despesa.Id)
             {
@@ -137,6 +150,8 @@ namespace Libertese.Web.Controllers.Financeiro
             List<Classificacao> listaClassificacoes = await GetListaClassificacoesDespesas();
             List<Fornecedor> listaFornecedores = await GetListaFornecedores();
             List<FormaPagamento> listaFormaPagamento = await GetListaFormaPagamento();
+            List<ContaBancaria> listaContaBancaria = await GetListaContaBancaria();
+            ViewBag.ContaBancaria = listaContaBancaria;
             ViewBag.FormaPagamento = listaFormaPagamento;
             ViewBag.Fornecedor = listaFornecedores;
             ViewBag.Classificacao = listaClassificacoes;
@@ -158,6 +173,30 @@ namespace Libertese.Web.Controllers.Financeiro
             return RedirectToAction(nameof(Index));
         }
 
+
+        [HttpGet, ActionName("SearchPrecificacaoByText")]
+        public JsonResult SearchPrecificacaoByText([FromQuery(Name = "searchString")] string searchString, [FromQuery(Name = "despesaCompetencia")]  DateTime despesaCompetencia)
+        {
+
+            var year = despesaCompetencia.Year;
+            var month = despesaCompetencia.Month;
+
+
+            var result = _context.Despesas
+                  .Where(x => EF.Functions.Like(x.Observacao.ToLower(), "%" + searchString.ToLower() + "%"))
+                  .Where(x => x.DataCompetencia.Value.Year == year && x.DataCompetencia.Value.Month == month)
+                  .Select(x => new PrecificacaoDespesaViewModel 
+                  { Id = x.Id, 
+                    Nome = x.Observacao,
+                    Valor = x.Valor
+                  })
+                  .Take(10)
+                  .ToList();
+            return Json(result);
+
+        }
+
+
         private bool DespesaExists(int id)
         {
             return _context.Despesas.Any(e => e.Id == id);
@@ -174,6 +213,10 @@ namespace Libertese.Web.Controllers.Financeiro
         private async Task<List<Fornecedor>> GetListaFornecedores()
         {
             return await _context.Fornecedores.ToListAsync();
+        }
+        private async Task<List<ContaBancaria>> GetListaContaBancaria()
+        {
+            return await _context.ContasBancarias.ToListAsync();
         }
 
         private string convertDespesaStatusToNome(DespesaStatus despesaStatus)

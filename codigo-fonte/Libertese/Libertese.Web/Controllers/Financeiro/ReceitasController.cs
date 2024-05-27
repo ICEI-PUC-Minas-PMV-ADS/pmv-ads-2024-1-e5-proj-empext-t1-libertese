@@ -8,9 +8,12 @@ using Microsoft.EntityFrameworkCore;
 using Libertese.Data;
 using Libertese.Domain.Entities.Financeiro;
 using Libertese.Domain.Enums;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Libertese.Web.Controllers.Financeiro
 {
+
+    [Authorize(Policy = "RequireReceitas")]
     public class ReceitasController : Controller
     {
         private readonly ApplicationDbContext _context;

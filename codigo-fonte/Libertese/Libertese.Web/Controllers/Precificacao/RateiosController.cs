@@ -7,9 +7,12 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Libertese.Data;
 using Libertese.Domain.Entities.Precificacao;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Libertese.Web.Controllers.Precificacao
 {
+
+    [Authorize(Policy = "RequireRateios")]
     public class RateiosController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -19,7 +22,7 @@ namespace Libertese.Web.Controllers.Precificacao
             _context = context;
         }
 
-        // GET: Rateios
+     
         public async Task<IActionResult> Index()
         {
             return View(await _context.Rateios.ToListAsync());

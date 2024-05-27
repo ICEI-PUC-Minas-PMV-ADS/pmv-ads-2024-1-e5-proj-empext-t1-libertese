@@ -47,7 +47,6 @@ a{
   text-decoration: none;
 }
 
-
 .l-navbar{
   position: fixed;
   top: 0;
@@ -68,8 +67,11 @@ a{
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  overflow: hidden;
+  overflow: scroll;
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;   /* Firefox */
 }
+
 .nav__brand{
   text-align: center;
   margin-bottom: 1rem;

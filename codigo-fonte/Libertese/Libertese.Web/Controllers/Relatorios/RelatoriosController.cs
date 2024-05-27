@@ -8,9 +8,11 @@ using System.IO;
 using System.Threading.Tasks;
 using System.Linq;
 using Libertese.Web.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Libertese.Web.Controllers.Relatorios
 {
+    [Authorize(Policy = "RequireRelatorios")]
     public class RelatoriosController : Controller
     {
         private readonly ApplicationDbContext _context;

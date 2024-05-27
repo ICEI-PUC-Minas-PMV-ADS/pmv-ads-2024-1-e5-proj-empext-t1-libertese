@@ -211,7 +211,7 @@
                                                                                         @foreach (var produto in item.Produtos) {
                                                                                             <tr>
                                                                                                 <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-                                                                                                        <div class="font-medium text-slate-800 dark:text-slate-100">@Html.DisplayFor(modelItem => produto.Nome)</div>
+                                                                                                        <div class="truncate max-w-60ch font-medium text-slate-800 dark:text-slate-100">@Html.DisplayFor(modelItem => produto.Nome)</div>
                                                                                                 </td>
                                                                                                 <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
                                                                                                         <div class="font-medium text-slate-800 dark:text-slate-100">@Html.DisplayFor(modelItem => produto.Quantidade)</div>
@@ -315,3 +315,22 @@
         </div>
     </div>
 </body>
+<style>
+    .max-w-60ch {
+        max-width: 40ch;
+    }
+
+    .max-w-40ch {
+        max-width: 40ch;
+    }
+
+    .max-w-20ch {
+        max-width: 20ch;
+    }
+
+    .truncate {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+</style>

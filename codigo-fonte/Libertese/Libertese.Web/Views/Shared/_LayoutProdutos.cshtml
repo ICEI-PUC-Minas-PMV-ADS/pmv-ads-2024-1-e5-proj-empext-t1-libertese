@@ -18,7 +18,7 @@
 }
 
 <body id="body-pd" class="body-pd">
-    <div class="l-navbar expander" id="navbar" position="auto">
+    <div class="l-navbar expander" id="navbar" position="fixed">
         <nav class="nav">
             <div>
                 <div id="without-logo" class="nav__brand expander-logo">
@@ -28,45 +28,49 @@
                     <a id="logo-toggle" href="#" class="nav__logo"><img src="~/sidebar/assets/img/logo_libertese.svg" width="175" height="150"></a>
                 </div>
                 <div class="nav__list">
-                    <a class="@("nav__link " + (currentController == "Home" ? "active" : ""))" class="nav__link active">
+                    <a asp-controller="Home" asp-action="Index"  class="@("nav__link " + (currentController == "Home" ? "active" : ""))" class="nav__link active">
                         <ion-icon name="home-outline" class="nav__icon"></ion-icon>
                         <span asp-controller="HomeController"  asp-action="Index" class="nav__name">Início</span>
                     </a>
-                    <a asp-controller="Funcionarios" class="@("nav__link " + (currentController == "Funcionarios" ? "active" : ""))" class="nav__link active">
+                    <a asp-controller="Funcionarios" asp-action="Index" class="@("nav__link " + (currentController == "Funcionarios" ? "active" : ""))" class="nav__link active">
                         <ion-icon name="people-outline" class="nav__icon"></ion-icon>
                         <span asp-action="Index" class="nav__name">Funcionários</span>
                     </a>
-                    <a asp-controller="Receitas" class="@("nav__link " + (currentController == "Receitas" ? "active" : ""))" class="nav__link active">
+                    <a asp-controller="Receitas" asp-action="Index" class="@("nav__link " + (currentController == "Receitas" ? "active" : ""))" class="nav__link active">
                         <ion-icon name="cash-outline" class="nav__icon"></ion-icon>
                         <span asp-action="Index" class="nav__name">Receita</span>
                     </a>
-                    <a asp-controller="Despesas" class="@("nav__link " + (currentController == "Despesas" ? "active" : ""))" class="nav__link active">
+                    <a asp-controller="Despesas" asp-action="Index" class="@("nav__link " + (currentController == "Despesas" ? "active" : ""))" class="nav__link active">
                         <ion-icon name="wallet-outline" class="nav__icon"></ion-icon>
                         <span asp-action="Index" class="nav__name">Despesa</span>
                     </a>
-                    <a asp-controller="Produtos" class="@("nav__link " + (currentController == "Produtos" ? "active" : ""))" class="nav__link active">
+                    <a asp-controller="FluxoCaixa" asp-action="Index" class="@("nav__link " + (currentController == "FluxoCaixa" ? "active" : ""))" class="nav__link active">
+                        <ion-icon name="calculator-outline" class="nav__icon"></ion-icon>
+                        <span asp-action="Index" class="nav__name">Fluxo de Caixa</span>
+                    </a>
+                    <a asp-controller="Produtos" asp-action="Index" class="@("nav__link " + (currentController == "Produtos" ? "active" : ""))" class="nav__link active">
                         <ion-icon name="file-tray-stacked-outline" class="nav__icon"></ion-icon>
                         <span asp-action="Index" class="nav__name">Produtos</span>
                     </a>
-                    <a asp-controller="Vendas" class="@("nav__link " + (currentController == "Vendas" ? "active" : ""))" class="nav__link active">
+                    <a asp-controller="Vendas" asp-action="Index" class="@("nav__link " + (currentController == "Vendas" ? "active" : ""))" class="nav__link active">
                         <ion-icon name="calculator-outline" class="nav__icon"></ion-icon>
                         <span asp-action="Index" class="nav__name">Vendas</span>
                     </a>
-                    <a asp-controller="Fornecedores" class="@("nav__link " + (currentController == "Fornecedores" ? "active" : ""))" class="nav__link active">
+                    <a asp-controller="Fornecedores"  asp-action="Index" class="@("nav__link " + (currentController == "Fornecedores" ? "active" : ""))" class="nav__link active">
                         <ion-icon name="cart-outline" class="nav__icon"></ion-icon>
                         <span asp-action="Index" class="nav__name">Fornecedores</span>
                     </a>
-                    <a asp-controller="EmpresasParceiras" class="@("nav__link " + (currentController == "EmpresasParceiras" ? "active" : ""))" class="nav__link active">
-                        <ion-icon name="people-circle-outline"></ion-icon>
-                        <span asp-action="Index" class="nav__name">Empresas Parceiras</span>
-                    </a>
-                    <a asp-controller="Relatorios" class="@("nav__link " + (currentController == "Relatorios" ? "active" : ""))" class="nav__link active">
-                        <ion-icon name="podium-outline"></ion-icon>
+                    <a asp-controller="Relatorios" asp-action="Index" class="@("nav__link " + (currentController == "Relatorios" ? "active" : ""))" class="nav__link active">
+                        <ion-icon name="podium-outline" class="nav__icon"></ion-icon>
                         <span asp-action="Index" class="nav__name">Relatórios</span>
+                    </a>
+                    <a asp-controller="EmpresaParceiras" asp-action="Index" class="@("nav__link " + (currentController == "EmpresaParceiras" ? "active" : ""))" class="nav__link active">
+                        <ion-icon name="people-circle-outline" class="nav__icon"></ion-icon>
+                        <span asp-action="Index" class="nav__name">Empresas Parceiras</span>
                     </a>
                 </div>
             </div>
-            <a href="#" class="nav__logout-link">
+            <a asp-controller="Cadastro" asp-action="Logout" class="nav__logout-link">
                 <ion-icon name="log-out-outline" class="nav__icon"></ion-icon>
                 <span class="nav__name">   Sair   </span>
             </a>

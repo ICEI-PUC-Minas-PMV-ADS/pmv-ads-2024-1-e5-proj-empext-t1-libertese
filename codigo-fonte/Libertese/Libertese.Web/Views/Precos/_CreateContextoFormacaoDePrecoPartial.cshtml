@@ -1,0 +1,162 @@
+﻿@model Libertese.ViewModels.PrecificacaoCreateViewModel
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+
+
+<div class="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
+    <div class="mb-1">
+        <div class="flex items-center justify-between">
+            <h4 class="text-xl md:text-xl text-slate-800 dark:text-slate-100 font-bold">Formação de Preço</h4>
+        </div>
+    </div>
+    <div class="border-t border-slate-200 dark:border-slate-700">
+        <div class="space-y-8 mt-5">
+            <div>
+                <div class="bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700 mb-0">
+                    <header class="px-5 py-4">
+                        <h2 class="font-semibold text-slate-800 dark:text-slate-100">Preço <span name="totalDePrecos" id="totalDePrecos" class="text-slate-400 dark:text-slate-500 font-medium">@Model.Precos.Count()</span></h2>
+                    </header>
+                    <div x-data="{ modalDeletarOpen: false, modalVisualizarOpen: false, tableIndex: 0 }">
+                        <div class="overflow-x-auto">
+                            <table id="precosTable" class="table-auto w-full dark:text-slate-300">
+                                <thead class="text-xs font-semibold uppercase text-slate-500 dark:text-slate-400 bg-slate-50 dark:bg-slate-900/20 border-t border-b border-slate-200 dark:border-slate-700">
+                                    <tr>
+                                        <th class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
+                                            <div class="font-semibold text-left">Código</div>
+                                        </th>
+                                        <th class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
+                                            <div class="font-semibold text-left">Nome</div>
+                                        </th>
+                                        <th class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
+                                            <div class="font-semibold text-left">Custo Unitário</div>
+                                        </th>
+                                        <th class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
+                                            <div class="font-semibold text-left">Margem %</div>
+                                        </th>
+                                        <th class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
+                                            <div class="font-semibold text-left">Comissão</div>
+                                        </th>
+                                        <th class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
+                                            <div class="font-semibold text-left">Imposto</div>
+                                        </th>
+                                        <th class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
+                                            <div class="font-semibold text-left">Lucro</div>
+                                        </th>
+                                        <th class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
+                                            <div class="font-semibold text-left">Lucro Total</div>
+                                        </th>
+                                        <th class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
+                                            <div class="font-semibold text-left">Preço Sugerido</div>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-sm divide-y divide-slate-200 dark:divide-slate-700">
+                                    @for (var i = 0; i < Model.Precos.Count; i++)
+                                    {
+                                        <tr>
+                                            <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap"><div class="font-medium text-sky-500">@Model.Precos[i].Id</div></td>
+                                            <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap"><div class="truncate max-w-40ch font-medium text-slate-800 dark:text-slate-100">@Model.Precos[i].Nome</div></td>
+                                            <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap"><div class="font-medium text-slate-800 dark:text-slate-100">R$ @Model.Precos[i].CustoUnitario</div></td>
+                                            <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap"><div class="font-medium text-slate-800 dark:text-slate-100">@Model.Precos[i].Margem %</div></td>
+                                            <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap"><div class="font-medium text-slate-800 dark:text-slate-100">R$ @Model.Precos[i].Comissao</div></td>
+                                            <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap"><div class="font-medium text-slate-800 dark:text-slate-100">R$ @Model.Precos[i].Imposto</div></td>
+                                            <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap"><div class="font-medium text-slate-800 dark:text-slate-100">R$ @Model.Precos[i].Lucro</div></td>
+                                            <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap"><div class="font-medium text-slate-800 dark:text-slate-100">R$ @Model.Precos[i].LucroTotal</div></td>
+                                            <td style="display: none;"><div class="font-medium text-slate-800 dark:text-slate-100">@Model.Precos[i].Quantidade</div></td>
+                                            <td style="display: none;"><div class="font-medium text-slate-800 dark:text-slate-100">@Model.Precos[i].ValorRateio</div></td>
+                                            <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
+                                                <input class="form-input" type="text" name="PrecoSugerido" onchange="recalcularLinha(this)" value="@Model.Precos[i].PrecoSugerido" />
+                                            </td>
+                                        </tr>
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<input style="display: none;" asp-for="PrecosJson" />
+
+<script>
+    function recalcularLinha(input) {
+        var linha = input.closest('tr');
+        var custoUnitario = parseFloat(linha.cells[2].innerText.replace('R$', '').trim());
+        var margem = parseFloat(linha.cells[3].innerText.replace('%', '').trim());
+        var comissao = parseFloat(linha.cells[4].innerText.replace('R$', '').trim());
+        var imposto = parseFloat(linha.cells[5].innerText.replace('R$', '').trim());
+        var quantidade = parseInt(linha.cells[8].innerText.trim());
+        var valorRateio = parseInt(linha.cells[9].innerText.trim());
+        var precoSugerido = parseFloat(input.value).toFixed(2);
+        var comissaoCalculada = ((@Model.Comissao * precoSugerido) / 100);
+        var impostoCalculada = ((@Model.Impostos * precoSugerido) / 100);
+        var lucro = parseFloat((precoSugerido - (comissaoCalculada + impostoCalculada) - custoUnitario).toFixed(2));
+        var margemCalculada = (lucro / custoUnitario) * 100;
+        var lucroTotal = (lucro * quantidade).toFixed(2);
+
+        linha.cells[3].innerHTML = margemCalculada.toFixed(2) + ' %';
+        linha.cells[4].innerHTML = 'R$ ' + comissaoCalculada.toFixed(2);
+        linha.cells[5].innerHTML = 'R$ ' + impostoCalculada.toFixed(2);
+        linha.cells[6].innerHTML = 'R$ ' + `${lucro}`;
+        linha.cells[7].innerHTML = 'R$ ' + `${lucroTotal}`;
+        (linha.cells[10].querySelector('input')).value = `${precoSugerido}`;
+
+        var rows = $("#precosTable tbody tr");
+        var precos = [];
+
+        for (var i = 0; i < rows.length; i++) {
+            var cells = rows[i].getElementsByTagName('td');
+            var preco = {
+                Id: cells[0].innerText,
+                Nome: cells[1].innerText.trim(),
+                CustoUnitario: parseFloat(cells[2].innerText.replace('R$ ', '').trim()),
+                Margem: cells[3].innerText.replace(' %', '').trim(),
+                Comissao: cells[4].innerText.replace('R$ ', '').trim(),
+                Imposto: cells[5].innerText.replace('R$ ', '').trim(),
+                Lucro: cells[6].innerText.replace('R$ ', '').trim(),
+                lucroTotal: cells[7].innerText.replace('R$ ', '').trim(),
+                Quantidade: parseInt(cells[8].innerText.replace('R$ ', '').trim()),
+                ValorRateio: parseFloat(cells[9].innerText.replace('R$ ', '').trim()),
+                PrecoSugerido: parseFloat(cells[10].querySelector('input').value).toFixed(2),
+            };
+            precos.push(preco);
+        }
+
+        console.log(precos);
+
+        $("#PrecosJson").val(JSON.stringify(precos));
+
+    }
+
+    function setPrecosJson() {
+        var rows = $("#precosTable tbody tr");
+        var precos = [];
+
+        for (var i = 0; i < rows.length; i++) {
+            var cells = rows[i].getElementsByTagName('td');
+            var preco = {
+                Id: cells[0].innerText,
+                Nome: cells[1].innerText.trim(),
+                CustoUnitario: parseFloat(cells[2].innerText.replace('R$ ', '').trim()),
+                Margem: cells[3].innerText.replace(' %', '').trim(),
+                Comissao: cells[4].innerText.replace('R$ ', '').trim(),
+                Imposto: cells[5].innerText.replace('R$ ', '').trim(),
+                Lucro: cells[6].innerText.replace('R$ ', '').trim(),
+                lucroTotal: cells[7].innerText.replace('R$ ', '').trim(),
+                Quantidade: parseInt(cells[8].innerText.replace('R$ ', '').trim()),
+                ValorRateio: parseFloat(cells[9].innerText.replace('R$ ', '').trim()),
+                PrecoSugerido: parseFloat(cells[10].querySelector('input').value.replace(',', '.')),
+            };
+            precos.push(preco);
+        }
+
+        console.log(precos);
+
+        $("#PrecosJson").val(JSON.stringify(precos));
+
+    }
+
+    setPrecosJson();
+</script>

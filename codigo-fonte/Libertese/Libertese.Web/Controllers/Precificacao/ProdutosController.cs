@@ -11,9 +11,11 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 using Libertese.ViewModels;
 using System.Text.RegularExpressions;
 using Newtonsoft.Json;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Libertese.Web.Controllers.Precificacao
 {
+    [Authorize(Policy = "RequireProdutos")]
     public class ProdutosController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -23,7 +25,6 @@ namespace Libertese.Web.Controllers.Precificacao
             _context = context;
         }
 
-        // GET: Produtos
         public async Task<IActionResult> Index()
         {
 
@@ -32,11 +33,13 @@ namespace Libertese.Web.Controllers.Precificacao
                             from categoria in cGroup.DefaultIfEmpty()
                             join preco in _context.Precos on produto.Id equals preco.ProdutoId into pGroup
                             from preco in pGroup.DefaultIfEmpty()
+                            join rateio in _context.Rateios on produto.Id equals rateio.ProdutoId into rGroup
+                            from rateio in rGroup.DefaultIfEmpty()
                             join produtoMaterial in _context.ProdutoMaterial on produto.Id equals produtoMaterial.ProdutoId into pmGroup
                             from produtoMaterial in pmGroup.DefaultIfEmpty()
                             join material in _context.Materiais on produtoMaterial.MateriaiId equals material.Id into mGroup
                             from material in mGroup.DefaultIfEmpty()
-                            group new { produto, categoria, preco, produtoMaterial, material } 
+                            group new { produto, categoria, preco, produtoMaterial, material, rateio } 
                             by new { produto.Id, produto.Nome, Categoria = categoria.Nome, produto.TempoProducao, preco.Valor, produto.DataCriacao, produto.DataAtualizacao } into gGroup
                             select new ProdutoViewModel
                             {
@@ -46,7 +49,7 @@ namespace Libertese.Web.Controllers.Precificacao
                                 TempoProducao = gGroup.Key.TempoProducao,
                                 Custo = gGroup.Sum(x => x.produtoMaterial.Quantidade * x.material.Preco),
                                 Preco = gGroup.Select(x => x.preco.Valor).Distinct().FirstOrDefault(),
-                                Rateio = 0,
+                                Rateio = gGroup.Select(x => x.rateio.Valor).Distinct().FirstOrDefault(),
                                 DataAtualizacao = gGroup.Key.DataAtualizacao,
                                 DataCriacao = gGroup.Key.DataCriacao,
                                 TotalMateriais = gGroup.Count(x => x.produtoMaterial != null && x.material != null),
@@ -291,14 +294,60 @@ namespace Libertese.Web.Controllers.Precificacao
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var produto = await _context.Produtos.FindAsync(id);
-            if (produto != null)
+            var prod = await _context.Produtos.FindAsync(id);
+            bool existeVendaComEsseProduto = await _context.Vendas.AnyAsync(pm => pm.ProdutoId == id);
+            if (prod != null)
             {
-                _context.Produtos.Remove(produto);
-            }
+                if (existeVendaComEsseProduto)
+                {
+                    var produtos = (from produto in _context.Produtos
+                                    join categoria in _context.Categorias on produto.CategoriaId equals categoria.Id into cGroup
+                                    from categoria in cGroup.DefaultIfEmpty()
+                                    join preco in _context.Precos on produto.Id equals preco.ProdutoId into pGroup
+                                    from preco in pGroup.DefaultIfEmpty()
+                                    join produtoMaterial in _context.ProdutoMaterial on produto.Id equals produtoMaterial.ProdutoId into pmGroup
+                                    from produtoMaterial in pmGroup.DefaultIfEmpty()
+                                    join material in _context.Materiais on produtoMaterial.MateriaiId equals material.Id into mGroup
+                                    from material in mGroup.DefaultIfEmpty()
+                                    group new { produto, categoria, preco, produtoMaterial, material }
+                                    by new { produto.Id, produto.Nome, Categoria = categoria.Nome, produto.TempoProducao, preco.Valor, produto.DataCriacao, produto.DataAtualizacao } into gGroup
+                                    select new ProdutoViewModel
+                                    {
+                                        Id = gGroup.Key.Id,
+                                        Nome = gGroup.Key.Nome,
+                                        Categoria = gGroup.Key.Categoria,
+                                        TempoProducao = gGroup.Key.TempoProducao,
+                                        Custo = gGroup.Sum(x => x.produtoMaterial.Quantidade * x.material.Preco),
+                                        Preco = gGroup.Select(x => x.preco.Valor).Distinct().FirstOrDefault(),
+                                        Rateio = 0,
+                                        DataAtualizacao = gGroup.Key.DataAtualizacao,
+                                        DataCriacao = gGroup.Key.DataCriacao,
+                                        TotalMateriais = gGroup.Count(x => x.produtoMaterial != null && x.material != null),
+                                        Materiais = gGroup.Where(x => x.produtoMaterial != null && x.material != null)
+                                              .Select(x => new MaterialViewModel
+                                              {
+                                                  Id = x.material.Id,
+                                                  Nome = x.material.Nome,
+                                                  Preco = x.material.Preco,
+                                                  Quantidade = x.produtoMaterial.Quantidade
+                                              }).ToList()
+                                    })
+                       .OrderBy(x => x.Id)
+                       .ToList();
 
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+                    ViewData["ErrorMessage"] = $"O produto {prod.Nome} está associado a uma venda e não pode ser deletado.";
+                    return View(nameof(Index), produtos);
+                }
+
+                _context.Produtos.Remove(prod);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            else
+            {
+                ViewData["ErrorMessage"] = $"O produto ID: {id} informado não foi encontrado.";
+                return View("ErrorView");
+            }
         }
 
         // POST: Materiais/Search
@@ -376,8 +425,49 @@ namespace Libertese.Web.Controllers.Precificacao
                               Id = gGroup.Key.Id,
                               Nome = gGroup.Key.Nome,
                               Quantidade = 1,
+                              Tempo = gGroup.Select(x => x.produto.TempoProducao).Distinct().FirstOrDefault(),
                               Preco = gGroup.Select(x => x.preco.Valor).Distinct().FirstOrDefault(),
-                              ValorTotal = gGroup.Select(x => x.preco.Valor).Distinct().FirstOrDefault() * 1
+                              ValorTotal = gGroup.Select(x => x.preco.Valor).Distinct().FirstOrDefault() * 1,
+                              TempoTotal = gGroup.Select(x => x.produto.TempoProducao).Distinct().FirstOrDefault() * 1
+
+                          })
+                            .OrderBy(x => x.Nome)
+                            .Take(10)
+                            .ToList();
+
+
+            return Json(result);
+
+        }
+
+
+        [HttpGet, ActionName("SearchPrecificacaoByText")]
+        public JsonResult SearchPrecificacaoByText([FromQuery(Name = "searchString")] string searchString)
+        {
+
+            var result = (from produto in _context.Produtos
+                          join categoria in _context.Categorias on produto.CategoriaId equals categoria.Id into cGroup
+                          from categoria in cGroup.DefaultIfEmpty()
+                          join preco in _context.Precos on produto.Id equals preco.ProdutoId into pGroup
+                          from preco in pGroup.DefaultIfEmpty()
+                          join produtoMaterial in _context.ProdutoMaterial on produto.Id equals produtoMaterial.ProdutoId into pmGroup
+                          from produtoMaterial in pmGroup.DefaultIfEmpty()
+                          join material in _context.Materiais on produtoMaterial.MateriaiId equals material.Id into mGroup
+                          from material in mGroup.DefaultIfEmpty()
+                          where EF.Functions.Like(produto.Nome.ToLower(), "%" + searchString.ToLower() + "%")
+                          group new { produto, categoria, preco, produtoMaterial, material }
+                          by new { produto.Id, produto.Nome } into gGroup
+                          select new PrecificacaoProdutoViewModel
+                          {
+                              Id = gGroup.Key.Id,
+                              Nome = gGroup.Key.Nome,
+                              Quantidade = 1,
+                              Margem = gGroup.Select(x => x.produto.Margem).Distinct().FirstOrDefault(),
+                              TempoProducao = gGroup.Select(x => x.produto.TempoProducao).Distinct().FirstOrDefault(),
+                              TempoProducaoTotal = gGroup.Select(x => x.produto.TempoProducao).Distinct().FirstOrDefault() * 1,
+                              Custo = (decimal)gGroup.Sum(x => x.produtoMaterial.Quantidade * x.material.Preco),
+                              Total = (decimal)gGroup.Sum(x => x.produtoMaterial.Quantidade * x.material.Preco) * 1
+                              
                           })
                             .OrderBy(x => x.Nome)
                             .Take(10)

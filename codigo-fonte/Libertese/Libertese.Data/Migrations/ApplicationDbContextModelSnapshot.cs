@@ -17,7 +17,7 @@ namespace Libertese.Data.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.5")
+                .HasAnnotation("ProductVersion", "8.0.4")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
@@ -286,6 +286,9 @@ namespace Libertese.Data.Migrations
 
                     b.Property<DateTime?>("DataAtualizacao")
                         .HasColumnType("timestamp without time zone");
+
+                    b.Property<DateTimeOffset?>("DataCompetencia")
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<DateTime?>("DataCriacao")
                         .HasColumnType("timestamp without time zone");
@@ -641,6 +644,9 @@ namespace Libertese.Data.Migrations
 
                     b.Property<float>("Percentual")
                         .HasColumnType("real");
+
+                    b.Property<int>("ProdutoId")
+                        .HasColumnType("integer");
 
                     b.Property<decimal>("Valor")
                         .HasColumnType("numeric");

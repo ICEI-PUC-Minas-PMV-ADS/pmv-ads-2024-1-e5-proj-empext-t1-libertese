@@ -2,53 +2,61 @@
 
 @{
     ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_LayoutProdutos.cshtml";
 }
 
-<h1>Detalhes</h1>
+<body class="font-inter antialiased bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-400">
+    <div class="flex h-[100dvh] overflow-hidden">
+        <div class="relative flex flex-col flex-1 overflow-y-auto overflow-x-hidden bg-white dark:bg-slate-900">
+            <main class="grow">
+                <div class="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
+                    <div class="mb-8">
+                        <div class="flex items-center justify-between">
+                            <h2 class="text-2xl md:text-3xl text-slate-800 dark:text-slate-100 font-bold">Detalhes da Conta Bancária</h2>
+                            <a asp-action="Index" class="btn bg-orange-500 hover:bg-orange-600 text-white ml-3 rounded-lg w-24">Voltar</a>
+                        </div>
+                    </div>
+                    <div class="border-t border-slate-200 dark:border-slate-700">
+                        <div class="space-y-8 mt-5">
+                            <dl class="grid gap-5 md:grid-cols-2">
+                                <div>
+                                    <dt class="text-sm font-medium text-slate-500 dark:text-slate-400">@Html.DisplayNameFor(model => model.Nome)</dt>
+                                    <dd class="mt-1 text-slate-600 dark:text-slate-400">@Html.DisplayFor(model => model.Nome)</dd>
+                                </div>
+                                <div>
+                                    <dt class="text-sm font-medium text-slate-500 dark:text-slate-400">@Html.DisplayNameFor(model => model.Agencia)</dt>
+                                    <dd class="mt-1 text-slate-600 dark:text-slate-400">@Html.DisplayFor(model => model.Agencia)</dd>
+                                </div>
+                                <div>
+                                    <dt class="text-sm font-medium text-slate-500 dark:text-slate-400">@Html.DisplayNameFor(model => model.Conta)</dt>
+                                    <dd class="mt-1 text-slate-600 dark:text-slate-400">@Html.DisplayFor(model => model.Conta)</dd>
+                                </div>
+                                <div>
+                                    <dt class="text-sm font-medium text-slate-500 dark:text-slate-400">@Html.DisplayNameFor(model => model.Pix)</dt>
+                                    <dd class="mt-1 text-slate-600 dark:text-slate-400">@Html.DisplayFor(model => model.Pix)</dd>
+                                </div>
+                                <div>
+                                    <dt class="text-sm font-medium text-slate-500 dark:text-slate-400">@Html.DisplayNameFor(model => model.DataCriacao)</dt>
+                                    <dd class="mt-1 text-slate-600 dark:text-slate-400">@Html.DisplayFor(model => model.DataCriacao)</dd>
+                                </div>
+                                <div>
+                                    <dt class="text-sm font-medium text-slate-500 dark:text-slate-400">@Html.DisplayNameFor(model => model.DataAtualizacao)</dt>
+                                    <dd class="mt-1 text-slate-600 dark:text-slate-400">@Html.DisplayFor(model => model.DataAtualizacao)</dd>
+                                </div>
+                            </dl>
+                            <div class="flex justify-between items-center mt-8">
+                                <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn bg-blue-500 hover:bg-blue-600 text-white rounded-lg w-32">Editar</a>
+                             </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+</body>
 
-<div>
-    <h4>Contas Bancárias</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Nome)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Nome)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Agencia)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Agencia)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Conta)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Conta)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Pix)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Pix)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DataCriacao)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DataCriacao)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DataAtualizacao)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DataAtualizacao)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Editar</a> |
-    <a asp-action="Index">Voltar para a lista</a>
-</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

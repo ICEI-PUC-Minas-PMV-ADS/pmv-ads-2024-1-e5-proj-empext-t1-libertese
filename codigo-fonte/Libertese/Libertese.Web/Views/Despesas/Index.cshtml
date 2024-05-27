@@ -53,7 +53,7 @@
                 <div class="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
                     <div class="sm:flex sm:justify-between sm:items-center mb-5">
                         <div class="mb-4 sm:mb-0">
-                            <h1 class="text-2xl md:text-3xl text-slate-800 dark:text-slate-100 font-bold">Despesas<h1>
+                            <h1 class="text-2xl md:text-3xl text-slate-800 dark:text-slate-100 font-bold">Despesas </h1>
                         </div>
 
                         <div class="grid grid-flow-col sm:auto-cols-max justify-start sm:justify-end gap-2">
@@ -82,9 +82,6 @@
                                     <thead class="text-xs font-semibold uppercase text-slate-500 dark:text-slate-400 bg-slate-50 dark:bg-slate-900/20 border-t border-b border-slate-200 dark:border-slate-700">
                                         <tr>
                                             <th class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-                                                <div class="font-semibold text-left">Código</div>
-                                            </th>
-                                            <th class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
                                                 <div class="font-semibold text-left">Classificação</div>
                                             </th>
                                             <th class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
@@ -92,6 +89,9 @@
                                             </th>
                                             <th class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
                                                 <div class="font-semibold text-left">Vencimento</div>
+                                            </th>
+                                            <th class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
+                                                <div class="font-semibold text-left">Valor</div>
                                             </th>
                                             <th class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
                                                 <div class="font-semibold text-left">Status</div>
@@ -108,10 +108,6 @@
                                         {
                                         <tr>
                                             <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-                                                <div class="font-medium text-sky-500">@Html.DisplayFor(modelItem => item.Id)</div>
-
-                                            </td>
-                                            <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
                                                     <div class="font-medium text-slate-800 dark:text-slate-100">@Html.DisplayFor(modelItem => item.Classificacao)</div>
                                             </td>
 
@@ -120,6 +116,9 @@
                                             </td>
                                             <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
                                                 <div class="font-medium text-slate-800 dark:text-slate-100">@Html.DisplayFor(modelItem => item.DataVencimento)</div>
+                                            </td>
+                                            <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
+                                                <div class="font-medium text-slate-800 dark:text-slate-100">R$ @Html.DisplayFor(modelItem => item.Valor)</div>
                                             </td>
                                             <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
                                                 <div>@Html.DisplayFor(modelItem => item.Status)</div>
@@ -176,11 +175,13 @@
                                                                                 <div class="mb-2">
                                                                                     <p><strong>Código: </strong>@Html.DisplayFor(modelItem => item.Id)</p>
                                                                                     <p><strong>Classificação: </strong> @Html.DisplayFor(modelItem => item.Classificacao)</p>
+                                                                                    <p><strong>Conta Bancária: </strong> @Html.DisplayFor(modelItem => item.ContaBancariaName)</p>
                                                                                     <p><strong>Fornecedor: </strong> @Html.DisplayFor(modelItem => item.FornecedorName)</p>
                                                                                     <p><strong>Forma de Pagamento: </strong> @Html.DisplayFor(modelItem => item.FormaPagamentoName)</p>
                                                                                     <p><strong>Valor: </strong> R$ @Html.DisplayFor(modelItem => item.Valor)</p>
                                                                                     <p><strong>Status: </strong> @Html.DisplayFor(modelItem => item.Status)</p>
                                                                                     <p><strong>Data Vencimento: </strong> @Html.DisplayFor(modelItem => item.DataVencimento)</p>
+                                                                                    <p><strong>Data de Competência: </strong> @Html.DisplayFor(modelItem => item.DataCompetencia)</p>
                                                                                     <p><strong>Data Pagamento: </strong> @Html.DisplayFor(modelItem => item.DataPagamento)</p>
                                                                                     <p><strong>Atualização: </strong> @Html.DisplayFor(modelItem => item.DataAtualiza)</p>
                                                                                     <p><strong>Observações: </strong> @Html.DisplayFor(modelItem => item.Observacao)</p>
