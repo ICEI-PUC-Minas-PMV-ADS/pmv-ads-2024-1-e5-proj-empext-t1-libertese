@@ -82,10 +82,23 @@
         
 
 <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+    <div class="flex h-[100dvh] overflow-hidden">
+            <div class=" elemento flex flex-col flex-1 overflow-y-hidden overflow-x-hidden">
+            <main class="grow">
+                @RenderBody()
+            </main>
+        </div>
     </div>
+</div>
+<style>
+    .elemento {
+        overflow-x: hidden;
+    }
+
+    .elemento::-webkit-scrollbar {
+        display: none;
+    }
+</style>
 
     <script src="~/sidebar/assets/js/main.js"></script>
     <script src="~/sidebar/assets/js/main.js"></script>
