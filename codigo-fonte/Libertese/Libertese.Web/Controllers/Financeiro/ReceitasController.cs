@@ -8,7 +8,9 @@ using Microsoft.EntityFrameworkCore;
 using Libertese.Data;
 using Libertese.Domain.Entities.Financeiro;
 using Libertese.Domain.Enums;
+using System.Collections;
 using Microsoft.AspNetCore.Authorization;
+using Libertese.ViewModels;
 
 namespace Libertese.Web.Controllers.Financeiro
 {
@@ -23,93 +25,44 @@ namespace Libertese.Web.Controllers.Financeiro
             _context = context;
         }
 
-        // GET: Receitas
+        // GET: Receita
         public async Task<IActionResult> Index()
         {
-            List<Receita> listaReceitas = await _context.Receitas.ToListAsync();
-            List<Classificacao> listaClassificacoes = await _context.Classificacoes.Where(x => x.Tipo == (int)ClassificacaoTipo.Receitas).ToListAsync();
-            List<ReceitaDTO> listaReceitaDTO = listaReceitas.Select(receita => new ReceitaDTO
+            List<Receita> listaReceita = await _context.Receitas.ToListAsync();
+            List<Classificacao> listaClassificacoes = await GetListaClassificacoesReceita();
+            List<FormaPagamento> listaFormaPagamento = await GetListaFormaPagamento();
+            List<ReceitaDTO> listaReceitaDTO = listaReceita.Select(receita => new ReceitaDTO
             {
                 Id = receita.Id,
-                ClienteId = receita.ClienteId,
-                FormaPagamento = convertFormaPagamentoToNome(receita.FormaPagamentoId),
-                DataPrevisao = receita.DataPrevisao,
-                DataRecebimento = receita.DataRecebimento,
-                Descricao = receita.Descricao,
+                Valor = receita.Valor,
                 Status = convertReceitaStatusToNome(receita.Status),
+                FormaPagamento = listaFormaPagamento.Find(x => x.Id == receita.FormaPagamentoId)?.Descricao ?? "Sem Forma de Pagamento",
+                Descricao = receita.Descricao ?? "Sem observações",
+                DataPrevisao = receita.DataPrevisao?.ToString("dd/MM/yyyy") ?? "Sem data",
+                DataRecebimento = receita.DataRecebimento?.ToString("dd/MM/yyyy") ?? "Sem data",
+                DataAtualizacao = receita.DataAtualizacao?.ToString("dd/MM/yyyy") ?? "Sem Data",
                 Classificacao = listaClassificacoes.Find(x => x.Id == receita.ClassificacaoId)?.Descricao ?? "Sem Classificação",
+
             }).ToList();
             return View(listaReceitaDTO);
         }
 
-        private string convertFormaPagamentoToNome(int formaPagamento)
+        // GET: Receita/Create
+        public async Task<IActionResult> Create()
         {
-            switch ((FormaPagamentoEnum)formaPagamento)
-            {
-                case FormaPagamentoEnum.Boleto:
-                    return FormaDePagamentoNomes.Boleto;
-                case FormaPagamentoEnum.Cheque:
-                    return FormaDePagamentoNomes.Cheque;
-                case FormaPagamentoEnum.CreditoPrazo:
-                    return FormaDePagamentoNomes.CreditoPrazo;
-                case FormaPagamentoEnum.CreditoVista:
-                    return FormaDePagamentoNomes.CreditoVista;
-                case FormaPagamentoEnum.Debito:
-                    return FormaDePagamentoNomes.Debito;
-                case FormaPagamentoEnum.Dinheiro:
-                    return FormaDePagamentoNomes.Dinheiro;
-                case FormaPagamentoEnum.Pix:
-                    return FormaDePagamentoNomes.Pix;
-                case FormaPagamentoEnum.Transferencia:
-                    return FormaDePagamentoNomes.Transferencia;
-                default:
-                    return "Undefinded";
-            }
-        }
-
-        private string convertReceitaStatusToNome(ReceitaStatus receitaStatus)
-        {
-            switch (receitaStatus)
-            {
-                case ReceitaStatus.AReceber:
-                    return "A Receber";
-                case ReceitaStatus.Recebido:
-                    return "Recebido";
-                default:
-                    return "Undefinded";
-            }
-        }
-
-        // GET: Receitas/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var receita = await _context.Receitas
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (receita == null)
-            {
-                return NotFound();
-            }
-
-            return View(receita);
-        }
-
-        // GET: Receitas/Create
-        public IActionResult Create()
-        {
+            List<Classificacao> listaClassificacoes = await GetListaClassificacoesReceita();
+            List<FormaPagamento> listaFormaPagamento = await GetListaFormaPagamento();
+            ViewBag.FormaPagamento = listaFormaPagamento;
+            ViewBag.Classificacao = listaClassificacoes;
             return View();
         }
 
-        // POST: Receitas/Create
+        // POST: Receita/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ClassificacaoId,ClienteId,FormaPagamentoId,DataPrevisao,DataRecebimento,Descricao,Status")] Receita receita)
+        public async Task<IActionResult> Create([Bind("FornecedorId,FormaPagamentoId,ClassificacaoId,Tipo,Descricao,Status,DataPrevisao,DataRecebimento,Descricao,Id,DataCriacao,DataAtualizacao,Valor")] Receita receita)
         {
             if (ModelState.IsValid)
             {
@@ -117,12 +70,20 @@ namespace Libertese.Web.Controllers.Financeiro
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            List<Classificacao> listaClassificacoes = await GetListaClassificacoesReceita();
+            List<FormaPagamento> listaFormaPagamento = await GetListaFormaPagamento();
+            ViewBag.FormaPagamento = listaFormaPagamento;
+            ViewBag.Classificacao = listaClassificacoes;
             return View(receita);
         }
 
-        // GET: Receitas/Edit/5
+        // GET: Receita/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            List<Classificacao> listaClassificacoes = await GetListaClassificacoesReceita();
+            List<FormaPagamento> listaFormaPagamento = await GetListaFormaPagamento();
+            ViewBag.FormaPagamento = listaFormaPagamento;
+            ViewBag.Classificacao = listaClassificacoes;
             if (id == null)
             {
                 return NotFound();
@@ -136,12 +97,12 @@ namespace Libertese.Web.Controllers.Financeiro
             return View(receita);
         }
 
-        // POST: Receitas/Edit/5
+        // POST: Receita/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ClassificacaoId,ClienteId,FormaPagamentoId,DataPrevisao,DataRecebimento,Descricao,Status")] Receita receita)
+        public async Task<IActionResult> Edit(int id, [Bind("FornecedorId,FormaPagamentoId,ClassificacaoId,Tipo,Descricao,Status,DataPrevisao,DataRecebimento,Id,DataCriacao,DataAtualizacao,Valor")] Receita receita)
         {
             if (id != receita.Id)
             {
@@ -168,28 +129,14 @@ namespace Libertese.Web.Controllers.Financeiro
                 }
                 return RedirectToAction(nameof(Index));
             }
+            List<Classificacao> listaClassificacoes = await GetListaClassificacoesReceita();
+            List<FormaPagamento> listaFormaPagamento = await GetListaFormaPagamento();
+            ViewBag.FormaPagamento = listaFormaPagamento;
+            ViewBag.Classificacao = listaClassificacoes;
             return View(receita);
         }
 
-        // GET: Receitas/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var receita = await _context.Receitas
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (receita == null)
-            {
-                return NotFound();
-            }
-
-            return View(receita);
-        }
-
-        // POST: Receitas/Delete/5
+        // POST: Receita/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
@@ -204,9 +151,34 @@ namespace Libertese.Web.Controllers.Financeiro
             return RedirectToAction(nameof(Index));
         }
 
+
+
         private bool ReceitaExists(int id)
         {
             return _context.Receitas.Any(e => e.Id == id);
+        }
+
+        private async Task<List<Classificacao>> GetListaClassificacoesReceita()
+        {
+            return await _context.Classificacoes.Where(x => x.Tipo == (int)ClassificacaoTipo.Receitas).ToListAsync();
+        }
+        private async Task<List<FormaPagamento>> GetListaFormaPagamento()
+        {
+            return await _context.FormaPagamentos.ToListAsync();
+        }
+
+
+        private string convertReceitaStatusToNome(ReceitaStatus ReceitaStatus)
+        {
+            switch (ReceitaStatus)
+            {
+                case ReceitaStatus.Recebido:
+                    return ReceitaStatusNomes.Recebido;
+                case ReceitaStatus.AReceber:
+                    return ReceitaStatusNomes.AReceber;
+                default:
+                    return "Undefinded";
+            }
         }
     }
 }
