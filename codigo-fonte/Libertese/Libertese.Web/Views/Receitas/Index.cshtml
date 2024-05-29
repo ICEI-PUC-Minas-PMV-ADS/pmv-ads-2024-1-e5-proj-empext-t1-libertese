@@ -20,7 +20,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
     <meta charset="UTF-8">
-    <title>Libertese | Despesas</title>
+    <title>Libertese | Receita</title>
     <style>
 
     </style>
@@ -55,7 +55,7 @@
 </head>
 
 <body class="font-inter antialiased bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-400">
-    <div class="flex h-[100dvh] overflow-hidden">
+    <div class="flex min-h-[100dvh]  overflow-hidden">
         <div class="relative flex flex-col flex-1 overflow-y-auto overflow-x-hidden">
             <main class="grow">
                 <div class="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
@@ -88,7 +88,7 @@
                                 </svg>
                                 <span class="hidden xs:block ml-2">Nova receita</span>
                             </a>
-                            <a asp-controller="Receita" asp-action="Index" class="btn bg-orange-800 hover:bg-orange-900 text-white">
+                            <a asp-controller="Classificacoes" asp-route-tipo="2" asp-action="Create"  class="btn bg-orange-800 hover:bg-orange-900 text-white">
                                 <svg class="w-4 h-4 fill-current opacity-50 shrink-0" viewBox="0 0 16 16">
                                     <path d="M15 7H9V1c0-.6-.4-1-1-1S7 .4 7 1v6H1c-.6 0-1 .4-1 1s.4 1 1 1h6v6c0 .6.4 1 1 1s1-.4 1-1V9h6c.6 0 1-.4 1-1s-.4-1-1-1z" />
                                 </svg>
@@ -121,6 +121,9 @@
                                             </th>
                                             <th class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
                                                 <div class="font-semibold text-left">Data Recebimento</div>
+                                            </th>
+                                            <th class="px-2 first\:pl-5 last\:pr-5 py-3 whitespace-nowrap">
+                                                <div class="font-semibold text-left">Valor</div>
                                             </th>
                                             <th class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
                                                 <div class="font-semibold text-left">Descrição</div>
@@ -164,9 +167,6 @@
                                                     <div class="font-medium text-slate-800 dark:text-slate-100">@Html.DisplayFor(modelItem => item.Status)</div>
                                                 </td>
                                                
-                                            <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-                                                <div>@Html.DisplayFor(modelItem => item.DataAtualizacao)</div>
-                                            </td>
                                             <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap w-px">
                                                 <div class="space-x-1">
                                                     <button asp-action="Edit" asp-route-id="@item.Id" class="text-slate-400 hover:text-slate-500 dark:text-slate-500 dark:hover:text-slate-400 rounded-full">
@@ -183,7 +183,7 @@
                                                         </svg>                                                          
                                                     </button>
                                                     <button class="text-rose-500 hover:text-rose-600 rounded-full" @@click.prevent="modalDeletarOpen = true; tableIndex = @item.Id">
-                                                        <span class="sr-only">Deletar</span>
+                                                        <span class="sr-only">Excluir</span>
                                                         <svg class="w-8 h-8 fill-current" viewBox="0 0 32 32">
                                                             <path d="M13 15h2v6h-2zM17 15h2v6h-2z" />
                                                             <path d="M20 9c0-.6-.4-1-1-1h-6c-.6 0-1 .4-1 1v2H8v2h1v10c0 .6.4 1 1 1h12c.6 0 1-.4 1-1V13h1v-2h-4V9zm-6 1h4v1h-4v-1zm7 3v9H11v-9h10z" />
@@ -240,7 +240,7 @@
                                                         <div>
                                                             
                                                             <div class="mb-2">
-                                                                <div class="text-lg font-semibold text-slate-800 dark:text-slate-100">Visualizar produto</div>
+                                                                <div class="text-lg font-semibold text-slate-800 dark:text-slate-100">Visualizar</div>
                                                             </div>
                                                             
                                                             <div class="text-sm mb-10">
@@ -306,7 +306,7 @@
                                         <div>
                                             
                                             <div class="mb-2">
-                                                <div class="text-lg font-semibold text-slate-800 dark:text-slate-100">Excluir produto</div>
+                                                <div class="text-lg font-semibold text-slate-800 dark:text-slate-100">Excluir receita</div>
                                             </div>
                                             
                                             <div class="text-sm mb-10">
@@ -331,7 +331,7 @@
                         </div>
                     </div>
                   
-                    <div style="display: flex; flex-direction: row; justify-content: flex-end; margin-top: 150px; margin-right: 100px">
+                    <div style="display: flex; flex-direction: row; justify-content: flex-end; margin-top: 150px; margin-right: 500px; position:fixed">
                         <div style="margin-right: 80px" class="flex flex-col">
                             <h4 class="mb-6 text-1xl text-slate-800 dark:text-slate-100 font-medium">Facção:</h4>
                             <span class="text-1xl text-slate-800 dark:text-slate-100 font-bold" id="faccao"></span>

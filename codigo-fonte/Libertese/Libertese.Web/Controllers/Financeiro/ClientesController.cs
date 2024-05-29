@@ -7,9 +7,13 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Libertese.Data;
 using Libertese.Domain.Entities.Financeiro;
+using Libertese.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Libertese.Web.Controllers.Financeiro
 {
+
+    [Authorize(Policy = "RequireClientes")]
     public class ClientesController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -148,6 +152,18 @@ namespace Libertese.Web.Controllers.Financeiro
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+
+        [HttpGet, ActionName("SearchByText")]
+        public JsonResult SearchByText([FromQuery(Name = "searchString")] string searchString)
+        {
+            var result = _context.Clientes
+                            .Where(x => EF.Functions.Like(x.Nome.ToLower(), "%" + searchString.ToLower() + "%"))
+                            .Select(x => new OptionViewModel { Id = x.Id, Nome = x.Nome })
+                            .Take(10)
+                            .ToList();
+            return Json(result);
+        }
+
 
         private bool ClienteExists(int id)
         {

@@ -2,57 +2,61 @@
 
 @{
     ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_LayoutProdutos.cshtml";
 }
 
-<h1>Nova Conta Bancária</h1>
-
-<h4></h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Nome" class="control-label"></label>
-                <input asp-for="Nome" class="form-control" />
-                <span asp-validation-for="Nome" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Agencia" class="control-label"></label>
-                <input asp-for="Agencia" class="form-control" />
-                <span asp-validation-for="Agencia" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Conta" class="control-label"></label>
-                <input asp-for="Conta" class="form-control" />
-                <span asp-validation-for="Conta" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Pix" class="control-label"></label>
-                <input asp-for="Pix" class="form-control" />
-                <span asp-validation-for="Pix" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DataCriacao" class="control-label"></label>
-                <input asp-for="DataCriacao" class="form-control" />
-                <span asp-validation-for="DataCriacao" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DataAtualizacao" class="control-label"></label>
-                <input asp-for="DataAtualizacao" class="form-control" />
-                <span asp-validation-for="DataAtualizacao" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Criar" class="btn btn-primary" />
-            </div>
-        </form>
+<body class="font-inter antialiased bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-400">
+    <div class="flex min-h-[100dvh]  overflow-hidden">
+        <div class="relative flex flex-col flex-1 overflow-y-auto overflow-x-hidden bg-white dark:bg-slate-900">
+            <main class="grow">
+                <div class="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
+                    <div class="mb-8">
+                        <div class="flex items-center justify-between">
+                            <h2 class="text-2xl md:text-3xl text-slate-800 dark:text-slate-100 font-bold">Nova Conta Bancária</h2>
+                            <a asp-action="Index" class="btn bg-orange-500 hover:bg-orange-600 text-white ml-3 rounded-lg w-24">Voltar</a>
+                        </div>
+                    </div>
+                    <div class="border-t border-slate-200 dark:border-slate-700">
+                        <form asp-action="Create" class="space-y-8 mt-5">
+                            <div class="grid gap-5 md:grid-cols-2">
+                                <div>
+                                    <label asp-for="Nome" class="block text-sm font-medium mb-1 text-slate-800 dark:text-slate-100"></label>
+                                    <input asp-for="Nome" class="form-input w-full" type="text" />
+                                    <span asp-validation-for="Nome" class="text-xs mt-1 text-rose-500"></span>
+                                </div>
+                                <div>
+                                    <label asp-for="Agencia" class="block text-sm font-medium mb-1 text-slate-800 dark:text-slate-100"></label>
+                                    <input asp-for="Agencia" class="form-input w-full" type="text" />
+                                    <span asp-validation-for="Agencia" class="text-xs mt-1 text-rose-500"></span>
+                                </div>
+                                <div>
+                                    <label asp-for="Conta" class="block text-sm font-medium mb-1 text-slate-800 dark:text-slate-100"></label>
+                                    <input asp-for="Conta" class="form-input w-full" type="text" />
+                                    <span asp-validation-for="Conta" class="text-xs mt-1 text-rose-500"></span>
+                                </div>
+                                <div>
+                                    <label asp-for="Pix" class="block text-sm font-medium mb-1 text-slate-800 dark:text-slate-100"></label>
+                                    <input asp-for="Pix" class="form-input w-full" type="text" />
+                                    <span asp-validation-for="Pix" class="text-xs mt-1 text-rose-500"></span>
+                                </div>
+                                </div>
+                            <footer>
+                                <div class="flex flex-col px-6 py-5 border-t border-slate-200 dark:border-slate-700">
+                                    <div class="flex self-center">
+                                        <button id="submitForm" name="submitForm" type="submit" class="btn bg-slate-900 hover:bg-orange-600 text-white ml-3 rounded-lg w-32">Salvar</button>
+                                    </div>
+                                </div>
+                            </footer>
+                        </form>
+                    </div>
+                </div>
+            </main>
+        </div>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Voltar para a lista</a>
-</div>
+</body>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

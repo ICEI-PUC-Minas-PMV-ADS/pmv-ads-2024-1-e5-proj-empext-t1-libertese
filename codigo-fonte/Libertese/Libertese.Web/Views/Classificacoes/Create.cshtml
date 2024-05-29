@@ -7,10 +7,6 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Libertese</title>
-    <link rel="stylesheet" href="~/../sidebar/assets/css/styles.css" asp-append-version="true" />
-    <link href="../scaffold/css/vendors/flatpickr.min.css" rel="stylesheet">
-    <link href="../scaffold/style.css" rel="stylesheet">
-    <link href="../scaffold/css/vendors/flatpickr.min.css" />
 </head>
 
 @{
@@ -42,7 +38,7 @@
 }
 
 <body class="font-inter antialiased bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-400">
-    <div class="flex h-[100dvh] overflow-hidden">
+    <div class="flex min-h-[100dvh]  overflow-hidden">
         <div class="relative flex flex-col flex-1 overflow-y-auto overflow-x-hidden">
             <main class="grow">
                 <div class="grid grid-flow-col sm:auto-cols-max justify-start sm:justify-end gap-2">
@@ -88,13 +84,6 @@
                                                 </td>
                                                 <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap w-px">
                                                     <div class="space-x-1">
-                                                        <button asp-action="Edit" asp-route-id="@item.Id" class="text-slate-400 hover:text-slate-500 dark:text-slate-500 dark:hover:text-slate-400 rounded-full">
-                                                            <a asp-action="Edit" asp-route-id="@item.Id">
-                                                                <svg class="w-8 h-8 fill-current" viewBox="0 0 32 32">
-                                                                    <path d="M19.7 8.3c-.4-.4-1-.4-1.4 0l-10 10c-.2.2-.3.4-.3.7v4c0 .6.4 1 1 1h4c.3 0 .5-.1.7-.3l10-10c.4-.4.4-1 0-1.4l-4-4zM12.6 22H10v-2.6l6-6 2.6 2.6-6 6zm7.4-7.4L17.4 12l1.6-1.6 2.6 2.6-1.6 1.6z" />
-                                                                </svg>
-                                                            </a>
-                                                        </button>
                                                         <button class="text-rose-500 hover:text-rose-600 rounded-full" @@click.prevent="modalDeletarOpen = true; tableIndex = @item.Id">
                                                             <span class="sr-only">Deletar</span>
                                                             <svg class="w-8 h-8 fill-current" viewBox="0 0 32 32">
@@ -181,14 +170,6 @@
     </div>
 </body>
 </html>
-
-<script src="~/../sidebar/assets/js/main.js"></script>
-<script src="~/../sidebar/assets/js/main.js"></script>
-<script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js" asp-append-version="true"></script>
-<script src="~/../lib/jquery/dist/jquery.min.js"></script>
-<script src="~/../js/site.js" asp-append-version="true"></script>
-<script src="../scaffold/js/vendors/alpinejs.min.js" defer></script>
-<script src="../scaffold/js/main.js"></script>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

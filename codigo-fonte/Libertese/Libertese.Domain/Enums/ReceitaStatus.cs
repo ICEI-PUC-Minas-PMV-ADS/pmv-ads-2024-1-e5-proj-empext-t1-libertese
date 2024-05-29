@@ -2,8 +2,7 @@
 {
     public enum ReceitaStatus
     {
-       Faccao = 1,
-       Patrocinio = 2,
-       VendasRegistradas = 3,
+        AReceber = 1, 
+        Recebido = 2,
     }
 }

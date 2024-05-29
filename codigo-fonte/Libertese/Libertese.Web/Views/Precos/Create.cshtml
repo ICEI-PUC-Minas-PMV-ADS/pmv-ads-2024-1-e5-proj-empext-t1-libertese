@@ -1,52 +1,92 @@
-﻿@model Libertese.Domain.Entities.Precificacao.Preco
+﻿@model Libertese.ViewModels.PrecificacaoCreateViewModel
+@using Microsoft.AspNetCore.Mvc.TagHelpers
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Nova Precificação";
+    Layout = "~/Views/Shared/_LayoutProdutos.cshtml";
 }
 
-<h1>Create</h1>
+<head>
+    <meta charset="utf-8" />
+    <title>Autocomplete Example</title>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+</head>
 
-<h4>Preco</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="ProdutoId" class="control-label"></label>
-                <input asp-for="ProdutoId" class="form-control" />
-                <span asp-validation-for="ProdutoId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="RateioId" class="control-label"></label>
-                <input asp-for="RateioId" class="form-control" />
-                <span asp-validation-for="RateioId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Vigencia" class="control-label"></label>
-                <input asp-for="Vigencia" class="form-control" />
-                <span asp-validation-for="Vigencia" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DataCriacao" class="control-label"></label>
-                <input asp-for="DataCriacao" class="form-control" />
-                <span asp-validation-for="DataCriacao" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DataAtualizacao" class="control-label"></label>
-                <input asp-for="DataAtualizacao" class="form-control" />
-                <span asp-validation-for="DataAtualizacao" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+
+<body class="font-inter antialiased bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-400">
+    <div class="flex min-h-[100dvh]  overflow-hidden">
+        <div class="relative flex flex-col flex-1 overflow-y-auto overflow-x-visible bg-white dark:bg-slate-900">
+            <main class="grow">
+                <div class="px-4 sm:px-6 lg:px-8 pt-8 w-full max-w-9xl mx-auto">
+                    <div class="mb-1">
+                        <div class="flex items-center justify-between">
+                            <h2 class="text-2xl md:text-3xl text-slate-800 dark:text-slate-100 font-bold">Nova Precificação</h2>
+                            <a asp-controller="Produtos" asp-action="Index" class="btn bg-orange-500 hover:bg-orange-600 text-white ml-3 rounded-lg w-24">Voltar</a>
+                        </div>
+                        
+                    </div>
+                </div>
+                <form id="ProdutoForm" asp-action="Create">
+
+                    @{
+                        await Html.RenderPartialAsync("_CreateContextoParametrosPartial", Model);
+                        await Html.RenderPartialAsync("_CreateContextoProdutosPartial", Model);
+                        await Html.RenderPartialAsync("_CreateContextoDespesasPartial", Model);
+                        await Html.RenderPartialAsync("_CreateContextoRateioPartial", Model);
+                        await Html.RenderPartialAsync("_CreateContextoFormacaoDePrecoPartial", Model);
+                    }
+
+                    <footer>
+                        <div class="flex flex-col px-6 py-5 border-t border-slate-200 dark:border-slate-700">
+                            <div class="flex self-center">
+                                <button id="submitForm" name="submitForm" type="submit" value="Salvar" class="btn bg-slate-900 hover:bg-orange-600 text-white ml-3 rounded-lg w-32">Confirmar</button>
+                            </div>
+                        </div>
+                    </footer>
+                </form>
+            </main>
+        </div>
     </div>
-</div>
+</body>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#ProdutoForm").on("submit", function (event) {
+            event.preventDefault();
+        });
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+        $("#submitForm").click(function () {
+            $("#ProdutoForm").off("submit").submit();
+        });
+    });
+</script>
+
+
+<style>
+    .max-w-80ch {
+        max-width: 40ch;
+    }
+
+    .max-w-60ch {
+        max-width: 40ch;
+    }
+
+
+    .max-w-40ch {
+        max-width: 40ch;
+    }
+
+    .max-w-20ch {
+        max-width: 20ch;
+    }
+
+    .truncate {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+</style>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

@@ -7,9 +7,12 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Libertese.Data;
 using Libertese.Domain.Entities.Precificacao;
+using Libertese.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Libertese.Web.Controllers.Precificacao
 {
+    [Authorize(Policy = "RequireMateriais")]
     public class MateriaisController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -58,6 +61,9 @@ namespace Libertese.Web.Controllers.Precificacao
         {
             if (ModelState.IsValid)
             {
+                material.DataCriacao = DateTime.Now;
+                material.DataAtualizacao = DateTime.Now;
+
                 _context.Add(material);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -145,13 +151,26 @@ namespace Libertese.Web.Controllers.Precificacao
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var material = await _context.Materiais.FindAsync(id);
+            bool existeProdutoComEsseMaterial = await _context.ProdutoMaterial.AnyAsync(pm => pm.MateriaiId == id);
             if (material != null)
             {
+                if (existeProdutoComEsseMaterial)
+                {
+                    var materiais = await _context.Materiais.ToListAsync();
+                    ViewData["ErrorMessage"] = $"O material {material.Nome} está associado a um produto e não pode ser deletado.";
+                    return View(nameof(Index), materiais);
+                }
+
                 _context.Materiais.Remove(material);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            } else
+            {
+                ViewData["ErrorMessage"] = $"O material ID: {id} informado não foi encontrado.";
+                return View("ErrorView");
             }
 
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+           
         }
 
         // POST: Materiais/Search
@@ -168,6 +187,24 @@ namespace Libertese.Web.Controllers.Precificacao
             {
                 return RedirectToAction(nameof(Index));
             }
+        }
+
+        [HttpGet, ActionName("SearchByText")]
+        public JsonResult SearchByText([FromQuery(Name = "searchString")] string searchString)
+        {
+            var result = _context.Materiais
+                            .Where(x => EF.Functions.Like(x.Nome.ToLower(), "%" + searchString.ToLower() + "%"))
+                            .Select(x => new MaterialViewModel { 
+                                Id = x.Id, 
+                                Nome = x.Nome,
+                                Quantidade = 1,
+                                Preco = x.Preco,
+                                ValorTotal = x.Preco * 1
+                                
+                            })
+                            .Take(10)
+                            .ToList();
+            return Json(result);
         }
 
 

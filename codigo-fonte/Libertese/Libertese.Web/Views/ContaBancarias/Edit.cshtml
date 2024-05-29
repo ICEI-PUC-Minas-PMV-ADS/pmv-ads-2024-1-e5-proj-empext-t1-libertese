@@ -2,58 +2,166 @@
 
 @{
     ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_LayoutProdutos.cshtml";
 }
 
-<h1>Editar</h1>
+<body class="font-inter antialiased bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-400">
+    <div class="flex min-h-[100dvh]  overflow-hidden">
+        <div class="relative flex flex-col flex-1 overflow-y-auto overflow-x-hidden bg-white dark:bg-slate-900">
+            <main class="grow">
+                <div class="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
+                    <div class="mb-8">
+                        <div class="flex items-center justify-between">
+                            <h2 class="text-2xl md:text-3xl text-slate-800 dark:text-slate-100 font-bold">Editar Conta Bancária</h2>
+                            <a asp-action="Index" class="btn bg-orange-500 hover:bg-orange-600 text-white ml-3 rounded-lg w-24">Voltar</a>
+                        </div>
+                    </div>
+                    <div class="border-t border-slate-200 dark:border-slate-700">
+                        <form asp-action="Edit">
+                            <div class="space-y-8 mt-5">
+                                <div>
+                                    <div class="grid gap-5 md:grid-cols-2">
+                                        <div>
+                                            <div class="flex items-center justify-between">
+                                                <label asp-for="Nome" class="block text-sm font-medium mb-1"></label>
+                                                <div class="relative ml-2" x-data="{ open: false }" @@mouseenter="open = true" @@mouseleave="open = false">
+                                                    <button class="block" aria-haspopup="true" :aria-expanded="open" @@focus="open = true" @@focusout="open = false" @@click.prevent>
+                                                        <svg class="w-4 h-4 fill-current text-slate-400 dark:text-slate-500" viewBox="0 0 16 16">
+                                                            <path d="M8 0C3.6 0 0 3.6 0 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zm0 12c-.6 0-1-.4-1-1s.4-1 1-1 1 .4 1 1-.4 1-1 1zm1-3H7V4h2v5z" />
+                                                        </svg>
+                                                    </button>
+                                                    <div class="z-10 absolute bottom-full left-1/2 -translate-x-1/2">
+                                                        <div class="min-w-60 bg-slate-800 text-slate-200 px-2 py-1 rounded overflow-hidden mb-2" x-show="open" x-transition:enter="transition ease-out duration-200 transform" x-transition:enter-start="opacity-0 translate-y-2" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-out duration-200" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" x-cloak>
+                                                            <div class="text-sm">Editar o nome da conta bancária.</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <input asp-for="Nome" class="form-input w-full" type="text" />
+                                            <span asp-validation-for="Nome" class="text-xs mt-1 text-rose-500"></span>
+                                        </div>
 
-<h4>Contas Bancárias</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Nome" class="control-label"></label>
-                <input asp-for="Nome" class="form-control" />
-                <span asp-validation-for="Nome" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Agencia" class="control-label"></label>
-                <input asp-for="Agencia" class="form-control" />
-                <span asp-validation-for="Agencia" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Conta" class="control-label"></label>
-                <input asp-for="Conta" class="form-control" />
-                <span asp-validation-for="Conta" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Pix" class="control-label"></label>
-                <input asp-for="Pix" class="form-control" />
-                <span asp-validation-for="Pix" class="text-danger"></span>
-            </div>
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="DataCriacao" class="control-label"></label>
-                <input asp-for="DataCriacao" class="form-control" />
-                <span asp-validation-for="DataCriacao" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DataAtualizacao" class="control-label"></label>
-                <input asp-for="DataAtualizacao" class="form-control" />
-                <span asp-validation-for="DataAtualizacao" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Salvar" class="btn btn-primary" />
-            </div>
-        </form>
+                                        <div>
+                                            <div class="flex items-center justify-between">
+                                                <label asp-for="Agencia" class="block text-sm font-medium mb-1"></label>
+                                                <div class="relative ml-2" x-data="{ open: false }" @@mouseenter="open = true" @@mouseleave="open = false">
+                                                    <button class="block" aria-haspopup="true" :aria-expanded="open" @@focus="open = true" @@focusout="open = false" @@click.prevent>
+                                                        <svg class="w-4 h-4 fill-current text-slate-400 dark:text-slate-500" viewBox="0 0 16 16">
+                                                            <path d="M8 0C3.6 0 0 3.6 0 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zm0 12c-.6 0-1-.4-1-1s.4-1 1-1 1 .4 1 1-.4 1-1 1zm1-3H7V4h2v5z" />
+                                                        </svg>
+                                                    </button>
+                                                    <div class="z-10 absolute bottom-full left-1/2 -translate-x-1/2">
+                                                        <div class="min-w-60 bg-slate-800 text-slate-200 px-2 py-1 rounded overflow-hidden mb-2" x-show="open" x-transition:enter="transition ease-out duration-200 transform" x-transition:enter-start="opacity-0 translate-y-2" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-out duration-200" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" x-cloak>
+                                                            <div class="text-sm">Editar a agência da conta bancária.</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <input asp-for="Agencia" class="form-input w-full" type="text" />
+                                            <span asp-validation-for="Agencia" class="text-xs mt-1 text-rose-500"></span>
+                                        </div>
+
+                                        <div>
+                                            <div class="flex items-center justify-between">
+                                                <label asp-for="Conta" class="block text-sm font-medium mb-1"></label>
+                                                <div class="relative ml-2" x-data="{ open: false }" @@mouseenter="open = true" @@mouseleave="open = false">
+                                                    <button class="block" aria-haspopup="true" :aria-expanded="open" @@focus="open = true" @@focusout="open = false" @@click.prevent>
+                                                        <svg class="w-4 h-4 fill-current text-slate-400 dark:text-slate-500" viewBox="0 0 16 16">
+                                                            <path d="M8 0C3.6 0 0 3.6 0 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8-8zm0 12c-.6 0-1-.4-1-1s.4-1 1-1 1 .4 1 1-.4 1-1 1zm1-3H7V4h2v5z" />
+                                                        </svg>
+                                                    </button>
+                                                    <div class="z-10 absolute bottom-full left-1/2 -translate-x-1/2">
+                                                        <div class="min-w-60 bg-slate-800 text-slate-200 px-2 py-1 rounded overflow-hidden mb-2" x-show="open" x-transition:enter="transition ease-out duration-200 transform" x-transition:enter-start="opacity-0 translate-y-2" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-out duration-200" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" x-cloak>
+                                                            <div class="text-sm">Editar o número da conta bancária.</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <input asp-for="Conta" class="form-input w-full" type="text" />
+                                            <span asp-validation-for="Conta" class="text-xs mt-1 text-rose-500"></span>
+                                        </div>
+
+                                        <div>
+                                            <div class="flex items-center justify-between">
+                                                <label asp-for="Pix" class="block text-sm font-medium mb-1"></label>
+                                                <div class="relative ml-2" x-data="{ open: false }" @@mouseenter="open = true" @@mouseleave="open = false">
+                                                    <button class="block" aria-haspopup="true" :aria-expanded="open" @@focus="open = true" @@focusout="open = false" @@click.prevent>
+                                                        <svg class="w-4 h-4 fill-current text-slate-400 dark:text-slate-500" viewBox="0 0 16 16">
+                                                            <path d="M8 0C3.6 0 0 3.6 0 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8-8zm0 12c-.6 0-1-.4-1-1s.4-1 1-1 1 .4 1 1-.4 1-1 1zm1-3H7V4h2v5z" />
+                                                        </svg>
+                                                    </button>
+                                                    <div class="z-10 absolute bottom-full left-1/2 -translate-x-1/2">
+                                                        <div class="min-w-60 bg-slate-800 text-slate-200 px-2 py-1 rounded overflow-hidden mb-2" x-show="open" x-transition:enter="transition ease-out duration-200 transform" x-transition:enter-start="opacity-0 translate-y-2" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-out duration-200" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" x-cloak>
+                                                            <div class="text-sm">Editar o código Pix da conta bancária.</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <input asp-for="Pix" class="form-input w-full" type="text" />
+                                            <span asp-validation-for="Pix" class="text-xs mt-1 text-rose-500"></span>
+                                        </div>
+
+                                        <input type="hidden" asp-for="Id" />
+
+                                        <div>
+                                            <div class="flex items-center justify-between">
+                                                <label asp-for="DataCriacao" class="block text-sm font-medium mb-1"></label>
+                                                <div class="relative ml-2" x-data="{ open: false }" @@mouseenter="open = true" @@mouseleave="open = false">
+                                                    <button class="block" aria-haspopup="true" :aria-expanded="open" @@focus="open = true" @@focusout="open = false" @@click.prevent>
+                                                        <svg class="w-4 h-4 fill-current text-slate-400 dark:text-slate-500" viewBox="0 0 16 16">
+                                                            <path d="M8 0C3.6 0 0 3.6 0 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8-8zm0 12c-.6 0-1-.4-1-1s.4-1 1-1 1 .4 1 1-.4 1-1 1zm1-3H7V4h2v5z" />
+                                                        </svg>
+                                                    </button>
+                                                    <div class="z-10 absolute bottom-full left-1/2 -translate-x-1/2">
+                                                        <div class="min-w-60 bg-slate-800 text-slate-200 px-2 py-1 rounded overflow-hidden mb-2" x-show="open" x-transition:enter="transition ease-out duration-200 transform" x-transition:enter-start="opacity-0 translate-y-2" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-out duration-200" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" x-cloak>
+                                                            <div class="text-sm">Editar a data de criação da conta bancária.</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <input asp-for="DataCriacao" class="form-input w-full" type="text" />
+                                            <span asp-validation-for="DataCriacao" class="text-xs mt-1 text-rose-500"></span>
+                                        </div>
+
+                                        <div>
+                                            <div class="flex items-center justify-between">
+                                                <label asp-for="DataAtualizacao" class="block text-sm font-medium mb-1"></label>
+                                                <div class="relative ml-2" x-data="{ open: false }" @@mouseenter="open = true" @@mouseleave="open = false">
+                                                    <button class="block" aria-haspopup="true" :aria-expanded="open" @@focus="open = true" @@focusout="open = false" @@click.prevent>
+                                                        <svg class="w-4 h-4 fill-current text-slate-400 dark:text-slate-500" viewBox="0 0 16 16">
+                                                            <path d="M8 0C3.6 0 0 3.6 0 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8-8zm0 12c-.6 0-1-.4-1-1s.4-1 1-1 1 .4 1 1-.4 1-1 1zm1-3H7V4h2v5z" />
+                                                        </svg>
+                                                    </button>
+                                                    <div class="z-10 absolute bottom-full left-1/2 -translate-x-1/2">
+                                                        <div class="min-w-60 bg-slate-800 text-slate-200 px-2 py-1 rounded overflow-hidden mb-2" x-show="open" x-transition:enter="transition ease-out duration-200 transform" x-transition:enter-start="opacity-0 translate-y-2" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-out duration-200" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" x-cloak>
+                                                            <div class="text-sm">Editar a data de atualização da conta bancária.</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <input asp-for="DataAtualizacao" class="form-input w-full" type="text" />
+                                            <span asp-validation-for="DataAtualizacao" class="text-xs mt-1 text-rose-500"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <footer>
+                                    <div class="flex flex-col px-6 py-5 border-t border-slate-200 dark:border-slate-700">
+                                        <div class="flex self-center">
+                                            <button id="submitForm" name="submitForm" type="submit" value="Salvar" class="btn bg-slate-900 hover:bg-orange-600 text-white ml-3 rounded-lg w-32">Confirmar</button>
+                                        </div>
+                                    </div>
+                                </footer>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </main>
+        </div>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Voltar para lista</a>
-</div>
+</body>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

@@ -82,6 +82,7 @@ namespace Libertese.Data
                 if (entity.State == EntityState.Added)
                 {
                     ((BaseEntity)entity.Entity).DataCriacao = now;
+                    ((BaseEntity)entity.Entity).DataAtualizacao = now;
                 }
                 if(entity.State == EntityState.Modified)
                 {

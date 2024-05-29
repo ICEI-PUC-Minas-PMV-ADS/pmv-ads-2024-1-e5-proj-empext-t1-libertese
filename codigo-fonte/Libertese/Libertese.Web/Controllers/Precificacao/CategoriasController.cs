@@ -7,9 +7,12 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Libertese.Data;
 using Libertese.Domain.Entities.Precificacao;
+using Libertese.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Libertese.Web.Controllers.Precificacao
 {
+    [Authorize(Policy = "RequireCategorias")]
     public class CategoriasController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -59,6 +62,8 @@ namespace Libertese.Web.Controllers.Precificacao
             if (ModelState.IsValid)
             {
                 categoria.DataCriacao = DateTime.Now;
+                categoria.DataAtualizacao = DateTime.Now;
+
                 _context.Add(categoria);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -146,13 +151,25 @@ namespace Libertese.Web.Controllers.Precificacao
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var categoria = await _context.Categorias.FindAsync(id);
+            bool existeProdutoComEssaCategoria = await _context.Produtos.AnyAsync(pm => pm.CategoriaId == id);
             if (categoria != null)
             {
-                _context.Categorias.Remove(categoria);
-            }
+                if (existeProdutoComEssaCategoria)
+                {
+                    var categorias = await _context.Categorias.ToListAsync();
+                    ViewData["ErrorMessage"] = $"A categoria {categoria.Nome} está associado a um produto e não pode ser deletada.";
+                    return View(nameof(Index), categorias);
+                }
 
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+                _context.Categorias.Remove(categoria);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            else
+            {
+                ViewData["ErrorMessage"] = $"A categoria ID: {id} informado não foi encontrado.";
+                return View("ErrorView");
+            }
         }
 
         // POST: Categorias/Search
@@ -169,6 +186,17 @@ namespace Libertese.Web.Controllers.Precificacao
             {
                 return RedirectToAction(nameof(Index));
             }
+        }
+
+        [HttpGet, ActionName("SearchByText")]
+        public JsonResult SearchByText([FromQuery(Name = "searchString")] string searchString)
+        {
+            var result  = _context.Categorias
+                            .Where(x => EF.Functions.Like(x.Nome.ToLower(), "%" + searchString.ToLower() + "%"))
+                            .Select(x => new OptionViewModel { Id = x.Id, Nome = x.Nome })
+                            .Take(10)
+                            .ToList();
+            return Json(result);
         }
 
         private bool CategoriaExists(int id)
