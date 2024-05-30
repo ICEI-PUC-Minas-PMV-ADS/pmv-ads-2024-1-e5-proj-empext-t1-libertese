@@ -7,6 +7,18 @@
     <link rel="stylesheet" href="~/sidebar/assets/css/styles.css" asp-append-version="true" />
     <link href="~/scaffold/css/vendors/flatpickr.min.css" rel="stylesheet">
     <link href="~/scaffold/style.css" rel="stylesheet">
+
+    <style>
+        .l-navbar {
+            position: fixed; 
+            overflow-y: auto; 
+            max-height: 100vh;
+        }
+
+        .body-pd {
+            overflow-x: hidden;
+        }
+    </style>
 </head>
 
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -18,7 +30,7 @@
 }
 
 <body id="body-pd" class="body-pd">
-    <div class="l-navbar expander" id="navbar" position="fixed">
+    <div class="l-navbar expander" id="navbar">
         <nav class="nav">
             <div>
                 <div id="without-logo" class="nav__brand expander-logo">
