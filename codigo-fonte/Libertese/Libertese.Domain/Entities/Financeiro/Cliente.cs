@@ -9,12 +9,11 @@ namespace Libertese.Domain.Entities.Financeiro
     public class Cliente : BaseEntity
     {
         public required string Nome { get; set; }
-        public string? Endereco { get; set; }
-        public string? Cpf { get; set; }
-        public string? Cnpj { get; set; }
-        public string? Telefone { get; set; }
-        public string? Email { get; set; }
-        public string? DadosBancarios { get; set; }
+        public string? CpfCnpj { get; set; }
+        public required string? Telefone { get; set; }
+        public required string? Email { get; set; }
+        public required Boolean Cpf { get; set; }
+        public required Boolean Cnpj { get; set; }
 
     }
 }

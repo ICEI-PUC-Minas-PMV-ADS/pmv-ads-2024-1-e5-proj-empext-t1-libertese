@@ -58,7 +58,7 @@ namespace Libertese.Web.Controllers.Financeiro
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Nome,Endereco,Cpf,Cnpj,Telefone,Email,DadosBancarios,Id,DataCriacao,DataAtualizacao")] Cliente cliente)
+        public async Task<IActionResult> Create([Bind("Nome,Cpf,Cnpj,Telefone,Email,Id,DataCriacao,DataAtualizacao")] Cliente cliente)
         {
             if (ModelState.IsValid)
             {
@@ -90,7 +90,7 @@ namespace Libertese.Web.Controllers.Financeiro
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Nome,Endereco,Cpf,Cnpj,Telefone,Email,DadosBancarios,Id,DataCriacao,DataAtualizacao")] Cliente cliente)
+        public async Task<IActionResult> Edit(int id, [Bind("Nome,Cpf,Cnpj,Telefone,Email,Id,DataCriacao,DataAtualizacao")] Cliente cliente)
         {
             if (id != cliente.Id)
             {
