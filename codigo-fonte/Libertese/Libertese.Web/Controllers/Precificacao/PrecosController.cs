@@ -251,7 +251,7 @@ namespace Libertese.Web.Controllers.Precificacao
                 var _comissao = Math.Round((decimal)((preco.Comissao * _precoSugerido ) / 100), 2);
                 var _imposto = Math.Round((decimal)((preco.Impostos * _precoSugerido) / 100), 2);
                 _precoSugerido = Math.Round((decimal)(_precoSugerido), 2);
-                var _lucro = Math.Round((decimal)(_precoSugerido - (_comissao + _imposto) - item.CustoProdutoUnitario));
+                var _lucro = Math.Round((decimal)(_precoSugerido - (_comissao + _imposto) - item.CustoProdutoUnitario), 2);
                 var _lucroTotal = Math.Round((decimal)(_lucro * item.Quantidade), 2);
 
                 precificacaoPrecos.Add(new PrecificacaoPrecoViewModel

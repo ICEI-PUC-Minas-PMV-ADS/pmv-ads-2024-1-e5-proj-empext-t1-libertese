@@ -56,6 +56,10 @@
                         <ion-icon name="wallet-outline" class="nav__icon"></ion-icon>
                         <span asp-action="Index" class="nav__name">Despesa</span>
                     </a>
+                    <a asp-controller="ContaBancarias" asp-action="Index" class="@("nav__link " + (currentController == "ContaBancarias" ? "active" : ""))" class="nav__link active">
+                        <ion-icon name="card-outline" class="nav__icon"></ion-icon>
+                        <span asp-action="Index" class="nav__name">Contas Bancarias</span>
+                    </a>
                     <a asp-controller="FluxoCaixa" asp-action="Index" class="@("nav__link " + (currentController == "FluxoCaixa" ? "active" : ""))" class="nav__link active">
                         <ion-icon name="calculator-outline" class="nav__icon"></ion-icon>
                         <span asp-action="Index" class="nav__name">Fluxo de Caixa</span>
@@ -94,10 +98,23 @@
         
 
 <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+    <div class="flex min-h-[100dvh]  overflow-hidden">
+            <div class=" elemento flex flex-col flex-1 overflow-y-hidden overflow-x-hidden">
+            <main class="grow">
+                @RenderBody()
+            </main>
+        </div>
     </div>
+</div>
+<style>
+    .elemento {
+        overflow-x: hidden;
+    }
+
+    .elemento::-webkit-scrollbar {
+        display: none;
+    }
+</style>
 
     <script src="~/sidebar/assets/js/main.js"></script>
     <script src="~/sidebar/assets/js/main.js"></script>

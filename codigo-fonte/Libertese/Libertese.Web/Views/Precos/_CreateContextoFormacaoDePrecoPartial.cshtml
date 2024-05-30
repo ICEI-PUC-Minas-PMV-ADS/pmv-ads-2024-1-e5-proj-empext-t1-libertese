@@ -92,7 +92,7 @@
         var precoSugerido = parseFloat(input.value).toFixed(2);
         var comissaoCalculada = ((@Model.Comissao * precoSugerido) / 100);
         var impostoCalculada = ((@Model.Impostos * precoSugerido) / 100);
-        var lucro = parseFloat((precoSugerido - (comissaoCalculada + impostoCalculada) - custoUnitario).toFixed(2));
+        var lucro = parseFloat(precoSugerido - (comissaoCalculada + impostoCalculada + custoUnitario)).toFixed(2);
         var margemCalculada = (lucro / custoUnitario) * 100;
         var lucroTotal = (lucro * quantidade).toFixed(2);
 

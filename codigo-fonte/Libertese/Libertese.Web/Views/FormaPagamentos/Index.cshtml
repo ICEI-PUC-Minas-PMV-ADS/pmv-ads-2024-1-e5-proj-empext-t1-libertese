@@ -12,7 +12,7 @@
 }
 
 <body class="font-inter antialiased bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-400">
-    <div class="flex h-[100dvh] overflow-hidden">
+    <div class="flex min-h-[100dvh]  overflow-hidden">
         <div class="relative flex flex-col flex-1 overflow-y-auto overflow-x-hidden">
             <main class="grow">
                 <div class="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
@@ -192,65 +192,3 @@
         </div>
     </div>
 </body>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-@{
-    ViewData["Title"] = "Forma de Pagamentos";
-}
-
-<h1>Forma de Pagamentos</h1>
-
-<p>
-    <a asp-action="Create">Nova Forma de Pagamentos</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Descricao)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DataCriacao)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DataAtualizacao)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Descricao)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DataCriacao)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DataAtualizacao)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Detalhes</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Excluir</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
