@@ -1,7 +1,7 @@
 ﻿@model Libertese.Domain.Entities.Cadastro.Funcionario
 @{
-    ViewData["Title"] = "Criar Funcionário";
-    Layout = "~/Views/Shared/_LayoutWithoutHeader.cshtml";
+    ViewData["Title"] = "Novo Funcionário";
+    Layout = "~/Views/Shared/_LayoutProdutos.cshtml";
 }
 <head>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -220,7 +220,7 @@
                     <span asp-validation-for="Function" class="text-danger"></span>
                 </div>
                 <div class="form-pessoareclusa">
-                    <label asp-for="Pessoareclusa" class="control-label">Pessoa reclusa ou regressa?</label>
+                    <label asp-for="Pessoareclusa" class="control-label">Pessoa reclusa ou egressa?</label>
                     <input class="input-pessoareclusa" type="checkbox" asp-for="Pessoareclusa" />
                     <span asp-validation-for="Pessoareclusa" class="text-danger"></span>
                 </div>
