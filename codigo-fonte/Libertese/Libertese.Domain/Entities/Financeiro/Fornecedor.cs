@@ -11,6 +11,6 @@
         public string? TelefoneDois { get; set; }
         public string? Email { get; set; }
         public int DadosBancariosId { get; set; }
-        public int MaterialFornecidoId { get; set; }
+        public required List<int> MaterialFornecidoIds { get; set; }
     }
 }

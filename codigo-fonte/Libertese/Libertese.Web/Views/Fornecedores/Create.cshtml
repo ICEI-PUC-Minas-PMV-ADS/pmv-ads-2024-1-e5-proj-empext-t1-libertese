@@ -83,12 +83,23 @@
                             <span asp-validation-for="Cnpj" class="text-danger"></span>
                         </div>
                         <div class="flex flex-col" style="width: 48%">
-                            <label asp-for="MaterialFornecidoId" class="control-label">Material a fornecer *</label>
-                            <select class="form-input pl-6 bg-white dark:bg-slate-800" asp-for="MaterialFornecidoId"
-                                    asp-items="@(new SelectList(ViewBag.Material, "Id", "Nome"))">
-                                <option>Selecione o Material</option>
-                            </select>
-                            <span asp-validation-for="MaterialFornecidoId" class="text-danger"></span>
+                            <label class="control-label">Material a fornecer *</label>
+                            <div class="form-input overflow-auto h-56 pl-6 bg-white dark:bg-slate-800">
+                                <input type="hidden" name="MaterialFornecidoIds" value="0" />
+                                @foreach (var item in new SelectList(ViewBag.Material, "Id", "Nome"))
+                                {
+                                    var isChecked = Model.MaterialFornecidoIds != null && Model.MaterialFornecidoIds.Contains(int.Parse(item.Value)) ? "checked" : "";
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input"
+                                               name="MaterialFornecidoIds"
+                                               id="material_@item.Value"
+                                               value="@item.Value"
+                                        @isChecked />
+                                        <label class="form-check-label" for="material_@item.Value">@item.Text</label>
+                                    </div>
+                                }
+                            </div>
+                            <span asp-validation-for="MaterialFornecidoIds" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="flex flex-row w-full justify-between mb-6">

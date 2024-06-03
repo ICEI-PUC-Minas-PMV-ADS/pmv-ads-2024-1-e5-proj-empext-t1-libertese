@@ -41,7 +41,8 @@ namespace Libertese.Web.Controllers.Financeiro
                 TelefoneDois = fornecedor.TelefoneDois,
                 Email = fornecedor.Email,
                 DadosBancariosId = fornecedor.DadosBancariosId,
-                MaterialFornecido = listaMateriais.Find(x => x.Id == fornecedor.MaterialFornecidoId)?.Nome ?? "Sem Material",
+                MaterialFornecido = fornecedor.MaterialFornecidoIds.Count() > 1 ? string.Join(", ", listaMateriais.Where(material => fornecedor.MaterialFornecidoIds.Contains(material.Id))
+                                                  .Select(material => material.Nome)) : "Sem Materiais",
             }).ToList();
             return View(listaFornecedorDTO);
         }
@@ -74,7 +75,12 @@ namespace Libertese.Web.Controllers.Financeiro
         {
             List<Material> listaMateriais = await GetListaMatereiais();
             ViewBag.Material = listaMateriais;
-            return View();
+            return View(new Fornecedor
+            {
+                Nome = "",
+                Cnpj = "",
+                MaterialFornecidoIds = []
+            });
         }
 
         // POST: Fornecedores/Create
@@ -82,7 +88,7 @@ namespace Libertese.Web.Controllers.Financeiro
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Nome,Endereco,Cep,Cpf,Cnpj,Telefone,TelefoneDois,Email,DadosBancariosId,MaterialFornecidoId,Id,DataCriacao,DataAtualizacao")] Fornecedor fornecedor)
+        public async Task<IActionResult> Create([Bind("Nome,Endereco,Cep,Cpf,Cnpj,Telefone,TelefoneDois,Email,DadosBancariosId,MaterialFornecidoIds,Id,DataCriacao,DataAtualizacao")] Fornecedor fornecedor)
         {
             if (ModelState.IsValid)
             {
@@ -116,7 +122,7 @@ namespace Libertese.Web.Controllers.Financeiro
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Nome,Endereco,Cep,Cpf,Cnpj,Telefone,TelefoneDois,Email,DadosBancariosId,MaterialFornecidoId,Id,DataCriacao,DataAtualizacao")] Fornecedor fornecedor)
+        public async Task<IActionResult> Edit(int id, [Bind("Nome,Endereco,Cep,Cpf,Cnpj,Telefone,TelefoneDois,Email,DadosBancariosId,MaterialFornecidoIds,Id,DataCriacao,DataAtualizacao")] Fornecedor fornecedor)
         {
             if (id != fornecedor.Id)
             {
