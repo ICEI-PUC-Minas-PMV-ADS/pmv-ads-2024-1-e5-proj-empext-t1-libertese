@@ -2,284 +2,658 @@
 
 @{
     ViewData["Title"] = "Editar funcionário";
-    Layout = "~/Views/Shared/_LayoutWithoutHeader.cshtml";
+    Layout = "~/Views/Shared/_LayoutProdutos.cshtml";
 }
 <head>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link href="./scaffold/css/vendors/flatpickr.min.css" rel="stylesheet">
     <link href="./scaffold/style.css" rel="stylesheet">
     <link href="./output.css" rel="stylesheet">
-<style>
-        body {
-        }
-
-        .box-edit {
-            padding: auto;
-            display: flex;
-            flex-direction: column;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            align-items: center;
-            justify-content: center;
-            font-family: "Montserrat", sans-serif;
-            font-weight: 500;
-            font-size: 14px;
-        }
-
-        .input-nome {
-            margin-bottom: 5px;
-        }
-
-        .input-horas {
-            margin-bottom: 5px;
-        }
-
-        .input-dias {
-            margin-bottom: 5px;
-        }
-
-        .input-cpf {
-            margin-bottom: 5px;
-        }
-
-        .input-sexo {
-            margin-bottom: 5px;
-        }
-
-        .input-email {
-            margin-bottom: 5px;
-        }
-
-        .input-celular {
-            margin-bottom: 5px;
-        }
-
-        .input-function {
-            margin-bottom: 5px;
-        }
-
-        .input-pessoareclusa {
-            margin-bottom: 5px;
-        }
-
-        .input-penitenciaria {
-            margin-bottom: 5px;
-        }
-
-        .input-cursolibertese {
-            margin-bottom: 5px;
-        }
-
-        .input-remuneracao {
-            margin-bottom: 20px;
-        }
-
-        .input-salario {
-            margin-bottom: 20px;
-        }
-
-
-
-        input[type="text"],
-        input[type="email"],
-        input[type="password"]
-        input[type="submit"]
-        input[type="select"] {
-            font-family: "Montserrat", sans-serif;
-            font-weight: 500;
-            font-size: 14px;
-        }
-
-        .form-control {
-            font-family: "Montserrat", sans-serif;
-            font-weight: 500;
-            font-size: 14px;
-            border: 1px solid #000;
-            background-color: rgba(220,220,220, 0.3);
-        }
-
-        .botao-edit {
-            align-items: center;
-            justify-content: center;
-            width: 200px;
-            background-color: #000;
-            border-radius: .25rem;
-            display: inline-block;
-            text-align: center;
-        }
-
-        .botoes {
-            text-align: center;
-        }
-
-        .botao-voltar {
-            align-items: center;
-            justify-content: center;
-            width: 200px;
-            background-color: #D96704;
-            border-radius: .25rem;
-            display: inline-block;
-            text-align: center;
-        }
-
-            .botao-voltar:hover {
-                color: #fff;
-                background-color: #808080;
-                border-color: #808080;
-            }
-
-        .botao-edit:hover {
-            color: #fff;
-            background-color: #808080;
-            border-color: #808080;
-        }
-
-        input.form-sexo {
-            font-family: "Montserrat", sans-serif;
-            font-weight: 500;
-            font-size: 14px;
-        }
-
-        .edit-employee {
-            width: 500px;
-        }
-
-        .title-cadastro {
-            font-family: "Montserrat", sans-serif;
-            font-optical-sizing: auto;
-            font-weight: 600;
-            font-style: normal;
-            font-size: 30px;
-        }
-
-        .botao-back {
-            font-color: #000;
-        }
-</style>
 </head>
 
-<body>
-    <div class="box-edit">
-        <div class="title-cadastro">
-            <h>Editar funcionário</h>
-            <br />
-            <br />
-        </div>
-        <div class="edit-employee">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-nome">
-                <label asp-for="Nome" class="control-label">Nome completo *</label>
-                <input asp-for="Nome" class="form-control input-nome" placeholder="Digite o nome" />
-                <span asp-validation-for="Nome" class="text-danger"></span>
-            </div>
-            <div class="form-horas">
-                <label asp-for="HorasDia" class="control-label">Horas de trabalho por dia *</label>
-                <input asp-for="HorasDia" class="form-control input-horas" placeholder="Horas de trabalho por dia" />
-                <span asp-validation-for="HorasDia" class="text-danger"></span>
-            </div>
-            <div class="form-dias">
-                <label asp-for="DiasMes" class="control-label">Dias de trabalho por mês *</label>
-                <input asp-for="DiasMes" class="form-control input-dias" placeholder="Dias de trabalho por mês" />
-                <span asp-validation-for="DiasMes" class="text-danger"></span>
-            </div>
-            <div class="form-cpf">
-                <label asp-for="Cpf" class="control-label">CPF *</label>
-                <input asp-for="Cpf" class="form-control input-cpf" placeholder="Digite o CPF" id="cpfInput" />
-                <span asp-validation-for="Cpf" class="text-danger"></span>
-            </div>
-            <div class="form-sexo">
-                <label asp-for="Sexo" class="control-label">Sexo *</label>
-                <select asp-for="Sexo" class="form-control input-sexo">
-                    <option value="Feminino">Feminino</option>
-                    <option value="Masculino">Masculino</option>
-                    <option value="Não binário">Não binário</option>
-                    <option value="Prefiro não informar">Prefiro não informar</option>
-                </select>
-                <span asp-validation-for="Sexo" class="text-danger"></span>
-            </div>
-            <div class="form-email">
-                <label asp-for="Email" class="control-label">E-mail *</label>
-                <input asp-for="Email" class="form-control input-email" placeholder="Example@something.com" id="email" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
-            <div class="form-celular">
-                <label asp-for="Celular" class="control-label">Celular *</label>
-                <input asp-for="Celular" class="form-control input-celular" placeholder="DDD + Número" />
-                <span asp-validation-for="Celular" class="text-danger"></span>
-            </div>
+<body class="font-inter antialiased bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-400">
+    <div class="flex min-h-[100dvh]  overflow-hidden">
+        <div class="relative flex flex-col flex-1 overflow-y-auto overflow-x-hidden bg-white dark:bg-slate-900">
+            <main class="grow">
+                <div class="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
+                    <div class="mb-8">
+                        <div class="flex items-center justify-between">
+                            <h2 class="text-2xl md:text-3xl text-slate-800 dark:text-slate-100 font-bold">Novo Funcionário</h2>
+                            <a asp-action="Index" class="btn bg-orange-500 hover:bg-orange-600 text-white ml-3 rounded-lg w-24">Voltar</a>
+                        </div>
+                    </div>
+                    <div class="border-t border-slate-200 dark:border-slate-700">
+                        <form asp-action="Edit" id="employeeForm">
+                            <div class="space-y-8 mt-5">
 
-            <div class="form-function">
-                <label asp-for="Function" class="control-label">Função na Libertese</label>
-                <select asp-for="Function" class="form-control input-function">
-                    <option value="Costureira Nível 1">Costureira Nível 1</option>
-                    <option value="Costureira Nível 3">Costureira Nível 3</option>
-                    <option value="Coordenadora">Coordenadora</option>
-                    <option value="Passadeira">Passadeira</option>
-                    <option value="Arrematadeira">Arrematadeira</option>
-                </select>
-                <span asp-validation-for="Function" class="text-danger"></span>
-            </div>
-            <div class="form-pessoareclusa">
-                    <label asp-for="Pessoareclusa" class="control-label">Esta pessoa é reclusa? *</label>
-                    <select asp-for="Pessoareclusa" class="form-control input-pessoareclusa">
-                        <option value="true">Sim</option>
-                        <option value="false">Não</option>
-                    </select>
-                    <span asp-validation-for="Pessoareclusa" class="text-danger"></span>
-            </div>
-            <div class="form-pessoaegressa">
-                    <label asp-for="Pessoaegressa" class="control-label">Esta pessoa é egressa? *</label>
-                    <select asp-for="Pessoaegressa" class="form-control input-pessoaegressa">
-                        <option value="true">Sim</option>
-                        <option value="false">Não</option>
-                    </select>
-                    <span asp-validation-for="Pessoaegressa" class="text-danger"></span>
-            </div>
-            <div class="form-penitenciaria">
-                <label asp-for="Penitenciaria" class="control-label">Penitenciária *</label>
-                <input asp-for="Penitenciaria" class="form-control input-penitenciaria" placeholder="Digite o nome da penitenciária" />
-                <span asp-validation-for="Penitenciaria" class="text-danger"></span>
-            </div>
-            <div class="form-cursolibertese">
-                    <label asp-for="CursoLibertese" class="control-label">Curso na Libertese *</label>
-                    <select asp-for="CursoLibertese" class="form-control input-cursolibertese">
-                        <option value="true">Sim</option>
-                        <option value="false">Não</option>
-                    </select>
-                    <span asp-validation-for="CursoLibertese" class="text-danger"></span>
-            </div>
-            <div class="form-remuneracao">
-                <label asp-for="Remuneracao" class="control-label">Possui remuneração?</label>
-                <input class="input-remuneracao" type="checkbox" asp-for="Remuneracao" id="remuneracaoCheckbox" />
-                <span asp-validation-for="Remuneracao" class="text-danger"></span>
-            </div>
-            <div class="form-salario" id="salarioGroup">
-                <label asp-for="Salario" class="control-label">Salário *</label>
-                <input asp-for="Salario" class="form-control input-salario" id="salarioInput" placeholder="Digite o salário" />
-                <span asp-validation-for="Salario" class="text-danger"></span>
-            </div>
-            <div class="botoes">
-            <input type="hidden" asp-for="Id" />
-            <div class="botao-edit">
-                <input type="submit" value="Confirmar" class="btn btn-primary botao-edit" id="botao-edit" />
-            </div>
-            <div class="botao-voltar">
-                <input asp-action="Index" type="submit" value="Voltar" class="btn btn-primary botao-voltar" id="botao-voltar" />
-            </div>
-            </div>
-        
-        </form>
+                                <div>
+                                    <div class="grid gap-5 md:grid-cols-2">
+                                        <div>
+                                            <div>
+                                                <div class="flex items-center justify-between">
+                                                    <label asp-for="Nome" class="block text-sm font-medium mb-1" for="tooltip"></label>
+                                                    <div class="relative ml-2"
+                                                         x-data="{ open: false }"
+                                                         @@mouseenter="open = true"
+                                                         @@mouseleave="open = false">
+                                                        <button class="block"
+                                                                aria-haspopup="true"
+                                                                :aria-expanded="open"
+                                                                @@focus="open = true"
+                                                                @@focusout="open = false"
+                                                                @@click.prevent>
+                                                            <svg class="w-4 h-4 fill-current text-slate-400 dark:text-slate-500" viewBox="0 0 16 16">
+                                                                <path d="M8 0C3.6 0 0 3.6 0 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zm0 12c-.6 0-1-.4-1-1s.4-1 1-1 1 .4 1 1-.4 1-1 1zm1-3H7V4h2v5z" />
+                                                            </svg>
+                                                        </button>
+                                                        <div class="z-10 absolute bottom-full left-1/2 -translate-x-1/2">
+                                                            <div class="min-w-60 bg-slate-800 text-slate-200 px-2 py-1 rounded overflow-hidden mb-2"
+                                                                 x-show="open"
+                                                                 x-transition:enter="transition ease-out duration-200 transform"
+                                                                 x-transition:enter-start="opacity-0 translate-y-2"
+                                                                 x-transition:enter-end="opacity-100 translate-y-0"
+                                                                 x-transition:leave="transition ease-out duration-200"
+                                                                 x-transition:leave-start="opacity-100"
+                                                                 x-transition:leave-end="opacity-0"
+                                                                 x-cloak>
+                                                                <div class="text-sm">Nome completo do funcionário</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <input asp-for="Nome" class="form-input w-full input-nome" type="text" />
+                                                <span asp-validation-for="Nome" class="text-xs mt-1 text-rose-500"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="grid gap-5 md:grid-cols-2">
+                                        <div>
+                                            <div>
+                                                <div class="flex items-center justify-between">
+                                                    <label asp-for="HorasDia" class="block text-sm font-medium mb-1" for="tooltip">Horas trabalhadas por dia:</label>
+                                                    <div class="relative ml-2"
+                                                         x-data="{ open: false }"
+                                                         @@mouseenter="open = true"
+                                                         @@mouseleave="open = false">
+                                                        <button class="block"
+                                                                aria-haspopup="true"
+                                                                :aria-expanded="open"
+                                                                @@focus="open = true"
+                                                                @@focusout="open = false"
+                                                                @@click.prevent>
+                                                            <svg class="w-4 h-4 fill-current text-slate-400 dark:text-slate-500" viewBox="0 0 16 16">
+                                                                <path d="M8 0C3.6 0 0 3.6 0 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zm0 12c-.6 0-1-.4-1-1s.4-1 1-1 1 .4 1 1-.4 1-1 1zm1-3H7V4h2v5z" />
+                                                            </svg>
+                                                        </button>
+                                                        <div class="z-10 absolute bottom-full left-1/2 -translate-x-1/2">
+                                                            <div class="min-w-60 bg-slate-800 text-slate-200 px-2 py-1 rounded overflow-hidden mb-2"
+                                                                 x-show="open"
+                                                                 x-transition:enter="transition ease-out duration-200 transform"
+                                                                 x-transition:enter-start="opacity-0 translate-y-2"
+                                                                 x-transition:enter-end="opacity-100 translate-y-0"
+                                                                 x-transition:leave="transition ease-out duration-200"
+                                                                 x-transition:leave-start="opacity-100"
+                                                                 x-transition:leave-end="opacity-0"
+                                                                 x-cloak>
+                                                                <div class="text-sm">Digite as horas trabalhadas por dia</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <input asp-for="HorasDia" class="form-input w-full input-horas" />
+                                                <span asp-validation-for="HorasDia" class="text-xs mt-1 text-rose-500"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="grid gap-5 md:grid-cols-2">
+                                        <div>
+                                            <div>
+                                                <div class="flex items-center justify-between">
+                                                    <label asp-for="DiasMes" class="block text-sm font-medium mb-1" for="tooltip">Dias trabalhados por mês:</label>
+                                                    <div class="relative ml-2"
+                                                         x-data="{ open: false }"
+                                                         @@mouseenter="open = true"
+                                                         @@mouseleave="open = false">
+                                                        <button class="block"
+                                                                aria-haspopup="true"
+                                                                :aria-expanded="open"
+                                                                @@focus="open = true"
+                                                                @@focusout="open = false"
+                                                                @@click.prevent>
+                                                            <svg class="w-4 h-4 fill-current text-slate-400 dark:text-slate-500" viewBox="0 0 16 16">
+                                                                <path d="M8 0C3.6 0 0 3.6 0 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zm0 12c-.6 0-1-.4-1-1s.4-1 1-1 1 .4 1 1-.4 1-1 1zm1-3H7V4h2v5z" />
+                                                            </svg>
+                                                        </button>
+                                                        <div class="z-10 absolute bottom-full left-1/2 -translate-x-1/2">
+                                                            <div class="min-w-60 bg-slate-800 text-slate-200 px-2 py-1 rounded overflow-hidden mb-2"
+                                                                 x-show="open"
+                                                                 x-transition:enter="transition ease-out duration-200 transform"
+                                                                 x-transition:enter-start="opacity-0 translate-y-2"
+                                                                 x-transition:enter-end="opacity-100 translate-y-0"
+                                                                 x-transition:leave="transition ease-out duration-200"
+                                                                 x-transition:leave-start="opacity-100"
+                                                                 x-transition:leave-end="opacity-0"
+                                                                 x-cloak>
+                                                                <div class="text-sm">Digite os dias trabalhados por mês</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <input asp-for="DiasMes" class="form-input w-full input-dias" />
+                                                <span asp-validation-for="DiasMes" class="text-xs mt-1 text-rose-500"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="grid gap-5 md:grid-cols-2">
+                                        <div>
+                                            <div>
+                                                <div class="flex items-center justify-between">
+                                                    <label asp-for="Cpf" class="block text-sm font-medium mb-1" for="tooltip">Digite o CPF:</label>
+                                                    <div class="relative ml-2"
+                                                         x-data="{ open: false }"
+                                                         @@mouseenter="open = true"
+                                                         @@mouseleave="open = false">
+                                                        <button class="block"
+                                                                aria-haspopup="true"
+                                                                :aria-expanded="open"
+                                                                @@focus="open = true"
+                                                                @@focusout="open = false"
+                                                                @@click.prevent>
+                                                            <svg class="w-4 h-4 fill-current text-slate-400 dark:text-slate-500" viewBox="0 0 16 16">
+                                                                <path d="M8 0C3.6 0 0 3.6 0 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zm0 12c-.6 0-1-.4-1-1s.4-1 1-1 1 .4 1 1-.4 1-1 1zm1-3H7V4h2v5z" />
+                                                            </svg>
+                                                        </button>
+                                                        <div class="z-10 absolute bottom-full left-1/2 -translate-x-1/2">
+                                                            <div class="min-w-60 bg-slate-800 text-slate-200 px-2 py-1 rounded overflow-hidden mb-2"
+                                                                 x-show="open"
+                                                                 x-transition:enter="transition ease-out duration-200 transform"
+                                                                 x-transition:enter-start="opacity-0 translate-y-2"
+                                                                 x-transition:enter-end="opacity-100 translate-y-0"
+                                                                 x-transition:leave="transition ease-out duration-200"
+                                                                 x-transition:leave-start="opacity-100"
+                                                                 x-transition:leave-end="opacity-0"
+                                                                 x-cloak>
+                                                                <div class="text-sm">Digite os dias trabalhados por mês</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-cpf">
+                                                    <input asp-for="Cpf" id="cpfInput" class="form-input w-full input-cpf" />
+                                                    <span asp-validation-for="Cpf" class="text-xs mt-1 text-rose-500"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="grid gap-5 md:grid-cols-2">
+                                        <div>
+                                            <div>
+                                                <div class="flex items-center justify-between">
+                                                    <label asp-for="Sexo" class="block text-sm font-medium mb-1" for="tooltip">Sexo:</label>
+                                                    <div class="relative ml-2"
+                                                         x-data="{ open: false }"
+                                                         @@mouseenter="open = true"
+                                                         @@mouseleave="open = false">
+                                                        <button class="block"
+                                                                aria-haspopup="true"
+                                                                :aria-expanded="open"
+                                                                @@focus="open = true"
+                                                                @@focusout="open = false"
+                                                                @@click.prevent>
+                                                            <svg class="w-4 h-4 fill-current text-slate-400 dark:text-slate-500" viewBox="0 0 16 16">
+                                                                <path d="M8 0C3.6 0 0 3.6 0 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zm0 12c-.6 0-1-.4-1-1s.4-1 1-1 1 .4 1 1-.4 1-1 1zm1-3H7V4h2v5z" />
+                                                            </svg>
+                                                        </button>
+                                                        <div class="z-10 absolute bottom-full left-1/2 -translate-x-1/2">
+                                                            <div class="min-w-60 bg-slate-800 text-slate-200 px-2 py-1 rounded overflow-hidden mb-2"
+                                                                 x-show="open"
+                                                                 x-transition:enter="transition ease-out duration-200 transform"
+                                                                 x-transition:enter-start="opacity-0 translate-y-2"
+                                                                 x-transition:enter-end="opacity-100 translate-y-0"
+                                                                 x-transition:leave="transition ease-out duration-200"
+                                                                 x-transition:leave-start="opacity-100"
+                                                                 x-transition:leave-end="opacity-0"
+                                                                 x-cloak>
+                                                                <div class="text-sm">Digite os dias trabalhados por mês</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <select asp-for="Sexo" class="form-input w-full input-sexo">
+                                                    <option value="Feminino">Feminino</option>
+                                                    <option value="Masculino">Masculino</option>
+                                                    <option value="Não binário">Não binário</option>
+                                                    <option value="Prefiro não informar">Prefiro não informar</option>
+                                                </select>
+                                                <span asp-validation-for="Sexo" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="grid gap-5 md:grid-cols-2">
+                                        <div>
+                                            <div>
+                                                <div class="flex items-center justify-between">
+                                                    <label asp-for="Email" class="block text-sm font-medium mb-1" for="tooltip">E-mail:</label>
+                                                    <div class="relative ml-2"
+                                                         x-data="{ open: false }"
+                                                         @@mouseenter="open = true"
+                                                         @@mouseleave="open = false">
+                                                        <button class="block"
+                                                                aria-haspopup="true"
+                                                                :aria-expanded="open"
+                                                                @@focus="open = true"
+                                                                @@focusout="open = false"
+                                                                @@click.prevent>
+                                                            <svg class="w-4 h-4 fill-current text-slate-400 dark:text-slate-500" viewBox="0 0 16 16">
+                                                                <path d="M8 0C3.6 0 0 3.6 0 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zm0 12c-.6 0-1-.4-1-1s.4-1 1-1 1 .4 1 1-.4 1-1 1zm1-3H7V4h2v5z" />
+                                                            </svg>
+                                                        </button>
+                                                        <div class="z-10 absolute bottom-full left-1/2 -translate-x-1/2">
+                                                            <div class="min-w-60 bg-slate-800 text-slate-200 px-2 py-1 rounded overflow-hidden mb-2"
+                                                                 x-show="open"
+                                                                 x-transition:enter="transition ease-out duration-200 transform"
+                                                                 x-transition:enter-start="opacity-0 translate-y-2"
+                                                                 x-transition:enter-end="opacity-100 translate-y-0"
+                                                                 x-transition:leave="transition ease-out duration-200"
+                                                                 x-transition:leave-start="opacity-100"
+                                                                 x-transition:leave-end="opacity-0"
+                                                                 x-cloak>
+                                                                <div class="text-sm">Digite o e-mail</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <input asp-for="Email" id="email" class="form-input w-full input-email" />
+                                                <span asp-validation-for="Email" class="text-xs mt-1 text-rose-500"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="grid gap-5 md:grid-cols-2">
+                                        <div>
+                                            <div>
+                                                <div class="flex items-center justify-between">
+                                                    <label asp-for="Celular" class="block text-sm font-medium mb-1" for="tooltip">Celular:</label>
+                                                    <div class="relative ml-2"
+                                                         x-data="{ open: false }"
+                                                         @@mouseenter="open = true"
+                                                         @@mouseleave="open = false">
+                                                        <button class="block"
+                                                                aria-haspopup="true"
+                                                                :aria-expanded="open"
+                                                                @@focus="open = true"
+                                                                @@focusout="open = false"
+                                                                @@click.prevent>
+                                                            <svg class="w-4 h-4 fill-current text-slate-400 dark:text-slate-500" viewBox="0 0 16 16">
+                                                                <path d="M8 0C3.6 0 0 3.6 0 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zm0 12c-.6 0-1-.4-1-1s.4-1 1-1 1 .4 1 1-.4 1-1 1zm1-3H7V4h2v5z" />
+                                                            </svg>
+                                                        </button>
+                                                        <div class="z-10 absolute bottom-full left-1/2 -translate-x-1/2">
+                                                            <div class="min-w-60 bg-slate-800 text-slate-200 px-2 py-1 rounded overflow-hidden mb-2"
+                                                                 x-show="open"
+                                                                 x-transition:enter="transition ease-out duration-200 transform"
+                                                                 x-transition:enter-start="opacity-0 translate-y-2"
+                                                                 x-transition:enter-end="opacity-100 translate-y-0"
+                                                                 x-transition:leave="transition ease-out duration-200"
+                                                                 x-transition:leave-start="opacity-100"
+                                                                 x-transition:leave-end="opacity-0"
+                                                                 x-cloak>
+                                                                <div class="text-sm">Digite o celular</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-celular">
+                                                    <input asp-for="Celular" class="form-input w-full input-celular" />
+                                                    <span asp-validation-for="Celular" class="text-xs mt-1 text-rose-500"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="grid gap-5 md:grid-cols-2">
+                                        <div>
+                                            <div>
+                                                <div class="flex items-center justify-between">
+                                                    <label asp-for="Function" class="block text-sm font-medium mb-1" for="tooltip">Função:</label>
+                                                    <div class="relative ml-2"
+                                                         x-data="{ open: false }"
+                                                         @@mouseenter="open = true"
+                                                         @@mouseleave="open = false">
+                                                        <button class="block"
+                                                                aria-haspopup="true"
+                                                                :aria-expanded="open"
+                                                                @@focus="open = true"
+                                                                @@focusout="open = false"
+                                                                @@click.prevent>
+                                                            <svg class="w-4 h-4 fill-current text-slate-400 dark:text-slate-500" viewBox="0 0 16 16">
+                                                                <path d="M8 0C3.6 0 0 3.6 0 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zm0 12c-.6 0-1-.4-1-1s.4-1 1-1 1 .4 1 1-.4 1-1 1zm1-3H7V4h2v5z" />
+                                                            </svg>
+                                                        </button>
+                                                        <div class="z-10 absolute bottom-full left-1/2 -translate-x-1/2">
+                                                            <div class="min-w-60 bg-slate-800 text-slate-200 px-2 py-1 rounded overflow-hidden mb-2"
+                                                                 x-show="open"
+                                                                 x-transition:enter="transition ease-out duration-200 transform"
+                                                                 x-transition:enter-start="opacity-0 translate-y-2"
+                                                                 x-transition:enter-end="opacity-100 translate-y-0"
+                                                                 x-transition:leave="transition ease-out duration-200"
+                                                                 x-transition:leave-start="opacity-100"
+                                                                 x-transition:leave-end="opacity-0"
+                                                                 x-cloak>
+                                                                <div class="text-sm">Selecione a função</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-function">
+                                                    <select asp-for="Function" class="form-input w-full input-function">
+                                                        <option value="Costureira Nível 1">Costureira Nível 1</option>
+                                                        <option value="Costureira Nível 3">Costureira Nível 3</option>
+                                                        <option value="Costureira Nível 5">Costureira Nível 5</option>
+                                                        <option value="Assistente Geral">Assistente Geral</option>
+                                                    </select>
+                                                    <span asp-validation-for="Function" class="text-xs mt-1 text-rose-500"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="grid gap-5 md:grid-cols-2">
+                                        <div>
+                                            <div>
+                                                <div class="flex items-center justify-between">
+                                                    <label asp-for="Pessoareclusa" class="block text-sm font-medium mb-1" for="tooltip">Esta pessoa é reclusa?</label>
+                                                    <div class="relative ml-2"
+                                                         x-data="{ open: false }"
+                                                         @@mouseenter="open = true"
+                                                         @@mouseleave="open = false">
+                                                        <button class="block"
+                                                                aria-haspopup="true"
+                                                                :aria-expanded="open"
+                                                                @@focus="open = true"
+                                                                @@focusout="open = false"
+                                                                @@click.prevent>
+                                                            <svg class="w-4 h-4 fill-current text-slate-400 dark:text-slate-500" viewBox="0 0 16 16">
+                                                                <path d="M8 0C3.6 0 0 3.6 0 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zm0 12c-.6 0-1-.4-1-1s.4-1 1-1 1 .4 1 1-.4 1-1 1zm1-3H7V4h2v5z" />
+                                                            </svg>
+                                                        </button>
+                                                        <div class="z-10 absolute bottom-full left-1/2 -translate-x-1/2">
+                                                            <div class="min-w-60 bg-slate-800 text-slate-200 px-2 py-1 rounded overflow-hidden mb-2"
+                                                                 x-show="open"
+                                                                 x-transition:enter="transition ease-out duration-200 transform"
+                                                                 x-transition:enter-start="opacity-0 translate-y-2"
+                                                                 x-transition:enter-end="opacity-100 translate-y-0"
+                                                                 x-transition:leave="transition ease-out duration-200"
+                                                                 x-transition:leave-start="opacity-100"
+                                                                 x-transition:leave-end="opacity-0"
+                                                                 x-cloak>
+                                                                <div class="text-sm">Selecione a opção</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-pessoareclusa">
+                                                    <select asp-for="Pessoareclusa" class="form-input w-full input-pessoareclusa">
+                                                        <option value="true">Sim</option>
+                                                        <option value="false">Não</option>
+                                                    </select>
+
+                                                    <span asp-validation-for="Pessoareclusa" class="text-xs mt-1 text-rose-500"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="grid gap-5 md:grid-cols-2">
+                                        <div>
+                                            <div>
+                                                <div class="flex items-center justify-between">
+                                                    <label asp-for="Pessoaegressa" class="block text-sm font-medium mb-1" for="tooltip">Esta pessoa é egressa?</label>
+                                                    <div class="relative ml-2"
+                                                         x-data="{ open: false }"
+                                                         @@mouseenter="open = true"
+                                                         @@mouseleave="open = false">
+                                                        <button class="block"
+                                                                aria-haspopup="true"
+                                                                :aria-expanded="open"
+                                                                @@focus="open = true"
+                                                                @@focusout="open = false"
+                                                                @@click.prevent>
+                                                            <svg class="w-4 h-4 fill-current text-slate-400 dark:text-slate-500" viewBox="0 0 16 16">
+                                                                <path d="M8 0C3.6 0 0 3.6 0 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zm0 12c-.6 0-1-.4-1-1s.4-1 1-1 1 .4 1 1-.4 1-1 1zm1-3H7V4h2v5z" />
+                                                            </svg>
+                                                        </button>
+                                                        <div class="z-10 absolute bottom-full left-1/2 -translate-x-1/2">
+                                                            <div class="min-w-60 bg-slate-800 text-slate-200 px-2 py-1 rounded overflow-hidden mb-2"
+                                                                 x-show="open"
+                                                                 x-transition:enter="transition ease-out duration-200 transform"
+                                                                 x-transition:enter-start="opacity-0 translate-y-2"
+                                                                 x-transition:enter-end="opacity-100 translate-y-0"
+                                                                 x-transition:leave="transition ease-out duration-200"
+                                                                 x-transition:leave-start="opacity-100"
+                                                                 x-transition:leave-end="opacity-0"
+                                                                 x-cloak>
+                                                                <div class="text-sm">Selecione a opção</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-pessoaegressa">
+                                                    <select asp-for="Pessoaegressa" class="form-input w-full input-pessoaegressa">
+                                                        <option value="true">Sim</option>
+                                                        <option value="false">Não</option>
+                                                    </select>
+
+                                                    <span asp-validation-for="Pessoaegressa" class="text-xs mt-1 text-rose-500"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="grid gap-5 md:grid-cols-2">
+                                        <div>
+                                            <div>
+                                                <div class="flex items-center justify-between">
+                                                    <label asp-for="Penitenciaria" class="block text-sm font-medium mb-1" for="tooltip">Nome da Penitenciária:</label>
+                                                    <div class="relative ml-2"
+                                                         x-data="{ open: false }"
+                                                         @@mouseenter="open = true"
+                                                         @@mouseleave="open = false">
+                                                        <button class="block"
+                                                                aria-haspopup="true"
+                                                                :aria-expanded="open"
+                                                                @@focus="open = true"
+                                                                @@focusout="open = false"
+                                                                @@click.prevent>
+                                                            <svg class="w-4 h-4 fill-current text-slate-400 dark:text-slate-500" viewBox="0 0 16 16">
+                                                                <path d="M8 0C3.6 0 0 3.6 0 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zm0 12c-.6 0-1-.4-1-1s.4-1 1-1 1 .4 1 1-.4 1-1 1zm1-3H7V4h2v5z" />
+                                                            </svg>
+                                                        </button>
+                                                        <div class="z-10 absolute bottom-full left-1/2 -translate-x-1/2">
+                                                            <div class="min-w-60 bg-slate-800 text-slate-200 px-2 py-1 rounded overflow-hidden mb-2"
+                                                                 x-show="open"
+                                                                 x-transition:enter="transition ease-out duration-200 transform"
+                                                                 x-transition:enter-start="opacity-0 translate-y-2"
+                                                                 x-transition:enter-end="opacity-100 translate-y-0"
+                                                                 x-transition:leave="transition ease-out duration-200"
+                                                                 x-transition:leave-start="opacity-100"
+                                                                 x-transition:leave-end="opacity-0"
+                                                                 x-cloak>
+                                                                <div class="text-sm">Digite o nome da Penitenciária</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-penitenciaria">
+                                                    <input asp-for="Penitenciaria" class="form-input w-full input-penitenciaria" />
+                                                    <span asp-validation-for="Penitenciaria" class="text-xs mt-1 text-rose-500"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="grid gap-5 md:grid-cols-2">
+                                        <div>
+                                            <div>
+                                                <div class="flex items-center justify-between">
+                                                    <label asp-for="CursoLibertese" class="block text-sm font-medium mb-1" for="tooltip">Fez o curso na Libertese?</label>
+                                                    <div class="relative ml-2"
+                                                         x-data="{ open: false }"
+                                                         @@mouseenter="open = true"
+                                                         @@mouseleave="open = false">
+                                                        <button class="block"
+                                                                aria-haspopup="true"
+                                                                :aria-expanded="open"
+                                                                @@focus="open = true"
+                                                                @@focusout="open = false"
+                                                                @@click.prevent>
+                                                            <svg class="w-4 h-4 fill-current text-slate-400 dark:text-slate-500" viewBox="0 0 16 16">
+                                                                <path d="M8 0C3.6 0 0 3.6 0 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zm0 12c-.6 0-1-.4-1-1s.4-1 1-1 1 .4 1 1-.4 1-1 1zm1-3H7V4h2v5z" />
+                                                            </svg>
+                                                        </button>
+                                                        <div class="z-10 absolute bottom-full left-1/2 -translate-x-1/2">
+                                                            <div class="min-w-60 bg-slate-800 text-slate-200 px-2 py-1 rounded overflow-hidden mb-2"
+                                                                 x-show="open"
+                                                                 x-transition:enter="transition ease-out duration-200 transform"
+                                                                 x-transition:enter-start="opacity-0 translate-y-2"
+                                                                 x-transition:enter-end="opacity-100 translate-y-0"
+                                                                 x-transition:leave="transition ease-out duration-200"
+                                                                 x-transition:leave-start="opacity-100"
+                                                                 x-transition:leave-end="opacity-0"
+                                                                 x-cloak>
+                                                                <div class="text-sm">Selecione a opção</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-cursolibertese">
+                                                    <select asp-for="CursoLibertese" class="form-input w-full input-cursolibertese">
+                                                        <option value="true">Sim</option>
+                                                        <option value="false">Não</option>
+                                                    </select>
+                                                    <span asp-validation-for="CursoLibertese" class="text-xs mt-1 text-rose-500"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="grid gap-5 md:grid-cols-2">
+                                        <div>
+                                            <div>
+                                                <div class="flex items-center justify-between">
+                                                    <label asp-for="Remuneracao" class="block text-sm font-medium mb-1" for="tooltip">Possui remuneração?</label>
+                                                    <div class="relative ml-2"
+                                                         x-data="{ open: false }"
+                                                         @@mouseenter="open = true"
+                                                         @@mouseleave="open = false">
+                                                        <button class="block"
+                                                                aria-haspopup="true"
+                                                                :aria-expanded="open"
+                                                                @@focus="open = true"
+                                                                @@focusout="open = false"
+                                                                @@click.prevent>
+                                                            <svg class="w-4 h-4 fill-current text-slate-400 dark:text-slate-500" viewBox="0 0 16 16">
+                                                                <path d="M8 0C3.6 0 0 3.6 0 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zm0 12c-.6 0-1-.4-1-1s.4-1 1-1 1 .4 1 1-.4 1-1 1zm1-3H7V4h2v5z" />
+                                                            </svg>
+                                                        </button>
+                                                        <div class="z-10 absolute bottom-full left-1/2 -translate-x-1/2">
+                                                            <div class="min-w-60 bg-slate-800 text-slate-200 px-2 py-1 rounded overflow-hidden mb-2"
+                                                                 x-show="open"
+                                                                 x-transition:enter="transition ease-out duration-200 transform"
+                                                                 x-transition:enter-start="opacity-0 translate-y-2"
+                                                                 x-transition:enter-end="opacity-100 translate-y-0"
+                                                                 x-transition:leave="transition ease-out duration-200"
+                                                                 x-transition:leave-start="opacity-100"
+                                                                 x-transition:leave-end="opacity-0"
+                                                                 x-cloak>
+                                                                <div class="text-sm">Selecione a opção</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-remuneracao">
+                                                    <input class="input-remuneracao" type="checkbox" asp-for="Remuneracao" id="remuneracaoCheckbox" />
+                                                    <span asp-validation-for="Remuneracao" class="text-xs mt-1 text-rose-500"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="grid gap-5 md:grid-cols-2">
+                                        <div>
+                                            <div>
+                                                <div class="flex items-center justify-between">
+                                                    <label asp-for="Salario" class="block text-sm font-medium mb-1" for="tooltip">Salário:</label>
+                                                    <div class="relative ml-2"
+                                                         x-data="{ open: false }"
+                                                         @@mouseenter="open = true"
+                                                         @@mouseleave="open = false">
+                                                        <button class="block"
+                                                                aria-haspopup="true"
+                                                                :aria-expanded="open"
+                                                                @@focus="open = true"
+                                                                @@focusout="open = false"
+                                                                @@click.prevent>
+                                                            <svg class="w-4 h-4 fill-current text-slate-400 dark:text-slate-500" viewBox="0 0 16 16">
+                                                                <path d="M8 0C3.6 0 0 3.6 0 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zm0 12c-.6 0-1-.4-1-1s.4-1 1-1 1 .4 1 1-.4 1-1 1zm1-3H7V4h2v5z" />
+                                                            </svg>
+                                                        </button>
+                                                        <div class="z-10 absolute bottom-full left-1/2 -translate-x-1/2">
+                                                            <div class="min-w-60 bg-slate-800 text-slate-200 px-2 py-1 rounded overflow-hidden mb-2"
+                                                                 x-show="open"
+                                                                 x-transition:enter="transition ease-out duration-200 transform"
+                                                                 x-transition:enter-start="opacity-0 translate-y-2"
+                                                                 x-transition:enter-end="opacity-100 translate-y-0"
+                                                                 x-transition:leave="transition ease-out duration-200"
+                                                                 x-transition:leave-start="opacity-100"
+                                                                 x-transition:leave-end="opacity-0"
+                                                                 x-cloak>
+                                                                <div class="text-sm">Digite o valor do Salário</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-salario" id="salarioGroup">
+                                                    <input asp-for="Salario" class="form-input w-full input-salario" id="salarioInput" />
+                                                    <span asp-validation-for="Salario" class="text-xs mt-1 text-rose-500"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <footer>
+                                    <div class="flex flex-col px-6 py-5 border-t border-slate-200 dark:border-slate-700">
+                                        <div class="flex self-center">
+                                            <button id="submitForm" name="submitForm" type="submit" value="Salvar" class="btn bg-slate-900 hover:bg-orange-600 text-white ml-3 rounded-lg w-32">Confirmar</button>
+                                        </div>
+                                    </div>
+                                </footer>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </main>
         </div>
     </div>
-    </div>
-</body>
 
-
-
-@section Scripts {
     <script>
         function formatarCPF(cpf) {
             // Remove qualquer caracter que não seja número
@@ -374,6 +748,17 @@
                 alert('Por favor, preencha todos os campos obrigatórios.');
             }
         });
+        function formatarCPF(cpf) {
+            cpf = cpf.replace(/\D/g, "");
+            cpf = cpf.replace(/(\d{3})(\d)/, "$1.$2");
+            cpf = cpf.replace(/(\d{3})(\d)/, "$1.$2");
+            cpf = cpf.replace(/(\d{3})(\d{1,2})$/, "$1-$2");
+            return cpf;
+        }
+
+        document.getElementById('cpfInput').addEventListener('input', function (e) {
+            e.target.value = formatarCPF(e.target.value);
+        });
 
         function formatarMoeda(valor) {
             valor = valor.replace(/\D/g, "");
@@ -387,4 +772,4 @@
             e.target.value = formatarMoeda(e.target.value);
         });
     </script>
-}
+</body>

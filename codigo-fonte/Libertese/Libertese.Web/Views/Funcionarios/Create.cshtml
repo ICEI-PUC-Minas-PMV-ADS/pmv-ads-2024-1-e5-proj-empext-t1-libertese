@@ -61,7 +61,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <input asp-for="Nome" class="form-input w-full" type="text" />
+                                                <input asp-for="Nome" class="form-input w-full input-nome" type="text" />
                                                 <span asp-validation-for="Nome" class="text-xs mt-1 text-rose-500"></span>
                                             </div>
                                         </div>
@@ -102,7 +102,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <input asp-for="HorasDia" class="form-input w-full" />
+                                                <input asp-for="HorasDia" class="form-input w-full input-horas" />
                                                 <span asp-validation-for="HorasDia" class="text-xs mt-1 text-rose-500"></span>
                                             </div>
                                         </div>
@@ -143,7 +143,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <input asp-for="DiasMes" class="form-input w-full" />
+                                                <input asp-for="DiasMes" class="form-input w-full input-dias" />
                                                 <span asp-validation-for="DiasMes" class="text-xs mt-1 text-rose-500"></span>
                                             </div>
                                         </div>
@@ -185,7 +185,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-cpf">
-                                                <input asp-for="Cpf" id="cpfInput" class="form-input w-full" />
+                                                <input asp-for="Cpf" id="cpfInput" class="form-input w-full input-cpf" />
                                                 <span asp-validation-for="Cpf" class="text-xs mt-1 text-rose-500"></span>
                                                 </div>
                                             </div>
@@ -227,7 +227,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <select asp-for="Sexo" class="form-input w-full">
+                                                <select asp-for="Sexo" class="form-input w-full input-sexo">
                                                     <option value="Feminino">Feminino</option>
                                                     <option value="Masculino">Masculino</option>
                                                     <option value="Não binário">Não binário</option>
@@ -273,7 +273,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <input asp-for="Email" id="email" class="form-input w-full" />
+                                                <input asp-for="Email" id="email" class="form-input w-full input-email" />
                                                 <span asp-validation-for="Email" class="text-xs mt-1 text-rose-500"></span>
                                             </div>
                                         </div>
@@ -315,7 +315,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-celular">
-                                                    <input asp-for="Celular" class="form-input w-full" />
+                                                    <input asp-for="Celular" class="form-input w-full input-celular" />
                                                     <span asp-validation-for="Celular" class="text-xs mt-1 text-rose-500"></span>
                                                 </div>
                                             </div>
@@ -358,7 +358,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-function">
-                                                    <select asp-for="Function" class="form-input w-full">
+                                                    <select asp-for="Function" class="form-input w-full input-function">
                                                         <option value="Costureira Nível 1">Costureira Nível 1</option>
                                                         <option value="Costureira Nível 3">Costureira Nível 3</option>
                                                         <option value="Costureira Nível 5">Costureira Nível 5</option>
@@ -406,7 +406,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-pessoareclusa">
-                                                    <select asp-for="Pessoareclusa" class="form-input w-full">
+                                                    <select asp-for="Pessoareclusa" class="form-input w-full input-pessoareclusa">
                                                         <option value="true">Sim</option>
                                                         <option value="false">Não</option>
                                                     </select>
@@ -453,7 +453,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-pessoaegressa">
-                                                    <select asp-for="Pessoaegressa" class="form-input w-full">
+                                                    <select asp-for="Pessoaegressa" class="form-input w-full input-pessoaegressa">
                                                         <option value="true">Sim</option>
                                                         <option value="false">Não</option>
                                                     </select>
@@ -500,7 +500,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-penitenciaria">
-                                                    <input asp-for="Penitenciaria" class="form-input w-full" />
+                                                    <input asp-for="Penitenciaria" class="form-input w-full input-penitenciaria" />
                                                     <span asp-validation-for="Penitenciaria" class="text-xs mt-1 text-rose-500"></span>
                                                 </div>
                                             </div>
@@ -543,7 +543,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-cursolibertese">
-                                                    <select asp-for="CursoLibertese" class="form-input w-full">
+                                                    <select asp-for="CursoLibertese" class="form-input w-full input-cursolibertese">
                                                         <option value="true">Sim</option>
                                                         <option value="false">Não</option>
                                                     </select>
@@ -631,8 +631,8 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="form-salario">
-                                                    <input asp-for="Salario" class="form-input w-full" id="salarioInput" />
+                                                <div class="form-salario" id="salarioGroup">
+                                                    <input asp-for="Salario" class="form-input w-full input-salario" id="salarioInput" />
                                                     <span asp-validation-for="Salario" class="text-xs mt-1 text-rose-500"></span>
                                                 </div>
                                             </div>

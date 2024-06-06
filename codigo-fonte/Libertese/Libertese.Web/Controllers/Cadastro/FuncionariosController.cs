@@ -111,7 +111,7 @@ namespace Libertese.Web.Controllers.Cadastro
                     model.Celular = funcionario.Celular;
                     model.Function = funcionario.Function;
                     model.Pessoareclusa = funcionario.Pessoareclusa;
-                    model.Pessoareclusa = funcionario.Pessoaegressa;
+                    model.Pessoaegressa = funcionario.Pessoaegressa;
                     model.Penitenciaria = funcionario.Penitenciaria;
                     model.CursoLibertese = funcionario.CursoLibertese;
                     model.Salario = funcionario.Salario;
