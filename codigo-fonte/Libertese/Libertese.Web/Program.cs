@@ -6,6 +6,8 @@ using Libertese.Data.Services;
 using Libertese.Data.Services.Interfaces;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.DataProtection;
+using AutoMapper;
+using Libertese.Web.Profiles;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,12 +23,12 @@ builder.Services.AddScoped<IMaterialRepository<Material>, MaterialRepository>();
 builder.Services.AddScoped<IProdutoRepository<Produto>, ProdutoRepository>();
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-		  .AddCookie(options =>
-		  {
-			  options.LoginPath = "/Home/Login";
-              options.AccessDeniedPath = "/Home/Login";
-              options.ExpireTimeSpan = TimeSpan.FromMinutes(60);
-          });
+    .AddCookie(options =>
+    {
+        options.LoginPath = "/Home/Login";
+        options.AccessDeniedPath = "/Home/Login";
+        options.ExpireTimeSpan = TimeSpan.FromMinutes(60);
+    });
 
 builder.Services.AddAuthorization(options =>
 {
@@ -60,9 +62,16 @@ builder.Services.AddAuthorization(options =>
     options.AddPolicy("RequireVendas", policy => policy.RequireClaim("Vendas", "VEND"));
 });
 
+// Configuração do AutoMapper
+var mapperConfig = new MapperConfiguration(mc =>
+{
+    mc.AddProfile(new MappingProfile());
+});
+
+IMapper mapper = mapperConfig.CreateMapper();
+builder.Services.AddSingleton(mapper);
+
 builder.Services.AddDataProtection().PersistKeysToFileSystem(new DirectoryInfo(Path.Combine(Directory.GetCurrentDirectory(), "keys")));
-
-
 
 builder.Services.AddCors(options =>
 {
