@@ -34,6 +34,7 @@ namespace Libertese.Domain.Entities.Cadastro
         public required Boolean CursoLibertese { get; set; }
 
         public required Boolean Pessoareclusa { get; set; }
+
         public required Boolean Pessoaegressa {  get; set; }
 
 
