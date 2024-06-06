@@ -216,25 +216,40 @@
                     <select asp-for="Function" class="form-control input-function">
                         <option value="Costureira Nível 1">Costureira Nível 1</option>
                         <option value="Costureira Nível 3">Costureira Nível 3</option>
-                        <option value="Coordenadora">Coordenadora</option>
-                        <option value="Passadeira">Passadeira</option>
-                        <option value="Arrematadeira">Arrematadeira</option>
+                        <option value="Costureira Nível 5">Costureira Nível 5</option>
+                        <option value="Assistente Geral">Assistente Geral</option>
                     </select>
                     <span asp-validation-for="Function" class="text-danger"></span>
                 </div>
+
                 <div class="form-pessoareclusa">
-                    <label asp-for="Pessoareclusa" class="control-label">Pessoa reclusa ou egressa?</label>
-                    <input class="input-pessoareclusa" type="checkbox" asp-for="Pessoareclusa" />
+                    <label asp-for="Pessoareclusa" class="control-label">Esta pessoa é reclusa? *</label>
+                    <select asp-for="Pessoareclusa" class="form-control input-pessoareclusa">
+                        <option value="true">Sim</option>
+                        <option value="false">Não</option>
+                    </select>
                     <span asp-validation-for="Pessoareclusa" class="text-danger"></span>
                 </div>
+                <div class="form-pessoaegressa">
+                    <label asp-for="Pessoaegressa" class="control-label">Esta pessoa é egressa? *</label>
+                    <select asp-for="Pessoaegressa" class="form-control input-pessoaegressa">
+                        <option value="true">Sim</option>
+                        <option value="false">Não</option>
+                    </select>
+                    <span asp-validation-for="Pessoaegressa" class="text-danger"></span>
+                </div>
                 <div class="form-penitenciaria">
-                    <label asp-for="Penitenciaria" class="control-label">Penitenciária *</label>
-                    <input asp-for="Penitenciaria" class="form-control input-penitenciaria" placeholder="Digite o nome da penitenciária" />
+                    <label asp-for="Penitenciaria" class="control-label">Nome da Penitenciária *</label>
+                    <input asp-for="Penitenciaria" class="form-control input-penitenciaria" placeholder="Nome da Penitenciária" />
                     <span asp-validation-for="Penitenciaria" class="text-danger"></span>
                 </div>
-                <div class="form-curso">
-                    <label asp-for="CursoLibertese" class="control-label">Fez ou faz o curso da Libertese durante a reclusão?</label>
-                    <input class="input-cursolibertese" type="checkbox" asp-for="CursoLibertese" />
+
+                <div class="form-cursolibertese">
+                    <label asp-for="CursoLibertese" class="control-label">Curso na Libertese *</label>
+                    <select asp-for="CursoLibertese" class="form-control input-cursolibertese">
+                        <option value="true">Sim</option>
+                        <option value="false">Não</option>
+                    </select>
                     <span asp-validation-for="CursoLibertese" class="text-danger"></span>
                 </div>
                 <div class="form-remuneracao">
@@ -256,6 +271,132 @@
         </div>
     </div>
     <script>
+        // Ocultar o campo de Salário inicialmente quando a página for carregada
+        document.addEventListener('DOMContentLoaded', function () {
+            var salarioGroup = document.getElementById('salarioGroup');
+            salarioGroup.style.display = 'none';
+        });
+
+        // Adicionar o evento de mudança ao checkbox de "Possui remuneração"
+        document.getElementById('remuneracaoCheckbox').addEventListener('change', function () {
+            var salarioGroup = document.getElementById('salarioGroup');
+            var salarioInput = document.getElementById('salarioInput');
+            if (this.checked) {
+                salarioGroup.style.display = 'block';
+            } else {
+                salarioGroup.style.display = 'none';
+                salarioInput.value = 0; // Define o valor do Salário como 0 quando o checkbox não estiver marcado
+            }
+        });
+
+        // Intercepta o envio do formulário
+        document.querySelector('form').addEventListener('submit', function (event) {
+            var salarioInput = document.getElementById('salarioInput');
+            var cursoLiberteseCheckbox = document.getElementById('CursoLibertese');
+            // Se o checkbox de "Possui remuneração" não estiver marcado, define o valor do Salário como 0
+            if (!document.getElementById('remuneracaoCheckbox').checked) {
+                salarioInput.value = 0;
+            }
+            // Verifica se o checkbox de "CursoLibertese" está marcado e define o valor como true se estiver
+            if (cursoLiberteseCheckbox.checked) {
+                cursoLiberteseCheckbox.value = true;
+            }
+            // Continua com o envio do formulário
+            return true;
+        });
+        function formatarCPF(cpf) {
+            // Remove qualquer caracter que não seja número
+            cpf = cpf.replace(/\D/g, '');
+            // Adiciona a formatação
+            cpf = cpf.replace(/(\d{3})(\d)/, '$1.$2');
+            cpf = cpf.replace(/(\d{3})(\d)/, '$1.$2');
+            cpf = cpf.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+            return cpf;
+        }
+
+        // Adiciona o evento de digitação ao campo de CPF
+        document.getElementById('cpfInput').addEventListener('input', function (event) {
+            var input = event.target;
+            var cpf = input.value;
+            // Formata o CPF enquanto o usuário digita
+            input.value = formatarCPF(cpf);
+        });
+
+        document.querySelector('form').addEventListener('submit', function (event) {
+            var cpfInput = document.getElementById('cpfInput');
+            var cpf = cpfInput.value;
+            // Verifica se o CPF está no formato correto
+            if (!validarCPF(cpf)) {
+                alert('Por favor, insira um CPF válido no formato XXX.XXX.XXX-XX.');
+                // Impede o envio do formulário se o CPF não estiver no formato correto
+                event.preventDefault();
+            }
+        });
+
+        // Função para formatar o número de celular
+        function formatarCelular(celular) {
+            // Remove todos os caracteres que não são dígitos
+            var cleaned = celular.replace(/\D/g, '');
+            // Aplica a formatação (XX) XXXXX-XXXX
+            var match = cleaned.match(/^(\d{0,2})(\d{0,5})(\d{0,4})$/);
+            if (match) {
+                // Concatena os grupos capturados com os separadores
+                return (!match[2] ? match[1] : '(' + match[1] + ') ' + match[2]) + (match[3] ? '-' + match[3] : '');
+            }
+            return celular;
+        }
+
+        // Adiciona o evento de formatação ao campo de celular
+        document.getElementById('Celular').addEventListener('input', function (event) {
+            var celularInput = event.target;
+            var formatted = formatarCelular(celularInput.value);
+            // Atualiza o valor do campo com o número de celular formatado
+            celularInput.value = formatted;
+        });
+
+        // Intercepta o envio do formulário para validar o número de celular
+        document.querySelector('form').addEventListener('submit', function (event) {
+            var botaoSubmit = document.activeElement;
+            // Verifica se o botão clicado é o botão de criar (Confirmar)
+            if (botaoSubmit && botaoSubmit.id === 'botao-create') {
+                var celularInput = document.getElementById('Celular');
+                var celular = celularInput.value.replace(/\D/g, ''); // Remove todos os caracteres que não são dígitos
+                // Verifica se o número de celular possui 11 dígitos após a formatação
+                if (celular.length !== 11) {
+                    // Impede o envio do formulário
+                    event.preventDefault();
+                    // Exibe uma mensagem de erro
+                    alert('Por favor, insira um número de celular válido no formato (XX) XXXXX-XXXX');
+                }
+            }
+        });
+        // Intercepta o envio do formulário
+        document.querySelector('form').addEventListener('submit', function (event) {
+            // Seleciona todos os campos de entrada exceto os checkboxes
+            var inputs = document.querySelectorAll('input[type="text"], input[type="email"], input[type="password"], select');
+            var isValid = true;
+
+            // Verifica se algum campo obrigatório está vazio
+            inputs.forEach(function (input) {
+                if (input.hasAttribute('required') && !input.value.trim()) {
+                    // Se o campo estiver vazio, adiciona uma classe de erro
+                    input.classList.add('input-error');
+                    // Define isValid como falso para impedir o envio do formulário
+                    isValid = false;
+                } else {
+                    // Remove a classe de erro caso o campo esteja preenchido
+                    input.classList.remove('input-error');
+                }
+            });
+
+            // Se algum campo estiver vazio, impede o envio do formulário
+            if (!isValid) {
+                // Impede o envio do formulário
+                event.preventDefault();
+                // Exibe uma mensagem de erro
+                alert('Por favor, preencha todos os campos obrigatórios.');
+            }
+        });
         function formatarCPF(cpf) {
             cpf = cpf.replace(/\D/g, "");
             cpf = cpf.replace(/(\d{3})(\d)/, "$1.$2");
@@ -278,11 +419,6 @@
 
         document.getElementById('salarioInput').addEventListener('input', function (e) {
             e.target.value = formatarMoeda(e.target.value);
-        });
-
-        document.getElementById('employeeForm').addEventListener('submit', function (e) {
-            var salarioInput = document.getElementById('salarioInput');
-            salarioInput.value = salarioInput.value.replace(/[^\d,]/g, '').replace(',', '.');
         });
     </script>
 </body>
