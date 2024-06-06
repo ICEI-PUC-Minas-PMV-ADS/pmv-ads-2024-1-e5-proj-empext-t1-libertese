@@ -160,13 +160,19 @@
 
     </style>
 </head>
-<body>
-    <div class="box-create">
-        <div class="title-cadastro">
-            <h>Cadastro de funcionário</h>
-            <br />
-            <br />
-        </div>
+<body class="font-inter antialiased bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-400">
+    <div class="flex min-h-[100dvh]  overflow-visible">
+        <div class="relative flex flex-col flex-1 overflow-y-visible overflow-x-visible bg-white dark:bg-slate-900">
+            <main class="grow">
+                <div class="px-4 sm:px-6 lg:px-8 pt-8 w-full max-w-9xl mx-auto">
+                    <div class="mb-1">
+                        <div class="flex items-center justify-between">
+                            <h2 class="text-2xl md:text-3xl text-slate-800 dark:text-slate-100 font-bold">Novo Funcionário</h2>
+                            <a asp-action="Index" class="btn bg-orange-500 hover:bg-orange-600 text-white ml-3 rounded-lg w-24">Voltar</a>
+                        </div>
+
+                    </div>
+                </div>
         <div class="create-employee">
             <form asp-action="Create" id="employeeForm">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
