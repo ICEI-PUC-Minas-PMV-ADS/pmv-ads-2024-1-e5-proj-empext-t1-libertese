@@ -655,6 +655,24 @@
     </div>
 
     <script>
+
+        function toggleSalarioField(){
+            var remuneracao = document.getElementById('remuneracaoInput').value;
+            var salarioField = document.getElementById('salarioField').value;
+            if(remuneracao === 'true'){
+                salarioField.style.display = 'block';
+            }else{
+                salarioField.style.display = 'none';
+            }
+        }
+
+        document.getElementById('remuneracaoInput').addEventListener('change',toggleSalarioField);
+
+
+        document.addEventListener('DOMContentLoaded', function () {
+            toggleSalarioField();
+        });
+
         function formatarCPF(cpf) {
             // Remove qualquer caracter que não seja número
             cpf = cpf.replace(/\D/g, '');
