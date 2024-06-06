@@ -253,8 +253,8 @@
                     <span asp-validation-for="CursoLibertese" class="text-danger"></span>
                 </div>
                 <div class="form-remuneracao">
-                    <label asp-for="Remuneracao" class="control-label">Remuneração devida a título de trabalho, por peça produzida *</label>
-                    <input asp-for="Remuneracao" class="form-control input-remuneracao" placeholder="Digite a remuneração por peça" />
+                    <label asp-for="Remuneracao" class="control-label">Possui remuneração?</label>
+                    <input class="input-remuneracao" type="checkbox" asp-for="Remuneracao" id="remuneracaoCheckbox" />
                     <span asp-validation-for="Remuneracao" class="text-danger"></span>
                 </div>
                 <div class="form-salario" id="salarioGroup">
