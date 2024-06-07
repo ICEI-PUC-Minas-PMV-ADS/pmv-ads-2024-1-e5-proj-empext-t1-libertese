@@ -956,7 +956,7 @@ Garantir a funcionalidade, confiabilidade e segurança das telas de:
 
 # Plano de Testes de Software (Em pares)
 
-Teste da tela de Fornecedores | Feita por Vinicius de Souza Ponciano | Testes feitos por 
+Teste da tela de Fornecedores | Feita por Vinicius de Souza Ponciano | Testes feitos por Thaís Gurgel
 
 
 ## Objetivo
@@ -1029,6 +1029,41 @@ Os testes funcionais a serem realizados no aplicativo são descritos a seguir:
 
  
 # Evidências de Testes de Software - Fornecedores
+
+### CT001 - Criar novo Fornecedor 
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/59944150/040bae9e-6198-4c77-bea3-92308e01d840)
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/59944150/06ca8a10-4750-4c3e-92f2-a66691e43168)
+
+### CT002 - Criar novo Fornecedor com campos em branco ou inválidos
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/59944150/8146b45e-5860-469d-93db-3508121e7074)
+
+### CT003 - Visualizar fornecedores cadastrados
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/59944150/7b2c340a-b412-4936-95e6-8abf333b27ab)
+
+### CT004 - Editar fornecedor
+Fornecedor editado: Sodine Papelaria (campos: nome e segunda opção telefone)
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/59944150/026f6c7e-926c-4e61-8add-257c2aec2844)
+
+### CT005 - Editar fornecedor com campo em branco ou inválido
+Obs: Não é possível editar sem registrar o CNPJ.
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/59944150/dba6d59f-7fde-4ee4-b509-50159e2f6552)
+
+### CT005 - Excluir fornecedor cadastrado
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/59944150/9fcfec68-e7e5-4225-8947-7092e405ac6d)
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/59944150/32248dcc-1aa0-485a-ace6-9224b7439830)
+
+
+
+
+
 
 
 
