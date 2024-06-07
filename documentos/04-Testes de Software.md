@@ -954,7 +954,81 @@ Garantir a funcionalidade, confiabilidade e segurança das telas de:
 | **Resultado Esperado** | A venda selecionada deve ser cancelada e na lista de vendas deverá constar status cancelado.               |
 |                     |                                                                                                            |
 
+# Plano de Testes de Software (Em pares)
 
+Teste da tela de Fornecedores | Feita por Vinicius de Souza Ponciano | Testes feitos por 
+
+
+## Objetivo
+
+Garantir a funcionalidade, confiabilidade e segurança das telas de: 
+- Implementar controle da inclusão, deleção e edição de fornecedores
+
+Os testes funcionais a serem realizados no aplicativo são descritos a seguir:  
+ 
+| Caso de Teste           | CT001 – Criar novo fornecedor                                                                                             |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|Pre Condições            | Estar na tela de Fornecedores       | 
+|Procedimento             | 1. No menu selecione a opção “Fornecedores”. |
+|                         | 2. Na tela Funcionários, clique no botão “Novo Fornecedor”. |
+|                         | 3. Na tela de cadastro preencher todas as informações necessárias. |
+|                         | 4. Clicar em “Confirmar”. |
+|                         | 5. Caso deseje retornar para a tela inicial, clique em "Voltar". |
+|Resultado Esperado       | O novo fornecedor deve ser cadastrado com sucesso.                                                                       |
+|Dados de Entrada         | Informações solicitadas no campo de cadastro.  |
+
+
+| Caso de Teste           | CT002 – Cadastrar novo fornecedor com os campos em branco                                                 |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|Pre Condições            | Estar na tela de Fornecedores      | 
+|Procedimento             | 1. No menu selecione a opção “Fornecedores”. |
+|                         | 2. Na tela Funcionários, clique no botão “Novo Fornecedores”. |
+|                         | 3. Na tela de cadastro preencher com informações vazias nos campos. |
+|                         | 4. Clicar em Confirmar. |
+|Resultado Esperado       | Devem ser exibidas mensagens de erro na tela indicando campos em branco ou dados inválidos.                                                                      |
+|Dados de Entrada         | Informações em branco ou dados inválidos.  |
+
+| Caso de Teste           | CT003 – Visualizar os fornecedor cadastrados                                              |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|Pre Condições            | Estar na tela de Fornecedores      | 
+|Procedimento             | 1. No menu selecione a opção “Fornecedores”. |
+|Resultado Esperado       | Devem ser exibidas mensagens de erro na tela todos os funcionários cadastrados no banco de dados.                                                                      |
+|Dados de Entrada         | Informações em branco ou dados inválidos.  |
+
+
+| Caso de Teste           | CT004 – Editar fornecedor                                                                                             |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|Pre Condições            | Estar na tela de Fornecedores      | 
+|Procedimento             | 1. No menu selecione a opção “Fornecedores”. |
+|                         | 2. Na tela Fornecedores, clique no ícone de caneta em um dos cards de fornecedor. |
+|                         | 3. Na tela de editar, preencher com as informações que deseja alterar no fornecedor. |
+|                         | 4. Clicar em Confirmar. |
+|Resultado Esperado       | Os dados devem ser alterados e aparecer na tela principal atualizados.                                                                      |
+|Dados de Entrada         | Informações solicitadas no campo de edição.  |
+
+
+| Caso de Teste           | CT005 – Editar fornecedor com campo em branco ou inválido                                                                                     |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|Pre Condições            | Estar na tela de Fornecedores      | 
+|Procedimento             | 1. No menu selecione a opção “Fornecedores”. |
+|                         | 2. Na tela Fornecedores, clique no ícone de caneta em um dos cards de fornecedor. |
+|                         | 3. Na tela de editar, preencher com as informações inválidas ou campos em branco. |
+|                         | 4. Clicar em Confirmar. |
+|Resultado Esperado       | Um erro deve aparecer na tela mostrando os campos vazios e/ou inválidos.                                                                      |
+|Dados de Entrada         | Informações em branco ou dados inválidos.  |
+
+
+| Caso de Teste           | CT008 – Excluir fornecedor cadastrado                                                                                    |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|Pre Condições            | Estar na tela de Fornecedores      | 
+|Procedimento             | 1. No menu selecione a opção “Fornecedores”. |
+|                         | 2. Na tela Funcionários, clique no ícone de lixeira em um dos cards de fornecedor. |
+|                         | 4. Clicar em Excluir. |
+|Resultado Esperado       | Excluir o fornecedor da tabela.                                                                      |
+|Dados de Entrada         | N/A |
+
+ 
+# Evidências de Testes de Software - Fornecedores
 
 
 
