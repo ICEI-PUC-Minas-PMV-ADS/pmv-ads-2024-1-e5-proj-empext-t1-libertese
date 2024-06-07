@@ -8,6 +8,7 @@ namespace Libertese.Web.ViewModels
     {
         public List<DespesaDTO> Despesas { get; set; }
         public decimal DespesasPagas { get; set; }
+        public string ClassificacaoNome { get; set; }
         public decimal SalariosFuncionarios { get; set; }
         public decimal DespesasAdicionais { get; set; }
         public decimal TotalSaidas { get; set; }
@@ -16,5 +17,8 @@ namespace Libertese.Web.ViewModels
         public decimal TotalTotalSaidas { get; set; }
         public int? Month { get; set; }
         public List<SelectListItem> Meses { get; set; }
+        public List<string> CategoriasDespesas { get; set; }
+        public DateTime? PeriodoInicio { get; set; }
+        public DateTime? PeriodoFim { get; set; }
     }
 }

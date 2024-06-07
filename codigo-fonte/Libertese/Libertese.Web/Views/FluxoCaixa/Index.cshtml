@@ -1,4 +1,5 @@
 ﻿@model Libertese.Web.ViewModels.FluxoCaixaViewModel
+@using System.Globalization
 
 @{
     ViewData["Title"] = "Fluxo de Caixa";
@@ -32,112 +33,73 @@
                 </div>
             </div>
         </div>
-        <table class="table table-bordered">
-            <thead class="thead-light">
-                <tr>
-                    <th></th>
-                    <th>FILTRO MENSAL, SE DER</th>
-                    <th>FILTRO MENSAL, SE DER</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Entradas</td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Vendas Confirmadas</td>
-                    <td>R$ 25.000,00</td>
-                    <td>R$ 25.000,00</td>
-                </tr>
-                <tr>
-                    <td>Receitas Recebidas</td>
-                    <td>R$ 20.000,00</td>
-                    <td>R$ 20.000,00</td>
-                </tr>
-                <tr>
-                    <td>Receitas Adicionais</td>
-                    <td>R$ 0,00</td>
-                    <td>R$ 0,00</td>
-                </tr>
-                <tr>
-                    <td>Total de entradas</td>
-                    <td>R$ 45.000,00</td>
-                    <td>R$ 45.000,00</td>
-                </tr>
-            </tbody>
-        </table>
-
         <!-- Select para escolher o mês -->
         <div class="row">
             <div class="col">
                 <form method="get" action="/FluxoCaixa/Index">
-                    <label for="month">Selecione o mês:</label>
-                    <select id="month" name="month" class="form-control">
-                        <option value="">Todos</option>
-                        @foreach (var mes in Model.Meses)
-                        {
-                            var selected = Model.Month == int.Parse(mes.Value) ? "selected" : "";
-                            <option value="@mes.Value" selected>@mes.Text</option>
-                        }
-                    </select>
+                    <label for="periodoInicio">Período de Início:</label>
+                    <input type="date" id="periodoInicio" name="periodoInicio" class="form-control" value="@Model.PeriodoInicio?.ToString("yyyy-MM-dd")" />
+
+                    <label for="periodoFim">Período de Fim:</label>
+                    <input type="date" id="periodoFim" name="periodoFim" class="form-control" value="@Model.PeriodoFim?.ToString("yyyy-MM-dd")" />
+
                     <button type="submit" class="btn btn-primary mt-2">Filtrar</button>
                 </form>
             </div>
         </div>
 
-        <table class="table table-bordered">
-            <thead class="thead-light">
-                <tr>
-                    <th></th>
-                    <th>FILTRO MENSAL</th>
-                    <th>TOTAL DOS MESES</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Despesas Pagas</td>
-                    <td>@Model.DespesasPagas.ToString("C")</td>
-                    <td>@Model.TotalDespesasPagas.ToString("C")</td>
-                </tr>
-                <tr>
-                    <td>Funcionários</td>
-                    <td>@Model.SalariosFuncionarios.ToString("C")</td>
-                    <td>@Model.SalariosFuncionarios.ToString("C")</td>
-                </tr>
-                @* <tr>
-                    <td>Despesas Adicionais</td>
-                    <td>@Model.DespesasAdicionais.ToString("C")</td>
-                    <td>@Model.TotalDespesasAdicionais.ToString("C")</td>
-                </tr> *@
-                <tr>
-                    <td><strong>Total de Saídas</strong></td>
-                    <td><strong>@Model.TotalSaidas.ToString("C")</strong></td>
-                    <td><strong>@Model.TotalTotalSaidas.ToString("C")</strong></td>
-                </tr>
-            </tbody>
-        </table>
+        @if (Model.CategoriasDespesas != null && Model.CategoriasDespesas.Any())
+        {
+            <table class="table table-bordered">
+                <thead class="thead-light">
+                    <tr>
+                        <th>Saídas</th>
+                        @for (DateTime date = Model.PeriodoInicio.Value; date <= Model.PeriodoFim.Value; date = date.AddMonths(1))
+                        {
+                            <th>@date.ToString("MMMM/yyyy")</th>
+                        }
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var categoria in Model.CategoriasDespesas) // Itera sobre as categorias de despesas
+                    {
+                        <tr>
+                            <td>@categoria</td>
+                            @for (DateTime date = Model.PeriodoInicio.Value; date <= Model.PeriodoFim.Value; date = date.AddMonths(1))
+                            {
+                                // Filtra as despesas apenas para a categoria e o mês atual no loop
+                                var receitasMesCategoria = Model.Despesas.Where(r => r.DataCompetencia != "Sem Data" &&
+                                DateTime.ParseExact(r.DataCompetencia, "dd/MM/yyyy", CultureInfo.InvariantCulture).Month == date.Month &&
+                                DateTime.ParseExact(r.DataCompetencia, "dd/MM/yyyy", CultureInfo.InvariantCulture).Year == date.Year &&
+                                r.Classificacao == categoria);
+                                <td>R$ @(receitasMesCategoria.Any() ? receitasMesCategoria.Sum(r => r.Valor) : 0.00)</td>
+                            }
+                        </tr>
+                    }
+                    <tr>
+                        <td><strong>Total de saídas</strong></td>
+                        @for (DateTime date = Model.PeriodoInicio.Value; date <= Model.PeriodoFim.Value; date = date.AddMonths(1))
+                        {
+                            // Filtra todas as despesas apenas para o mês atual no loop
+                            var totalMes = Model.Despesas.Where(r => r.DataCompetencia != "Sem Data" &&
+                            DateTime.ParseExact(r.DataCompetencia, "dd/MM/yyyy", CultureInfo.InvariantCulture).Month == date.Month &&
+                            DateTime.ParseExact(r.DataCompetencia, "dd/MM/yyyy", CultureInfo.InvariantCulture).Year == date.Year)
+                            .Sum(r => r.Valor);
+                            <td><strong>R$ @totalMes</strong></td>
+                        }
+                    </tr>
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <p>Não há dados de saídas para exibir.</p>
+        }
+
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
-<script>
-    fetch("/Despesas", {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json"
-        }
-    })
-        .then(data => {
-            
-            console.log(data);
-            
-        })
-        .catch(error => {
-            console.error('Erro:', error);
-            alert('Erro ao tentar fazer login');
-        });
-</script>
