@@ -1071,12 +1071,13 @@ Obs: Não é possível editar sem registrar o CNPJ.
 
 # Evidências de Testes de Software - Atualização de Layout CRUD Formas de Pagamento e Contas Bancárias 
 
-Para todas as funções abaixo apresentadas, não houve mudarça do Plano de Testes, somente o laytout das telas foram alterados.
+Para todas as funções abaixo apresentadas, não houve mudança do Plano de Testes, somente o laytout das telas foram alterados.
 
-Função Forma de Pagamentos de encontra em "Vendas" no menu lateral:
+- Forma de Pagamentos
+
+A função Forma de Pagamentos se encontra em "Vendas" no menu lateral:
 
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/00529213-2ca7-406f-b2bc-0ada3273c7dc)
-
 
 A tela exibe todas as opções cadastradas, para inserrir uma nova forma de pagamento, clicar em "Nova Forma de Pagamento":
 
@@ -1097,6 +1098,38 @@ Visualizar Forma de Pagamento:
 Excluir Forma de Pagamento:
 
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/68f31528-b21e-466c-9e54-934d0d39ec09)
+
+- Contas Bancárias
+
+Função Contas Bancárias se encontra em "Vendas" no menu lateral:
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/ce518a98-013b-4259-932f-9c4b25019147)
+
+A tela exibe todas as contas cadastradas, para inserir uma nova Conta Bancária, clicar em "Nova COnta Bancária", preencher e confirmar:
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/a4fc52b6-c0c8-4bd7-a8ee-b39a0a2f88cd)
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/cd403abb-a0bf-4bf7-9476-c06cdc5d27f5)
+
+As opções de edição, visualização e exclusão são mostradas abaixo:
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/fe2b40ec-460d-41f0-9a3d-76127a3891a3)
+
+Editar Conta Bancária:
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/fbe50512-d17f-4b10-a0a9-9522f5105b7f)
+
+Visualizar Conta Bancária:
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/6f3c3885-a223-424b-a330-0f2dda91b104)
+
+Excluir Conta Bancária:
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/d74b0bb1-f736-463c-8300-9679fbfc3845)
+
+
+
+
 
 
 
