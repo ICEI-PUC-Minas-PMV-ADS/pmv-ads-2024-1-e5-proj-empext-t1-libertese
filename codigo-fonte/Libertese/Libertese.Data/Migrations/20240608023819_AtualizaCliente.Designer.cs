@@ -13,15 +13,15 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Libertese.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240605001545_MudancaTipoSalario")]
-    partial class MudancaTipoSalario
+    [Migration("20240608023819_AtualizaCliente")]
+    partial class AtualizaCliente
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.4")
+                .HasAnnotation("ProductVersion", "8.0.5")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
@@ -106,9 +106,8 @@ namespace Libertese.Data.Migrations
                     b.Property<bool>("Remuneracao")
                         .HasColumnType("boolean");
 
-                    b.Property<string>("Salario")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<decimal>("Salario")
+                        .HasColumnType("numeric");
 
                     b.Property<string>("Sexo")
                         .IsRequired()
@@ -210,15 +209,6 @@ namespace Libertese.Data.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-<<<<<<< HEAD:codigo-fonte/Libertese/Libertese.Data/Migrations/ApplicationDbContextModelSnapshot.cs
-=======
-                    b.Property<bool>("Cnpj")
-                        .HasColumnType("boolean");
-
-                    b.Property<bool>("Cpf")
-                        .HasColumnType("boolean");
-
->>>>>>> d45740772360ab8822e974827101a5eb78a48b80:codigo-fonte/Libertese/Libertese.Data/Migrations/20240605001545_MudancaTipoSalario.Designer.cs
                     b.Property<string>("CpfCnpj")
                         .HasColumnType("text");
 
@@ -430,6 +420,9 @@ namespace Libertese.Data.Migrations
 
                     b.Property<int>("FormaPagamentoId")
                         .HasColumnType("integer");
+
+                    b.Property<string>("Nome")
+                        .HasColumnType("text");
 
                     b.Property<int>("Status")
                         .HasColumnType("integer");
