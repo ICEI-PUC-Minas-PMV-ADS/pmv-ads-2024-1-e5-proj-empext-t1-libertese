@@ -1077,7 +1077,7 @@ Para todas as funções abaixo apresentadas, não houve mudança do Plano de Tes
 
 A função Forma de Pagamentos se encontra em "Vendas" no menu lateral:
 
-![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/00529213-2ca7-406f-b2bc-0ada3273c7dc)
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/9409758c-7d9a-4639-858e-b0a84b644f8e)
 
 A tela exibe todas as opções cadastradas, para inserrir uma nova forma de pagamento, clicar em "Nova Forma de Pagamento":
 
