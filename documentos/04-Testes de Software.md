@@ -76,6 +76,14 @@ Foram implementados testes de unidade automatizados, que cobrem os principais m�
 
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/59944150/7d043237-ddfa-4d4f-8132-445d7b65340b)
 
+| Caso de Teste           | CRUD de Produtos                                                                                         |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|Requisitos Associados    | RF-007	Permitir criar,visualizar,editar e deletar Produtos.          | 
+|Objetivo do Teste        | Verificar se as ações estão sendo realizadas corretamente.                                                            | 
+|Passos                   | Acessar a tela de Produtos e clicar em "+ Produtos".                                                                       |
+|Critérios de Êxito       | Inserir as informações nos padrões corretos.  |
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/59944150/892388f9-0978-440c-9a07-569e5a61fc1f)
 
 
 
