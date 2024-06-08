@@ -22,9 +22,6 @@ namespace Libertese.Data.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropColumn(
-                name: "CpfCnpj",
-                table: "Clientes");
 
             migrationBuilder.AlterColumn<decimal>(
                 name: "Salario",
@@ -33,22 +30,6 @@ namespace Libertese.Data.Migrations
                 nullable: false,
                 oldClrType: typeof(string),
                 oldType: "text");
-
-            migrationBuilder.AlterColumn<string>(
-                name: "Cpf",
-                table: "Clientes",
-                type: "text",
-                nullable: true,
-                oldClrType: typeof(bool),
-                oldType: "boolean");
-
-            migrationBuilder.AlterColumn<string>(
-                name: "Cnpj",
-                table: "Clientes",
-                type: "text",
-                nullable: true,
-                oldClrType: typeof(bool),
-                oldType: "boolean");
         }
     }
 }
