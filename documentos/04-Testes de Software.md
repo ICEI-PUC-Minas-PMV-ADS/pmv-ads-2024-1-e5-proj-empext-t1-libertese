@@ -1105,7 +1105,7 @@ Função Contas Bancárias se encontra em "Vendas" no menu lateral:
 
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/ce518a98-013b-4259-932f-9c4b25019147)
 
-A tela exibe todas as contas cadastradas, para inserir uma nova Conta Bancária, clicar em "Nova COnta Bancária", preencher e confirmar:
+A tela exibe todas as contas cadastradas, para inserir uma nova Conta Bancária, clicar em "Nova Conta Bancária", preencher e salvar:
 
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/a4fc52b6-c0c8-4bd7-a8ee-b39a0a2f88cd)
 
