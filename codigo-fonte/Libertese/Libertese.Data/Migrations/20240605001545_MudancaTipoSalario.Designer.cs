@@ -210,15 +210,6 @@ namespace Libertese.Data.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-<<<<<<< HEAD:codigo-fonte/Libertese/Libertese.Data/Migrations/ApplicationDbContextModelSnapshot.cs
-=======
-                    b.Property<bool>("Cnpj")
-                        .HasColumnType("boolean");
-
-                    b.Property<bool>("Cpf")
-                        .HasColumnType("boolean");
-
->>>>>>> d45740772360ab8822e974827101a5eb78a48b80:codigo-fonte/Libertese/Libertese.Data/Migrations/20240605001545_MudancaTipoSalario.Designer.cs
                     b.Property<string>("CpfCnpj")
                         .HasColumnType("text");
 

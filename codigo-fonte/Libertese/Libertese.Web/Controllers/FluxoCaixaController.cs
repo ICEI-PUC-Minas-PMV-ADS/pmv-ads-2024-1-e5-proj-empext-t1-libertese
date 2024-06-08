@@ -89,10 +89,9 @@ namespace Libertese.Web.Controllers
                     Status = convertReceitaStatus(receita.Status),
                     FormaPagamento = listaFormaPagamento.Find(x => x.Id == receita.FormaPagamentoId)?.Descricao ?? "Sem Forma de Pagamento",
                     Descricao = receita.Descricao ?? "Sem observações",
-                    DataPrevisao = receita.DataPrevisao?.ToString("dd/MM/yyyy") ?? "Sem data",
-                    DataRecebimento = receita.DataRecebimento?.ToString("dd/MM/yyyy") ?? "Sem data",
-                    DataCompetencia = receita.DataCompetencia?.ToString("dd/MM/yyyy") ?? "Sem data",
-                    DataAtualizacao = receita.DataAtualizacao?.ToString("dd/MM/yyyy") ?? "Sem Data",
+                    DataPrevisao = receita.DataPrevisao?.ToString("dd/MM/yyyy") ?? "Sem Data",
+                    DataRecebimento = receita.DataRecebimento?.ToString("dd/MM/yyyy") ?? "Sem Data",
+                    DataCompetencia = receita.DataCompetencia?.ToString("dd/MM/yyyy") ?? "Sem Data",
                     Classificacao = listaClassificacoes.Find(x => x.Id == receita.ClassificacaoId)?.Descricao ?? "Sem Classificação",
                 };
 

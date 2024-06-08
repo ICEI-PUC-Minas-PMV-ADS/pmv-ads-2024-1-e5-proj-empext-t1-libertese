@@ -33,11 +33,11 @@
             var modelData = @Html.Raw(Json.Serialize(Model));
 
             for (let item of modelData) {
-                if (item.Status === "A Receber") {
-                    aReceber += item.Valor || 0;
+                if (item.status === "A Receber") {
+                    aReceber += item.valor || 0;
                 }
-                if (item.Status === "Recebido") {
-                    recebido += item.Valor || 0;
+                if (item.status === "Recebido") {
+                    recebido += item.valor || 0;
                 }
             }
             receitaTotal = aReceber + recebido;
@@ -138,6 +138,9 @@
                                                 </td>
                                                 <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
                                                     <div class="font-medium text-slate-800 dark:text-slate-100">@Html.DisplayFor(modelItem => item.DataPrevisao)</div>
+                                                </td>
+                                                <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
+                                                    <div class="font-medium text-slate-800 dark:text-slate-100">@Html.DisplayFor(modelItem => item.DataCompetencia)</div>
                                                 </td>
                                                 <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
                                                     <div class="font-medium text-slate-800 dark:text-slate-100">R$ @Html.DisplayFor(modelItem => item.Valor)</div>
