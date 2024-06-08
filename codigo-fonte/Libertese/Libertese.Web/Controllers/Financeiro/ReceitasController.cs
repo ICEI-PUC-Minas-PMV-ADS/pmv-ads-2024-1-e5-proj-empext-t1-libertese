@@ -40,6 +40,7 @@ namespace Libertese.Web.Controllers.Financeiro
                 Descricao = receita.Descricao ?? "Sem observações",
                 DataPrevisao = receita.DataPrevisao?.ToString("dd/MM/yyyy") ?? "Sem data",
                 DataRecebimento = receita.DataRecebimento?.ToString("dd/MM/yyyy") ?? "Sem data",
+                DataCompetencia = receita.DataCompetencia?.ToString("dd/MM/yyyy") ?? "Sem data",
                 DataAtualizacao = receita.DataAtualizacao?.ToString("dd/MM/yyyy") ?? "Sem Data",
                 Classificacao = listaClassificacoes.Find(x => x.Id == receita.ClassificacaoId)?.Descricao ?? "Sem Classificação",
 
@@ -62,7 +63,7 @@ namespace Libertese.Web.Controllers.Financeiro
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("FornecedorId,FormaPagamentoId,ClassificacaoId,Tipo,Descricao,Status,DataPrevisao,DataRecebimento,Descricao,Id,DataCriacao,DataAtualizacao,Valor")] Receita receita)
+        public async Task<IActionResult> Create([Bind("FornecedorId,FormaPagamentoId,ClassificacaoId,Tipo,Descricao,Status,DataPrevisao,DataRecebimento,DataCompetencia,Descricao,Id,DataCriacao,DataAtualizacao,Valor")] Receita receita)
         {
             if (ModelState.IsValid)
             {
@@ -102,7 +103,7 @@ namespace Libertese.Web.Controllers.Financeiro
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("FornecedorId,FormaPagamentoId,ClassificacaoId,Tipo,Descricao,Status,DataPrevisao,DataRecebimento,Id,DataCriacao,DataAtualizacao,Valor")] Receita receita)
+        public async Task<IActionResult> Edit(int id, [Bind("FornecedorId,FormaPagamentoId,ClassificacaoId,Tipo,Descricao,Status,DataPrevisao,DataRecebimento,DataCompetencia,Id,DataCriacao,DataAtualizacao,Valor")] Receita receita)
         {
             if (id != receita.Id)
             {

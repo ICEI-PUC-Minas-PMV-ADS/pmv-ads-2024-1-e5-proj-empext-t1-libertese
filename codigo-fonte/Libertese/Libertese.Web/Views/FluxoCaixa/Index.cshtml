@@ -5,101 +5,201 @@
     ViewData["Title"] = "Fluxo de Caixa";
     Layout = "~/Views/Shared/_LayoutProdutos.cshtml";
 }
+<style>
+    .table-bordered td, .table-bordered th {
+        padding: 1rem !important; /* Aumenta o padding das células para espaçamento maior */
+    }
 
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Financial Report</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="~/css/style-fluxo-caixa.css" rel="stylesheet" />
-    <style>
-        .highlight-red {
-            color: red;
-        }
+    .table-bordered tr {
+        margin-bottom: 1rem; /* Adiciona espaçamento entre as linhas */
+    }
 
-        .highlight-green {
-            color: green;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <div class="py-4">
-                    <h1 class="text-2xl md:text-3xl text-slate-800 dark:text-slate-100 font-bold">Fluxo de Caixa</h1>
+    .container {
+        max-width: 2000px !important;
+    }
+</style>
+<body class="font-inter antialiased bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-400">
+    <div class="flex min-h-[100dvh] overflow-hidden">
+        <div class="relative flex flex-col flex-1 overflow-y-auto overflow-x-hidden">
+            <main class="grow">
+                <div class="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
+                    <div class="sm:flex sm:justify-between sm:items-center mb-5">
+                        <div class="mb-4 sm:mb-0">
+                            <h1 class="text-2xl md:text-3xl text-slate-800 dark:text-slate-100 font-bold">Fluxo de Caixa</h1>
+                        </div>
+                    </div>
+
+                    <div class="container">
+                        <!-- Select para escolher o mês -->
+                        <div class="row justify-content-center mb-4">
+                            <div class="col-auto">
+                                <form method="get" action="/FluxoCaixa/Index" class="d-flex align-items-end">
+                                    <label for="periodoInicio" class="mr-2">Período de Início:</label>
+                                    <input type="date" id="periodoInicio" name="periodoInicio" class="form-input pl-6 bg-white dark:bg-slate-800" value="@Model.PeriodoInicio?.ToString("yyyy-MM-dd")" />
+
+                                    <label for="periodoFim" class="mr-2">Período de Fim:</label>
+                                    <input type="date" id="periodoFim" name="periodoFim" class="form-input pl-6 bg-white dark:bg-slate-800" value="@Model.PeriodoFim?.ToString("yyyy-MM-dd")" />
+
+                                    <button type="submit" class="inline-flex items-center justify-center bg-orange-800 hover:bg-orange-800 text-white px-4 py-2 rounded" style="width: 200px; height: 40px;">
+                                        Filtrar
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                        <br />
+                        <div style="justify-content: center;" class="sm:flex sm:items-center mb-5">
+                            <div class="mb-4 sm:mb-0">
+                                <h3 class="text-2xl md:text-3xl text-slate-800 dark:text-slate-100 font-bold">Entradas</h3>
+                            </div>
+                        </div>
+                        @{
+                            var categoriasReceitas = Model.CategoriasReceitas;
+                        }
+
+                        @if (categoriasReceitas != null && categoriasReceitas.Any())
+                        {
+                            <div class="row justify-content-center">
+                                <div class="col-auto">
+                                    <table class="table table-bordered text-center">
+                                        <thead class="thead-light">
+                                            <tr>
+                                                <th></th>
+                                                @for (DateTime date = Model.PeriodoInicio.Value; date <= Model.PeriodoFim.Value; date = date.AddMonths(1))
+                                                {
+                                                    <th class="px-4">@date.ToString("MMMM/yyyy")</th>
+                                                }
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var categoria in categoriasReceitas) // Itera sobre as categorias de despesas
+                                            {
+                                                <tr>
+                                                    <td>@categoria</td>
+                                                    @for (DateTime date = Model.PeriodoInicio.Value; date <= Model.PeriodoFim.Value; date = date.AddMonths(1))
+                                                    {
+                                                        // Filtra as receitas apenas para a categoria e o mês atual no loop
+                                                        var receitasMesCategoria = Model.Receitas.Where(r => r.DataCompetencia != "Sem Data" &&
+                                                        DateTime.ParseExact(r.DataCompetencia, "dd/MM/yyyy", CultureInfo.InvariantCulture).Month == date.Month &&
+                                                        DateTime.ParseExact(r.DataCompetencia, "dd/MM/yyyy", CultureInfo.InvariantCulture).Year == date.Year &&
+                                                        r.Classificacao == categoria);
+                                                        <td class="px-4">R$ @(receitasMesCategoria.Any() ? receitasMesCategoria.Sum(r => r.Valor) : 0.00)</td>
+                                                    }
+                                                </tr>
+                                            }
+                                            <tr>
+                                                <td><strong>Total de entradas</strong></td>
+                                                @for (DateTime date = Model.PeriodoInicio.Value; date <= Model.PeriodoFim.Value; date = date.AddMonths(1))
+                                                {
+                                                    // Filtra todas as receitas apenas para o mês atual no loop
+                                                    var totalMesEntradas = Model.Receitas.Where(r => r.DataCompetencia != "Sem Data" &&
+                                                    DateTime.ParseExact(r.DataCompetencia, "dd/MM/yyyy", CultureInfo.InvariantCulture).Month == date.Month &&
+                                                    DateTime.ParseExact(r.DataCompetencia, "dd/MM/yyyy", CultureInfo.InvariantCulture).Year == date.Year)
+                                                    .Sum(r => r.Valor);
+                                                    <td class="px-4"><strong>R$ @totalMesEntradas</strong></td>
+                                                }
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <p class="text-center">Não há dados de entradas para exibir.</p>
+                        }
+
+                    </div>
+                    <br />
+                    <div class="container">
+                        <!-- Select para escolher o mês -->
+
+                        <div style="justify-content: center;" class="sm:flex sm:items-center mb-5">
+                            <div class="mb-4 sm:mb-0">
+                                <h3 class="text-2xl md:text-3xl text-slate-800 dark:text-slate-100 font-bold">Saídas</h3>
+                            </div>
+                        </div>
+
+                        @if (Model.CategoriasDespesas != null && Model.CategoriasDespesas.Any())
+                        {
+                            <div class="row justify-content-center">
+                                <div class="col-auto">
+                                    <table class="table table-bordered text-center">
+                                        <thead class="thead-light">
+                                            <tr>
+                                                <th></th>
+                                                @for (DateTime date = Model.PeriodoInicio.Value; date <= Model.PeriodoFim.Value; date = date.AddMonths(1))
+                                                {
+                                                    <th class="px-4">@date.ToString("MMMM/yyyy")</th>
+                                                }
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var categoria in Model.CategoriasDespesas) // Itera sobre as categorias de despesas
+                                            {
+                                                <tr>
+                                                    <td>@categoria</td>
+                                                    @for (DateTime date = Model.PeriodoInicio.Value; date <= Model.PeriodoFim.Value; date = date.AddMonths(1))
+                                                    {
+                                                        // Filtra as despesas apenas para a categoria e o mês atual no loop
+                                                        var despesasMesCategoria = Model.Despesas.Where(r => r.DataCompetencia != "Sem Data" &&
+                                                        DateTime.ParseExact(r.DataCompetencia, "dd/MM/yyyy", CultureInfo.InvariantCulture).Month == date.Month &&
+                                                        DateTime.ParseExact(r.DataCompetencia, "dd/MM/yyyy", CultureInfo.InvariantCulture).Year == date.Year &&
+                                                        r.Classificacao == categoria);
+                                                        <td class="px-4">R$ @(despesasMesCategoria.Any() ? despesasMesCategoria.Sum(r => r.Valor) : 0.00)</td>
+                                                    }
+                                                </tr>
+                                            }
+                                            <tr>
+                                                <td><strong>Total de saídas</strong></td>
+                                                @for (DateTime date = Model.PeriodoInicio.Value; date <= Model.PeriodoFim.Value; date = date.AddMonths(1))
+                                                {
+                                                    // Filtra todas as despesas apenas para o mês atual no loop
+                                                    var totalMesSaidas = Model.Despesas.Where(r => r.DataCompetencia != "Sem Data" &&
+                                                    DateTime.ParseExact(r.DataCompetencia, "dd/MM/yyyy", CultureInfo.InvariantCulture).Month == date.Month &&
+                                                    DateTime.ParseExact(r.DataCompetencia, "dd/MM/yyyy", CultureInfo.InvariantCulture).Year == date.Year)
+                                                    .Sum(r => r.Valor);
+                                                    <td class="px-4"><strong>R$ @totalMesSaidas</strong></td>
+                                                }
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Saldo Total</strong></td>
+                                                @for (DateTime date = Model.PeriodoInicio.Value; date <= Model.PeriodoFim.Value; date = date.AddMonths(1))
+                                                {
+                                                    // Calcular o saldo total (entradas - saídas) para o mês atual no loop
+                                                    var totalMesEntradas = Model.Receitas.Where(r => r.DataCompetencia != "Sem Data" &&
+                                                    DateTime.ParseExact(r.DataCompetencia, "dd/MM/yyyy", CultureInfo.InvariantCulture).Month == date.Month &&
+                                                    DateTime.ParseExact(r.DataCompetencia, "dd/MM/yyyy", CultureInfo.InvariantCulture).Year == date.Year)
+                                                    .Sum(r => r.Valor);
+
+                                                    var totalMesSaidas = Model.Despesas.Where(r => r.DataCompetencia != "Sem Data" &&
+                                                    DateTime.ParseExact(r.DataCompetencia, "dd/MM/yyyy", CultureInfo.InvariantCulture).Month == date.Month &&
+                                                    DateTime.ParseExact(r.DataCompetencia, "dd/MM/yyyy", CultureInfo.InvariantCulture).Year == date.Year)
+                                                    .Sum(r => r.Valor);
+
+                                                    var saldoTotal = totalMesEntradas - totalMesSaidas;
+                                                    <td class="px-4">
+                                                        <strong>
+                                                            <span style="@(saldoTotal >= 0 ? "color: green;" : "color: red;")">
+                                                                R$ @saldoTotal
+                                                            </span>
+                                                        </strong>
+                                                    </td>
+
+                                                }
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <p class="text-center">Não há dados de saídas para exibir.</p>
+                        }
+
+                    </div>
                 </div>
-            </div>
+            </main>
         </div>
-        <!-- Select para escolher o mês -->
-        <div class="row">
-            <div class="col">
-                <form method="get" action="/FluxoCaixa/Index">
-                    <label for="periodoInicio">Período de Início:</label>
-                    <input type="date" id="periodoInicio" name="periodoInicio" class="form-control" value="@Model.PeriodoInicio?.ToString("yyyy-MM-dd")" />
-
-                    <label for="periodoFim">Período de Fim:</label>
-                    <input type="date" id="periodoFim" name="periodoFim" class="form-control" value="@Model.PeriodoFim?.ToString("yyyy-MM-dd")" />
-
-                    <button type="submit" class="btn btn-primary mt-2">Filtrar</button>
-                </form>
-            </div>
-        </div>
-
-        @if (Model.CategoriasDespesas != null && Model.CategoriasDespesas.Any())
-        {
-            <table class="table table-bordered">
-                <thead class="thead-light">
-                    <tr>
-                        <th>Saídas</th>
-                        @for (DateTime date = Model.PeriodoInicio.Value; date <= Model.PeriodoFim.Value; date = date.AddMonths(1))
-                        {
-                            <th>@date.ToString("MMMM/yyyy")</th>
-                        }
-                    </tr>
-                </thead>
-                <tbody>
-
-                    @foreach (var categoria in Model.CategoriasDespesas) // Itera sobre as categorias de despesas
-                    {
-                        <tr>
-                            <td>@categoria</td>
-                            @for (DateTime date = Model.PeriodoInicio.Value; date <= Model.PeriodoFim.Value; date = date.AddMonths(1))
-                            {
-                                // Filtra as despesas apenas para a categoria e o mês atual no loop
-                                var receitasMesCategoria = Model.Despesas.Where(r => r.DataCompetencia != "Sem Data" &&
-                                DateTime.ParseExact(r.DataCompetencia, "dd/MM/yyyy", CultureInfo.InvariantCulture).Month == date.Month &&
-                                DateTime.ParseExact(r.DataCompetencia, "dd/MM/yyyy", CultureInfo.InvariantCulture).Year == date.Year &&
-                                r.Classificacao == categoria);
-                                <td>R$ @(receitasMesCategoria.Any() ? receitasMesCategoria.Sum(r => r.Valor) : 0.00)</td>
-                            }
-                        </tr>
-                    }
-                    <tr>
-                        <td><strong>Total de saídas</strong></td>
-                        @for (DateTime date = Model.PeriodoInicio.Value; date <= Model.PeriodoFim.Value; date = date.AddMonths(1))
-                        {
-                            // Filtra todas as despesas apenas para o mês atual no loop
-                            var totalMes = Model.Despesas.Where(r => r.DataCompetencia != "Sem Data" &&
-                            DateTime.ParseExact(r.DataCompetencia, "dd/MM/yyyy", CultureInfo.InvariantCulture).Month == date.Month &&
-                            DateTime.ParseExact(r.DataCompetencia, "dd/MM/yyyy", CultureInfo.InvariantCulture).Year == date.Year)
-                            .Sum(r => r.Valor);
-                            <td><strong>R$ @totalMes</strong></td>
-                        }
-                    </tr>
-                </tbody>
-            </table>
-        }
-        else
-        {
-            <p>Não há dados de saídas para exibir.</p>
-        }
-
     </div>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
-</html>

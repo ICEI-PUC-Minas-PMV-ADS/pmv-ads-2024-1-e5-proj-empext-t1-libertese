@@ -118,6 +118,9 @@
                                             <th class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
                                                 <div class="font-semibold text-left">Data Recebimento</div>
                                             </th>
+                                            <th class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
+                                                <div class="font-semibold text-left">Data Competencia</div>
+                                            </th>
                                             <th class="px-2 first\:pl-5 last\:pr-5 py-3 whitespace-nowrap">
                                                 <div class="font-semibold text-left">Valor</div>
                                             </th>
@@ -152,6 +155,9 @@
                                                 </td>
                                                 <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
                                                     <div class="font-medium text-slate-800 dark:text-slate-100">@Html.DisplayFor(modelItem => item.DataRecebimento)</div>
+                                                </td>
+                                                <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
+                                                    <div class="font-medium text-slate-800 dark:text-slate-100">@Html.DisplayFor(modelItem => item.DataCompetencia)</div>
                                                 </td>
                                                 <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
                                                     <div class="font-medium text-slate-800 dark:text-slate-100">R$ @Html.DisplayFor(modelItem => item.Valor)</div>
@@ -220,6 +226,7 @@
                                                                                 <p><strong>Status: </strong> @Html.DisplayFor(modelItem => item.Status)</p>
                                                                                 <p><strong>Data previsão: </strong> @Html.DisplayFor(modelItem => item.DataPrevisao)</p>
                                                                                 <p><strong>Data recebimento: </strong> @Html.DisplayFor(modelItem => item.DataRecebimento)</p>
+                                                                                <p><strong>Data competencia: </strong> @Html.DisplayFor(modelItem => item.DataCompetencia)</p>
                                                                                 <p><strong>Atualização: </strong> @Html.DisplayFor(modelItem => item.DataAtualizacao)</p>
                                                                                 <p><strong>Observações: </strong> @Html.DisplayFor(modelItem => item.Descricao)</p>
                                                                             </div>

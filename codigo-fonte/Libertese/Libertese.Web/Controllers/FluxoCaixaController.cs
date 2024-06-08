@@ -62,7 +62,7 @@ namespace Libertese.Web.Controllers
                 {
                     Id = despesa.Id,
                     Valor = despesa.Valor,
-                    Status = convertDespesaStatusToNome(despesa.Status),
+                    Status = convertDespesaStatus(despesa.Status),
                     FormaPagamentoName = listaFormaPagamento.Find(x => x.Id == despesa.FormaPagamentoId)?.Descricao ?? "Sem Forma de Pagamento",
                     Observacao = despesa.Observacao ?? "Sem Observações",
                     DataVencimento = despesa.DataVencimento?.ToString("dd/MM/yyyy") ?? "Sem Data",
@@ -77,10 +77,32 @@ namespace Libertese.Web.Controllers
                 despesasDTO.Add(despesaDTO);
             }
 
+            var listaReceita = _context.Receitas.ToList();
+            var receitasDTO = new List<ReceitaDTO>();
+
+            foreach (var receita in listaReceita)
+            {
+                var lista = new ReceitaDTO
+                {
+                    Id = receita.Id,
+                    Valor = receita.Valor,
+                    Status = convertReceitaStatus(receita.Status),
+                    FormaPagamento = listaFormaPagamento.Find(x => x.Id == receita.FormaPagamentoId)?.Descricao ?? "Sem Forma de Pagamento",
+                    Descricao = receita.Descricao ?? "Sem observações",
+                    DataPrevisao = receita.DataPrevisao?.ToString("dd/MM/yyyy") ?? "Sem data",
+                    DataRecebimento = receita.DataRecebimento?.ToString("dd/MM/yyyy") ?? "Sem data",
+                    DataCompetencia = receita.DataCompetencia?.ToString("dd/MM/yyyy") ?? "Sem data",
+                    DataAtualizacao = receita.DataAtualizacao?.ToString("dd/MM/yyyy") ?? "Sem Data",
+                    Classificacao = listaClassificacoes.Find(x => x.Id == receita.ClassificacaoId)?.Descricao ?? "Sem Classificação",
+                };
+
+                receitasDTO.Add(lista);
+            }
+
             //var despesasNoPeriodo = despesasDTO.Where(d => d.DataCriacao >= periodoInicio && d.DataCriacao <= periodoFim);
 
             // Selecionar as classificações distintas das despesas filtradas
-            
+
 
             if (!periodoInicio.HasValue || !periodoFim.HasValue)
             {
@@ -93,9 +115,17 @@ namespace Libertese.Web.Controllers
                                                data <= periodoFim)
                                     .ToList();
 
+            var categoriasDespesas = despesasNoPeriodo.Select(d => d.Classificacao).Distinct().ToList();
+
+
+            var receitasNoPeriodo = receitasDTO.Where(d => DateTime.TryParseExact(d.DataCompetencia, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime data) &&
+                                               data >= periodoInicio &&
+                                               data <= periodoFim)
+                                    .ToList();
+
 
             // Selecionar as classificações distintas das despesas filtradas
-            var categoriasDespesas = despesasNoPeriodo.Select(d => d.Classificacao).Distinct().ToList();
+            var categoriasReceitas = receitasNoPeriodo.Select(d => d.Classificacao).Distinct().ToList();
 
             // Filtrar despesas pelo período, se os parâmetros de período forem fornecidos
             var filteredDespesas = despesasDTO;
@@ -111,15 +141,17 @@ namespace Libertese.Web.Controllers
             var viewModel = new FluxoCaixaViewModel
             {
                 Despesas = despesasDTO,
+                Receitas = receitasDTO,
                 PeriodoInicio = periodoInicio,
                 PeriodoFim = periodoFim,
-                CategoriasDespesas = categoriasDespesas.ToList()
+                CategoriasDespesas = categoriasDespesas.ToList(),
+                CategoriasReceitas = categoriasReceitas.ToList()
             };
 
             return View(viewModel);
         }
 
-        private string convertDespesaStatusToNome(DespesaStatus despesaStatus)
+        private string convertDespesaStatus(DespesaStatus despesaStatus)
         {
             switch (despesaStatus)
             {
@@ -129,6 +161,19 @@ namespace Libertese.Web.Controllers
                     return DespesaStatusNomes.APagar;
                 case DespesaStatus.Agendado:
                     return DespesaStatusNomes.Agendado;
+                default:
+                    return "Undefinded";
+            }
+        }
+
+        private string convertReceitaStatus(ReceitaStatus ReceitaStatus)
+        {
+            switch (ReceitaStatus)
+            {
+                case ReceitaStatus.Recebido:
+                    return ReceitaStatusNomes.Recebido;
+                case ReceitaStatus.AReceber:
+                    return ReceitaStatusNomes.AReceber;
                 default:
                     return "Undefinded";
             }
