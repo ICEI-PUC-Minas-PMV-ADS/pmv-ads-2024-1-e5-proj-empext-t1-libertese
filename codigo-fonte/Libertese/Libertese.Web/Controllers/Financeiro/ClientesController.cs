@@ -24,9 +24,18 @@ namespace Libertese.Web.Controllers.Financeiro
         }
 
         // GET: Clientes
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Create()
         {
-            return View(await _context.Clientes.ToListAsync());
+            List<Cliente> listaCliente = await _context.Clientes.ToListAsync();
+            List<ClienteDTO> listaClienteDTO = listaCliente.Select(cliente => new ClienteDTO
+            {
+                Nome = cliente.Nome,
+                CpfCnpj = cliente.CpfCnpj,
+                Telefone  = cliente.Telefone,
+                Email = cliente.Email,
+
+            }).ToList();
+            return View(listaClienteDTO);
         }
 
         // GET: Clientes/Details/5
@@ -47,18 +56,13 @@ namespace Libertese.Web.Controllers.Financeiro
             return View(cliente);
         }
 
-        // GET: Clientes/Create
-        public IActionResult Create()
-        {
-            return View();
-        }
 
         // POST: Clientes/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Nome,Cpf,Cnpj,Telefone,Email,Id,DataCriacao,DataAtualizacao")] Cliente cliente)
+        public async Task<IActionResult> Create([Bind("Nome,CpfCnpj,Telefone,Email,Id,DataCriacao,DataAtualizacao")] Cliente cliente)
         {
             if (ModelState.IsValid)
             {
@@ -90,7 +94,7 @@ namespace Libertese.Web.Controllers.Financeiro
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Nome,Cpf,Cnpj,Telefone,Email,Id,DataCriacao,DataAtualizacao")] Cliente cliente)
+        public async Task<IActionResult> Edit(int id, [Bind("Nome,CpfCnpj,Telefone,Email,Id,DataCriacao,DataAtualizacao")] Cliente cliente)
         {
             if (id != cliente.Id)
             {

@@ -72,17 +72,23 @@
                         </select>
                         <span asp-validation-for="ClassificacaoId" class="text-danger"></span>
                     </div>
-
+                    <div class="flex flex-row w-full justify-between mb-6">
                     <div class="flex flex-col mb-6">
                         <label asp-for="DataPrevisao" class="control-label">Data Previsão *</label>
                         <input type="datetime-local" asp-for="DataPrevisao" class="form-input pl-6 bg-white dark:bg-slate-800" />
                         <span asp-validation-for="DataPrevisao" class="text-danger"></span>
                     </div>
-
+                    </div>
                     <div class="flex flex-col mb-6">
                         <label asp-for="DataRecebimento" class="control-label">Data Recebimento *</label>
                         <input type="datetime-local" asp-for="DataRecebimento" class="form-input pl-6 bg-white dark:bg-slate-800" />
                         <span asp-validation-for="DataRecebimento" class="text-danger"></span>
+                    </div>
+
+                    <div class="flex flex-col mb-6">
+                        <label asp-for="DataCompetencia" class="control-label">Data Competencia *</label>
+                        <input type="datetime-local" asp-for="DataCompetencia" class="form-input pl-6 bg-white dark:bg-slate-800" />
+                        <span asp-validation-for="DataCompetencia" class="text-danger"></span>
                     </div>
 
                     <div class="flex flex-row w-full justify-between mb-6">

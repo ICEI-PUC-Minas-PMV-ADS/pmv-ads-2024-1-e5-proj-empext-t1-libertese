@@ -1,0 +1,76 @@
+﻿@model Libertese.Domain.Entities.Financeiro.ClienteDTO
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Libertese</title>
+    <link rel="stylesheet" href="~/../sidebar/assets/css/styles.css" asp-append-version="true" />
+    <link href="../scaffold/css/vendors/flatpickr.min.css" rel="stylesheet">
+    <link href="../scaffold/style.css" rel="stylesheet">
+    <style>
+        svg:hover {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <form asp-controller="Clientes" asp-action="Create" method="post" class="w-full sm:flex flex-col">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="flex flex-row w-full justify-between mb-6">
+            <div class="form-nome">
+                <label asp-for="Nome" class="control-label">Nome do cliente </label>
+                <input asp-for="Nome" class="form-control input-nome" placeholder="Digite o nome" />
+                <span asp-validation-for="Nome" class="text-danger"></span>
+            </div>
+            </div>
+        <div class="flex flex-row w-full justify-between mb-6">
+            <div class="form-cpfcnpj">
+                <label asp-for="CpfCnpj" class="control-label">CPF/CNPJ </label>
+            <input asp-for="CpfCnpj" class="form-control input-cpfcnpj" placeholder="Digite apenas números">
+                <span asp-validation-for="CpfCnpj" class="text-danger"></span>
+            </div>
+          </div>
+        <div class="flex flex-row w-full justify-between mb-6">
+            <div class="form-telefone">
+                <label asp-for="Telefone" class="control-label">Telefone </label>
+            <input asp-for="Telefone" class="form-control input-telefone" placeholder="Digite apenas números">
+                <span asp-validation-for="Telefone" class="text-danger"></span>
+            </div>
+            </div>
+        <div class="flex flex-row w-full justify-between mb-6">
+            <div class="form-email">
+                <label asp-for="Email" class="control-label">Email</label>
+            <input asp-for="Email" class="form-control input-email" placeholder="Ex.: exemplo@email.com">
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            </div>
+                <button type="submit">
+                    <svg class="w-6 h-6 fill-current shrink-0" style="opacity: 1; transition: opacity 0.5s;" onmouseover="hoverEffect(this, true);" onmouseout="hoverEffect(this, false);" onclick="pulseEffect(this);">
+                        <path d="M15 7H9V1c0-.6-.4-1-1-1S7 .4 7 1v6H1c-.6 0-1 .4-1 1s.4 1 1 1h6v6c0 .6.4 1 1 1s1-.4 1-1V9h6c.6 0 1-.4 1-1s-.4-1-1-1z" />
+                    </svg>
+                </button>
+            </div>
+
+    </form>
+</body>
+</html>
+
+<script>
+    function hoverEffect(svg, isHovering) {
+        if (isHovering) {
+            svg.style.opacity = '0.5';
+        } else {
+            svg.style.opacity = '1';
+        }
+    }
+
+    function pulseEffect(svg) {
+        svg.style.opacity = '0.8';
+        setTimeout(() => {
+            svg.style.opacity = '1';
+        }, 500);
+    }
+</script>

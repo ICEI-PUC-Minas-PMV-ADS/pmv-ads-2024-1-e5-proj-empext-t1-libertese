@@ -11,6 +11,7 @@ using Libertese.Domain.Enums;
 using System.Collections;
 using Microsoft.AspNetCore.Authorization;
 using Libertese.ViewModels;
+using Libertese.Web.ViewModels;
 
 namespace Libertese.Web.Controllers.Financeiro
 {
@@ -40,7 +41,7 @@ namespace Libertese.Web.Controllers.Financeiro
                 Descricao = receita.Descricao ?? "Sem observações",
                 DataPrevisao = receita.DataPrevisao?.ToString("dd/MM/yyyy") ?? "Sem data",
                 DataRecebimento = receita.DataRecebimento?.ToString("dd/MM/yyyy") ?? "Sem data",
-                DataAtualizacao = receita.DataAtualizacao?.ToString("dd/MM/yyyy") ?? "Sem Data",
+                DataCompetencia = receita.DataCompetencia?.ToString("dd/MM/yyyy") ?? "Sem Data",
                 Classificacao = listaClassificacoes.Find(x => x.Id == receita.ClassificacaoId)?.Descricao ?? "Sem Classificação",
 
             }).ToList();
@@ -58,8 +59,6 @@ namespace Libertese.Web.Controllers.Financeiro
         }
 
         // POST: Receita/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("FornecedorId,FormaPagamentoId,ClassificacaoId,Tipo,Descricao,Status,DataPrevisao,DataRecebimento,Descricao,Id,DataCriacao,DataAtualizacao,Valor")] Receita receita)
@@ -97,9 +96,7 @@ namespace Libertese.Web.Controllers.Financeiro
             return View(receita);
         }
 
-        // POST: Receita/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: Receita
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("FornecedorId,FormaPagamentoId,ClassificacaoId,Tipo,Descricao,Status,DataPrevisao,DataRecebimento,Id,DataCriacao,DataAtualizacao,Valor")] Receita receita)
@@ -151,7 +148,28 @@ namespace Libertese.Web.Controllers.Financeiro
             return RedirectToAction(nameof(Index));
         }
 
+        [HttpGet, ActionName("SearchPrecificacaoByText")]
+        public JsonResult SearchPrecificacaoByText([FromQuery(Name = "searchString")] string searchString, [FromQuery(Name = "receitaCompetencia")] DateTime receitaCompetencia)
+        {
 
+            var year = receitaCompetencia.Year;
+            var month = receitaCompetencia.Month;
+
+
+            var result = _context.Receitas
+                  .Where(x => EF.Functions.Like(x.Descricao.ToLower(), "%" + searchString.ToLower() + "%"))
+                  .Where(x => x.DataCompetencia.Value.Year == year && x.DataCompetencia.Value.Month == month)
+                  .Select(x => new PrecificacaoReceitaViewModel
+                  {
+                      Id = x.Id,
+                      Nome = x.Descricao,
+                      Valor = x.Valor
+                  })
+                  .Take(10)
+                  .ToList();
+            return Json(result);
+
+        }
 
         private bool ReceitaExists(int id)
         {
