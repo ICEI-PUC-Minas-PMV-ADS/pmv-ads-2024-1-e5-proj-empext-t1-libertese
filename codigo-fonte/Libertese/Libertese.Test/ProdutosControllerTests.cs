@@ -7,6 +7,7 @@ using Libertese.Domain.Enums;
 using Libertese.Test.Context;
 using ViewResult = Microsoft.AspNetCore.Mvc.ViewResult;
 using Libertese.ViewModels;
+using Microsoft.AspNetCore.Mvc;
 
 
 namespace Libertese.Test
@@ -29,30 +30,52 @@ namespace Libertese.Test
             _controller = new ProdutosController(_context);
         }
 
-       
+
         [Test]
         public async Task TestCriarProduto()
         {
-            //// estudando triple A
+            // Arrange: configurações necessárias para o teste rodar.
+            var now = DateTime.Now;
+            var produto = new ProdutoCreateViewModel
+            {
+                Nome = "Bolsa",
+                TempoProducao = 2,
+                Margem = 2,
+                CategoriaId = 2,
+                DataAtualizacao = now,
+                DataCriacao = now,
+                MateriaisJson = "[]" 
+            };
 
-            /// A - Arrange: configurações necessárias para o teste rodar.
-            /// Inicializar variaveis , criar mocks ou spies.
-            var produto = new ProdutoCreateViewModel { Nome = "Bolsa", TempoProducao = 5, CategoriaId = 4 };
-            /// A - Act: chama-se o metodo ou função para provar o teste.
-            await _controller.Create(produto);
-            var produtoCriado = _context.Produtos.FirstOrDefault();
+            // Act: chama-se o método ou função para provar o teste.
+            var result = await _controller.Create(produto);
 
+            // Verifica se houve erro de ModelState e loga os erros
+            if (result is ViewResult viewResult && !viewResult.ViewData.ModelState.IsValid)
+            {
+                var errors = viewResult.ViewData.ModelState.Values.SelectMany(v => v.Errors);
+                foreach (var error in errors)
+                {
+                    TestContext.WriteLine($"ModelState error: {error.ErrorMessage}");
+                }
+            }
 
-            /// A - Assert: onde verifica se a operação passou ou falhou.
-            Assert.IsNotNull(produtoCriado, "produto criado no banco de dados");
+            // Assert: verifica se a operação passou ou falhou.
+            Assert.IsInstanceOf<RedirectToActionResult>(result, "A criação do produto não redirecionou corretamente.");
+
+            // Verifica se o produto foi realmente criado no banco de dados.
+            var produtoCriado = _context.Produtos.FirstOrDefault(p => p.Nome == "Bolsa");
+            Assert.IsNotNull(produtoCriado, "Produto não foi criado no banco de dados.");
             Assert.That(produto.Nome, Is.EqualTo(produtoCriado.Nome));
             Assert.That(produto.TempoProducao, Is.EqualTo(produtoCriado.TempoProducao));
+            Assert.That(produto.Margem, Is.EqualTo(produtoCriado.Margem));
             Assert.That(produto.CategoriaId, Is.EqualTo(produtoCriado.CategoriaId));
-           
 
-
-
+            // Verificação de datas com intervalo aceitável
+            Assert.That(produto.DataAtualizacao, Is.EqualTo(produtoCriado.DataAtualizacao).Within(TimeSpan.FromSeconds(1)));
+            Assert.That(produto.DataCriacao, Is.EqualTo(produtoCriado.DataCriacao).Within(TimeSpan.FromSeconds(1)));
         }
+
 
         [Test]
         public async Task TesteEditarProduto()
