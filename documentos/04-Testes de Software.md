@@ -1069,6 +1069,39 @@ Obs: Não é possível editar sem registrar o CNPJ.
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/59944150/32248dcc-1aa0-485a-ace6-9224b7439830)
 
 
+# Evidências de Testes de Software - Atualização de Layout CRUD Formas de Pagamento e Contas Bancárias 
+
+Para todas as funções abaixo apresentadas, não houve mudarça do Plano de Testes, somente o laytout das telas foram alterados.
+
+Função Forma de Pagamentos de encontra em "Vendas" no menu lateral:
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/00529213-2ca7-406f-b2bc-0ada3273c7dc)
+
+
+A tela exibe todas as opções cadastradas, para inserrir uma nova forma de pagamento, clicar em "Nova Forma de Pagamento":
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/a4ddaa0e-be82-4ffb-957c-f6b211731aec)
+
+As opções de edição, visualização e exclusão são mostradas abaixo:
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/49264a44-04a0-477c-82f3-966c52583cf5)
+
+Editar Forma de Pagamento:
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/18f9c25a-fe4b-4693-93a4-e978fb4ffc9b)
+
+Visualizar Forma de Pagamento:
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/30b31d4f-2a3d-4315-a170-08524fe179af)
+
+Excluir Forma de Pagamento:
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/68f31528-b21e-466c-9e54-934d0d39ec09)
+
+
+
+
+
 
 
 
