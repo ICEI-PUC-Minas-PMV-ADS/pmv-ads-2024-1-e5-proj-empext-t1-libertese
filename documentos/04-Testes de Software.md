@@ -1128,7 +1128,15 @@ Excluir Conta Bancária:
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/d74b0bb1-f736-463c-8300-9679fbfc3845)
 
 
+# Evidências de Testes de Software - Página "Início" do sistema Libertese
 
+Na página de Início "Home", é exibida o logotipo da Libertese, e todas as funções do sistema de forma resumnida, conforme imagem abaixo:
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/b99e4453-11f0-4334-a91f-604da4bc09c2)
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/4928fbdb-3a9a-45d6-ae2b-8cc945100409)
+
+Lembrando que a exibição na Home, é somente um formato resumido para o gerenciamento do negócio, não é valido como uma documentação técnica do Sistema.
 
 
 
