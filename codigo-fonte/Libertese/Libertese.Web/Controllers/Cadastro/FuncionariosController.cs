@@ -57,7 +57,7 @@ namespace Libertese.Web.Controllers.Cadastro
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Nome,HorasDia,DiasMes,Cpf,Sexo,Email,Celular,Function,Pessoareclusa,Penitenciaria,CursoLibertese,Remuneracao,Salario,Id,DataCriacao,DataAtualizacao")] Funcionario funcionario)
+        public async Task<IActionResult> Create([Bind("Nome,HorasDia,DiasMes,Cpf,Sexo,Email,Celular,Function,Pessoareclusa,Pessoaegressa,Penitenciaria,CursoLibertese,Remuneracao,Salario,Id,DataCriacao,DataAtualizacao")] Funcionario funcionario)
         {
             if (ModelState.IsValid)
             {
@@ -89,7 +89,7 @@ namespace Libertese.Web.Controllers.Cadastro
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Nome,HorasDia,DiasMes,Cpf,Sexo,Email,Celular,Function,Pessoareclusa,Penitenciaria,CursoLibertese,Remuneracao,Salario,Id,DataCriacao,DataAtualizacao")] Funcionario funcionario)
+        public async Task<IActionResult> Edit(int id, [Bind("Nome,HorasDia,DiasMes,Cpf,Sexo,Email,Celular,Function,Pessoareclusa,Pessoaegressa,Penitenciaria,CursoLibertese,Remuneracao,Salario,Id,DataCriacao,DataAtualizacao")] Funcionario funcionario)
         {
             
             var model = await _context.Funcionarios.FirstOrDefaultAsync(m => m.Id == id);
@@ -111,6 +111,7 @@ namespace Libertese.Web.Controllers.Cadastro
                     model.Celular = funcionario.Celular;
                     model.Function = funcionario.Function;
                     model.Pessoareclusa = funcionario.Pessoareclusa;
+                    model.Pessoaegressa = funcionario.Pessoaegressa;
                     model.Penitenciaria = funcionario.Penitenciaria;
                     model.CursoLibertese = funcionario.CursoLibertese;
                     model.Salario = funcionario.Salario;

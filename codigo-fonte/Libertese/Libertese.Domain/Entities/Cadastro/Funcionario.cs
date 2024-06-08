@@ -14,7 +14,7 @@ namespace Libertese.Domain.Entities.Cadastro
 
         public required Boolean Remuneracao { get; set; }
 
-        public required decimal Salario { get; set; }
+        public required string Salario { get; set; }
 
         [Required(ErrorMessage = "O CPF é obrigatório.")]
         [RegularExpression(@"^\d{3}\.\d{3}\.\d{3}\-\d{2}$", ErrorMessage = "Por favor, insira um CPF válido no formato XXX.XXX.XXX-XX.")]
@@ -34,6 +34,8 @@ namespace Libertese.Domain.Entities.Cadastro
         public required Boolean CursoLibertese { get; set; }
 
         public required Boolean Pessoareclusa { get; set; }
+
+        public required Boolean Pessoaegressa {  get; set; }
 
 
     }

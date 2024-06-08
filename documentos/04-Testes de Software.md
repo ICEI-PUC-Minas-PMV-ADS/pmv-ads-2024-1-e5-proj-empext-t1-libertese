@@ -76,6 +76,14 @@ Foram implementados testes de unidade automatizados, que cobrem os principais m�
 
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/59944150/7d043237-ddfa-4d4f-8132-445d7b65340b)
 
+| Caso de Teste           | CRUD de Produtos                                                                                         |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|Requisitos Associados    | RF-007	Permitir criar,visualizar,editar e deletar Produtos.          | 
+|Objetivo do Teste        | Verificar se as ações estão sendo realizadas corretamente.                                                            | 
+|Passos                   | Acessar a tela de Produtos e clicar em "+ Produtos".                                                                       |
+|Critérios de Êxito       | Inserir as informações nos padrões corretos.  |
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/59944150/892388f9-0978-440c-9a07-569e5a61fc1f)
 
 
 
@@ -953,6 +961,115 @@ Garantir a funcionalidade, confiabilidade e segurança das telas de:
 |                     | 3. Confirmar a operação de cancelamento.                                                                   |
 | **Resultado Esperado** | A venda selecionada deve ser cancelada e na lista de vendas deverá constar status cancelado.               |
 |                     |                                                                                                            |
+
+# Plano de Testes de Software (Em pares)
+
+Teste da tela de Fornecedores | Feita por Vinicius de Souza Ponciano | Testes feitos por Thaís Gurgel
+
+
+## Objetivo
+
+Garantir a funcionalidade, confiabilidade e segurança das telas de: 
+- Implementar controle da inclusão, deleção e edição de fornecedores
+
+Os testes funcionais a serem realizados no aplicativo são descritos a seguir:  
+ 
+| Caso de Teste           | CT001 – Criar novo fornecedor                                                                                             |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|Pre Condições            | Estar na tela de Fornecedores       | 
+|Procedimento             | 1. No menu selecione a opção “Fornecedores”. |
+|                         | 2. Na tela Funcionários, clique no botão “Novo Fornecedor”. |
+|                         | 3. Na tela de cadastro preencher todas as informações necessárias. |
+|                         | 4. Clicar em “Confirmar”. |
+|                         | 5. Caso deseje retornar para a tela inicial, clique em "Voltar". |
+|Resultado Esperado       | O novo fornecedor deve ser cadastrado com sucesso.                                                                       |
+|Dados de Entrada         | Informações solicitadas no campo de cadastro.  |
+
+
+| Caso de Teste           | CT002 – Cadastrar novo fornecedor com os campos em branco                                                 |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|Pre Condições            | Estar na tela de Fornecedores      | 
+|Procedimento             | 1. No menu selecione a opção “Fornecedores”. |
+|                         | 2. Na tela Funcionários, clique no botão “Novo Fornecedores”. |
+|                         | 3. Na tela de cadastro preencher com informações vazias nos campos. |
+|                         | 4. Clicar em Confirmar. |
+|Resultado Esperado       | Devem ser exibidas mensagens de erro na tela indicando campos em branco ou dados inválidos.                                                                      |
+|Dados de Entrada         | Informações em branco ou dados inválidos.  |
+
+| Caso de Teste           | CT003 – Visualizar os fornecedor cadastrados                                              |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|Pre Condições            | Estar na tela de Fornecedores      | 
+|Procedimento             | 1. No menu selecione a opção “Fornecedores”. |
+|Resultado Esperado       | Devem ser exibidas mensagens de erro na tela todos os funcionários cadastrados no banco de dados.                                                                      |
+|Dados de Entrada         | Informações em branco ou dados inválidos.  |
+
+
+| Caso de Teste           | CT004 – Editar fornecedor                                                                                             |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|Pre Condições            | Estar na tela de Fornecedores      | 
+|Procedimento             | 1. No menu selecione a opção “Fornecedores”. |
+|                         | 2. Na tela Fornecedores, clique no ícone de caneta em um dos cards de fornecedor. |
+|                         | 3. Na tela de editar, preencher com as informações que deseja alterar no fornecedor. |
+|                         | 4. Clicar em Confirmar. |
+|Resultado Esperado       | Os dados devem ser alterados e aparecer na tela principal atualizados.                                                                      |
+|Dados de Entrada         | Informações solicitadas no campo de edição.  |
+
+
+| Caso de Teste           | CT005 – Editar fornecedor com campo em branco ou inválido                                                                                     |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|Pre Condições            | Estar na tela de Fornecedores      | 
+|Procedimento             | 1. No menu selecione a opção “Fornecedores”. |
+|                         | 2. Na tela Fornecedores, clique no ícone de caneta em um dos cards de fornecedor. |
+|                         | 3. Na tela de editar, preencher com as informações inválidas ou campos em branco. |
+|                         | 4. Clicar em Confirmar. |
+|Resultado Esperado       | Um erro deve aparecer na tela mostrando os campos vazios e/ou inválidos.                                                                      |
+|Dados de Entrada         | Informações em branco ou dados inválidos.  |
+
+
+| Caso de Teste           | CT008 – Excluir fornecedor cadastrado                                                                                    |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|Pre Condições            | Estar na tela de Fornecedores      | 
+|Procedimento             | 1. No menu selecione a opção “Fornecedores”. |
+|                         | 2. Na tela Funcionários, clique no ícone de lixeira em um dos cards de fornecedor. |
+|                         | 4. Clicar em Excluir. |
+|Resultado Esperado       | Excluir o fornecedor da tabela.                                                                      |
+|Dados de Entrada         | N/A |
+
+ 
+# Evidências de Testes de Software - Fornecedores
+
+### CT001 - Criar novo Fornecedor 
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/59944150/040bae9e-6198-4c77-bea3-92308e01d840)
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/59944150/06ca8a10-4750-4c3e-92f2-a66691e43168)
+
+### CT002 - Criar novo Fornecedor com campos em branco ou inválidos
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/59944150/8146b45e-5860-469d-93db-3508121e7074)
+
+### CT003 - Visualizar fornecedores cadastrados
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/59944150/7b2c340a-b412-4936-95e6-8abf333b27ab)
+
+### CT004 - Editar fornecedor
+Fornecedor editado: Sodine Papelaria (campos: nome e segunda opção telefone)
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/59944150/026f6c7e-926c-4e61-8add-257c2aec2844)
+
+### CT005 - Editar fornecedor com campo em branco ou inválido
+Obs: Não é possível editar sem registrar o CNPJ.
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/59944150/dba6d59f-7fde-4ee4-b509-50159e2f6552)
+
+### CT005 - Excluir fornecedor cadastrado
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/59944150/9fcfec68-e7e5-4225-8947-7092e405ac6d)
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/59944150/32248dcc-1aa0-485a-ace6-9224b7439830)
+
+
+
 
 
 

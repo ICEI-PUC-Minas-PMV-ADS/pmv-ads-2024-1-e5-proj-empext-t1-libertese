@@ -61,7 +61,7 @@ namespace Libertese.Web.Controllers.Financeiro
         // POST: Receita/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("FornecedorId,FormaPagamentoId,ClassificacaoId,Tipo,Descricao,Status,DataPrevisao,DataRecebimento,Descricao,Id,DataCriacao,DataAtualizacao,Valor")] Receita receita)
+        public async Task<IActionResult> Create([Bind("FornecedorId,FormaPagamentoId,ClassificacaoId,Tipo,Descricao,Status,DataPrevisao,DataRecebimento,DataCompetencia,Descricao,Id,DataCriacao,DataAtualizacao,Valor")] Receita receita)
         {
             if (ModelState.IsValid)
             {
@@ -99,7 +99,7 @@ namespace Libertese.Web.Controllers.Financeiro
         // POST: Receita
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("FornecedorId,FormaPagamentoId,ClassificacaoId,Tipo,Descricao,Status,DataPrevisao,DataRecebimento,Id,DataCriacao,DataAtualizacao,Valor")] Receita receita)
+        public async Task<IActionResult> Edit(int id, [Bind("FornecedorId,FormaPagamentoId,ClassificacaoId,Tipo,Descricao,Status,DataPrevisao,DataRecebimento,DataCompetencia,Id,DataCriacao,DataAtualizacao,Valor")] Receita receita)
         {
             if (id != receita.Id)
             {
