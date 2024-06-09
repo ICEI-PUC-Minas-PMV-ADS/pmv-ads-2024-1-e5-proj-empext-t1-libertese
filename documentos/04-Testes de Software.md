@@ -1185,5 +1185,5 @@ Os testes funcionais a serem realizados no aplicativo são descritos a seguir:
 |Procedimento             | 1. Na tela selecione um período para exibir o resultado do Fluxo. |
 |                         | 2. Clique no botão “Filtrar”. |
 |                         | 3. A tela deve retornar com os valores referentes aos períodos lançados. |
-|Resultado Esperado       | A tela deverá mostrar os valores somente que foram lançaodos, trazendo a soma total de acordo com a classificação já lançada, seja como Despesas ou como Vendas.                                                                      |
+|Resultado Esperado       | A tela deverá mostrar os valores somente que foram lançados, trazendo a soma total de acordo com a classificação já lançada, seja como Despesas ou como Vendas. O sistema retorna os valores dos últimos 6 meses de forma separada, e já trazendo a soma total de cada classificação lançada.                                                                     |
 |Dados de Entrada         | Período de Início e período de Fim, informado pelo usuário.  |
