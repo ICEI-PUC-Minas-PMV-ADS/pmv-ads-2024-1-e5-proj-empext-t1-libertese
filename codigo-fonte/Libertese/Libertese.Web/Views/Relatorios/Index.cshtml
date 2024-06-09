@@ -5,78 +5,68 @@
 
 @model Libertese.Web.ViewModels.DatasCriacaoViewModel
 
-
 <body class="font-inter antialiased bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-400">
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="mt-6">
-        <input type="text" name="pesquisa" id="pesquisa" placeholder="🔍︎   Procure o que deseja" class="form-input rounded-md shadow-sm w-full">
-    </div>
-    <div class="mt-8">
-        <h1 class="text-2xl font-bold text-left">Relatórios</h1>
-    </div>
-
-    <div class="mt-4">
-        <h5 class="text-md text-gray-600 dark:text-gray-300 text-left">
-            Selecione os filtros por data e clique nos botões para realizar o download dos relatórios no formato .csv
-        </h5>
-    </div>
-
-    <div class="mt-6 space-y-6">
-        <div>
-            <div class="flex items-center justify-between">
-                <h4 class="text-lg font-medium" style="width: 200px;">Receita</h4>
-                    <select id="@($"data{"receitas"}")" name="dataSelecionada" class="form-select rounded-md shadow-sm">
-                    @foreach (var data in Model.DatasCriacaoReceitas)
-                    {
-                        <option value="@data">@data?.ToString("dd/MM/yyyy HH:mm")</option>
-                    }
-                </select>
-                <button onclick="downloadCsv('receitas')" class="inline-flex items-center justify-center bg-orange-800 hover:bg-orange-800 text-white px-4 py-2 rounded" style="width: 200px; height: 40px;">
-                    Download
-                </button>
-
-            </div>
-            <div class="border-t border-slate-200 dark:border-slate-700 mt-4"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="mt-6">
+            <input type="text" name="pesquisa" id="pesquisa" placeholder="🔍︎   Procure o que deseja" class="form-input rounded-md shadow-sm w-full">
+        </div>
+        <div class="mt-8">
+            <h1 class="text-2xl font-bold text-left">Relatórios</h1>
         </div>
 
-        <div>
-            <div class="flex items-center justify-between">
-                <h4 class="text-lg font-medium" style="width: 200px;">Despesas</h4>
-                    <select id="@($"data{"despesas"}")" name="dataSelecionada" class="form-select rounded-md shadow-sm">
-                    @foreach (var data in Model.DatasCriacaoDespesas)
-                    {
-                        <option value="@data">@data?.ToString("dd/MM/yyyy HH:mm")</option>
-                    }
-                </select>
-                <button onclick="downloadCsv('despesas')" class="inline-flex items-center justify-center bg-orange-800 hover:bg-orange-800 text-white px-4 py-2 rounded" style="width: 200px; height: 40px;">
-                    Download
-                </button>
-            </div>
-            <div class="border-t border-slate-200 dark:border-slate-700 mt-4"></div>
+        <div class="mt-4">
+            <h5 class="text-md text-gray-600 dark:text-gray-300 text-left">
+                Selecione os filtros por data e clique nos botões para realizar o download dos relatórios no formato .csv
+            </h5>
         </div>
 
-        <div>
-            <div class="flex items-center justify-between">
-                <h4 class="text-lg font-medium" style="width: 200px;">Vendas</h4>
-                    <select id="@($"data{"vendas"}")" name="dataSelecionada" class="form-select rounded-md shadow-sm">
-                    @foreach (var data in Model.DatasCriacaoVendas)
-                    {
-                        <option value="@data">@data?.ToString("dd/MM/yyyy HH:mm")</option>
-                    }
-                </select>
-                <button onclick="downloadCsv('vendas')" class="inline-flex items-center justify-center bg-orange-800 hover:bg-orange-800 text-white px-4 py-2 rounded" style="width: 200px; height: 40px;">
-                    Download
-                </button>
+        <div class="mt-6 space-y-6">
+            <div>
+                <label for="periodoInicio">Período de Início:</label>
+                <input type="date" id="periodoInicio" name="periodoInicio" class="form-input rounded-md shadow-sm">
+                <label for="periodoFim">Período de Fim:</label>
+                <input type="date" id="periodoFim" name="periodoFim" class="form-input rounded-md shadow-sm">
             </div>
-            <div class="border-t border-slate-200 dark:border-slate-700 mt-4"></div>
+
+            <div>
+                <div class="flex items-center justify-between">
+                    <h4 class="text-lg font-medium" style="width: 200px;">Receita</h4>
+                    
+                    <button onclick="downloadCsv('receita')" class="inline-flex items-center justify-center bg-orange-800 hover:bg-orange-800 text-white px-4 py-2 rounded" style="width: 200px; height: 40px;">
+                        Download
+                    </button>
+                </div>
+                <div class="border-t border-slate-200 dark:border-slate-700 mt-4"></div>
+            </div>
+
+            <div>
+                <div class="flex items-center justify-between">
+                    <h4 class="text-lg font-medium" style="width: 200px;">Despesas</h4>
+                    
+                    <button onclick="downloadCsv('despesas')" class="inline-flex items-center justify-center bg-orange-800 hover:bg-orange-800 text-white px-4 py-2 rounded" style="width: 200px; height: 40px;">
+                        Download
+                    </button>
+                </div>
+                <div class="border-t border-slate-200 dark:border-slate-700 mt-4"></div>
+            </div>
+
+            <div>
+                <div class="flex items-center justify-between">
+                    <h4 class="text-lg font-medium" style="width: 200px;">Vendas</h4>
+                    
+                    <button onclick="downloadCsv('vendas')" class="inline-flex items-center justify-center bg-orange-800 hover:bg-orange-800 text-white px-4 py-2 rounded" style="width: 200px; height: 40px;">
+                        Download
+                    </button>
+                </div>
+                <div class="border-t border-slate-200 dark:border-slate-700 mt-4"></div>
+            </div>
         </div>
-        
     </div>
-</div>
     <script>
         function downloadCsv(tipo) {
-            var dataSelecionada = document.getElementById('data' + tipo).value;
-            var url = '/Relatorios/DownloadCsv?tipo=' + tipo + '&dataSelecionada=' + dataSelecionada;
+            var periodoInicio = document.getElementById('periodoInicio').value;
+            var periodoFim = document.getElementById('periodoFim').value;
+            var url = '/Relatorios/DownloadCsv?tipo=' + tipo + '&periodoInicio=' + periodoInicio + '&periodoFim=' + periodoFim;
             window.location.href = url;
         }
     </script>
