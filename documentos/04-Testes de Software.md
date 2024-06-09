@@ -1166,24 +1166,54 @@ Na página de Início "Home", é exibida o logotipo da Libertese, e todas as fun
 Lembrando que a exibição na Home, é somente um formato resumido para o gerenciamento do negócio, não é valido como uma documentação técnica do Sistema.
 
 
-# Plano de Testes de Software - Fluxo de Caixa (Em pares)
+# Plano de Testes de Software (Em pares) - Fluxo de Caixa
 
-Teste da tela Fluxo de Caixa | Funcionalidades desenvolvidas por: César Luis Costa Moreira | Rafael de Oliveira | Pedro Ertal
-
-Testes feitos por XXXXXXX
+Teste da tela Fluxo de Caixa | Feita por Cesar Luis Costa Moreira, Rafael de Assis Oliveira e Pedro Henrique Ertal de Oliveira | Testes feitos por Douglas Delareti Simões
 
 ## Objetivo
 
-Garantir a funcionalidade e confiabilidade e segurança das telas de: 
+Garantir a funcionalidade, confiabilidade e segurança das telas de: 
 - Fluxo de Caixa
 
 Os testes funcionais a serem realizados no aplicativo são descritos a seguir:  
  
-| Caso de Teste           | CT001 – Criar um filtro de fluxo do caixa                                                                                      |
+| Caso de Teste           | CT001 – Geração do Fluxo de Caixa                                                                                             |
 |-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
-|Pre Condições            | Estar na tela de Fluxo de Caixa                    | 
-|Procedimento             | 1. Na tela selecione um período para exibir o resultado do Fluxo. |
-|                         | 2. Clique no botão “Filtrar”. |
-|                         | 3. A tela deve retornar com os valores referentes aos períodos lançados. |
-|Resultado Esperado       | A tela deverá mostrar os valores somente que foram lançados, trazendo a soma total de acordo com a classificação já lançada, seja como Despesas ou como Vendas. O sistema retorna os valores dos últimos 6 meses de forma separada, e já trazendo a soma total de cada classificação lançada.                                                                     |
-|Dados de Entrada         | Período de Início e período de Fim, informado pelo usuário.  |
+|Pre Condições            | Estar na tela de Fluxo de Caixa       | 
+|Procedimento             | 1. Colocar o periodo de inicio e fim. |
+|                         | 2. Na tela Fluxo de Caixa, clique no botão “Filtrar”. |
+|Resultado Esperado       | O Fluxo de Caixa deve ser gerado e exibido os valores dos meses do filtro.                                                                       |
+|Dados de Entrada         | Datas no periodo de inicio e fim.  |
+
+ 
+| Caso de Teste           | CT002 – Geração do Fluxo de Caixa de um periodo sem movimentações                                                                                            |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|Pre Condições            | Estar na tela de Fluxo de Caixa       | 
+|Procedimento             | 1. Colocar o periodo de inicio e fim. |
+|                         | 2. Na tela Fluxo de Caixa, clique no botão “Filtrar”. |
+|Resultado Esperado       | O Fluxo de Caixa deve exibir uma mensagem de "Não há dados de entrada/saídas para exibir".                                                                       |
+|Dados de Entrada         | Datas no periodo de inicio e fim.  |
+ 
+# Evidências de Testes de Software - Fluxo de Caixa
+
+## CT001 – Geracao do Fluxo de Caixa 
+
+![Periodo Inicio Fluxo de Caixa](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225367/26ea9ee8-9608-460c-9f27-e22fb60bd696)
+
+![Periodo Fim Fluxo de Caixa](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225367/a8833d5a-42c5-49d1-8a2e-b7354f96a2f0)
+
+![Fluxo de Caixa Gerado](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225367/f30df940-5d36-4776-852a-b0f9fbbdd690)
+
+## CT002 – Geração do Fluxo de Caixa de um periodo sem movimentações
+
+![Periodo Inicio Fluxo de Caixa Erro](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225367/08b7f286-12c4-4399-ae3c-f084200f0f8d)
+
+![Periodo Fim Fluxo de Caixa Erro](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225367/79a6f096-76b3-4dbc-9bdf-6276fb3660f1)
+
+![Fluxo de Caixa Gerado Erro](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225367/b1f4e682-1fb9-4259-a6a2-ac78177a8380)
+
+
+
+
+
+
