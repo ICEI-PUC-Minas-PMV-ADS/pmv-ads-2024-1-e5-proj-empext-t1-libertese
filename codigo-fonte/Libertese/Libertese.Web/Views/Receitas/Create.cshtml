@@ -42,10 +42,10 @@
 @{
     ViewData["Title"] = "Cadastro receita";
     Layout = "~/Views/Shared/_LayoutProdutos.cshtml";
-}  
+}
 
 <body class="font-inter antialiased bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-400">
-    <div class=" flex min-h-[100dvh] overflow-hidden">
+    <div class="flex overflow-hidden">
         <div class="relative flex flex-col flex-1 overflow-y-auto overflow-x-hidden">
             <main class="grow" style="margin-left: 4rem">
                 <div class="grid grid-flow-col sm:auto-cols-max justify-start sm:justify-end gap-2">
@@ -56,7 +56,7 @@
                 <div class="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto ">
                     <div class="sm:flex sm:justify-between flex-col sm:items-center mb-5">
                         <div class="mb-4 sm:mb-0">
-                            <h1 class="text-2xl md:text-3xl text-slate-800 dark:text-slate-100 font-bold ">Nova receita </h1>
+                            <h1 class="text-2xl md:text-3xl text-slate-800 dark:text-slate-100 font-bold mb-6">Nova receita </h1>
                         </div>
                     </div>
                 </div>
@@ -64,7 +64,7 @@
                 <form asp-action="Create" class="flex flex-col align-content-center">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-                    <div class="flex flex-row w-full justify-between mb-6">
+                    <div class="flex flex-col mb-6">
                         <label asp-for="ClassificacaoId" class="control-label">Classificação da receita *</label>
                         <select class="form-input pl-6 bg-white dark:bg-slate-800" asp-for="ClassificacaoId"
                                 asp-items="@(new SelectList(ViewBag.Classificacao, "Id", "Descricao"))">
@@ -72,18 +72,18 @@
                         </select>
                         <span asp-validation-for="ClassificacaoId" class="text-danger"></span>
                     </div>
-                    <div class="flex flex-row w-full justify-between mb-6">
-                        <label asp-for="DataPrevisao" class="control-label">Data Previsão *</label>
-                        <input type="datetime-local" asp-for="DataPrevisao" class="form-input pl-6 bg-white dark:bg-slate-800" />
-                        <span asp-validation-for="DataPrevisao" class="text-danger"></span>
+                    <div class="flex flex-col mb-6">
+                            <label asp-for="DataPrevisao" class="control-label">Data Previsão *</label>
+                            <input type="datetime-local" asp-for="DataPrevisao" class="form-input pl-6 bg-white dark:bg-slate-800" />
+                            <span asp-validation-for="DataPrevisao" class="text-danger"></span>
                     </div>
-                    <div class="flex flex-row w-full justify-between mb-6">
+                    <div class="flex flex-col mb-6">
                         <label asp-for="DataRecebimento" class="control-label">Data Recebimento *</label>
                         <input type="datetime-local" asp-for="DataRecebimento" class="form-input pl-6 bg-white dark:bg-slate-800" />
                         <span asp-validation-for="DataRecebimento" class="text-danger"></span>
                     </div>
 
-                    <div class="flex flex-row w-full justify-between mb-6">
+                    <div class="flex flex-col mb-6">
                         <label asp-for="DataCompetencia" class="control-label">Data Competencia *</label>
                         <input type="datetime-local" asp-for="DataCompetencia" class="form-input pl-6 bg-white dark:bg-slate-800" />
                         <span asp-validation-for="DataCompetencia" class="text-danger"></span>
@@ -99,14 +99,14 @@
                             <span asp-validation-for="FormaPagamentoId" class="text-danger"></span>
                         </div>
 
-                        <div class="flex flex-row w-full justify-between mb-6" style="width: 48%">
-                            <label asp-for="Valor" class="control-label" id="receitaInput">Valor * </label>
+                        <div class="flex flex-col" style="width: 48%">
+                            <label asp-for="Valor" class="control-label">Valor *</label>
                             <input type="number" asp-for="Valor" class="form-input pl-6 bg-white dark:bg-slate-800">
                             <span asp-validation-for="Valor" class="text-danger"></span>
                         </div>
                     </div>
 
-                    <div class="flex flex-row w-full justify-between mb-6">
+                    <div class="flex flex-col mb-6">
                         <label asp-for="Status" class="control-label">Status *</label>
                         <div class="flex flex-col form-input pl-6 bg-white dark:bg-slate-800">
                             <div class="flex flex-row">
@@ -119,13 +119,13 @@
                         <span asp-validation-for="Status" class="text-danger"></span>
                     </div>
 
-                    <div class="flex flex-row w-full justify-between mb-6" style="width: 48%">
+                    <div class="flex flex-col mb-6" >
                         <label asp-for="Descricao" class="control-label">Descrição</label>
                         <textarea asp-for="Descricao" class="form-input pl-6 bg-white dark:bg-slate-800 h-full" placeholder="Escreva..."></textarea>
                         <span asp-validation-for="Descricao" class="text-danger"></span>
                     </div>
 
-                    <div class="flex justify-center mt-10">
+                    <div class="flex justify-center mt-12">
                         <input type="submit" value="Confirmar" class="confirmar">
                     </div>
                 </form>
@@ -140,20 +140,6 @@
 <script src="~/../js/site.js" asp-append-version="true"></script>
 <script src="../scaffold/js/vendors/alpinejs.min.js" defer></script>
 <script src="../scaffold/js/main.js"></script>
-
-<script>
-    function formatarMoeda(valor) {
-        valor = valor.replace(/\D/g, "");
-        valor = (valor / 100).toFixed(2) + "";
-        valor = valor.replace(".", ",");
-        valor = valor.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.");
-        return "R$ " + valor;
-    }
-
-    document.getElementById('receitaInput').addEventListener('input', function (e) {
-        e.target.value = formatarMoeda(e.target.value);
-    });
-</script>
 
 @section Scripts {
     @{

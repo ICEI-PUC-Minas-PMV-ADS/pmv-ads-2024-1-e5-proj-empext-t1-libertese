@@ -59,37 +59,9 @@ namespace Libertese.Web.Controllers.Financeiro
             {
                 _context.Add(cliente);
                 await _context.SaveChangesAsync();
-                return View(listaClienteDTO);
+                return RedirectToAction("Create", "Clientes");
             }
-            return View(listaClienteDTO);
-        }
-
-        // GET: Clientes/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            List<Cliente> listaCliente = await _context.Clientes.ToListAsync();
-            List<ClienteDTO> listaClienteDTO = listaCliente.Select(cliente => new ClienteDTO
-            {
-                Id = cliente.Id,
-                Nome = cliente.Nome,
-                CpfCnpj = cliente.CpfCnpj,
-                Telefone = cliente.Telefone,
-                Email = cliente.Email,
-
-            }).ToList();
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var cliente = await _context.Clientes
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (cliente == null)
-            {
-                return NotFound();
-            }
-
-            return View(listaClienteDTO);
+            return RedirectToAction("Create", "Clientes");
         }
 
         // POST: Clientes/Delete/5
@@ -114,7 +86,7 @@ namespace Libertese.Web.Controllers.Financeiro
             }
 
             await _context.SaveChangesAsync();
-            return View(listaClienteDTO);
+            return RedirectToAction("Create", "Clientes");
         }
 
         [HttpGet, ActionName("SearchByText")]

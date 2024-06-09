@@ -107,7 +107,7 @@ Email = ""
                                                                  x-transition:leave-start="opacity-100 translate-y-0"
                                                                  x-transition:leave-end="opacity-0 translate-y-4"
                                                                  x-cloak>
-                                                                <div class="bg-white dark:bg-slate-800 rounded shadow-lg overflow-auto max-w-lg w-full max-h-full" @@click.outside="modalDeletarOpen = false" @@keydown.escape.window="modalDeletarOpen = false">
+                                                                <div class="bg-white dark:bg-slate-800 rounded shadow-lg overflow-auto max-w-lg w-full max-h-full" @@click.outside="modalDeletarOpen = @item.Id" @@keydown.escape.window="modalDeletarOpen = @item.Id">
                                                                     <div class="p-5 flex space-x-4">
 
                                                                         <div class="w-10 h-10 rounded-full flex items-center justify-center shrink-0 bg-rose-100 dark:bg-rose-500/30">
