@@ -1166,23 +1166,23 @@ Na página de Início "Home", é exibida o logotipo da Libertese, e todas as fun
 Lembrando que a exibição na Home, é somente um formato resumido para o gerenciamento do negócio, não é valido como uma documentação técnica do Sistema.
 
 
+# Plano de Testes de Software - Fluxo de Caixa (Em pares)
 
+Teste da tela Fluxo de Caixa | Funcionalidades desenvolvidas por: César Luis Costa Moreira | Rafael de Oliveira | Pedro Ertal
+Testes feitos por XXXXXXX
 
+## Objetivo
 
+Garantir a funcionalidade e confiabilidade e segurança das telas de: 
+- Fluxo de Caixa
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Os testes funcionais a serem realizados no aplicativo são descritos a seguir:  
+ 
+| Caso de Teste           | CT001 – Criar um filtro de fluxo do caixa                                                                                      |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|Pre Condições            | Estar na tela de Fluxo de Caixa                    | 
+|Procedimento             | 1. Na tela selecione um período para exibir o resultado do Fluxo. |
+|                         | 2. Clique no botão “Filtrar”. |
+|                         | 3. A tela deve retornar com os valores referentes aos períodos lançados |
+|Resultado Esperado       | A tela deverá mostrar os valores somente que foram lançaodos, trazendo a soma total de acordo com a classificação já lançada, seja como Despesas ou como Vendas                                                                      |
+|Dados de Entrada         | Período de Início e período de fim, informado pelo usuário.  |
