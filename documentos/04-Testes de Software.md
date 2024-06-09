@@ -972,9 +972,16 @@ Garantir a funcionalidade, confiabilidade e segurança das telas de:
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/af745118-1414-4e60-8a62-678c0e922779)
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/b280733c-1e49-4e90-9290-1001b4c66528)
 
+### CT002 - Registrar Nova Venda com Campos em Branco ou Inválidos
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/070b11dd-c8e1-4784-a77c-e622bc682452)
 
+### CT003 - Visualizar Venda
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/e456140b-c551-4269-b58e-3e698d18e8a1)
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/cdcd6432-ffef-4c13-a0ab-ffcd032875dd)
 
-
+### CT004 - Cancelar Venda
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/c6097195-14ee-4d2b-aa68-041a1c1d9ef3)
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/1a5d0223-e94a-4f3c-bbb9-a4b1ac7a802c)
 
 
 # Plano de Testes de Software (Em pares)
