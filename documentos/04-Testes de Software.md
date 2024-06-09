@@ -1169,6 +1169,7 @@ Lembrando que a exibição na Home, é somente um formato resumido para o gerenc
 # Plano de Testes de Software - Fluxo de Caixa (Em pares)
 
 Teste da tela Fluxo de Caixa | Funcionalidades desenvolvidas por: César Luis Costa Moreira | Rafael de Oliveira | Pedro Ertal
+
 Testes feitos por XXXXXXX
 
 ## Objetivo
@@ -1183,6 +1184,6 @@ Os testes funcionais a serem realizados no aplicativo são descritos a seguir:
 |Pre Condições            | Estar na tela de Fluxo de Caixa                    | 
 |Procedimento             | 1. Na tela selecione um período para exibir o resultado do Fluxo. |
 |                         | 2. Clique no botão “Filtrar”. |
-|                         | 3. A tela deve retornar com os valores referentes aos períodos lançados |
-|Resultado Esperado       | A tela deverá mostrar os valores somente que foram lançaodos, trazendo a soma total de acordo com a classificação já lançada, seja como Despesas ou como Vendas                                                                      |
-|Dados de Entrada         | Período de Início e período de fim, informado pelo usuário.  |
+|                         | 3. A tela deve retornar com os valores referentes aos períodos lançados. |
+|Resultado Esperado       | A tela deverá mostrar os valores somente que foram lançaodos, trazendo a soma total de acordo com a classificação já lançada, seja como Despesas ou como Vendas.                                                                      |
+|Dados de Entrada         | Período de Início e período de Fim, informado pelo usuário.  |
