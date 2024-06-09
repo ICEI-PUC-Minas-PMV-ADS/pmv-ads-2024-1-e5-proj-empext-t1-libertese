@@ -1214,6 +1214,58 @@ Os testes funcionais a serem realizados no aplicativo são descritos a seguir:
 ![Fluxo de Caixa Gerado Erro](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225367/b1f4e682-1fb9-4259-a6a2-ac78177a8380)
 
 
+# Plano de teste - (Em apres)
+Teste da tela Precificação | Desenvolvidas por Thaís Gurgel | Testes feitos por Pedro Ertal
+
+## Objetivo:
+
+Garantir a funcionalidade, confiabilidade e segurança das telas de: 
+- Precificação - RF 007
+
+
+## Ferramentas utilizadas para os testes
+- Visual studio 2021
+- Google Chrome
+
+## Responsáveis pelos testes e pelas funcionalidades desenvolvidas
+- Responsável pelos telas a seguir: Thaís Gurgel
+- Telas desenvolvidas: Precificação
+- Testadas por: Pedro Ertal
+- Funcionalidades testadas: Listar "Informações Básicas", Registrar "Capacidade de Produção" e "Custos Fixos" e Calcular "Rateio"
+
+### CT001 - Precificação
+
+| Casos de Teste      | CT001 - Registrar Nova Capacidade de Produção                                                                          |
+|---------------------|------------------------------------------------------------------------------------------------------------|
+| **Pré Condições**   | Estar na tela de Precificação                                                                                    |
+| **Procedimento**    | 1. No menu, selecionar a opção “Precificação”.                                                                    |
+|                     | 2. Na tela de Precificação, selecionar a opção “Incluir” em “Capacidade de Produção“.                                             |
+|                     | 3. Na tela de Nova Precificação, registrar todas as informações necessárias.                                       |
+|                     | 4. Clicar em “Incluir”.                                                                                  |
+| **Resultado Esperado** | O novo Produto deve ser registrada com sucesso e deverá constar na lista de Capacidade de Produção.                          |
+| **Dados de Entrada** | Informações necessárias para o registro da precificação.                                                           |
+
+### CT002 - Registrar Custos Fixos
+
+| Casos de Teste      | CT002 - Registrar Novo Custos Fixos                                             |
+|---------------------|------------------------------------------------------------------------------------------------------------|
+| **Pré Condições**   | Estar na tela de Custos Fixos                                                                                    |
+| **Procedimento**    | 1. No menu, selecionar a opção “Precificação”.                                                                    |
+|                     | 2. Na tela de Precificação, selecionar a opção “Incluir” em “Custos Fixos“.                                             |
+|                     | 3. Na tela de Nova Precificação, registrar todas as informações necessárias.                                       |
+|                     | 4. Clicar em “Incluir”.                                                                                  |
+| **Resultado Esperado** | A nova Despesa deve ser registrada com sucesso e deverá constar na lista de Custos Fixos.                          |
+| **Dados de Entrada** | Informações necessárias para o registro da precificação.                                                           |
+
+
+# Evidências de Testes de Software - Página "Precificação" do sistema Libertese
+![Imagem do WhatsApp de 2024-06-09 à(s) 14 59 47_0930a30a](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/53317747/1150ed9c-f7e3-4444-a50a-2184d4fba49f)
+![Imagem do WhatsApp de 2024-06-09 à(s) 15 00 10_7aa4fb32](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/53317747/0265c89e-ba50-45b1-b05b-729e0abd58c1)
+![Imagem do WhatsApp de 2024-06-09 à(s) 15 01 03_5b3f1dc0](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/53317747/cc0cdd94-43af-43c5-8e54-f4e89ba1b7f7)
+
+
+
+
 
 
 
