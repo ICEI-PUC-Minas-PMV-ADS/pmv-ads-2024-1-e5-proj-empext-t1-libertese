@@ -398,6 +398,11 @@ RF-014 - Permitir gerar relatórios de venda
 
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/53317747/1a771d29-c1f7-4671-81f4-5ab9b1d34b2d)
 
+RF-014 - Permitir gerar relatórios de venda - (Mudança no front-end, ideia do filtro de mês alterado e funcional, mensagem de erro estilizada quando não há registro encontrado e dados organizados conforme o DB)
+
+![Imagem do WhatsApp de 2024-06-09 à(s) 14 59 48_d16958e1](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/53317747/626721f6-93c5-4fa8-bb0b-692f3c9c4909)
+![Imagem do WhatsApp de 2024-06-09 à(s) 15 00 11_c60f1666](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/53317747/4f3ee527-f5de-48fa-9229-ade1b58d1760)
+![Imagem do WhatsApp de 2024-06-09 à(s) 15 01 04_d53260c7](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/53317747/a1920da5-a308-477b-baac-4758581f650e)
 
 
 # Plano de Testes de Software (Em pares)
