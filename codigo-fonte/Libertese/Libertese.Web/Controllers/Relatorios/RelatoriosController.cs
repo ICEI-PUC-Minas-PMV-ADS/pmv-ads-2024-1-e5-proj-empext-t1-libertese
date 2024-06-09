@@ -22,42 +22,48 @@ namespace Libertese.Web.Controllers.Relatorios
             _context = context;
         }
 
-        public async Task<IActionResult> DownloadCsv(string tipo, DateTime dataSelecionada)
+        public async Task<IActionResult> DownloadCsv(string tipo, DateTime? periodoInicio, DateTime? periodoFim, bool checkOnly = false)
         {
-            // Normalização da data para remover o tempo
-            dataSelecionada = dataSelecionada.Date;
-
             IEnumerable<object> records = null;
 
             switch (tipo.ToLower())
             {
                 case "vendas":
                     records = await _context.Vendas
-                        //.Where(v => v.DataCriacao.HasValue && v.DataCriacao.Value.Date == dataSelecionada)
+                        .Where(v => (!periodoInicio.HasValue || v.DataCriacao >= periodoInicio) &&
+                                    (!periodoFim.HasValue || v.DataCriacao <= periodoFim))
                         .ToListAsync();
                     break;
                 case "despesas":
                     records = await _context.Despesas
-                        //.Where(d => d.DataCriacao.HasValue && d.DataCriacao.Value.Date == dataSelecionada)
+                        .Where(d => (!periodoInicio.HasValue || d.DataCriacao >= periodoInicio) &&
+                                    (!periodoFim.HasValue || d.DataCriacao <= periodoFim))
                         .ToListAsync();
                     break;
                 case "receita":
                     records = await _context.Receitas
-                        //.Where(r => r.DataCriacao.HasValue && r.DataCriacao.Value.Date == dataSelecionada)
+                        .Where(r => (!periodoInicio.HasValue || r.DataCriacao >= periodoInicio) &&
+                                    (!periodoFim.HasValue || r.DataCriacao <= periodoFim))
                         .ToListAsync();
                     break;
                 default:
-                    return NotFound("Tipo de relatório desconhecido.");
+                    return Json(new { error = "Tipo de relatório desconhecido." });
             }
 
             if (records == null || !records.Any())
             {
-                return Content("Nenhum registro encontrado para esta data.");
+                return Json(new { error = "Nenhum registro encontrado para este período." });
+            }
+
+            if (checkOnly)
+            {
+                return Json(new { success = true });
             }
 
             // Gerar o CSV
-            return await GenerateCsv(records, $"{tipo}_{dataSelecionada.ToString("yyyyMMdd")}.csv");
+            return await GenerateCsv(records, $"{tipo}_{DateTime.Now.ToString("yyyyMMdd_HHmmss")}.csv");
         }
+
 
 
         private async Task<FileContentResult> GenerateCsv<T>(IEnumerable<T> records, string fileName)

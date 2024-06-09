@@ -398,6 +398,11 @@ RF-014 - Permitir gerar relatórios de venda
 
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/53317747/1a771d29-c1f7-4671-81f4-5ab9b1d34b2d)
 
+RF-014 - Permitir gerar relatórios de venda - (Mudança no front-end, ideia do filtro de mês alterado e funcional, mensagem de erro estilizada quando não há registro encontrado e dados organizados conforme o DB)
+
+![Imagem do WhatsApp de 2024-06-09 à(s) 14 59 48_d16958e1](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/53317747/626721f6-93c5-4fa8-bb0b-692f3c9c4909)
+![Imagem do WhatsApp de 2024-06-09 à(s) 15 00 11_c60f1666](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/53317747/4f3ee527-f5de-48fa-9229-ade1b58d1760)
+![Imagem do WhatsApp de 2024-06-09 à(s) 15 01 04_d53260c7](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/53317747/a1920da5-a308-477b-baac-4758581f650e)
 
 
 # Plano de Testes de Software (Em pares)
@@ -897,7 +902,10 @@ Garantir a funcionalidade, confiabilidade e segurança das telas de:
 | **Resultado Esperado** | O produto selecionado deve ser removido da lista de produtos na página inicial.                            |
 |                     |                                                                                                              |
 
-## Objetivo
+# Plano de teste - (Em apres)
+Teste da tela Vendas | Desenvolvidas por Thaís Gurgel | Testes feitos por Rafael de Oliveira
+
+## Objetivo:
 
 Garantir a funcionalidade, confiabilidade e segurança das telas de: 
 - Registro de Vendas - RF 014
@@ -910,8 +918,8 @@ Garantir a funcionalidade, confiabilidade e segurança das telas de:
 ## Responsáveis pelos testes e pelas funcionalidades desenvolvidas
 - Responsável pelos telas a seguir: Thaís Gurgel
 - Telas desenvolvidas: Registro de Vendas
-- Testadas por: 
-- Funcionalidades testadas: 
+- Testadas por: Rafael de Oliveira
+- Funcionalidades testadas: Registrar Nova Venda; Venda com campos em branco ou inválidos; Visualizar Venda; Cancelar Venda
 
 
 ### CT001 - Registrar Nova Venda
@@ -961,6 +969,25 @@ Garantir a funcionalidade, confiabilidade e segurança das telas de:
 |                     | 3. Confirmar a operação de cancelamento.                                                                   |
 | **Resultado Esperado** | A venda selecionada deve ser cancelada e na lista de vendas deverá constar status cancelado.               |
 |                     |                                                                                                            |
+
+# Evidências de Testes de Softwares
+
+### CT001 - Registrar Nova Venda
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/30164682-11fd-460a-a433-0915a42cb3cd)
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/af745118-1414-4e60-8a62-678c0e922779)
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/b280733c-1e49-4e90-9290-1001b4c66528)
+
+### CT002 - Registrar Nova Venda com Campos em Branco ou Inválidos
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/070b11dd-c8e1-4784-a77c-e622bc682452)
+
+### CT003 - Visualizar Venda
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/e456140b-c551-4269-b58e-3e698d18e8a1)
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/cdcd6432-ffef-4c13-a0ab-ffcd032875dd)
+
+### CT004 - Cancelar Venda
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/c6097195-14ee-4d2b-aa68-041a1c1d9ef3)
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/1a5d0223-e94a-4f3c-bbb9-a4b1ac7a802c)
+
 
 # Plano de Testes de Software (Em pares)
 
@@ -1069,19 +1096,94 @@ Obs: Não é possível editar sem registrar o CNPJ.
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/59944150/32248dcc-1aa0-485a-ace6-9224b7439830)
 
 
+# Evidências de Testes de Software - Atualização de Layout CRUD Formas de Pagamento e Contas Bancárias 
+
+Para todas as funções abaixo apresentadas, não houve mudança do Plano de Testes, somente o laytout das telas foram alterados.
+
+- Forma de Pagamentos
+
+A função Forma de Pagamentos se encontra em "Vendas" no menu lateral:
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/9409758c-7d9a-4639-858e-b0a84b644f8e)
+
+A tela exibe todas as opções cadastradas, para inserrir uma nova forma de pagamento, clicar em "Nova Forma de Pagamento":
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/a4ddaa0e-be82-4ffb-957c-f6b211731aec)
+
+As opções de edição, visualização e exclusão são mostradas abaixo:
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/49264a44-04a0-477c-82f3-966c52583cf5)
+
+Editar Forma de Pagamento:
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/18f9c25a-fe4b-4693-93a4-e978fb4ffc9b)
+
+Visualizar Forma de Pagamento:
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/30b31d4f-2a3d-4315-a170-08524fe179af)
+
+Excluir Forma de Pagamento:
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/68f31528-b21e-466c-9e54-934d0d39ec09)
+
+- Contas Bancárias
+
+Função Contas Bancárias se encontra em "Vendas" no menu lateral:
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/ce518a98-013b-4259-932f-9c4b25019147)
+
+A tela exibe todas as contas cadastradas, para inserir uma nova Conta Bancária, clicar em "Nova Conta Bancária", preencher e salvar:
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/a4fc52b6-c0c8-4bd7-a8ee-b39a0a2f88cd)
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/cd403abb-a0bf-4bf7-9476-c06cdc5d27f5)
+
+As opções de edição, visualização e exclusão são mostradas abaixo:
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/fe2b40ec-460d-41f0-9a3d-76127a3891a3)
+
+Editar Conta Bancária:
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/fbe50512-d17f-4b10-a0a9-9522f5105b7f)
+
+Visualizar Conta Bancária:
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/6f3c3885-a223-424b-a330-0f2dda91b104)
+
+Excluir Conta Bancária:
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/d74b0bb1-f736-463c-8300-9679fbfc3845)
 
 
+# Evidências de Testes de Software - Página "Início" do sistema Libertese
+
+Na página de Início "Home", é exibida o logotipo da Libertese, e todas as funções do sistema de forma resumnida, conforme imagem abaixo:
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/b99e4453-11f0-4334-a91f-604da4bc09c2)
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/4928fbdb-3a9a-45d6-ae2b-8cc945100409)
+
+Lembrando que a exibição na Home, é somente um formato resumido para o gerenciamento do negócio, não é valido como uma documentação técnica do Sistema.
 
 
+# Plano de Testes de Software - Fluxo de Caixa (Em pares)
 
+Teste da tela Fluxo de Caixa | Funcionalidades desenvolvidas por: César Luis Costa Moreira | Rafael de Oliveira | Pedro Ertal
 
+Testes feitos por XXXXXXX
 
+## Objetivo
 
+Garantir a funcionalidade e confiabilidade e segurança das telas de: 
+- Fluxo de Caixa
 
-
-
-
-
-
-
-
+Os testes funcionais a serem realizados no aplicativo são descritos a seguir:  
+ 
+| Caso de Teste           | CT001 – Criar um filtro de fluxo do caixa                                                                                      |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|Pre Condições            | Estar na tela de Fluxo de Caixa                    | 
+|Procedimento             | 1. Na tela selecione um período para exibir o resultado do Fluxo. |
+|                         | 2. Clique no botão “Filtrar”. |
+|                         | 3. A tela deve retornar com os valores referentes aos períodos lançados. |
+|Resultado Esperado       | A tela deverá mostrar os valores somente que foram lançados, trazendo a soma total de acordo com a classificação já lançada, seja como Despesas ou como Vendas. O sistema retorna os valores dos últimos 6 meses de forma separada, e já trazendo a soma total de cada classificação lançada.                                                                     |
+|Dados de Entrada         | Período de Início e período de Fim, informado pelo usuário.  |
