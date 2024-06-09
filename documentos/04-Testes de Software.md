@@ -897,7 +897,10 @@ Garantir a funcionalidade, confiabilidade e segurança das telas de:
 | **Resultado Esperado** | O produto selecionado deve ser removido da lista de produtos na página inicial.                            |
 |                     |                                                                                                              |
 
-## Objetivo
+# Plano de teste - (Em apres)
+Teste da tela Vendas | Desenvolvidas por Thaís Gurgel | Testes feitos por Rafael de Oliveira
+
+## Objetivo:
 
 Garantir a funcionalidade, confiabilidade e segurança das telas de: 
 - Registro de Vendas - RF 014
@@ -910,8 +913,8 @@ Garantir a funcionalidade, confiabilidade e segurança das telas de:
 ## Responsáveis pelos testes e pelas funcionalidades desenvolvidas
 - Responsável pelos telas a seguir: Thaís Gurgel
 - Telas desenvolvidas: Registro de Vendas
-- Testadas por: 
-- Funcionalidades testadas: 
+- Testadas por: Rafael de Oliveira
+- Funcionalidades testadas: Registrar Nova Venda; Venda com campos em branco ou inválidos; Visualizar Venda; Cancelar Venda
 
 
 ### CT001 - Registrar Nova Venda
@@ -961,6 +964,18 @@ Garantir a funcionalidade, confiabilidade e segurança das telas de:
 |                     | 3. Confirmar a operação de cancelamento.                                                                   |
 | **Resultado Esperado** | A venda selecionada deve ser cancelada e na lista de vendas deverá constar status cancelado.               |
 |                     |                                                                                                            |
+
+# Evidências de Testes de Softwares
+
+### CT001 - Registrar Nova Venda
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/30164682-11fd-460a-a433-0915a42cb3cd)
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/af745118-1414-4e60-8a62-678c0e922779)
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225907/b280733c-1e49-4e90-9290-1001b4c66528)
+
+
+
+
+
 
 # Plano de Testes de Software (Em pares)
 
