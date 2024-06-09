@@ -22,7 +22,7 @@ namespace Libertese.Web.Controllers.Relatorios
             _context = context;
         }
 
-        public async Task<IActionResult> DownloadCsv(string tipo, DateTime? periodoInicio, DateTime? periodoFim)
+        public async Task<IActionResult> DownloadCsv(string tipo, DateTime? periodoInicio, DateTime? periodoFim, bool checkOnly = false)
         {
             IEnumerable<object> records = null;
 
@@ -47,17 +47,24 @@ namespace Libertese.Web.Controllers.Relatorios
                         .ToListAsync();
                     break;
                 default:
-                    return NotFound("Tipo de relatório desconhecido.");
+                    return Json(new { error = "Tipo de relatório desconhecido." });
             }
 
             if (records == null || !records.Any())
             {
-                return Content("Nenhum registro encontrado para este período.");
+                return Json(new { error = "Nenhum registro encontrado para este período." });
+            }
+
+            if (checkOnly)
+            {
+                return Json(new { success = true });
             }
 
             // Gerar o CSV
             return await GenerateCsv(records, $"{tipo}_{DateTime.Now.ToString("yyyyMMdd_HHmmss")}.csv");
         }
+
+
 
         private async Task<FileContentResult> GenerateCsv<T>(IEnumerable<T> records, string fileName)
         {
