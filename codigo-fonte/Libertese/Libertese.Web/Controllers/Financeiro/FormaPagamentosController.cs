@@ -91,16 +91,22 @@ namespace Libertese.Web.Controllers.Financeiro
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Descricao,Id,DataCriacao,DataAtualizacao")] FormaPagamento formaPagamento)
         {
+            var model = await _context.FormaPagamentos.FirstOrDefaultAsync(m => m.Id == id);
+
             if (id != formaPagamento.Id)
             {
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && model != null)
             {
                 try
                 {
-                    _context.Update(formaPagamento);
+                    
+                    model.Descricao = formaPagamento.Descricao;
+                    model.DataAtualizacao = formaPagamento.DataAtualizacao;
+
+                    _context.Update(model);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
