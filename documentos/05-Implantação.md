@@ -36,7 +36,7 @@ A aplicação está disponível para acesso através do seguinte link: http://li
 
 O planejamento da evolução da aplicação inclui:
 
-- Atualizações de Funcionalidades: Adição de novas funcionalidades conforme requisitos do cliente;
+- Atualizações de Funcionalidades: Adição de algumas funcionalidades (FLuxo de Caixa) e ajustes conforme necessidade do cliente;
 
 - Melhorias de Desempenho: Otimização do desempenho da aplicação para garantir uma experiência rápida e responsiva;
 
