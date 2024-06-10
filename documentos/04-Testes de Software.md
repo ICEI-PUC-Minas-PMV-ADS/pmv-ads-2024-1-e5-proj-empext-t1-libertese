@@ -1356,7 +1356,7 @@ Os testes funcionais a serem realizados no aplicativo são descritos a seguir:
 |Resultado Esperado       | Devem ser exibidas as novas classificações na tela de cadastro de receita.                                                                      |
 |Dados de Entrada         | Definição de uma classificação.  |
 
-Evidências de Testes de Software - Tela de Receitas
+##Evidências de Testes de Software - Tela de Receitas
 ![novareceita](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/86004024/0aabdb33-d824-4eab-bdfb-22f5a58d2d2f)
 ![editreceita](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/86004024/d15ddef9-d9eb-44cb-873c-4dc19e8b6f6b)
 ![deletereceita](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/86004024/1029dbc1-e3b3-4549-93f3-cfacaa41086a)
@@ -1385,5 +1385,12 @@ Os testes funcionais a serem realizados no aplicativo são descritos a seguir:
 |                                      | 3. Preencher com os dados e clicar em “Confirmar”. |
 |Resultado Esperado       | Devem ser cadastrados novos clientes ao banco de dados, e observados na tabela que lista os clientes.                                                                     |
 |Dados de Entrada         | Informações solicitadas no campo de Nova receita.  |
+
+##Evidências de Testes de Software - Tela de Cleintes
+
+![novocliente](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/86004024/2e1cd5b9-b275-4587-8ac4-a2b0b8428e95)
+![viewcliente](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/86004024/bd0bc1ef-18d9-46fe-855e-01263101ee12)
+![deletecliente (2)](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/86004024/8801bd8c-6ea2-40cf-9edb-1c00610f9307)
+
 
 
