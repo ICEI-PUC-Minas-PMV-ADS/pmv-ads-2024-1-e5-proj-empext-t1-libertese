@@ -86,7 +86,7 @@
                                  x-transition:leave-start="opacity-100"
                                  x-transition:leave-end="opacity-0"
                                  x-cloak>
-                                <div class="text-sm">Informe o CPF ou CNPJ do cliente</div>
+                                <div class="text-sm">Informe o CPF ou CNPJ do cliente.</div>
                             </div>
                         </div>
                     </div>
@@ -171,31 +171,32 @@
                 </div>
                 <input asp-for="Email" id="email" class="form-input w-full input-email" />
                 <span asp-validation-for="Email" class="text-xs mt-1 text-rose-500"></span>
-            </div>
-                <footer>
-                    <div class="flex flex-col px-6 py-5 border-t border-slate-200 dark:border-slate-700">
-                        <div class="flex self-center">
-                            <button id="submitForm" name="submitForm" type="submit" value="Salvar" class="btn bg-slate-900 hover:bg-orange-600 text-white ml-3 rounded-lg w-32">Confirmar</button>
-                        </div>
-                    </div>
-                </footer>
+            </div>              
         </div>
-
+            <footer>
+                <div class="flex flex-col items-center px-6 py-5 border-t border-slate-200 dark:border-slate-700">
+                    <div class="flex justify-center">
+                        <button id="submitForm" name="submitForm" type="submit" value="Salvar" class="btn bg-slate-900 hover:bg-orange-600 text-white rounded-lg w-32">
+                            Confirmar
+                        </button>
+                    </div>
+                </div>
+            </footer>
     </form>
+
 </body>
 </html>
 
 <script>
-
-        function formatarCPF(cpf) {
-            // Remove qualquer caracter que não seja número
-            cpf = cpf.replace(/\D/g, '');
-            // Adiciona a formatação
-            cpf = cpf.replace(/(\d{3})(\d)/, '$1.$2');
-            cpf = cpf.replace(/(\d{3})(\d)/, '$1.$2');
-            cpf = cpf.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
-            return cpf;
-        }
+    function formatarCPF(cpf) {
+        // Remove qualquer caracter que não seja número
+        cpf = cpf.replace(/\D/g, '');
+        // Adiciona a formatação
+        cpf = cpf.replace(/(\d{3})(\d)/, '$1.$2');
+        cpf = cpf.replace(/(\d{3})(\d)/, '$1.$2');
+        cpf = cpf.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+        return cpf;
+    }
 
     function formatarCNPJ(cnpj) {
         // Remove qualquer caracter que não seja número
@@ -211,6 +212,14 @@
     document.getElementById('cpfInput').addEventListener('input', function (event) {
         var input = event.target;
         var value = input.value;
+
+        // Remove caracteres que não sejam números
+        value = value.replace(/\D/g, '');
+
+        if (value.length > 14) {
+            // Impede que mais de 14 dígitos sejam inseridos para o CNPJ
+            value = value.slice(0, 14);
+        }
 
         if (value.length > 11) {
             // Alterar o rótulo e o placeholder para CNPJ
@@ -229,6 +238,14 @@
         var cpfInput = document.getElementById('cpfInput');
         var value = cpfInput.value;
 
+        // Remove caracteres que não sejam números
+        value = value.replace(/\D/g, '');
+
+        if (value.length > 14) {
+            // Impede que mais de 14 dígitos sejam inseridos para o CNPJ
+            value = value.slice(0, 14);
+        }
+
         if (value.length <= 11) {
             // Validação para CPF
             if (!validarCPF(value)) {
@@ -243,6 +260,58 @@
             }
         }
     });
+
+    // Função para formatar o número de telefone
+    function formatarTelefone(telefone) {
+        // Remove todos os caracteres que não são dígitos
+        var cleaned = telefone.replace(/\D/g, '');
+        // Aplica a formatação (XX) XXXXX-XXXX
+        var match = cleaned.match(/^(\d{0,2})(\d{0,5})(\d{0,4})$/);
+        if (match) {
+            // Concatena os grupos capturados com os separadores
+            return (!match[2] ? match[1] : '(' + match[1] + ') ' + match[2]) + (match[3] ? '-' + match[3] : '');
+        }
+        return telefone;
+    }
+
+    // Adiciona o evento de formatação ao campo de telefone
+    document.getElementById('Telefone').addEventListener('input', function (event) {
+        var telefoneInput = event.target;
+        var formatted = formatarTelefone(telefoneInput.value);
+        // Atualiza o valor do campo com o número de telefone formatado
+        telefoneInput.value = formatted;
+    });
+
+    // Intercepta o envio do formulário para validar o número de telefone
+    document.querySelector('form').addEventListener('submit', function (event) {
+        var botaoSubmit = document.activeElement;
+        // Verifica se o botão clicado é o botão de criar (Confirmar)
+        if (botaoSubmit && botaoSubmit.id === 'botao-create') {
+            var telefoneInput = document.getElementById('Telefone');
+            var telefone = telefoneInput.value.replace(/\D/g, ''); // Remove todos os caracteres que não são dígitos
+            // Verifica se o número de telefone possui 11 dígitos após a formatação
+            if (telefone.length !== 11) {
+                // Impede o envio do formulário
+                event.preventDefault();
+                // Exibe uma mensagem de erro
+                alert('Por favor, insira um número de telefone válido no formato (XX) XXXXX-XXXX');
+            }
+        }
+    });
+
+    function validarCPF(cpf) {
+        // Remove caracteres não numéricos
+        cpf = cpf.replace(/\D/g, '');
+        // Verifica se o CPF tem exatamente 11 dígitos
+        return cpf.length === 11;
+    }
+
+    function validarCNPJ(cnpj) {
+        // Remove caracteres não numéricos
+        cnpj = cnpj.replace(/\D/g, '');
+        // Verifica se o CNPJ tem exatamente 14 dígitos
+        return cnpj.length === 14;
+    }
 
     function hoverEffect(svg, isHovering) {
         if (isHovering) {
