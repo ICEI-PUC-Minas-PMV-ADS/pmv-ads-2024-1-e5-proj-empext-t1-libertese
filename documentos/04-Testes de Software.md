@@ -1264,6 +1264,98 @@ Garantir a funcionalidade, confiabilidade e segurança das telas de:
 ![Imagem do WhatsApp de 2024-06-09 à(s) 21 05 28_1e856856](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/53317747/393d42bd-02ab-43d8-99c5-f8054e46adff)
 
 
+# Plano de Testes de Software (Em pares)
+
+Teste da tela RECEITAS| Desenvolvida por Karinne Massensini | Testada por Vinícius Ponciano
+
+
+## Objetivo
+
+Garantir a funcionalidade, confiabilidade e segurança das telas de: 
+- Implementar controle da inclusão, deleção e edição de receitas
+- Tela inicial de receitas
+
+Os testes funcionais a serem realizados no aplicativo são descritos a seguir:  
+ 
+| Caso de Teste           | CT001 – Tabela com visão de dados mais relevantes das receitas                                                                                             |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|Pré-condições            | Estar na tela de Receitas      | 
+|Procedimento             | 1. No menu selecione a opção “Receitas”. |
+|                         | 2. Na tela Receitas, observe a tabela principal que apresenta a Classificação, Forma de Pagamento, Data prevista, Status e os ícones de excluir, editar e visualizar. |
+|Resultado Esperado       | Devem ser exibidas todas as receitas cadastradas no banco de dados.                                                                       |
+|Dados de Entrada         | Informações solicitadas no campo de Nova receita.  |
+
+
+| Caso de Teste           | CT002 – - Somatório de receitas recebidas, receitas a receber e receitas previstas
+                                                      |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|Pré-condições            | Estar na tela de Receita     | 
+|Procedimento             | 1. No menu selecione a opção “Receitas”. |
+|                         | 2. Na tela Receitas, vá para o final da página. |
+|Resultado Esperado       | Soma de receitas a receber, receitas recebidas e receitas totais (previstas)                                                                      |
+|Dados de Entrada         | Informações cadastrados.  |
+
+
+| Caso de Teste           | CT003 – Cadastrar nova receita com os campos em branco                                                 |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|Pré-condições            | Estar na tela de Receita      | 
+|Procedimento             | 1. No menu selecione a opção “Receita”. |
+|                         | 2. Na tela receita, clique no botão “Nova receita”. |
+|                         | 3. Na tela de cadastro preencher com informações vazias nos campos. |
+|                         | 4. Clicar em Confirmar. |
+|Resultado Esperado       | Devem ser exibidas mensagens de erro na tela indicando campos em branco ou dados inválidos.                                                                      |
+|Dados de Entrada         | Informações em branco ou dados inválidos.  |
+
+| Caso de Teste           | CT004 – Cadastrar nova receita                                                 |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|Pré-condições            | Estar na tela de Receita      | 
+|Procedimento             | 1. No menu selecione a opção “Receita”. |
+|                         | 2. Na tela receita, clique no botão “Nova receita”. |
+|                         | 3. Na tela de cadastro preencher com as informações da nova receita. |
+|                         | 4. Clicar em Confirmar. |
+|Resultado Esperado       | Devem ser exibidas mensagens de erro na tela indicando campos em branco ou dados inválidos.                                                                      |
+|Dados de Entrada         | Informações inseridas no formulário de cadastro de nova receita.  |
+
+
+
+| Caso de Teste           | CT005 – Visualizar receitas detalhadas através do ícone de visualizar                                              |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|Pré-condições            | Estar na tela de Receitas      | 
+|Procedimento             | 1. No menu selecione a opção “Receitas”. |
+|                         | 2. Na tabela da tela receita, na coluna de Ações clique no botão “Visualizar”. |
+|Resultado Esperado       | Devem ser exibidas todos os dados das receitas cadastradas.                                                                      |
+|Dados de Entrada         | Informações completas das receitas cadastradas.  |
+
+
+
+| Caso de Teste           | CT006 – Excluir receita (Pop-up de atenção/confirmação)                                             |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|Pré-condições            | Estar na tela de Receitas      | 
+|Procedimento             | 1. No menu selecione a opção “Receitas”. |
+|                          | 2. Na tabela da tela receita, na coluna de Ações clique no botão “Excluir”. |
+|Resultado Esperado       | Devem ser exibido um pop-up de atenção para confirmar a exclusão dos dados.                                                                      |
+|Dados de Entrada         | Informações completas das receitas cadastradas.  |
+
+
+| Caso de Teste           | CT007 – Excluir receita                                            |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|Pre Condições            | Estar na tela de Receitas      | 
+|Procedimento             | 1. No menu selecione a opção “Receitas”. |
+|                          | 2. Na tabela da tela receita, na coluna de Ações clique no botão “Excluir”. |
+|                          | 3. No pop-up, clique em confirmar. |
+|Resultado Esperado       | A receita deve ser excluída da tabela.                                                                      |
+|Dados de Entrada         | Dados de uma receita cadastrado no banco de dados.  |
+
+
+| Caso de Teste           | CT008 – Cadastrar nova classificação de receita                                                 |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|Pré-condições            | Estar na tela de Receita      | 
+|Procedimento             | 1. No menu selecione a opção “Receita”. |
+|                         | 2. Na tela receita, clique no botão “Classificação”. |
+|                         | 3. Na tela de cadastro preencher com as informações da nova classificação. |
+|                         | 4. Clicar em Confirmar. |
+|Resultado Esperado       | Devem ser exibidas as novas classificações na tela de cadastro de receita.                                                                      |
+|Dados de Entrada         | Definição de uma classificação.  |
 
 
 
