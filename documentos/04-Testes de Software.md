@@ -1259,9 +1259,9 @@ Garantir a funcionalidade, confiabilidade e segurança das telas de:
 
 
 # Evidências de Testes de Software - Página "Precificação" do sistema Libertese
-![Imagem do WhatsApp de 2024-06-09 à(s) 14 59 47_0930a30a](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/53317747/1150ed9c-f7e3-4444-a50a-2184d4fba49f)
-![Imagem do WhatsApp de 2024-06-09 à(s) 15 00 10_7aa4fb32](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/53317747/0265c89e-ba50-45b1-b05b-729e0abd58c1)
-![Imagem do WhatsApp de 2024-06-09 à(s) 15 01 03_5b3f1dc0](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/53317747/cc0cdd94-43af-43c5-8e54-f4e89ba1b7f7)
+![Imagem do WhatsApp de 2024-06-09 à(s) 21 05 02_bc51a389](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/53317747/1ffc17e7-ae34-4fc8-94ee-bc7b5fd89790)
+![Imagem do WhatsApp de 2024-06-09 à(s) 21 05 15_ca94469b](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/53317747/8e350fba-828d-493e-985d-259cb5ff7504)
+![Imagem do WhatsApp de 2024-06-09 à(s) 21 05 28_1e856856](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/53317747/393d42bd-02ab-43d8-99c5-f8054e46adff)
 
 
 
