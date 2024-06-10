@@ -18,13 +18,13 @@ A aplicação foi desenvolvida utilizando as seguintes tecnologias:
 
 O processo de implantação da aplicação segue os seguintes passos:
 
-- Desenvolvimento Local: Desenvolvimento e teste da aplicação em ambiente local utilizando ferramentas de desenvolvimento, como Visual Studio.
+- Desenvolvimento Local: Desenvolvimento e teste da aplicação em ambiente local utilizando ferramentas de desenvolvimento, como Visual Studio, Google Chrome e Dbeave para o acesso ao Banco de Dados;
 
-- Controle de Versão: Utilização do controle de versão para gerenciar o código-fonte da aplicação.
+- Controle de Versão: Utilização do controle de versão para gerenciar o código-fonte da aplicação;
 
-- Hospedagem Web: Implantação da aplicação em um servidor web. Recomendamos o uso do serviço de hospedagem SmarterASP.NET para o deploy da aplicação.
+- Hospedagem Web: Implantação da aplicação em um servidor web. Recomendamos o uso do serviço de hospedagem SmarterASP.NET para o deploy da aplicação;
 
-- Banco de Dados: Utilização do serviço de hospedagem de banco de dados ElephantSQL para hospedar o banco de dados da aplicação.
+- Banco de Dados: Utilização do serviço de hospedagem de banco de dados ElephantSQL para hospedar o banco de dados da aplicação;
 
 
 ### Link da aplicação Libertese
@@ -36,13 +36,13 @@ A aplicação está disponível para acesso através do seguinte link: http://li
 
 O planejamento da evolução da aplicação inclui:
 
-- Atualizações de Funcionalidades: Adição de novas funcionalidades conforme requisitos do usuário.
+- Atualizações de Funcionalidades: Adição de novas funcionalidades conforme requisitos do cliente;
 
-- Melhorias de Desempenho: Otimização do desempenho da aplicação para garantir uma experiência rápida e responsiva.
+- Melhorias de Desempenho: Otimização do desempenho da aplicação para garantir uma experiência rápida e responsiva;
 
-- Correções de Bugs: Identificação e correção de problemas que possam surgir durante a utilização da aplicação.
+- Correções de Bugs: Identificação e correção de problemas que possam surgir durante a utilização da aplicação;
 
-- Segurança: Implementação de medidas de segurança adicionais para proteger a aplicação contra possíveis vulnerabilidades.
+- Segurança: Implementação de medidas de segurança adicionais para proteger a aplicação contra possíveis vulnerabilidades;
 
 ## Controle e Planejamento de Versões
 
