@@ -663,27 +663,18 @@ Os testes funcionais a serem realizados no aplicativo são descritos a seguir:
 |Dados de Entrada         | Informações solicitadas no campo de cadastro.  |
 
 
-| Caso de Teste           | CT002 – Cadastrar novo funcionário com o número de Celular no formato incorreto                                                      |
+| Caso de Teste           | CT002 – Cadastrar novo funcionário com o número de Celular ou CPF no formato incorreto                                                      |
 |-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 |Pre Condições            | Estar na tela de Funcionários      | 
 |Procedimento             | 1. No menu selecione a opção “Funcionários”. |
-|                         | 2. Na tela Empresas Parceiras, clique no botão “Cadastrar Funcionário”. |
-|                         | 3. Na tela de cadastro preencher com informações invalidas ou vazias o campo de celular. |
+|                         | 2. Na tela Funcionários, clique no botão “Cadastrar Funcionário”. |
+|                         | 3. Na tela de cadastro preencher com informações invalidas ou vazias o campo de celular ou CPF. |
 |                         | 4. Clicar em Confirmar. |
 |Resultado Esperado       | Devem ser exibidas mensagens de erro na tela indicando campos em branco ou dados inválidos.                                                                      |
 |Dados de Entrada         | Informações em branco ou dados inválidos.  |
 
-| Caso de Teste           | CT003 – Cadastrar novo funcionário com o campo CPF em branco ou no formato incorreto                                                  |
-|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
-|Pre Condições            | Estar na tela de Funcionários      | 
-|Procedimento             | 1. No menu selecione a opção “Funcionários”. |
-|                         | 2. Na tela Empresas Parceiras, clique no botão “Cadastrar Funcionário”. |
-|                         | 3. Na tela de cadastro preencher com informações invalidas ou vazias o campo de CPF. |
-|                         | 4. Clicar em Confirmar. |
-|Resultado Esperado       | Devem ser exibidas mensagens de erro na tela indicando campos em branco ou dados inválidos.                                                                      |
-|Dados de Entrada         | Informações em branco ou dados inválidos.  |
 
-| Caso de Teste           | CT004 – Cadastrar novo funcionário com os campos em branco                                                 |
+| Caso de Teste           | CT003 – Cadastrar novo funcionário com os campos em branco                                                 |
 |-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 |Pre Condições            | Estar na tela de Funcionários      | 
 |Procedimento             | 1. No menu selecione a opção “Funcionários”. |
@@ -693,7 +684,7 @@ Os testes funcionais a serem realizados no aplicativo são descritos a seguir:
 |Resultado Esperado       | Devem ser exibidas mensagens de erro na tela indicando campos em branco ou dados inválidos.                                                                      |
 |Dados de Entrada         | Informações em branco ou dados inválidos.  |
 
-| Caso de Teste           | CT005 – Visualizar os funcionários cadastrados                                              |
+| Caso de Teste           | CT004 – Visualizar os funcionários cadastrados                                              |
 |-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 |Pre Condições            | Estar na tela de Funcionários      | 
 |Procedimento             | 1. No menu selecione a opção “Funcionários”. |
@@ -701,7 +692,7 @@ Os testes funcionais a serem realizados no aplicativo são descritos a seguir:
 |Dados de Entrada         | Informações em branco ou dados inválidos.  |
 
 
-| Caso de Teste           | CT006 – Editar funcionário                                                                                             |
+| Caso de Teste           | CT005 – Editar funcionário                                                                                             |
 |-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 |Pre Condições            | Estar na tela de Funcionários      | 
 |Procedimento             | 1. No menu selecione a opção “Funcionários”. |
@@ -712,7 +703,7 @@ Os testes funcionais a serem realizados no aplicativo são descritos a seguir:
 |Dados de Entrada         | Informações solicitadas no campo de edição.  |
 
 
-| Caso de Teste           | CT007 – Editar funcionário com campo em branco ou inválido                                                                                     |
+| Caso de Teste           | CT006 – Editar funcionário com campo em branco ou inválido                                                                                     |
 |-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 |Pre Condições            | Estar na tela de Funcionários      | 
 |Procedimento             | 1. No menu selecione a opção “Funcionários”. |
@@ -723,7 +714,7 @@ Os testes funcionais a serem realizados no aplicativo são descritos a seguir:
 |Dados de Entrada         | Informações em branco ou dados inválidos.  |
 
 
-| Caso de Teste           | CT008 – Excluir funcionário cadastrado                                                                                    |
+| Caso de Teste           | CT007 – Excluir funcionário cadastrado                                                                                    |
 |-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 |Pre Condições            | Estar na tela de Funcionários      | 
 |Procedimento             | 1. No menu selecione a opção “Funcionários”. |
@@ -732,52 +723,62 @@ Os testes funcionais a serem realizados no aplicativo são descritos a seguir:
 |Resultado Esperado       | Excluir o usuário da tabela.                                                                      |
 |Dados de Entrada         | N/A |
 
+| Caso de Teste           | CT008 – Visualizar funcionários                                                                             |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|Pre Condições            | Estar na tela de Funcionários      | 
+|Procedimento             | 1. No menu selecione a opção “Funcionários”. |
+|                         | 2. Na tela Funcionários, clique no botão Visualizar Funcionário”. |
+|Resultado Esperado       | Visualizar todos os dados dos funcionários cadastrados.                                                                      |
+|Dados de Entrada         | N/A |
+
  
 # Evidências de Testes de Software - Funcionários
 
 ## CT001 – Criar novo funcionário
-![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Home%20Funcion%C3%A1rios.png)
 
-![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Tela%20de%20Cadastro.png)
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Tela%20de%20Funcion%C3%A1rios%20Index.png)
 
-![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Evidencia%20cadastro%20feito.png)
+Tela novo funcionário  ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Tela%20novo%20funcion%C3%A1rio.png)
+
+Criação novo funcionário correto  ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Criacao%20novo%20funcion%C3%A1rio%20correto.png)
+
+Evidencia Criar Funcionário  ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Evidencia%20Criar%20Funcion%C3%A1rio.png)
 
 ## CT002 – Cadastrar novo funcionário com o número de Celular no formato incorreto
-![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Home%20Funcion%C3%A1rios.png)
 
-![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Cadastro%20-%20Erro%20Celular.png)
+Tela Novo Funcionário CPF incorreto  ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Tela%20Novo%20Funcion%C3%A1rio%20CPF%20incorreto.png)
 
-## CT003 – Cadastrar novo funcionário com o campo CPF em branco ou no formato incorreto  
-![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Home%20Funcion%C3%A1rios.png)
+## CT003 – Cadastrar novo funcionário com os campos em branco
 
-![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Tela%20CPF%20invalido.png)
+Erro Editar funcionário  ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Erro%20Editar%20funcion%C3%A1rio.png)
 
-## CT004 – Cadastrar novo funcionário com os campos em branco
-![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Home%20Funcion%C3%A1rios.png)
+## CT004 – Visualizar os funcionários cadastrados
 
-![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Cadastro%20-%20Erro%20campo%20vazio.png)
+Evidencia criar funcionario  ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Evidencia%20Criar%20Funcion%C3%A1rio.png)
 
-## CT005 – Visualizar os funcionários cadastrados
-![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Evidencia%20cadastro%20feito.png)
+## CT005 – Editar funcionário
 
-## CT006 – Editar funcionário
-![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Evidencia%20cadastro%20feito.png)
+Evidencia Criar Funcionário  ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Evidencia%20Criar%20Funcion%C3%A1rio.png)
 
-![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Tela%20Editar%20Funcion%C3%A1rio.png)
+Tela Editar correta  ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Tela%20Editar%20correta.png)
 
-![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Evidencia%20Funcionario%20Editado.png)
+Evidencia Funcionário Editado  ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Evidencia%20Funcion%C3%A1rio%20Editado.png)
 
-## CT007 – Editar funcionário com campo em branco ou inválido  
-![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Evidencia%20cadastro%20feito.png)
+## CT006 – Editar funcionário com campo em branco ou inválido 
 
-![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Editar%20-%20campo%20errado%20ou%20vazio.png)
+Evidencia funcionário editado  ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Evidencia%20Funcion%C3%A1rio%20Editado.png)
 
-## CT008 – Excluir funcionário cadastrado   
-![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Evidencia%20cadastro%20feito.png)
+Erro Editar Funcionario  ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Erro%20Editar%20funcion%C3%A1rio.png)
 
-![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Tela%20Excluir.png)
+## CT007 – Excluir funcionário cadastrado   
 
-![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Evidencia%20Funcion%C3%A1rio%20Exclu%C3%ADdo.png)
+Excluir Funcionário  ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Excluir%20Funcion%C3%A1rio.png)
+
+Evidencia Excluir Funcionario  ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Evidencia%20Excluir%20Funcionario.png)
+
+## CT008 - Visualizar dados dos funcionários 
+
+Visualizar Funcionários  ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Visualizar%20Funcion%C3%A1rios.png)
 
 
  # Plano de Testes de Software (Em Pares)
@@ -1211,6 +1212,58 @@ Os testes funcionais a serem realizados no aplicativo são descritos a seguir:
 ![Periodo Fim Fluxo de Caixa Erro](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225367/79a6f096-76b3-4dbc-9bdf-6276fb3660f1)
 
 ![Fluxo de Caixa Gerado Erro](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225367/b1f4e682-1fb9-4259-a6a2-ac78177a8380)
+
+
+# Plano de teste - (Em apres)
+Teste da tela Precificação | Desenvolvidas por Thaís Gurgel | Testes feitos por Pedro Ertal
+
+## Objetivo:
+
+Garantir a funcionalidade, confiabilidade e segurança das telas de: 
+- Precificação - RF 007
+
+
+## Ferramentas utilizadas para os testes
+- Visual studio 2021
+- Google Chrome
+
+## Responsáveis pelos testes e pelas funcionalidades desenvolvidas
+- Responsável pelos telas a seguir: Thaís Gurgel
+- Telas desenvolvidas: Precificação
+- Testadas por: Pedro Ertal
+- Funcionalidades testadas: Listar "Informações Básicas", Registrar "Capacidade de Produção" e "Custos Fixos" e Calcular "Rateio"
+
+### CT001 - Precificação
+
+| Casos de Teste      | CT001 - Registrar Nova Capacidade de Produção                                                                          |
+|---------------------|------------------------------------------------------------------------------------------------------------|
+| **Pré Condições**   | Estar na tela de Precificação                                                                                    |
+| **Procedimento**    | 1. No menu, selecionar a opção “Precificação”.                                                                    |
+|                     | 2. Na tela de Precificação, selecionar a opção “Incluir” em “Capacidade de Produção“.                                             |
+|                     | 3. Na tela de Nova Precificação, registrar todas as informações necessárias.                                       |
+|                     | 4. Clicar em “Incluir”.                                                                                  |
+| **Resultado Esperado** | O novo Produto deve ser registrada com sucesso e deverá constar na lista de Capacidade de Produção.                          |
+| **Dados de Entrada** | Informações necessárias para o registro da precificação.                                                           |
+
+### CT002 - Registrar Custos Fixos
+
+| Casos de Teste      | CT002 - Registrar Novo Custos Fixos                                             |
+|---------------------|------------------------------------------------------------------------------------------------------------|
+| **Pré Condições**   | Estar na tela de Custos Fixos                                                                                    |
+| **Procedimento**    | 1. No menu, selecionar a opção “Precificação”.                                                                    |
+|                     | 2. Na tela de Precificação, selecionar a opção “Incluir” em “Custos Fixos“.                                             |
+|                     | 3. Na tela de Nova Precificação, registrar todas as informações necessárias.                                       |
+|                     | 4. Clicar em “Incluir”.                                                                                  |
+| **Resultado Esperado** | A nova Despesa deve ser registrada com sucesso e deverá constar na lista de Custos Fixos.                          |
+| **Dados de Entrada** | Informações necessárias para o registro da precificação.                                                           |
+
+
+# Evidências de Testes de Software - Página "Precificação" do sistema Libertese
+![Imagem do WhatsApp de 2024-06-09 à(s) 21 05 02_bc51a389](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/53317747/1ffc17e7-ae34-4fc8-94ee-bc7b5fd89790)
+![Imagem do WhatsApp de 2024-06-09 à(s) 21 05 15_ca94469b](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/53317747/8e350fba-828d-493e-985d-259cb5ff7504)
+![Imagem do WhatsApp de 2024-06-09 à(s) 21 05 28_1e856856](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/53317747/393d42bd-02ab-43d8-99c5-f8054e46adff)
+
+
 
 
 
