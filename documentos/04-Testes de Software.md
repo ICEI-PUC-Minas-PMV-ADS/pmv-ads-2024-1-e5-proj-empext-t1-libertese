@@ -1365,5 +1365,25 @@ Evidências de Testes de Software - Tela de Receitas
 
 
 
+# Plano de Testes de Software (Em pares)
+
+Teste da tela CLIENTES| Desenvolvida por Karinne Massensini | Testada por Vinícius Ponciano
+
+
+## Objetivo
+
+Garantir a funcionalidade, confiabilidade e segurança das telas de: 
+- Implementar controle da inclusão e deleção de clientes
+
+Os testes funcionais a serem realizados no aplicativo são descritos a seguir:  
+ 
+| Caso de Teste           | CT001 – Cadastrado e visualização de clientes                                                   |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|Pré-condições            | Estar na tela de Cadastro de clientes      | 
+|Procedimento             | 1. No menu selecione a opção “Vendas”. |
+|                                      | 2. Na tela Vendas, clique no botão de “+ Clientes”. |
+|                                      | 3. Preencher com os dados e clicar em “Confirmar”. |
+|Resultado Esperado       | Devem ser cadastrados novos clientes ao banco de dados, e observados na tabela que lista os clientes.                                                                     |
+|Dados de Entrada         | Informações solicitadas no campo de Nova receita.  |
 
 
