@@ -1286,8 +1286,7 @@ Os testes funcionais a serem realizados no aplicativo são descritos a seguir:
 |Dados de Entrada         | Informações solicitadas no campo de Nova receita.  |
 
 
-| Caso de Teste           | CT002 – - Somatório de receitas recebidas, receitas a receber e receitas previstas
-                                                      |
+| Caso de Teste           | CT002 – - Somatório de receitas recebidas, receitas a receber e receitas prevista                                                      |
 |-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 |Pré-condições            | Estar na tela de Receita     | 
 |Procedimento             | 1. No menu selecione a opção “Receitas”. |
