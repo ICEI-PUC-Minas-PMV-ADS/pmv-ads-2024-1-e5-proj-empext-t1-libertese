@@ -1356,6 +1356,12 @@ Os testes funcionais a serem realizados no aplicativo são descritos a seguir:
 |Resultado Esperado       | Devem ser exibidas as novas classificações na tela de cadastro de receita.                                                                      |
 |Dados de Entrada         | Definição de uma classificação.  |
 
+Evidências de Testes de Software - Tela de Receitas
+![novareceita](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/86004024/0aabdb33-d824-4eab-bdfb-22f5a58d2d2f)
+![editreceita](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/86004024/d15ddef9-d9eb-44cb-873c-4dc19e8b6f6b)
+![deletereceita](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/86004024/1029dbc1-e3b3-4549-93f3-cfacaa41086a)
+![receitaerror](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/86004024/18551b1c-9795-447e-80c7-456a4a1c49fe)
+![newclassreceita](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/86004024/1a9fb7cc-b1bf-4cc2-8458-4b5e3a4ba550)
 
 
 
