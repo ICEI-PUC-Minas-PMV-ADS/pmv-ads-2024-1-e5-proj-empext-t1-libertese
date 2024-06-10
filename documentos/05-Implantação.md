@@ -48,7 +48,12 @@ O planejamento da evolução da aplicação inclui:
 
 O sistema começou a ser implantado da seguinte data: 27/05/2024
 
-Segue datas das atualizações das versões:
+Segue datas das atualizações das versões, conforme a equipe foi fazendo a atualização (Deploy) para o cliente:
 
-- 27/05/ (Versão 1.0) - Início da implantação e uso do sistema pelo cliente;
+- 27/05/2024 (Versão 1.0) - Início da implantação e uso do sistema pelo cliente;
+- 29/05/2024 (Versão 1.2)
+- 02/06/2024 (Versão 1.3)
+- 06/06/2024 (Versão 1.4)
+- 08/06/2024 (Versão 1.5)
+- 10/06/2024 (Versão 1.7) - Versão final com todos os ajustes e correções, sistema totalmente estável e funcional na presente data. 
 
