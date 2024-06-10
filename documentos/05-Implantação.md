@@ -50,5 +50,5 @@ O sistema começou a ser implantado da seguinte data: 27/05/2024
 
 Segue datas das atualizações das versões:
 
-- 27/05/ (Versão 1.0) - Início da implantação e uso do sitema pelo cliente;
+- 27/05/ (Versão 1.0) - Início da implantação e uso do sistema pelo cliente;
 
