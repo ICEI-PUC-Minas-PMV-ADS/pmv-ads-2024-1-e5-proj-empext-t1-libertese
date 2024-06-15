@@ -51,9 +51,9 @@ O sistema começou a ser implantado da seguinte data: 27/05/2024
 Segue datas das atualizações das versões, conforme a equipe foi fazendo a atualização (Deploy) para o cliente:
 
 - 27/05/2024 (Versão 1.0) - Início da implantação e uso do sistema pelo cliente;
-- 29/05/2024 (Versão 1.2)
-- 02/06/2024 (Versão 1.3)
-- 06/06/2024 (Versão 1.4)
-- 08/06/2024 (Versão 1.5)
+- 29/05/2024 (Versão 1.2) - Correção de bugs e atualização da página "Empresas Parceiras";
+- 02/06/2024 (Versão 1.3) - Correção de bugs, atualização das seguintes páginas: Classificação, FLuxo de Caixa, Despesas, Receitas e Funcionários;
+- 06/06/2024 (Versão 1.4) - Nova tela de Fluxo de Caixa conforme solicitado pelo cliente, e correção de bugs e rotas internas;
+- 08/06/2024 (Versão 1.5) - Atualização da tela Fluxo de Caixa, Receitas, Despesas, Funcionários, adição da funcão "Precificação" e Vendas;
 - 10/06/2024 (Versão 1.7) - Versão final com todos os ajustes e correções, sistema totalmente estável e funcional na presente data. 
 
