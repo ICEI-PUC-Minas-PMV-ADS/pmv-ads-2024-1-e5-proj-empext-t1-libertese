@@ -75,32 +75,37 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 
 ### Requisitos Funcionais
 
-|ID    | Descrição do Requisito  | Prioridade |
-|------|-----------------------------------------|----|
-|RF-001| Permitir cadastro de usuário administrador  | ALTA | 
-|RF-002| Permitir cadastro de funcionários  | ALTA |
-|RF-003| Login na plataforma  | ALTA |
-|RF-004| Implementar controle de inclusão, deleção e edição de funcionários  | MÉDIA |
-|RF-005| Permitir cadastro de produtos, categorias e materiais  | ALTA |
-|RF-006| Permitir controle de inclusão, deleção e edição de produtos, categorias e materiais| ALTA |
-|RF-007| Implementar precificação de produtos e materiais | MÉDIA |
-|RF-008| Permitir cadastro de patrocinadores | MÉDIA |
-|RF-009| Permitir cadastro de fornecedores | MÉDIA |
-|RF-010| Cadastrar despesas | MÉDIA |
-|RF-011| Permitir cadastro de receita | MÉDIA |
-|RF-012| Implementar fluxo de caixa  | ALTA |
-|RF-013| Implementar calculadora de gestão financeira | BAIXA |
-|RF-014| Permitir registro de venda | MÉDIA |
-|RF-015| Permitir gerar relatórios de venda |  BAIXA | 
+
+| ID       | Descrição do Requisito                              | Prioridade |
+|----------|-----------------------------------------------------|------------|
+| RF-001   | Permitir cadastro de funcionários                   | ALTA       |
+| RF-002   | Permitir cadastro de fornecedores                   | ALTA       |
+| RF-003   | Permitir cadastro de empresas parceiras             | MÉDIA      |
+| RF-004   | Permitir cadastro de despesas                       | ALTA       |
+| RF-005   | Permitir cadastro de receitas                       | ALTA       |
+| RF-006   | Permitir cadastro de clientes                       | ALTA       |
+| RF-007   | Permitir cadastro de classificações                 | MÉDIA      |
+| RF-008   | Permitir cadastro de contas bancárias               | ALTA       |
+| RF-009   | Permitir cadastro de formas de pagamento            | ALTA       |
+| RF-010   | Permitir cadastro de categorias de produtos         | ALTA       |
+| RF-011   | Permitir cadastro de produtos                       | ALTA       |
+| RF-012   | Permitir cadastro de materiais                      | MÉDIA      |
+| RF-013   | Permitir precificação de produtos                   | ALTA       |
+| RF-014   | Permitir registro de vendas                         | ALTA       |
+| RF-015   | Gerar relatórios de despesa                         | ALTA       |
+| RF-016   | Gerar relatórios de receita                         | ALTA       |
+| RF-017   | Gerar relatórios de vendas                          | ALTA       |
+| RF-018   | Visualizar fluxo de caixa                           | ALTA       |
+| RF-019   | Implementar login para usuários                     | ALTA       |
 
 ### Requisitos não Funcionais
 
-|ID     | Descrição do Requisito  |Prioridade |
-|-------|-------------------------|----|
-|RNF-001| O sistema deve ser responsivo para rodar em um dispositivos móvel | MÉDIA | 
-|RNF-002| Deve processar requisições do usuário em no máximo 3s |  BAIXA | 
-|RNF-003| O sistema deve realizar autenticação e autorização ao acessar como administrador | ALTA | 
-|RNF-004| O sistema deve solicitar autenticação de administrador ao realizar qualquer exclusão |  BAIXA | 
+| ID      | Descrição do Requisito                                    | Prioridade |
+|---------|-----------------------------------------------------------|------------|
+| RNF-001 | O sistema deve ser uma aplicação web responsiva           | ALTA       |
+| RNF-002 | Utilizar banco de dados PostgreSQL                        | ALTA       |
+| RNF-003 | Deve processar requisições do usuário em no máximo 3 segundos | BAIXA   |
+| RNF-004 | O sistema deve realizar autenticação ao acessar como administrador | ALTA  |
 
 
 ## Restrições
