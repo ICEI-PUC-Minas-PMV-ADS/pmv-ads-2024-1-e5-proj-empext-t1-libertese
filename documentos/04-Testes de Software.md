@@ -663,27 +663,18 @@ Os testes funcionais a serem realizados no aplicativo são descritos a seguir:
 |Dados de Entrada         | Informações solicitadas no campo de cadastro.  |
 
 
-| Caso de Teste           | CT002 – Cadastrar novo funcionário com o número de Celular no formato incorreto                                                      |
+| Caso de Teste           | CT002 – Cadastrar novo funcionário com o número de Celular ou CPF no formato incorreto                                                      |
 |-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 |Pre Condições            | Estar na tela de Funcionários      | 
 |Procedimento             | 1. No menu selecione a opção “Funcionários”. |
-|                         | 2. Na tela Empresas Parceiras, clique no botão “Cadastrar Funcionário”. |
-|                         | 3. Na tela de cadastro preencher com informações invalidas ou vazias o campo de celular. |
+|                         | 2. Na tela Funcionários, clique no botão “Cadastrar Funcionário”. |
+|                         | 3. Na tela de cadastro preencher com informações invalidas ou vazias o campo de celular ou CPF. |
 |                         | 4. Clicar em Confirmar. |
 |Resultado Esperado       | Devem ser exibidas mensagens de erro na tela indicando campos em branco ou dados inválidos.                                                                      |
 |Dados de Entrada         | Informações em branco ou dados inválidos.  |
 
-| Caso de Teste           | CT003 – Cadastrar novo funcionário com o campo CPF em branco ou no formato incorreto                                                  |
-|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
-|Pre Condições            | Estar na tela de Funcionários      | 
-|Procedimento             | 1. No menu selecione a opção “Funcionários”. |
-|                         | 2. Na tela Empresas Parceiras, clique no botão “Cadastrar Funcionário”. |
-|                         | 3. Na tela de cadastro preencher com informações invalidas ou vazias o campo de CPF. |
-|                         | 4. Clicar em Confirmar. |
-|Resultado Esperado       | Devem ser exibidas mensagens de erro na tela indicando campos em branco ou dados inválidos.                                                                      |
-|Dados de Entrada         | Informações em branco ou dados inválidos.  |
 
-| Caso de Teste           | CT004 – Cadastrar novo funcionário com os campos em branco                                                 |
+| Caso de Teste           | CT003 – Cadastrar novo funcionário com os campos em branco                                                 |
 |-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 |Pre Condições            | Estar na tela de Funcionários      | 
 |Procedimento             | 1. No menu selecione a opção “Funcionários”. |
@@ -693,7 +684,7 @@ Os testes funcionais a serem realizados no aplicativo são descritos a seguir:
 |Resultado Esperado       | Devem ser exibidas mensagens de erro na tela indicando campos em branco ou dados inválidos.                                                                      |
 |Dados de Entrada         | Informações em branco ou dados inválidos.  |
 
-| Caso de Teste           | CT005 – Visualizar os funcionários cadastrados                                              |
+| Caso de Teste           | CT004 – Visualizar os funcionários cadastrados                                              |
 |-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 |Pre Condições            | Estar na tela de Funcionários      | 
 |Procedimento             | 1. No menu selecione a opção “Funcionários”. |
@@ -701,7 +692,7 @@ Os testes funcionais a serem realizados no aplicativo são descritos a seguir:
 |Dados de Entrada         | Informações em branco ou dados inválidos.  |
 
 
-| Caso de Teste           | CT006 – Editar funcionário                                                                                             |
+| Caso de Teste           | CT005 – Editar funcionário                                                                                             |
 |-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 |Pre Condições            | Estar na tela de Funcionários      | 
 |Procedimento             | 1. No menu selecione a opção “Funcionários”. |
@@ -712,7 +703,7 @@ Os testes funcionais a serem realizados no aplicativo são descritos a seguir:
 |Dados de Entrada         | Informações solicitadas no campo de edição.  |
 
 
-| Caso de Teste           | CT007 – Editar funcionário com campo em branco ou inválido                                                                                     |
+| Caso de Teste           | CT006 – Editar funcionário com campo em branco ou inválido                                                                                     |
 |-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 |Pre Condições            | Estar na tela de Funcionários      | 
 |Procedimento             | 1. No menu selecione a opção “Funcionários”. |
@@ -723,7 +714,7 @@ Os testes funcionais a serem realizados no aplicativo são descritos a seguir:
 |Dados de Entrada         | Informações em branco ou dados inválidos.  |
 
 
-| Caso de Teste           | CT008 – Excluir funcionário cadastrado                                                                                    |
+| Caso de Teste           | CT007 – Excluir funcionário cadastrado                                                                                    |
 |-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 |Pre Condições            | Estar na tela de Funcionários      | 
 |Procedimento             | 1. No menu selecione a opção “Funcionários”. |
@@ -732,52 +723,62 @@ Os testes funcionais a serem realizados no aplicativo são descritos a seguir:
 |Resultado Esperado       | Excluir o usuário da tabela.                                                                      |
 |Dados de Entrada         | N/A |
 
+| Caso de Teste           | CT008 – Visualizar funcionários                                                                             |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|Pre Condições            | Estar na tela de Funcionários      | 
+|Procedimento             | 1. No menu selecione a opção “Funcionários”. |
+|                         | 2. Na tela Funcionários, clique no botão Visualizar Funcionário”. |
+|Resultado Esperado       | Visualizar todos os dados dos funcionários cadastrados.                                                                      |
+|Dados de Entrada         | N/A |
+
  
 # Evidências de Testes de Software - Funcionários
 
 ## CT001 – Criar novo funcionário
-![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Home%20Funcion%C3%A1rios.png)
 
-![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Tela%20de%20Cadastro.png)
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Tela%20de%20Funcion%C3%A1rios%20Index.png)
 
-![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Evidencia%20cadastro%20feito.png)
+Tela novo funcionário  ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Tela%20novo%20funcion%C3%A1rio.png)
+
+Criação novo funcionário correto  ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Criacao%20novo%20funcion%C3%A1rio%20correto.png)
+
+Evidencia Criar Funcionário  ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Evidencia%20Criar%20Funcion%C3%A1rio.png)
 
 ## CT002 – Cadastrar novo funcionário com o número de Celular no formato incorreto
-![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Home%20Funcion%C3%A1rios.png)
 
-![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Cadastro%20-%20Erro%20Celular.png)
+Tela Novo Funcionário CPF incorreto  ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Tela%20Novo%20Funcion%C3%A1rio%20CPF%20incorreto.png)
 
-## CT003 – Cadastrar novo funcionário com o campo CPF em branco ou no formato incorreto  
-![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Home%20Funcion%C3%A1rios.png)
+## CT003 – Cadastrar novo funcionário com os campos em branco
 
-![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Tela%20CPF%20invalido.png)
+Erro Editar funcionário  ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Erro%20Editar%20funcion%C3%A1rio.png)
 
-## CT004 – Cadastrar novo funcionário com os campos em branco
-![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Home%20Funcion%C3%A1rios.png)
+## CT004 – Visualizar os funcionários cadastrados
 
-![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Cadastro%20-%20Erro%20campo%20vazio.png)
+Evidencia criar funcionario  ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Evidencia%20Criar%20Funcion%C3%A1rio.png)
 
-## CT005 – Visualizar os funcionários cadastrados
-![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Evidencia%20cadastro%20feito.png)
+## CT005 – Editar funcionário
 
-## CT006 – Editar funcionário
-![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Evidencia%20cadastro%20feito.png)
+Evidencia Criar Funcionário  ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Evidencia%20Criar%20Funcion%C3%A1rio.png)
 
-![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Tela%20Editar%20Funcion%C3%A1rio.png)
+Tela Editar correta  ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Tela%20Editar%20correta.png)
 
-![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Evidencia%20Funcionario%20Editado.png)
+Evidencia Funcionário Editado  ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Evidencia%20Funcion%C3%A1rio%20Editado.png)
 
-## CT007 – Editar funcionário com campo em branco ou inválido  
-![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Evidencia%20cadastro%20feito.png)
+## CT006 – Editar funcionário com campo em branco ou inválido 
 
-![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Editar%20-%20campo%20errado%20ou%20vazio.png)
+Evidencia funcionário editado  ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Evidencia%20Funcion%C3%A1rio%20Editado.png)
 
-## CT008 – Excluir funcionário cadastrado   
-![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Evidencia%20cadastro%20feito.png)
+Erro Editar Funcionario  ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Erro%20Editar%20funcion%C3%A1rio.png)
 
-![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Tela%20Excluir.png)
+## CT007 – Excluir funcionário cadastrado   
 
-![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Evidencia%20Funcion%C3%A1rio%20Exclu%C3%ADdo.png)
+Excluir Funcionário  ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Excluir%20Funcion%C3%A1rio.png)
+
+Evidencia Excluir Funcionario  ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Evidencia%20Excluir%20Funcionario.png)
+
+## CT008 - Visualizar dados dos funcionários 
+
+Visualizar Funcionários  ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/blob/main/documentos/img/Visualizar%20Funcion%C3%A1rios.png)
 
 
  # Plano de Testes de Software (Em Pares)
@@ -1166,24 +1167,230 @@ Na página de Início "Home", é exibida o logotipo da Libertese, e todas as fun
 Lembrando que a exibição na Home, é somente um formato resumido para o gerenciamento do negócio, não é valido como uma documentação técnica do Sistema.
 
 
-# Plano de Testes de Software - Fluxo de Caixa (Em pares)
+# Plano de Testes de Software (Em pares) - Fluxo de Caixa
 
-Teste da tela Fluxo de Caixa | Funcionalidades desenvolvidas por: César Luis Costa Moreira | Rafael de Oliveira | Pedro Ertal
-
-Testes feitos por XXXXXXX
+Teste da tela Fluxo de Caixa | Feita por Cesar Luis Costa Moreira, Rafael de Assis Oliveira e Pedro Henrique Ertal de Oliveira | Testes feitos por Douglas Delareti Simões
 
 ## Objetivo
 
-Garantir a funcionalidade e confiabilidade e segurança das telas de: 
+Garantir a funcionalidade, confiabilidade e segurança das telas de: 
 - Fluxo de Caixa
 
 Os testes funcionais a serem realizados no aplicativo são descritos a seguir:  
  
-| Caso de Teste           | CT001 – Criar um filtro de fluxo do caixa                                                                                      |
+| Caso de Teste           | CT001 – Geração do Fluxo de Caixa                                                                                             |
 |-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
-|Pre Condições            | Estar na tela de Fluxo de Caixa                    | 
-|Procedimento             | 1. Na tela selecione um período para exibir o resultado do Fluxo. |
-|                         | 2. Clique no botão “Filtrar”. |
-|                         | 3. A tela deve retornar com os valores referentes aos períodos lançados. |
-|Resultado Esperado       | A tela deverá mostrar os valores somente que foram lançados, trazendo a soma total de acordo com a classificação já lançada, seja como Despesas ou como Vendas. O sistema retorna os valores dos últimos 6 meses de forma separada, e já trazendo a soma total de cada classificação lançada.                                                                     |
-|Dados de Entrada         | Período de Início e período de Fim, informado pelo usuário.  |
+|Pre Condições            | Estar na tela de Fluxo de Caixa       | 
+|Procedimento             | 1. Colocar o periodo de inicio e fim. |
+|                         | 2. Na tela Fluxo de Caixa, clique no botão “Filtrar”. |
+|Resultado Esperado       | O Fluxo de Caixa deve ser gerado e exibido os valores dos meses do filtro.                                                                       |
+|Dados de Entrada         | Datas no periodo de inicio e fim.  |
+
+ 
+| Caso de Teste           | CT002 – Geração do Fluxo de Caixa de um periodo sem movimentações                                                                                            |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|Pre Condições            | Estar na tela de Fluxo de Caixa       | 
+|Procedimento             | 1. Colocar o periodo de inicio e fim. |
+|                         | 2. Na tela Fluxo de Caixa, clique no botão “Filtrar”. |
+|Resultado Esperado       | O Fluxo de Caixa deve exibir uma mensagem de "Não há dados de entrada/saídas para exibir".                                                                       |
+|Dados de Entrada         | Datas no periodo de inicio e fim.  |
+ 
+# Evidências de Testes de Software - Fluxo de Caixa
+
+## CT001 – Geracao do Fluxo de Caixa 
+
+![Periodo Inicio Fluxo de Caixa](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225367/26ea9ee8-9608-460c-9f27-e22fb60bd696)
+
+![Periodo Fim Fluxo de Caixa](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225367/a8833d5a-42c5-49d1-8a2e-b7354f96a2f0)
+
+![Fluxo de Caixa Gerado](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225367/f30df940-5d36-4776-852a-b0f9fbbdd690)
+
+## CT002 – Geração do Fluxo de Caixa de um periodo sem movimentações
+
+![Periodo Inicio Fluxo de Caixa Erro](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225367/08b7f286-12c4-4399-ae3c-f084200f0f8d)
+
+![Periodo Fim Fluxo de Caixa Erro](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225367/79a6f096-76b3-4dbc-9bdf-6276fb3660f1)
+
+![Fluxo de Caixa Gerado Erro](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/103225367/b1f4e682-1fb9-4259-a6a2-ac78177a8380)
+
+
+# Plano de teste - (Em apres)
+Teste da tela Precificação | Desenvolvidas por Thaís Gurgel | Testes feitos por Pedro Ertal
+
+## Objetivo:
+
+Garantir a funcionalidade, confiabilidade e segurança das telas de: 
+- Precificação - RF 007
+
+
+## Ferramentas utilizadas para os testes
+- Visual studio 2021
+- Google Chrome
+
+## Responsáveis pelos testes e pelas funcionalidades desenvolvidas
+- Responsável pelos telas a seguir: Thaís Gurgel
+- Telas desenvolvidas: Precificação
+- Testadas por: Pedro Ertal
+- Funcionalidades testadas: Listar "Informações Básicas", Registrar "Capacidade de Produção" e "Custos Fixos" e Calcular "Rateio"
+
+### CT001 - Precificação
+
+| Casos de Teste      | CT001 - Registrar Nova Capacidade de Produção                                                                          |
+|---------------------|------------------------------------------------------------------------------------------------------------|
+| **Pré Condições**   | Estar na tela de Precificação                                                                                    |
+| **Procedimento**    | 1. No menu, selecionar a opção “Precificação”.                                                                    |
+|                     | 2. Na tela de Precificação, selecionar a opção “Incluir” em “Capacidade de Produção“.                                             |
+|                     | 3. Na tela de Nova Precificação, registrar todas as informações necessárias.                                       |
+|                     | 4. Clicar em “Incluir”.                                                                                  |
+| **Resultado Esperado** | O novo Produto deve ser registrada com sucesso e deverá constar na lista de Capacidade de Produção.                          |
+| **Dados de Entrada** | Informações necessárias para o registro da precificação.                                                           |
+
+### CT002 - Registrar Custos Fixos
+
+| Casos de Teste      | CT002 - Registrar Novo Custos Fixos                                             |
+|---------------------|------------------------------------------------------------------------------------------------------------|
+| **Pré Condições**   | Estar na tela de Custos Fixos                                                                                    |
+| **Procedimento**    | 1. No menu, selecionar a opção “Precificação”.                                                                    |
+|                     | 2. Na tela de Precificação, selecionar a opção “Incluir” em “Custos Fixos“.                                             |
+|                     | 3. Na tela de Nova Precificação, registrar todas as informações necessárias.                                       |
+|                     | 4. Clicar em “Incluir”.                                                                                  |
+| **Resultado Esperado** | A nova Despesa deve ser registrada com sucesso e deverá constar na lista de Custos Fixos.                          |
+| **Dados de Entrada** | Informações necessárias para o registro da precificação.                                                           |
+
+
+# Evidências de Testes de Software - Página "Precificação" do sistema Libertese
+![Imagem do WhatsApp de 2024-06-09 à(s) 21 05 02_bc51a389](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/53317747/1ffc17e7-ae34-4fc8-94ee-bc7b5fd89790)
+![Imagem do WhatsApp de 2024-06-09 à(s) 21 05 15_ca94469b](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/53317747/8e350fba-828d-493e-985d-259cb5ff7504)
+![Imagem do WhatsApp de 2024-06-09 à(s) 21 05 28_1e856856](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/53317747/393d42bd-02ab-43d8-99c5-f8054e46adff)
+
+
+# Plano de Testes de Software (Em pares)
+
+Teste da tela RECEITAS| Desenvolvida por Karinne Massensini | Testada por Vinícius Ponciano
+
+
+## Objetivo
+
+Garantir a funcionalidade, confiabilidade e segurança das telas de: 
+- Implementar controle da inclusão, deleção e edição de receitas
+- Tela inicial de receitas
+
+Os testes funcionais a serem realizados no aplicativo são descritos a seguir:  
+ 
+| Caso de Teste           | CT001 – Tabela com visão de dados mais relevantes das receitas                                                                                             |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|Pré-condições            | Estar na tela de Receitas      | 
+|Procedimento             | 1. No menu selecione a opção “Receitas”. |
+|                         | 2. Na tela Receitas, observe a tabela principal que apresenta a Classificação, Forma de Pagamento, Data prevista, Status e os ícones de excluir, editar e visualizar. |
+|Resultado Esperado       | Devem ser exibidas todas as receitas cadastradas no banco de dados.                                                                       |
+|Dados de Entrada         | Informações solicitadas no campo de Nova receita.  |
+
+
+| Caso de Teste           | CT002 – - Somatório de receitas recebidas, receitas a receber e receitas prevista                                                      |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|Pré-condições            | Estar na tela de Receita     | 
+|Procedimento             | 1. No menu selecione a opção “Receitas”. |
+|                         | 2. Na tela Receitas, vá para o final da página. |
+|Resultado Esperado       | Soma de receitas a receber, receitas recebidas e receitas totais (previstas)                                                                      |
+|Dados de Entrada         | Informações cadastrados.  |
+
+
+| Caso de Teste           | CT003 – Cadastrar nova receita com os campos em branco                                                 |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|Pré-condições            | Estar na tela de Receita      | 
+|Procedimento             | 1. No menu selecione a opção “Receita”. |
+|                         | 2. Na tela receita, clique no botão “Nova receita”. |
+|                         | 3. Na tela de cadastro preencher com informações vazias nos campos. |
+|                         | 4. Clicar em Confirmar. |
+|Resultado Esperado       | Devem ser exibidas mensagens de erro na tela indicando campos em branco ou dados inválidos.                                                                      |
+|Dados de Entrada         | Informações em branco ou dados inválidos.  |
+
+| Caso de Teste           | CT004 – Cadastrar nova receita                                                 |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|Pré-condições            | Estar na tela de Receita      | 
+|Procedimento             | 1. No menu selecione a opção “Receita”. |
+|                         | 2. Na tela receita, clique no botão “Nova receita”. |
+|                         | 3. Na tela de cadastro preencher com as informações da nova receita. |
+|                         | 4. Clicar em Confirmar. |
+|Resultado Esperado       | Devem ser exibidas mensagens de erro na tela indicando campos em branco ou dados inválidos.                                                                      |
+|Dados de Entrada         | Informações inseridas no formulário de cadastro de nova receita.  |
+
+
+
+| Caso de Teste           | CT005 – Visualizar receitas detalhadas através do ícone de visualizar                                              |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|Pré-condições            | Estar na tela de Receitas      | 
+|Procedimento             | 1. No menu selecione a opção “Receitas”. |
+|                         | 2. Na tabela da tela receita, na coluna de Ações clique no botão “Visualizar”. |
+|Resultado Esperado       | Devem ser exibidas todos os dados das receitas cadastradas.                                                                      |
+|Dados de Entrada         | Informações completas das receitas cadastradas.  |
+
+
+
+| Caso de Teste           | CT006 – Excluir receita (Pop-up de atenção/confirmação)                                             |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|Pré-condições            | Estar na tela de Receitas      | 
+|Procedimento             | 1. No menu selecione a opção “Receitas”. |
+|                          | 2. Na tabela da tela receita, na coluna de Ações clique no botão “Excluir”. |
+|Resultado Esperado       | Devem ser exibido um pop-up de atenção para confirmar a exclusão dos dados.                                                                      |
+|Dados de Entrada         | Informações completas das receitas cadastradas.  |
+
+
+| Caso de Teste           | CT007 – Excluir receita                                            |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|Pre Condições            | Estar na tela de Receitas      | 
+|Procedimento             | 1. No menu selecione a opção “Receitas”. |
+|                          | 2. Na tabela da tela receita, na coluna de Ações clique no botão “Excluir”. |
+|                          | 3. No pop-up, clique em confirmar. |
+|Resultado Esperado       | A receita deve ser excluída da tabela.                                                                      |
+|Dados de Entrada         | Dados de uma receita cadastrado no banco de dados.  |
+
+
+| Caso de Teste           | CT008 – Cadastrar nova classificação de receita                                                 |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|Pré-condições            | Estar na tela de Receita      | 
+|Procedimento             | 1. No menu selecione a opção “Receita”. |
+|                         | 2. Na tela receita, clique no botão “Classificação”. |
+|                         | 3. Na tela de cadastro preencher com as informações da nova classificação. |
+|                         | 4. Clicar em Confirmar. |
+|Resultado Esperado       | Devem ser exibidas as novas classificações na tela de cadastro de receita.                                                                      |
+|Dados de Entrada         | Definição de uma classificação.  |
+
+##Evidências de Testes de Software - Tela de Receitas
+![novareceita](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/86004024/0aabdb33-d824-4eab-bdfb-22f5a58d2d2f)
+![editreceita](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/86004024/d15ddef9-d9eb-44cb-873c-4dc19e8b6f6b)
+![deletereceita](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/86004024/1029dbc1-e3b3-4549-93f3-cfacaa41086a)
+![receitaerror](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/86004024/18551b1c-9795-447e-80c7-456a4a1c49fe)
+![newclassreceita](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/86004024/1a9fb7cc-b1bf-4cc2-8458-4b5e3a4ba550)
+
+
+
+# Plano de Testes de Software (Em pares)
+
+Teste da tela CLIENTES| Desenvolvida por Karinne Massensini | Testada por Vinícius Ponciano
+
+
+## Objetivo
+
+Garantir a funcionalidade, confiabilidade e segurança das telas de: 
+- Implementar controle da inclusão e deleção de clientes
+
+Os testes funcionais a serem realizados no aplicativo são descritos a seguir:  
+ 
+| Caso de Teste           | CT001 – Cadastrado e visualização de clientes                                                   |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+|Pré-condições            | Estar na tela de Cadastro de clientes      | 
+|Procedimento             | 1. No menu selecione a opção “Vendas”. |
+|                                      | 2. Na tela Vendas, clique no botão de “+ Clientes”. |
+|                                      | 3. Preencher com os dados e clicar em “Confirmar”. |
+|Resultado Esperado       | Devem ser cadastrados novos clientes ao banco de dados, e observados na tabela que lista os clientes.                                                                     |
+|Dados de Entrada         | Informações solicitadas no campo de Nova receita.  |
+
+##Evidências de Testes de Software - Tela de Cleintes
+
+![novocliente](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/86004024/2e1cd5b9-b275-4587-8ac4-a2b0b8428e95)
+![viewcliente](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/86004024/bd0bc1ef-18d9-46fe-855e-01263101ee12)
+![deletecliente (2)](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese/assets/86004024/8801bd8c-6ea2-40cf-9edb-1c00610f9307)
+
+
+
