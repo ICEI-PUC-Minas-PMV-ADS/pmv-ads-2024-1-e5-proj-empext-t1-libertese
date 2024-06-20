@@ -55,5 +55,6 @@ Segue datas das atualizações das versões, conforme a equipe foi fazendo a atu
 - 02/06/2024 (Versão 1.3) - Correção de bugs, atualização das seguintes páginas: Classificação, Fluxo de Caixa, Despesas, Receitas e Funcionários;
 - 06/06/2024 (Versão 1.4) - Nova tela de Fluxo de Caixa conforme solicitado pelo cliente, e correção de bugs e rotas internas;
 - 08/06/2024 (Versão 1.5) - Atualização da tela Fluxo de Caixa, Receitas, Despesas, Funcionários, adição da funcão "Precificação" e Vendas;
-- 10/06/2024 (Versão 1.7) - Versão final com todos os ajustes e correções, sistema totalmente estável e funcional na presente data. 
+- 10/06/2024 (Versão 1.7) - Versão final com todos os ajustes e correções, sistema totalmente estável e funcional na presente data.
+- 20/06/2021 (Versão 1.8) - Correção dos relatórios, dos filtros e da tela de Funcionários, e Despesas conforme orientação da professora Sandra.
 
