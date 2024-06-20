@@ -458,7 +458,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="form-penitenciaria">
+                                                <div class="form-penitenciaria" id="penitenciariaGroup">
                                                     <input asp-for="Penitenciaria" class="form-input w-full input-penitenciaria" />
                                                     <span asp-validation-for="Penitenciaria" class="text-xs mt-1 text-rose-500"></span>
                                                 </div>
@@ -602,6 +602,8 @@
     </div>
 
     <script>
+       
+
         // Ocultar o campo de Salário inicialmente quando a página for carregada
         document.addEventListener('DOMContentLoaded', function () {
             var salarioGroup = document.getElementById('salarioGroup');
@@ -635,6 +637,32 @@
             // Continua com o envio do formulário
             return true;
         });
+        // Adicione este código no final do seu script existente
+
+        // Selecione os campos Pessoareclusa, Pessoaegressa e Penitenciaria
+        var reclusa = document.querySelector('#Pessoareclusa');
+        var egressa = document.querySelector('#Pessoaegressa');
+        var penitenciaria = document.querySelector('#Penitenciaria');
+
+        // Adicione um evento de mudança nos campos Pessoareclusa e Pessoaegressa
+        reclusa.addEventListener('change', updatePenitenciaria);
+        egressa.addEventListener('change', updatePenitenciaria);
+
+        // Função para atualizar o campo Penitenciaria com base nos valores de Pessoareclusa e Pessoaegressa
+        function updatePenitenciaria() {
+            // Verifique se ambos os campos estão marcados como "Não"
+            if (reclusa.value === 'false' && egressa.value === 'false') {
+                // Se sim, oculte o campo Penitenciaria e defina seu valor como "N/A"
+                penitenciaria.style.display = 'none';
+                penitenciaria.value = 'N/A';
+            } else {
+                // Se não, mostre o campo Penitenciaria novamente
+                penitenciaria.style.display = 'block';
+            }
+        }
+
+        // Chame a função updatePenitenciaria() ao carregar a página para atualizar o campo Penitenciaria com base nos valores iniciais
+        updatePenitenciaria();
         function formatarCPF(cpf) {
             // Remove qualquer caracter que não seja número
             cpf = cpf.replace(/\D/g, '');
@@ -751,5 +779,6 @@
         document.getElementById('salarioInput').addEventListener('input', function (e) {
             e.target.value = formatarMoeda(e.target.value);
         });
+
     </script>
 </body>
