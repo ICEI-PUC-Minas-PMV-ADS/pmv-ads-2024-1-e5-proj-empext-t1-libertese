@@ -1,0 +1,27 @@
+message: Please cite this software using these metadata.
+title: Gestão Administrativa Libertese
+authors:
+  - family-names: de Assis Oliveira
+    given-names:  Rafael
+  - family-names: Gurgel Bezerra
+    given-names:  Thais
+  - family-names: Luis Costa Moreira
+    given-names:  César
+  - family-names: Delareti Simões
+    given-names:  Douglas
+  - family-names: Agnes Massensini Pereira
+    given-names:  Karinne
+  - family-names: Henrique Ertal de Oliveira
+    given-names:  Pedro
+  - family-names: de Souza Ponciano
+    given-names:  Vinicius
+  - name-suffix:  Professor
+    affiliation:  PUC Minas
+    family-names: Maria Silveira
+    given-names:  Sandra
+  keywords:
+  - Gestão
+  - Administrativa
+repository-code: https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-empext-t1-libertese?tab=readme-ov-file
+version: 1.0.0
+date-released: 2024-06-21
